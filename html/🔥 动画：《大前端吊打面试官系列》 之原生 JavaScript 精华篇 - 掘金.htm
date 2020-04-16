@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://juejin.im/post/5e34d19de51d4558864b1d1f -->
+<html lang="zh-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google-site-verification" content="cCHsgG9ktuCTgWgYfqCJql8AeR4gAne4DTZqztPoirE"><meta name="google-site-verification" content="nPvn9R5NJLsZKTv5VKIbn0OmkRcJ4PC6KdDoTX3n5Mw"><meta name="apple-itunes-app" content="app-id=987739104"><meta name="baidu-site-verification" content="qiK2a1kcFc"><meta name="360-site-verification" content="4c3c7d57d59f0e1a308462fbc7fd7e51"><meta name="sogou_site_verification" content="c49WUDZczQ"><style>body {
+        font-size: 16px;
+        line-height: 2;
+      }
+      a, button, input {
+        margin: 1rem 1.5rem;
+      }
+      img {
+        width: 0;
+        height: 0;
+      }
+      #juejin {
+        overflow-x: hidden;
+      }</style><title data-vue-meta="true">🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金</title><link rel="apple-touch-icon" sizes="180x180" href="https://b-gold-cdn.xitu.io/favicons/v2/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-16x16.png"><link rel="manifest" href="https://b-gold-cdn.xitu.io/favicons/v2/manifest.json"><link rel="mask-icon" href="https://b-gold-cdn.xitu.io/favicons/v2/safari-pinned-tab.svg" color="#5bbad5"><link rel="shortcut icon" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico"><meta name="msapplication-config" content="https://b-gold-cdn.xitu.io/favicons/v2/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="search" title="掘金" href="https://b-gold-cdn.xitu.io/conf/search.xml" type="application/opensearchdescription+xml"><link rel="stylesheet" href="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/ionicons.min.css"><link rel="stylesheet" href="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/iconfont.css"><link href="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/0.6f006121537867d5c7df.css" rel="stylesheet"><script async="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/hm.js"></script><script async="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/analytics.js"></script><script type="text/javascript" async="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/vds.js"></script><script type="text/javascript" async="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect-v.3.2.14.js"></script><script charset="utf-8" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/4.281438b56343cf12fa0b.js"></script><meta data-vmid="keywords" name="keywords" content="前端" data-vue-meta="true"><meta data-vmid="description" name="description" content="📚更新日志 文中所有修改或补充内容，会在日志中实时更新。 2020/01/7 开始决定写近十几万字前端面试系列，规划整个系列目录提纲。 2020/01/8 写完部分“面试官到底考察你什么”内容。 2020/01/9 继续完善”面试官到底考察你什" data-vue-meta="true"></head><body><div id="juejin" data-v-2a21baac=""><div class="global-component-box" data-v-2a21baac=""><!----><div data-v-7b82dbda="" data-v-2a21baac="" class="alert-list alert-list"></div><div data-v-14e6422e="" data-v-2a21baac="" class="suspension-panel suspension-panel"><button data-v-14e6422e="" title="回到顶部" class="btn to-top-btn" style="display: none;"><i data-v-14e6422e="" class="ion-android-arrow-dropup"></i></button><button data-v-14e6422e="" title="建议反馈" class="btn meiqia-btn" style=""><i data-v-14e6422e="" class="ion-chatbubble-working"></i></button></div><!----><!----><div class="emoji-barrage" data-v-3bcc3fe1="" data-v-2a21baac=""><!----></div><div class="book-new-user-award-popup" style="display:none;" data-v-4b0794bc="" data-v-2a21baac=""><div class="content-box" style="display:;" data-v-4b0794bc=""><div class="close ion-close-round" data-v-4b0794bc=""></div><div class="header" data-v-4b0794bc=""><div class="icon" data-v-4b0794bc=""><img src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/icon.a87e5ae.svg" data-v-4b0794bc=""></div><div class="txt" data-v-4b0794bc="">新人专享好礼</div></div><div class="desc" data-v-4b0794bc="">凡未购买过小册的用户，均可领取三张 5 折新人专享券，购买小册时自动使用专享券，最高可节省 45 元。</div><div class="tickets" data-v-4b0794bc=""><div class="ticket" data-v-4b0794bc=""><div class="ticket__inner" data-v-4b0794bc=""><div class="enjoy" data-v-4b0794bc=""><span class="new-title" data-v-4b0794bc="">小册新人 5 折券</span></div><div class="sale" data-v-4b0794bc="">最高可省 15 元</div></div></div><div class="ticket" data-v-4b0794bc=""><div class="ticket__inner" data-v-4b0794bc=""><div class="enjoy" data-v-4b0794bc=""><span class="new-title" data-v-4b0794bc="">小册新人 5 折券</span></div><div class="sale" data-v-4b0794bc="">最高可省 15 元</div></div></div><div class="ticket" data-v-4b0794bc=""><div class="ticket__inner" data-v-4b0794bc=""><div class="enjoy" data-v-4b0794bc=""><span class="new-title" data-v-4b0794bc="">小册新人 5 折券</span></div><div class="sale" data-v-4b0794bc="">最高可省 15 元</div></div></div></div><div class="remark" data-v-4b0794bc="">注：专享券的使用期限在领券的七天内。</div><div class="submit-btn" data-v-4b0794bc="">一键领取</div></div><div class="model success" style="display:none;" data-v-4b0794bc=""><div class="heading" data-v-4b0794bc="">领取成功</div><div class="content-text" data-v-4b0794bc="">购买小册时自动使用专享券</div><div class="btn-success-footer" data-v-4b0794bc=""><div class="btn-ok" data-v-4b0794bc="">知道了</div><div class="btn-ok btn-link" data-v-4b0794bc="">前往小册首页</div></div></div><div class="model fail" style="display:none;" data-v-4b0794bc=""><div class="heading" data-v-4b0794bc="">领取失败</div><div class="content-text" data-v-4b0794bc="">本活动仅适用于小册新用户</div><div class="btn-ok" data-v-4b0794bc="">知道了</div></div></div><!----><!----><div class="bind-phone-number-modal-box" data-v-3b825027="" data-v-2a21baac=""><div st:block="bindPhoneNumberModal" class="modal-mask" style="display:none;" data-v-3b825027=""></div><form class="bind-phone-number-form" style="display:none;" data-v-3b825027=""><i title="关闭" class="close-btn ion-close-round" data-v-3b825027=""></i><h1 class="title" data-v-3b825027="">提示</h1><h2 class="hint" data-v-3b825027="">根据我国<a href="http://www.cac.gov.cn/2017-08/25/c_1121541842.htm" target="_blank" style="color:#007fff">《互联网跟帖评论服务管理规定》</a>，您需要绑定手机号后才可在掘金社区内发布内容。</h2><div class="input-group" data-v-3b825027=""><div class="input-box" data-v-3b825027=""><input maxlength="64" placeholder="请输入要绑定的手机号码" value="" class="input" data-v-3b825027=""></div><!----><!----></div><button st:name="bindBtn" class="btn" data-v-3b825027="">绑定手机</button></form></div></div><!----><div data-v-23c7d456="" data-v-7407bc26="" data-v-2a21baac="" class="view-container"><div data-v-23c7d456="" class="main-header-box"><header data-v-26abcca9="" data-v-23c7d456="" class="main-header main-header visible"><div data-v-26abcca9="" class="container"><a data-v-26abcca9="" href="https://juejin.im/" class="logo"><img data-v-26abcca9="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/logo.a7995ad.svg" alt="掘金" class="logo-img"><img data-v-26abcca9="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/simplify-logo.3e3c253.svg" alt="掘金" class="mobile"></a><nav data-v-26abcca9="" role="navigation" class="main-nav"><ul data-v-26abcca9="" class="nav-list"><li data-v-26abcca9="" class="main-nav-list"><div data-v-26abcca9="" class="phone-show-menu"><span data-v-26abcca9="">首页</span><div data-v-26abcca9="" class="icon ion-arrow-down-b"></div></div><ul data-v-26abcca9="" class="phone-hide"><li data-v-26abcca9="" class="nav-item link-item route-active"><a data-v-26abcca9="" href="https://juejin.im/">首页</a></li><li data-v-26abcca9="" class="nav-item link-item activities"><a data-v-26abcca9="" href="https://juejin.im/pins">沸点</a></li><li data-v-26abcca9="" class="nav-item link-item"><a data-v-26abcca9="" href="https://juejin.im/topics">话题</a></li><li data-v-26abcca9="" class="nav-item link-item book"><a data-v-26abcca9="" href="https://juejin.im/books">小册</a></li><li data-v-26abcca9="" class="nav-item link-item"><a data-v-26abcca9="" href="https://juejin.im/events/all">活动</a></li></ul></li><li data-v-26abcca9="" class="nav-item search"><form data-v-26abcca9="" role="search" class="search-form"><input data-v-26abcca9="" type="search" maxlength="32" placeholder="搜索掘金" class="search-input"><img data-v-26abcca9="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/juejin-search-icon.6f8ba1b.svg" alt="搜索" class="search-icon"></form></li><li data-v-26abcca9="" class="nav-item add"><div data-v-26abcca9="" class="add-group"><button data-v-26abcca9="" class="add-btn">写文章</button><div data-v-26abcca9="" class="more"><i data-v-26abcca9="" class="more-icon ion-android-arrow-dropdown"></i></div><ul data-v-26abcca9="" class="more-list"><li data-v-26abcca9="" class="item">发布沸点</li><li data-v-26abcca9="" class="item">分享链接</li><!----></ul></div><!----></li><li data-v-26abcca9="" class="nav-item notification"><a data-v-26abcca9="" class="app-link" href="https://juejin.im/notification" target="_blank"><i data-v-26abcca9="" class="icon ion-android-notifications"></i><!----></a></li><li data-v-26abcca9="" class="nav-item menu"><div data-v-292b3648="" data-v-11331c20="" data-v-26abcca9="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded immediate" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><!----><ul data-v-26abcca9="" class="nav-menu user-dropdown-list" style="display: none;"><div data-v-26abcca9="" class="nav-menu-item-group"><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9=""><i data-v-26abcca9="" class="fengwei fw-write"></i><span data-v-26abcca9="">写文章</span></a></li><!----><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9=""><i data-v-26abcca9="" class="fengwei fw-draft"></i><span data-v-26abcca9="">草稿</span></a></li></div><div data-v-26abcca9="" class="nav-menu-item-group"><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0" class="link-icon"><i data-v-26abcca9="" class="fengwei fw-person"></i><span data-v-26abcca9="">我的主页</span><!----></a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/likes"><img data-v-26abcca9="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="zan"><span data-v-26abcca9="">我赞过的</span></a></li><!----><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/collections"><img data-v-26abcca9="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="collect"><span data-v-26abcca9="">我的收藏集</span></a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/books?type=bought"><i data-v-26abcca9="" class="fengwei fw-bought"></i><span data-v-26abcca9="">已购</span></a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/subscribe"><i data-v-26abcca9="" class="fengwei fw-tag"></i><span data-v-26abcca9="">标签管理</span></a></li></div><div data-v-26abcca9="" class="nav-menu-item-group"><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/user/settings"><i data-v-26abcca9="" class="fengwei fw-setting"></i><span data-v-26abcca9="">设置</span></a></li><li data-v-26abcca9="" class="nav-menu-item more"><a data-v-26abcca9=""><i data-v-26abcca9="" class="fengwei fw-info"></i><span data-v-26abcca9="">关于</span><i data-v-26abcca9="" class="ion-chevron-right more-icon"></i></a><ul data-v-26abcca9="" class="nav-menu more-dropdown-list"><div data-v-26abcca9="" class="nav-menu-item-group"><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/app" target="_blank">下载应用</a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://juejin.im/about" target="_blank">关于</a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://xitu.io/jobs" target="_blank">加入我们</a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://github.com/xitu/gold-miner" rel="nofollow noopener noreferrer" target="_blank">翻译计划</a></li><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9="" href="https://bd.juejin.im/?utm_campaign=bd&amp;utm_source=web&amp;utm_medium=nav" target="_blank">合作伙伴</a></li></div></ul></li></div><div data-v-26abcca9="" class="nav-menu-item-group"><li data-v-26abcca9="" class="nav-menu-item"><a data-v-26abcca9=""><i data-v-26abcca9="" class="fengwei fw-logout"></i><span data-v-26abcca9="">登出</span></a></li></div></ul></li><!----><!----></ul></nav></div></header></div><main data-v-23c7d456="" class="container main-container"><div data-v-7407bc26="" data-v-23c7d456="" class="view column-view"><div data-v-7407bc26="" data-v-23c7d456="" class="main-area article-area shadow"><article data-v-7407bc26="" itemscope="itemscope" itemtype="http://schema.org/Article" class="article" data-v-23c7d456=""><meta itemprop="url" content="https://juejin.im/post/5e34d19de51d4558864b1d1f"><meta itemprop="headline" content="🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇"><meta itemprop="keywords" content="前端"><meta itemprop="datePublished" content="2020-02-07T06:04:10.505Z"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/2/7/1701e469d7ef960d?w=859&amp;h=432&amp;f=png&amp;s=37219"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="name" content="程序员小鹿"><meta itemprop="url" content="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7"></div><div itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="掘金"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://b-gold-cdn.xitu.io/icon/icon-white-180.png"><meta itemprop="width" content="180"><meta itemprop="height" content="180"></div></div><div data-v-7407bc26="" class="author-info-block"><a data-v-7407bc26="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="avatar-link"><div data-v-292b3648="" data-v-11331c20="" data-v-7407bc26="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-7407bc26="" class="author-info-box"><a data-v-44e95489="" data-v-7407bc26="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username username ellipsis">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><div data-v-7407bc26="" class="meta-box"><time data-v-7407bc26="" datetime="2020-02-07T06:04:10.505Z" title="Fri Feb 07 2020 14:04:10 GMT+0800 (中国标准时间)" class="time">2020年02月07日</time><span data-v-7407bc26="" class="views-count">阅读 27696</span><!----></div></div><button data-v-fa88a374="" data-v-7407bc26="" class="follow-button follow">关注</button></div><div data-v-292b3648="" data-v-4d895a49="" data-v-7407bc26="" data-src="https://user-gold-cdn.xitu.io/2020/2/7/1701e469d7ef960d?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" class="lazy thumb article-hero loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/2/7/1701e469d7ef960d?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1&quot;); background-size: cover;"></div><h1 data-v-7407bc26="" class="article-title">🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇</h1><div data-v-7407bc26="" data-id="5e3cfddaf265da57444aab26" itemprop="articleBody" class="article-content"><h2 class="heading" data-id="heading-0">📚更新日志</h2>
+<blockquote class="warning"><p>文中所有修改或补充内容，会在日志中实时更新。
+</p></blockquote><ul>
+<li><strong>2020/01/7</strong>   开始决定写近十几万字前端面试系列，规划整个系列目录提纲。</li>
+<li><strong>2020/01/8</strong>   写完部分“面试官到底考察你什么”内容。</li>
+<li><strong>2020/01/9</strong>   继续完善”面试官到底考察你什么“内容。</li>
+<li><strong>2020/01/11</strong>  开始写准备简历部分。</li>
+<li><strong>2020/01/13</strong>  完善面试前的准备内容。</li>
+<li><strong>2020/01/14</strong>  对面试准备内容做一次整体的优化。</li>
+<li><strong>2020/01/15</strong>  开始写 JS 系列部分。</li>
+<li><strong>2020/01/16</strong>  写数据类型中的七大模块部分 。</li>
+<li><strong>2020/01/17</strong>  写 this、闭包等 JS 重点部分。</li>
+<li><strong>2020/01/30</strong>  写消息循环机制</li>
+<li><strong>2020/02/03</strong>  添加配图以及动画演示</li>
+<li><strong>2020/02/02</strong>  补充 new 的实现原理</li>
+<li><strong>2020/02/03</strong>  补充继承等知识内容，以及一些参考文献</li>
+<li><strong>2020/02/04</strong>  补充垃圾回收机制等知识内容</li>
+<li><strong>2020/02/05</strong>  补充深浅拷贝等知识内容</li>
+<li><strong>2020/03/11</strong>  补充 instanceof 中的内部实现</li>
+<li>持续更新中...</li>
+</ul>
+<h4 class="heading" data-id="heading-1">接上篇文章《大前端吊打面试官系列》之备战面试篇，【<a target="_blank" href="https://juejin.im/post/5e214c1a6fb9a02fc8247a86" rel="">传送门~</a>】</h4>
+<h4 class="heading" data-id="heading-2">本系列 Github 仓库 [<a target="_blank" href="https://github.com/luxiangqiang/Web-interview" rel="nofollow noopener noreferrer">传送门~</a>]</h4>
+<h2 class="heading" data-id="heading-3">目录</h2>
+<ul>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">JavaScript 基础知识点</a>
+<ul>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a>
+<ul>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#1%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F">1、数据类型的存储形式</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#2%E3%80%81Null">2、Null</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#3%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%A4%E6%96%AD">3、数据类型的判断</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#4%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">4、类型转换</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#5%E3%80%81%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97">5、四则运算</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#6%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">6、逻辑运算符</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#7%E3%80%81%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6">7、比较运算符</a></li>
+</ul>
+</li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#this">this</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#new">new</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E9%97%AD%E5%8C%85">闭包</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E7%BB%A7%E6%89%BF">继承</a>
+<ul>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E7%BB%8F%E5%85%B8%E7%BB%A7%E6%89%BF">经典继承</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF">组合继承</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF">原型继承</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF">寄生式继承</a></li>
+</ul>
+</li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6">垃圾回收机制</a>
+<ul>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E4%B8%A4%E7%A7%8D%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5">两种垃圾回收策略</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E6%B3%95">标记清除法</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95">引用计数法</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98">如何管理内存</a></li>
+</ul>
+</li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D">深拷贝和浅拷贝</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B">异步编程</a>
+<ul>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87">执行上下文</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E6%89%A7%E8%A1%8C%E6%A0%88">执行栈</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%AE%8F%E4%BB%BB%E5%8A%A1">宏任务</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E5%BE%AE%E4%BB%BB%E5%8A%A1">微任务</a></li>
+<li><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6">运行机制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="heading" data-id="heading-4">JavaScript 基础知识点</h2>
+<h3 class="heading" data-id="heading-5">数据类型</h3>
+<blockquote class="warning"><p>面试官：说说 JavaScript 中的基本类型有哪些？以及各个数据类型是如何存储的？
+</p></blockquote><p><code>JavaScript</code> 的数据类型包括<span style="color:#ff502c;font-weight:bold;padding:0 2px">原始类型</span>和<span style="color:#ff502c;font-weight:bold;padding:0 2px">引用类型(对象类型)</span>。</p>
+<p>最基本常用到原始类型包括以下 6 个：</p>
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">String</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Number</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Boolean</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">null</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">undefined</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Symbol</code></li>
+</ul>
+<p>引用类型统称为 <code>Object</code> 类型，如果细分的话，分为以下 5 个：</p>
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Object</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Array</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Date</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">RegExp</code></li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Function</code></li>
+</ul>
+<h4 class="heading" data-id="heading-6">1、数据类型的存储形式</h4>
+<p>栈（Stack）和堆（Heap），是两种基本的数据结构。Stack 在内存中自动分配内存空间的；Heap 在内存中动态分配内存空间的，不一定会自动释放。一般我们在项目中将对象类型手动置为 null 原因，减少无用内存消耗。</p>
+<p>原始类型（存在栈内存中）和对象类型（存在堆内存中）分别在内存中的存在形式如下图示：</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe5f754b8d914?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="765" data-height="449" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;765&quot; height=&quot;449&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>原始类型是按值形式存放在<strong>栈</strong>中的数据段，内存空间可以自由分配，同时可以<strong>按值直接访问</strong>。</p>
+<pre><code class="hljs bash copyable" lang="bash">var a = 10;
+var b = a;
+b = 30;
+console.log(a); // 10值
+console.log(b); // 30值
+<span class="copy-code-btn">复制代码</span></code></pre><p>过程图示：
+</p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe5ffc6ee5b90?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="976" data-height="363" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;976&quot; height=&quot;363&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>引用类型是存放在<strong>堆</strong>内存中，每个对象在堆内存中有一个引用地址，就像是每个房间都有一个房间号一样。引用类型在栈中保存的就是这个对象在堆内存的引用地址，我们所说的“房间号”。通过“房间号”可以快速查找到保存在堆内存的对象。</p>
+<pre><code class="hljs bash copyable" lang="bash">var obj1 = new Object();
+var obj2 = obj1;
+obj2.name = <span class="hljs-string">"小鹿"</span>;
+console.log(obj1.name); // 小鹿
+<span class="copy-code-btn">复制代码</span></code></pre><p>过程图示：
+</p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe6069c983944?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="735" data-height="310" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;735&quot; height=&quot;310&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h4 class="heading" data-id="heading-7">2、Null</h4>
+<blockquote class="warning"><p>面试官：为什么 typeof null 等于 Object?
+</p></blockquote><p>不同的对象在底层原理的存储是用二进制表示的，在 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">javaScript</code>中，如果二进制的前三位都为 0 的话，系统会判定为是 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Object</code>类型。<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">null</code>的存储二进制是 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">000</code>，也是前三位，所以系统判定 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">null</code>为 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Object</code>类型。</p>
+<p><strong>扩展：</strong></p>
+<p>这个 bug 个第一版的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">javaScript</code>留下来的。俺也进行扩展一下其他的几个类型标志位：</p>
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">000</code>：对象类型。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">1</code>：整型，数据是31位带符号整数。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">010</code>：双精度类型，数据是双精度数字。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">100</code>：字符串，数据是字符串。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">110</code>：布尔类型，数据是布尔值。</li>
+</ul>
+<h4 class="heading" data-id="heading-8">3、数据类型的判断</h4>
+<blockquote class="warning"><p>面试官：typeof 与 instanceof 有什么区别？
+</p></blockquote><p><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">typeof</code> 是一元运算符，同样返回一个字符串类型。一般用来判断一个变量是否为空或者是什么类型。</p>
+<p>除了 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">null</code> 类型以及  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Object</code> 类型不能准确判断外，其他数据类型都可能返回正确的类型。</p>
+<pre><code class="hljs bash copyable" lang="bash">typeof undefined // <span class="hljs-string">'undefined'</span>
+typeof <span class="hljs-string">'10'</span>      // <span class="hljs-string">'String'</span>
+typeof 10        // <span class="hljs-string">'Number'</span>
+typeof <span class="hljs-literal">false</span>     // <span class="hljs-string">'Boolean'</span>
+typeof Symbol()  // <span class="hljs-string">'Symbol'</span>
+typeof Function  // ‘<span class="hljs-keyword">function</span><span class="hljs-string">'
+typeof null		 // ‘Object’
+typeof []        // '</span>Object<span class="hljs-string">'
+typeof {}        // '</span>Object<span class="hljs-string">'
+</span><span class="copy-code-btn">复制代码</span></code></pre><p>既然 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">typeof</code> 对对象类型都返回 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Object</code> 类型情况的局限性，我们可以使用 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">instanceof</code> 来进行判断<strong>某个对象是不是另一个对象的实例</strong>。返回值的是一个布尔类型。</p>
+<pre><code class="hljs bash copyable" lang="bash">var a = [];
+console.log(a instanceof Array) // <span class="hljs-literal">true</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">instanceof</code>  运算符用来测试一个对象在其原型链中是否存在一个构造函数的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">prototype</code> 属性，如果对原型链不怎能了解，后边俺会具体的写到，这里大体记一下就 OK。</p>
+<p>我们再测一下 ES6 中的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">class</code> 语法糖是什么类型。</p>
+<pre><code class="hljs bash copyable" lang="bash">class A{}
+console.log(A instanceof Function) // <span class="hljs-literal">true</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>假设现在有<code>a instanceof b</code> 一条语句，则其 <code>instanceof</code> 内部实际做了如下判断：</p>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-keyword">while</span>(a.__proto__!==null) {
+    <span class="hljs-keyword">if</span>(a.__proto__===b.prototype) {
+        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    }
+    a.__proto__ = a.__proto__.proto__;
+}
+<span class="hljs-keyword">if</span>(a.__proto__==null) {<span class="hljs-built_in">return</span> <span class="hljs-literal">false</span>;}
+<span class="copy-code-btn">复制代码</span></code></pre><p><code>a</code> 会一直沿着隐式原型链  <code>__proto__</code> 向上查找直到<code>a.__proto__.__proto__ ...... === b.prototype</code>为止，如果找到则返回 <code>true</code>，也就是 <code>a</code> 为 <code>b</code> 的一个实例。否则返回 <code>false</code>，x<code>不是</code>b `的实例。</p>
+<blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:5px 23px;background:#f8f8f8;color:#666;">
+    <p>注意：原型链中的<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">prototype</code> 随时可以被改动的，改变后的值可能不存在于 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">object</code>的原型链上，<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">instanceof</code>返回的值可能就返回 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">false</code>。</p>
+</blockquote>
+<h4 class="heading" data-id="heading-9">4、类型转换</h4>
+<p>类型转换通常在面试笔试中出现的比较多，对于类型转换的一些细节应聘者也是很容易忽略的，所以俺整理的尽量系统一些。<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">javaScript</code>是一种弱类型语言，变量不受类型限制，所以在特定情况下我们需要对类型进行转换。</p>
+<p>「类型转换」分为<span style="color:#ff502c;font-weight:bold;padding:0 2px">显式类型转换</span>和<span style="color:#ff502c;font-weight:bold;padding:0 2px">隐式类型转换</span>。每种转换又分为<span style="color:#ff502c;font-weight:bold;padding:0 2px">原始类型转换</span>和<span style="color:#ff502c;font-weight:bold;padding:0 2px">对象类型转换</span>。</p>
+<h5 class="heading" data-id="heading-10">显式类型转换</h5>
+<p>显式类型转换就是我们所说强制类型转换。</p>
+<blockquote class="warning"><p>笔试题：其他数据类型转字符串类型！
+</p></blockquote><p>对于原始类型来说，转字符串类型会默认调用 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">toString()</code> 方法。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">String类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">数字</td>
+<td style="text-align:left">转化为数字对应的字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">true</td>
+<td style="text-align:left">转化为字符串 "true"</td>
+</tr>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:left">转化为字符串 "null"</td>
+</tr>
+<tr>
+<td style="text-align:left">undefined</td>
+<td style="text-align:left">转化为字符串 “undefined”</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">转化为 "[object Object]"</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-built_in">String</span>(<span class="hljs-number">123</span>);      <span class="hljs-comment">// "123"</span>
+<span class="hljs-built_in">String</span>(<span class="hljs-literal">true</span>);     <span class="hljs-comment">// "true"</span>
+<span class="hljs-built_in">String</span>(<span class="hljs-literal">null</span>);     <span class="hljs-comment">// "null"</span>
+<span class="hljs-built_in">String</span>(<span class="hljs-literal">undefined</span>);<span class="hljs-comment">// "undefined"</span>
+<span class="hljs-built_in">String</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])   <span class="hljs-comment">// "1,2,3"</span>
+<span class="hljs-built_in">String</span>({});		  <span class="hljs-comment">// "[object Object]"</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote class="warning"><p>笔试题：其他数据类型转布尔类型！
+</p></blockquote><p>除了特殊的几个值 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">‘’</code>、 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">undefined</code>、 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">NAN</code>、 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">null</code>、 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">false</code>、 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">0</code>  转化为 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Boolean</code> 为 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">false</code> 之外，其他类型值都转化为 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">true</code>。</p>
+<pre><code class="hljs bash copyable" lang="bash">Boolean(<span class="hljs-string">''</span>)         // <span class="hljs-literal">false</span>
+Boolean(undefined)  // <span class="hljs-literal">false</span>
+Boolean(null)       // <span class="hljs-literal">false</span>
+Boolean(NaN)        // <span class="hljs-literal">false</span>
+Boolean(<span class="hljs-literal">false</span>)      // <span class="hljs-literal">false</span>
+Boolean(0)          // <span class="hljs-literal">false</span>
+Boolean({})		    // <span class="hljs-literal">true</span>
+Boolean([])		    // <span class="hljs-literal">true</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote class="warning"><p>笔试题：转化为数字类型！
+</p></blockquote><table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">数字类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">字符串</td>
+<td style="text-align:left">1) 数字转化为对应的数字<br>2) 其他转化为 NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">布尔类型</td>
+<td style="text-align:left">1) true 转化为 1<br>2) false 转化为 0</td>
+</tr>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">undefined</td>
+<td style="text-align:left">NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">数组</td>
+<td style="text-align:left">1) 数组为空转化为 0；<br>2) 数组只有一个元素转化为对应元素；<br>3) 其他转化为NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">空字符串</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-built_in">Number</span>(<span class="hljs-number">10</span>);        <span class="hljs-comment">// 10 </span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-string">'10'</span>);      <span class="hljs-comment">// 10 </span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>);      <span class="hljs-comment">// 0  </span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-string">''</span>);        <span class="hljs-comment">// 0  </span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-literal">true</span>);      <span class="hljs-comment">// 1  </span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>);     <span class="hljs-comment">// 0  </span>
+<span class="hljs-built_in">Number</span>([]);        <span class="hljs-comment">// 0 </span>
+<span class="hljs-built_in">Number</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]);     <span class="hljs-comment">// NaN</span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-string">'10a'</span>);     <span class="hljs-comment">// NaN</span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>); <span class="hljs-comment">// NaN</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote class="warning"><p>笔试题：对象类型转原始类型！
+</p></blockquote><p>对象类型在转原始类型的时候，会调用内置的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">valueOf()</code>和 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">toString()</code> 方法，这两个方法是可以进行重写的。</p>
+<p>转化原始类型分为两种情况：转化为<span style="color:#ff502c;font-weight:bold;padding:0 2px">字符串类型</span>或<span style="color:#ff502c;font-weight:bold;padding:0 2px">其他原始类型</span>。</p>
+<ul>
+<li>如果已经是原始类型，不需要再进行转化。</li>
+<li>如果转字符串类型，就调用内置函数中的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">toString()</code>方法。</li>
+<li>如果是其他基本类型，则调用内置函数中的  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">valueOf()</code>方法。</li>
+<li>如果返回的不是原始类型，则会继续调用 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">toString()</code> 方法。</li>
+<li>如果还没有返回原始类型，则报错。</li>
+</ul>
+<h4 class="heading" data-id="heading-11">5、四则运算</h4>
+<p>隐士类型转化是不需要认为的强制类型转化，<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">javaScript</code> 自动将类型转化为需要的类型，所以称之为隐式类型转换。</p>
+<h5 class="heading" data-id="heading-12">加法运算</h5>
+<blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:5px 23px;background:#f8f8f8;color:#666;">
+    <p>加法运算符是在运行时决定，到底是执行相加，还是执行连接。运算数的不同，导致了不同的语法行为，这种现象称为“重载”。</p>
+</blockquote>
+如果双方都不是字符串，则将转化为**数字**或**字符串**。
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Boolean + Boolean</code>会转化为数字相加。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Boolean + Number</code> 布尔类型转化为数字相加。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Object + Number</code> 对象类型调用 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">valueOf</code>，如果不是 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">String、Boolean</code>或者 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Number</code>类型，则继续调用 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">toString()</code>转化为字符串。</li>
+</ul>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-literal">true</span> + <span class="hljs-literal">true</span>  // 2
+1 + <span class="hljs-literal">true</span>     // 2
+[1] + 3      // <span class="hljs-string">'13'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>字符串和字符串以及字符串和非字符串相加都会进行<strong>连接</strong>。</p>
+<pre><code class="hljs bash copyable" lang="bash">1 + <span class="hljs-string">'b'</span>     // ‘1b’
+<span class="hljs-literal">false</span> + <span class="hljs-string">'b'</span> // ‘falseb’
+<span class="copy-code-btn">复制代码</span></code></pre><h5 class="heading" data-id="heading-13">其他运算</h5>
+<p>其他算术运算符（比如减法、除法和乘法）都不会发生重载。它们的规则是：所有运算子一律转为数值，再进行相应的数学运算。</p>
+<pre><code class="hljs bash copyable" lang="bash">1 * <span class="hljs-string">'2'</span>  // 2
+1 * []   // 0
+<span class="copy-code-btn">复制代码</span></code></pre><h4 class="heading" data-id="heading-14">6、逻辑运算符</h4>
+<p>逻辑运算符包括两种情况，分别为<span style="color:#ff502c;font-weight:bold;padding:0 2px">条件判断</span>和<span style="color:#ff502c;font-weight:bold;padding:0 2px">赋值操作</span>。</p>
+<p><strong>条件判断</strong></p>
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">&amp;&amp;</code> ：所有条件为真，整体才为真。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">||</code> ：只有一个条件为真，整体就为真。</li>
+</ul>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-literal">true</span>   // <span class="hljs-literal">true</span>
+<span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-literal">false</span>  // <span class="hljs-literal">false</span>
+<span class="hljs-literal">true</span> || <span class="hljs-literal">true</span>   // <span class="hljs-literal">true</span>
+<span class="hljs-literal">true</span> || <span class="hljs-literal">false</span>  // <span class="hljs-literal">true</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>赋值操作</strong></p>
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A &amp;&amp; B</code></li>
+</ul>
+<p>首先看 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code> 的真假， <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code> 为假，返回  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code> 的值， <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code>  为真返回  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">B</code>  的值。（不管 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">B</code> 是啥）</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-number">1</span>) <span class="hljs-comment">// 0</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &amp;&amp; <span class="hljs-number">2</span>) <span class="hljs-comment">// 2</span>
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A || B</code></li>
+</ul>
+<p>首先看  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code>  的真假， <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code> 为真返回的是  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code>  的值， <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">A</code>  为假返回的是  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">B</code>  的值（不管 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">B</code>  是啥）</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> || <span class="hljs-number">1</span>) <span class="hljs-comment">// 1</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> || <span class="hljs-number">2</span>) <span class="hljs-comment">// 1</span>
+<span class="copy-code-btn">复制代码</span></code></pre><h4 class="heading" data-id="heading-15">7、比较运算符</h4>
+<p>比较运算符在逻辑语句中使用，以判定变量或值是否相等。</p>
+<blockquote class="warning"><p>面试官：== 和 === 的区别？  
+</p></blockquote><p>对于 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">===</code> 来说，是严格意义上的相等，会比较两个操作符的类型和值。</p>
+<ul>
+<li>如果 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">X</code> 和  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Y</code> 的类型不同，返回  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">false</code> ；</li>
+<li>如果 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">X</code> 和  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Y</code> 的类型相同，则根据下方表格进一步判断</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>例子</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>undefined === undefined</td>
+<td>undefined === undefined</td>
+<td>true</td>
+</tr>
+<tr>
+<td>null === null</td>
+<td>null === null</td>
+<td>true</td>
+</tr>
+<tr>
+<td>String === String<br>(当字符串顺序和字符完全相等的时候返回 true，否则返回 false)</td>
+<td>‘a’ === 'a'<br>'a' === 'aa'</td>
+<td>true<br>false</td>
+</tr>
+<tr>
+<td>Boolean  === Boolean</td>
+<td>true === true<br>true === false</td>
+<td>true<br>false</td>
+</tr>
+<tr>
+<td>Symbol === Symbol</td>
+<td>相同的 Symbol 返回 true，<br>不相同的 Symbol 返回 false</td>
+<td></td>
+</tr>
+<tr>
+<td>Number  === Number<br>① 其中一个为 NaN，返回 false<br>② X 和 Y 值相等，返回 true<br>③ 0 和 -0，返回 true<br>④ 其他返回 false</td>
+<td>NaN ==== NaN<br>NaN === 1<br>3 === 3<br>+0 === -0<br></td>
+<td>false<br>false<br>true<br>true</td>
+</tr>
+</tbody>
+</table>
+<p>而对于 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">==</code>来说，是非严格意义上的相等，先判断两个操作符的类型是否相等，如果类型不同，则先进行类型转换，然后再判断值是否相等。</p>
+<ul>
+<li>如果 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">X</code> 和  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Y</code> 的类型相同，返回  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">X == Y</code>  的比较结果；</li>
+<li>如果  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">X</code> 和 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">Y</code> 的类型不同，根据下方表格进一步判断;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>例子</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null == undefined</td>
+<td>null == undefined</td>
+<td>true</td>
+</tr>
+<tr>
+<td>String == Number，String  转 Number</td>
+<td>'2' == 2</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Boolean == Number，Boolean 转 Number</td>
+<td>true == 1</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Object == String,Number,Symbol，将 Object 转化为原始类型再比较值大小</td>
+<td>[1] == 1<br>[1] == '1'</td>
+<td>true<br>true</td>
+</tr>
+<tr>
+<td>其他返回 false</td>
+<td></td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h3 class="heading" data-id="heading-16">this</h3>
+<blockquote class="warning"><p>面试官：什么是 this 指针?以及各种情况下的 this 指向问题。
+</p></blockquote><p><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>就是一个对象。不同情况下 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>指向的不同，有以下几种情况，（希望各位亲自测试一下，这样会更容易弄懂）：</p>
+<ul>
+<li>对象调用，<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code> 指向该对象（前边谁调用 this 就指向谁）。</li>
+</ul>
+<pre><code class="hljs bash copyable" lang="bash">var obj = {
+    name:<span class="hljs-string">'小鹿'</span>,
+    age: <span class="hljs-string">'21'</span>,
+    <span class="hljs-built_in">print</span>: <span class="hljs-function"><span class="hljs-title">function</span></span>(){
+        console.log(this)
+        console.log(this.name + <span class="hljs-string">':'</span> + this.age)
+    }
+}
+
+// 通过对象的方式调用函数
+obj.print();        // this 指向 obj
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>直接调用的函数，<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>指向的是全局 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">window</code>对象。</li>
+</ul>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">print</span></span>(){
+	console.log(this);
+}
+// 全局调用函数
+<span class="hljs-built_in">print</span>();   // this 指向 window
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>通过 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">new</code>的方式，<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>永远指向新创建的对象。</li>
+</ul>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
+}
+
+<span class="hljs-keyword">var</span> xiaolu = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">'小鹿'</span>,<span class="hljs-number">22</span>);  <span class="hljs-comment">// this = &gt; xaiolu</span>
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>箭头函数中的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>。</li>
+</ul>
+<p>由于箭头函数没有单独的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>值。箭头函数的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>与声明所在的上下文相同。也就是说调用箭头函数的时候，不会隐士的调用 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>参数，而是从定义时的函数继承上下文。</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">a</span>:<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
+    }
+}
+<span class="hljs-comment">// 对象调用箭头函数</span>
+obj.a(); <span class="hljs-comment">// window</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote class="warning"><p>面试官：如何改变 this 的指向？
+</p></blockquote><p>我们可以通过调用函数的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">call、apply、bind</code> 来改变 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>的指向。</p>
+<pre><code class="hljs bash copyable" lang="bash">var obj = {
+    name:<span class="hljs-string">'小鹿'</span>,
+    age:<span class="hljs-string">'22'</span>,
+    adress:<span class="hljs-string">'小鹿动画学编程'</span>
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">print</span></span>(){
+    console.log(this);       // 打印 this 的指向
+    console.log(arguments);  // 打印传递的参数
+}
+
+// 通过 call 改变 this 指向
+print.call(obj,1,2,3);   
+
+// 通过 apply 改变 this 指向
+print.apply(obj,[1,2,3]);
+
+// 通过 <span class="hljs-built_in">bind</span> 改变 this 的指向
+<span class="hljs-built_in">let</span> fn = print.bind(obj,1,2,3);
+fn();
+<span class="copy-code-btn">复制代码</span></code></pre><p>对于基本的使用想必各位小伙伴都能掌握，俺就不多废话，再说一说这三者的共同点和不同点。</p>
+<p><strong>共同点：</strong></p>
+<ul>
+<li>三者都能改变 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>指向，且第一个传递的参数都是 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>指向的对象。</li>
+<li>三者都采用的后续传参的形式。</li>
+</ul>
+<p><strong>不同点：</strong></p>
+<ul>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">call</code> 的传参是单个传递的（试了下数组，也是可以的），而 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">apply</code> 后续传递的参数是<strong>数组形式（传单个值会报错）</strong>，而 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">bind</code> 没有规定，传递值和数组都可以。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">call</code> 和 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">apply</code> 函数的执行是直接执行的，而 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">bind</code> 函数会返回一个函数，然后我们想要调用的时候才会执行。</li>
+</ul>
+<blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:5px 23px;background:#f8f8f8;color:#666;">
+    <p>扩展：如果我们使用上边的方法改变箭头函数的 this 指针，会发生什么情况呢？能否进行改变呢？</p>
+</blockquote>
+<p>由于箭头函数没有自己的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code> 指针，通过 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">call()</code> 或 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">apply()</code> 方法调用一个函数时，只能传递参数（不能绑定  <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">this</code>），他们的第一个参数会被忽略。</p>
+<h3 class="heading" data-id="heading-17">new</h3>
+<p>对于 <code>new</code> 关键字，我们第一想到的就是在面向对象中 <code>new</code> 一个实例对象，但是在 JS 中的 <code>new</code> 和 <code>Java</code> 中的 <code>new</code> 的机制不一样。</p>
+<p>一般 <code>Java</code> 中，声明一个<code>构造函数</code>，通过 <code>new 类名()</code> 来创建一个实例，而这个<code>构造函数</code> 是一种特殊的函数。但是在 <code>JS</code> 中，只要 <code>new</code> 一个函数，就可以 new 一个对象，函数和构造函数没有任何的区别。</p>
+<blockquote class="warning"><p>面试官：new 内部发生了什么过程？可不可以手写实现一个 new 操作符？
+</p></blockquote><p><code>new</code> 的过程包括以下四个阶段：</p>
+<ul>
+<li>创建一个新对象。</li>
+<li>这个新对象的 <code>__proto__</code> 属性指向原函数的 <code>prototype</code> 属性。(即继承原函数的原型)</li>
+<li>将这个新对象绑定到 此函数的 <code>this</code> 上 。</li>
+<li>返回新对象，如果这个函数没有返回其他对象。</li>
+</ul>
+<pre><code class="hljs bash copyable" lang="bash">// new 生成对象的过程
+// 1、生成新对象
+// 2、链接到原型
+// 3、绑定 this
+// 4、返回新对象
+// 参数：
+// 1、Con: 接收一个构造函数
+// 2、args：传入构造函数的参数
+<span class="hljs-keyword">function</span> create(Con, ...args){
+    // 创建空对象
+    <span class="hljs-built_in">let</span> obj = {};
+    // 设置空对象的原型(链接对象的原型)
+    obj._proto_ = Con.prototype;
+    // 绑定 this 并执行构造函数(为对象设置属性)
+    <span class="hljs-built_in">let</span> result = Con.apply(obj,args)
+    // 如果 result 没有其他选择的对象，就返回 obj 对象
+    <span class="hljs-built_in">return</span> result instanceof Object ?  result : obj;
+}
+// 构造函数
+<span class="hljs-keyword">function</span> Test(name, age) {
+    this.name = name
+    this.age = age
+}
+Test.prototype.sayName = <span class="hljs-function"><span class="hljs-title">function</span></span> () {
+    console.log(this.name)
+}
+
+// 实现一个 new 操作符
+const a = create(Test,<span class="hljs-string">'小鹿'</span>,<span class="hljs-string">'23'</span>)
+console.log(a.age)
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote class="warning"><p>面试官：有几种创建对象的方式，字面量相对于 new 创建对象有哪些优势？
+</p></blockquote><p>最常用的创建对象的两种方式：</p>
+<ul>
+<li>**new 构造函数  **</li>
+<li><strong>字面量</strong></li>
+</ul>
+<p>其他创建对象的方式：</p>
+<ul>
+<li><strong>Object.create()</strong></li>
+</ul>
+<p>字面量创建对象的优势所在：</p>
+<ul>
+<li>代码量更少，更易读</li>
+<li>对象字面量运行速度更快，它们可以在解析的时候被优化。他不会像 <code>new</code> 一个对象一样，解析器需要顺着作用域链从当前作用域开始查找，如果在当前作用域找到了名为 <code>Object()</code> 的函数就执行，如果没找到，就继续顺着作用域链往上照，直到找到全局 <code>Object()</code> 构造函数为止。</li>
+<li><code>Object()</code> 构造函数可以接收参数，通过这个参数可以把对象实例的创建过程委托给另一个内置构造函数，并返回另外一个对象实例，而这往往不是你想要的。
+对于 <code>Object.create()</code>方式创建对象：</li>
+</ul>
+<pre><code class="hljs bash copyable" lang="bash">Object.create(proto, [propertiesObject]);
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li><code>proto：</code>新创建对象的原型对象。</li>
+<li><code>propertiesObject：</code>（可选）可为创建的新对象设置属性和值。</li>
+</ul>
+<p>一般用于继承：</p>
+<pre><code class="hljs bash copyable" lang="bash">var People = <span class="hljs-keyword">function</span> (name){
+  this.name = name;
+};
+
+People.prototype.sayName = <span class="hljs-function"><span class="hljs-title">function</span></span> (){
+  console.log(this.name);
+}
+
+<span class="hljs-keyword">function</span> Person(name, age){
+  this.age = age;
+  People.call(this, name);  // 使用call，实现了People属性的继承
+};
+
+// 使用Object.create()方法，实现People原型方法的继承，并且修改了constructor指向
+Person.prototype = Object.create(People.prototype, {
+  constructor: {
+    configurable: <span class="hljs-literal">true</span>,
+    enumerable: <span class="hljs-literal">true</span>,
+    value: Person,
+    writable: <span class="hljs-literal">true</span>
+  }
+});
+
+Person.prototype.sayAge = <span class="hljs-function"><span class="hljs-title">function</span></span> (){
+  console.log(this.age);
+}
+
+var p1 = new Person(<span class="hljs-string">'person1'</span>, 25);
+ 
+p1.sayName();  //<span class="hljs-string">'person1'</span>
+p1.sayAge();   //25
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote class="warning"><p>面试官：new/字面量 与 Object.create(null) 创建对象的区别？
+</p></blockquote><ul>
+<li><code>new</code> 和 字面量创建的对象的原型指向 <code>Object.prototype</code>，会继承 <code>Object</code> 的属性和方法。</li>
+<li>而通过 <code>Object.create(null)</code> 创建的对象，其原型指向 <code>null</code>，<code>null</code> 作为原型链的顶端，没有也不会继承任何属性和方法。</li>
+</ul>
+<h3 class="heading" data-id="heading-18">闭包</h3>
+<p>闭包面试中的重点，但是对于很多初学者来说都是懵懵的，所以俺就从最基础的作用域讲起，大佬请绕过。</p>
+<blockquote class="warning"><p>面试官：什么是作用域？什么是作用域链？
+</p></blockquote><p>规定<span style="color:#ff502c;font-weight:bold;padding:0 2px">变量和函数</span>的可使用范围叫做作用域。只看定义，挺抽象的，举个例子</p>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">fn1</span></span>() {
+    <span class="hljs-built_in">let</span> a = 1;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">fn2</span></span>() {
+    <span class="hljs-built_in">let</span> b = 2;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>声明两个函数，分别创建量两个私有的作用域（可以理解为两个封闭容器），<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">fn2</code> 是不能直接访问私有作用域 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">fn1</code> 的变量 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">a</code> 的。同样的，在 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">fn1</code> 中不能访问到 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">fn2</code> 中的 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">b</code> 变量的。一个函数就是一个作用域。</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe6d4d2c5175b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="425" data-height="246" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;425&quot; height=&quot;246&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>每个函数都会有一个作用域，查找变量或函数时，由局部作用域到全局作用域依次查找，<span style="color:#ff502c;font-weight:bold;padding:0 2px">这些作用域的集合就称为作用域链。</span> 如果还不是很好理解，俺再举个例子​：</p>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-built_in">let</span> a = 1
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">fn</span></span>() {
+    <span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">fn1</span></span>() {
+        <span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">fn2</span></span>() {
+            <span class="hljs-built_in">let</span> c = 3;
+            console.log(a);
+        }
+        // 执行 fn2
+        fn2();
+    }
+    // 执行 fn1
+    fn1();
+}
+// 执行函数
+fn();
+<span class="copy-code-btn">复制代码</span></code></pre><p>虽然上边看起来嵌套有点复杂，我们前边说过，一个函数就是一个私有作用域，根据定义，在 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">fn2</code> 作用域中打印 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">a</code>，首先在自己所在作用域搜索，如果没有就向上级作用域搜索，直到搜索到全局作用域，<code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">a = 1</code>，找到了打印出值。整个搜索的过程，就是基于作用域链搜索的。</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe6dbf8315c5f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="345" data-height="314" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;345&quot; height=&quot;314&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<blockquote class="warning"><p>面试官：什么是闭包？闭包的作用？闭包的应用？
+</p></blockquote><p>很多应聘者喜欢这样回答，“函数里套一个函数”，但是面试官更喜欢下面的回答，因为可以继续为你挖坑。</p>
+<p>函数执行，形成一个私有的作用域，保护里边的私有变量不受外界的干扰，除了<span style="color:#ff502c;font-weight:bold;padding:0 2px">保护</span>私有变量外，还可以<span style="color:#ff502c;font-weight:bold;padding:0 2px">保存</span>一些内容，这样的模式叫做<span style="color:#ff502c;font-weight:bold;padding:0 2px">闭包</span>。</p>
+<p>闭包的作用有两个，<span style="color:#ff502c;font-weight:bold;padding:0 2px">保护和保存。</span></p>
+<p><strong>保护的应用</strong></p>
+<ul>
+<li>团队开发时，每个开发者把自己的代码放在一个私有的作用域中，防止相互之间的变量命名冲突；把需要提供给别人的方法，通过 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">return</code> 或 <code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">window.xxx </code>的方式暴露在全局下。</li>
+<li><code style="background-color: #fff5f5;color: #ff502c;font-size: .87em;padding: .065em .4em;">jQuery</code> 的源码中也是利用了这种保护机制。</li>
+<li>封装私有变量。</li>
+</ul>
+<p><strong>保存的应用</strong></p>
+<ul>
+<li>选项卡闭包的解决方案。</li>
+</ul>
+<blockquote class="warning"><p>面试官：循环绑定事件引发的索引什么问题？怎么解决这种问题？
+</p></blockquote><pre><code class="hljs bash copyable" lang="bash">// 事件绑定引发的索引问题
+var btnBox = document.getElementById(<span class="hljs-string">'btnBox'</span>),
+    inputs = btnBox.getElementsByTagName(<span class="hljs-string">'input'</span>)
+var len = inputs.length;
+<span class="hljs-keyword">for</span>(var i = 0; i &lt; 1en; i++){
+    inputs[i].onclick = <span class="hljs-function"><span class="hljs-title">function</span></span> () {
+        alert(i)
+    }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>闭包剩余的部分，俺在之前的文章已经总结过，俺就不复制过来了，直接传送过去~ <a target="_blank" href="https://juejin.im/post/5dc6449ae51d452bd321252c#comment" rel="">动画：什么是闭包？</a></p>
+<h3 class="heading" data-id="heading-19">原型和原型链</h3>
+<blockquote class="warning"><p>面试官：什么是原型？什么是原型链？如何理解？
+</p></blockquote><p><strong>原型：</strong> 每个 <code>JS</code> 对象都有 <code>__proto__</code> 属性，这个属性指向了原型。跟俺去看看，
+</p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe6f7020c0629?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="979" data-height="179" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;979&quot; height=&quot;179&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>再来一个，</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe6fe8fea585c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="939" data-height="142" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;939&quot; height=&quot;142&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>我们可以看到，只要是对象类型，都会有这个<code>__proto__</code> 属性，这个属性指向的也是一个原型对象，原型对象也是对象呀，肯定也会存在一个 <code>__proto__</code> 属性。那么就形成了原型链，定义如下：</p>
+<p>原型链：原型链就是多个对象通过 <code>__proto__</code> 的方式连接了起来。</p>
+<p>原型和原型链是怎么来的呢？如果理清原型链中的关系呢？</p>
+<p>对于原型和原型链的前世今生，由于篇幅过大，俺的传送门~ <br>
+<a target="_blank" href="https://juejin.im/post/5db0fec4518825648c3a8770" rel="">图解：告诉面试官什么是 JS 原型和原型链?</a></p>
+<blockquote class="warning"><p>PS：下面的看不懂，一定去看文章哦！
+</p></blockquote><p>再往深处看，他们之间存在复杂的关系，但是这些所谓的负责关系俺已经总结好了，小二上菜
+</p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe70ebb438803?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="618" data-height="781" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;618&quot; height=&quot;781&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>这张图看起来真复杂，但是通过下边总结的，再来分析这张图，试试看。</p>
+<ul>
+<li>所有的实例的 <code>_proto_</code>都指向该构造函数的原型对象（<code>prototype</code>）。</li>
+<li>所有的函数（包括构造函数）是 <code>Function()</code> 的实例，所以所有函数的 <code>_proto_</code>的都指向 <code>Function()</code> 的原型对象。</li>
+<li>所有的原型对象（包括 <code>Function</code> 的原型对象）都是 <code>Object</code> 的实例，所以 <code>_proto_</code>都指向 Object （构造函数）的原型对象。而 <code>Object</code> 构造函数的 <code>_proto_</code>  指向 <code>null</code>。</li>
+<li><code>Function</code> 构造函数本身就是 <code>Function</code> 的实例，所以 <code>_proto_</code> 指向 <code>Function</code> 的原型对象。</li>
+</ul>
+<blockquote class="warning"><p>面试官：instanceOf 的原理是什么？
+</p></blockquote><p>之前留了一个小问题，总结了上述的原型和原型链之后，<code>instanceof</code>的原理很容易理解。</p>
+<p><code>instanceof</code> 的原理是通过判断该对象的原型链中是否可以找到该构造类型的 <code>prototype</code> 类型。</p>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">Foo</span></span>(){}
+var f1 = new Foo();
+console.log(f1 instanceof Foo);// <span class="hljs-literal">true</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/3/1700aafe80cbc008?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="683" data-height="370" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;683&quot; height=&quot;370&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h3 class="heading" data-id="heading-20">继承</h3>
+<blockquote class="warning"><p>面试官：说一说 JS 中的继承方式有哪些？以及各个继承方式的优缺点。
+</p></blockquote><h4 class="heading" data-id="heading-21">经典继承（构造函数）</h4>
+<pre><code class="hljs javascript copyable" lang="javascript">/ 详细解析
+<span class="hljs-comment">//1、当用调用 call 方法时，this 带边 son 。</span>
+<span class="hljs-comment">//2、此时 Father 构造函数中的 this 指向 son。</span>
+<span class="hljs-comment">//3、也就是说 son 有了 colors 的属性。</span>
+<span class="hljs-comment">//4、每 new 一个 son ，都会产生不同的对象，每个对象的属性都是相互独立的。</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params"></span>)</span>{
+	<span class="hljs-keyword">this</span>.colors = [<span class="hljs-string">"red"</span>,<span class="hljs-string">"blue"</span>,<span class="hljs-string">"green"</span>];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Son</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-comment">// this 是通过 new 操作内部的新对象 {} ，</span>
+    <span class="hljs-comment">// 此时 Father 中的 this 就是为 Son 中的新对象{}</span>
+    <span class="hljs-comment">// 新对象就有了新的属性，并返回得到 new 的新对象实例</span>
+    <span class="hljs-comment">// 继承了Father,且向父类型传递参数</span>
+	Father.call(<span class="hljs-keyword">this</span>);
+}
+
+<span class="hljs-keyword">let</span> s = <span class="hljs-keyword">new</span> Son();
+<span class="hljs-built_in">console</span>.log(s.color)
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>① 基本思想：</strong> 在子类的构造函数的内部调用父类的构造函数。</p>
+<p><strong>② 优点：</strong></p>
+<ul>
+<li>保证了原型链中引用类型的独立，不被所有实例共享。</li>
+<li>子类创建的时候可以向父类进行传参。</li>
+</ul>
+<p><strong>③ 缺点:</strong></p>
+<ul>
+<li>继承的方法都在构造函数中定义，构造函数不能够复用了（因为构造函数中存在子类的特殊属性，所以构造函数中复用的属性不能复用了）。</li>
+<li>父类中定义的方法对于子类型而言是不可见的（子类所有的属性都定义在父类的构造函数当中）。</li>
+</ul>
+<h4 class="heading" data-id="heading-22">组合继承</h4>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params">name</span>)</span>{
+	<span class="hljs-keyword">this</span>.name = name;
+	<span class="hljs-keyword">this</span>.colors = [<span class="hljs-string">"red"</span>,<span class="hljs-string">"blue"</span>,<span class="hljs-string">"green"</span>];
+}
+
+<span class="hljs-comment">// 方法定义在原型对象上（共享）</span>
+Father.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+	alert(<span class="hljs-keyword">this</span>.name);
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Son</span>(<span class="hljs-params">name,age</span>)</span>{
+    <span class="hljs-comment">// 子类继承父类的属性  </span>
+	Father.call(<span class="hljs-keyword">this</span>,name);     <span class="hljs-comment">//继承实例属性，第一次调用 Father()</span>
+    <span class="hljs-comment">// 每个实例都有自己的属性</span>
+	<span class="hljs-keyword">this</span>.age = age;
+}
+
+<span class="hljs-comment">// 子类和父类共享的方法（实现了父类属性和方法的复用）                              </span>
+Son.prototype = <span class="hljs-keyword">new</span> Father();   <span class="hljs-comment">//继承父类方法,第二次调用 Father()</span>
+
+<span class="hljs-comment">// 子类实例对象共享的方法</span>
+Son.prototype.sayAge = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+	alert(<span class="hljs-keyword">this</span>.age);
+}
+
+<span class="hljs-keyword">var</span> instance1 = <span class="hljs-keyword">new</span> Son(<span class="hljs-string">"louis"</span>,<span class="hljs-number">5</span>);
+instance1.colors.push(<span class="hljs-string">"black"</span>);
+<span class="hljs-built_in">console</span>.log(instance1.colors);<span class="hljs-comment">//"red,blue,green,black"</span>
+instance1.sayName();<span class="hljs-comment">//louis</span>
+instance1.sayAge();<span class="hljs-comment">//5</span>
+
+<span class="hljs-keyword">var</span> instance1 = <span class="hljs-keyword">new</span> Son(<span class="hljs-string">"zhai"</span>,<span class="hljs-number">10</span>);
+<span class="hljs-built_in">console</span>.log(instance1.colors);<span class="hljs-comment">//"red,blue,green"</span>
+instance1.sayName();<span class="hljs-comment">//zhai</span>
+instance1.sayAge();<span class="hljs-comment">//10</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>① 基本思想：</strong></p>
+<ul>
+<li>使用<strong>原型链</strong>实现对「原型对象属性和方法」的继承。</li>
+<li>通过借用<strong>构造函数</strong>来实现对「实例属性」的继承。</li>
+</ul>
+<p><strong>② 优点：</strong></p>
+<ul>
+<li>在原型对象上定义的方法实现了函数的复用。</li>
+<li>每个实例都有属于自己的属性。</li>
+</ul>
+<p><strong>③ 缺点：</strong></p>
+<ul>
+<li>组合继承调用了两次父类的构造函数，造成了不必要的消耗。</li>
+</ul>
+<h4 class="heading" data-id="heading-23">原型继承</h4>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">object</span>(<span class="hljs-params">o</span>)</span>{
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">F</span>(<span class="hljs-params"></span>)</span>{}
+	F.prototype = o;
+    <span class="hljs-comment">// 每次返回的 new 是不同的</span>
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> F();
+}
+
+<span class="hljs-keyword">var</span> person = {
+	<span class="hljs-attr">friends</span> : [<span class="hljs-string">"Van"</span>,<span class="hljs-string">"Louis"</span>,<span class="hljs-string">"Nick"</span>]
+};
+
+<span class="hljs-comment">// 实例 1</span>
+<span class="hljs-keyword">var</span> anotherPerson = object(person);
+anotherPerson.friends.push(<span class="hljs-string">"Rob"</span>);
+
+<span class="hljs-comment">// 实例 2</span>
+<span class="hljs-keyword">var</span> yetAnotherPerson = object(person);
+yetAnotherPerson.friends.push(<span class="hljs-string">"Style"</span>);
+
+<span class="hljs-comment">// 都添加至原型对象的属性(所共享)</span>
+alert(person.friends); <span class="hljs-comment">// "Van,Louis,Nick,Rob,Style"</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>**① 基本思想：**创建临时性的构造函数（无任何属性），将传入的对象作为该构造函数的原型对象，然后返回这个新构造函数的实例。</p>
+<p><strong>② 浅拷贝：</strong></p>
+<blockquote>
+<p><code>object</code> 所产生的对象是不相同的，但是原型对象都是 <code>person</code> 对象，所改变存在原型对象的属性所有生成的实例所共享，不仅被 <code>Person</code> 所拥有，而且被子类生成的实例所共享。</p>
+</blockquote>
+<p>③ **object.create()：**在 ECMAScript5 中,通过新增 <strong>object.create()</strong> 方法规范化了上面的原型式继承.。</p>
+<ul>
+<li>参数一：新对象的原型的对象。</li>
+<li>参数二：先对象定义额外的属性（可选）。</li>
+</ul>
+<h4 class="heading" data-id="heading-24">寄生式继承</h4>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createAnother</span>(<span class="hljs-params">original</span>)</span>{
+	<span class="hljs-keyword">var</span> clone = object(original); <span class="hljs-comment">// 通过调用object函数创建一个新对象</span>
+	clone.sayHi = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">// 以某种方式来增强这个对象</span>
+		alert(<span class="hljs-string">"hi"</span>);
+	};
+	<span class="hljs-keyword">return</span> clone; <span class="hljs-comment">//返回这个对象</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>
+<p><strong>基本思想</strong>：不必为了指定子类型的原型而调用超类型的构造函数（避免第二次调用的构造函数）。</p>
+</li>
+<li>
+<p><strong>优点</strong>：寄生组合式继承就是为了解决组合继承中两次调用构造函数的开销。</p>
+</li>
+</ul>
+<h3 class="heading" data-id="heading-25">垃圾回收机制</h3>
+<p>说到 <code>Javascript</code>的垃圾回收机制，我们要从内存泄漏一步步说起。</p>
+<blockquote class="warning"><p>面试官：什么是内存泄漏？为什么会导致内存泄漏？
+</p></blockquote><p><span style="color:#ff502c;font-weight:bold;padding:0 2px">不再用到的内存，没有及时释放，就叫做内存泄漏。</span></p>
+<p><strong>内存泄漏是指我们已经无法再通过js代码来引用到某个对象，但垃圾回收器却认为这个对象还在被引用，因此在回收的时候不会释放它</strong>。导致了分配的这块内存永远也无法被释放出来。如果这样的情况越来越多，会导致内存不够用而系统崩溃。</p>
+<blockquote class="warning"><p>面试官：怎么解决内存泄漏？说一说 JS 垃圾回收机制的运行机制的原理？
+</p></blockquote><p>很多编程语言需要手动释放内存，但是很多开发者喜欢系统提供自动内存管理，减轻程序员的负担，这被称为<span style="color:#ff502c;font-weight:bold;padding:0 2px">"垃圾回收机制"</span>。</p>
+<p>之所以会有垃圾回收机制，是因为 <code>js</code> 中的字符串、对象、数组等只有确定固定大小时，才会动态分配内存，只要像这样动态地分配了内存，最终都要释放这些内存以便他们能够被再用，否则，<code>JavaScript</code> 的解释器将会消耗完系统中所有可用的内存，造成系统崩溃</p>
+<p><code>JavaScript</code>与其他语言不同，它具有自动垃圾收集机制，执行环境会负责管理代码执行过程中使用的内存。</p>
+<h4 class="heading" data-id="heading-26">两种垃圾回收策略</h4>
+<p>找出那些不再继续使用的变量，然后释放其内存。垃圾回收器会按照固定的时间间隔，周期性的执行该垃圾回收操作。</p>
+<p>共有两种策略：</p>
+<ul>
+<li><strong>标记清除法</strong></li>
+<li><strong>引用计数法</strong></li>
+</ul>
+<h4 class="heading" data-id="heading-27">标记清除法</h4>
+<p>垃圾回收器会在运行的时候，会给存储在内存中的所有变量都加上标记，然后它会去掉环境中变量以及被环境中的变量引用的变量的标记。剩下的就视为即将要删除的变量，原因是在环境中无法访问到这些变量了。最后垃圾回收器完成内存清除操作。</p>
+<p><span style="color:#ff502c;font-weight:bold;padding:0 2px">它的实现原理就是通过判断一个变量是否在执行环境中被引用，来进行标记删除。</span></p>
+<h4 class="heading" data-id="heading-28">引用计数法</h4>
+<p>引用计数的垃圾收集策略不常用，引用计数的最基本含义就是跟踪记录每个值被引用的次数。</p>
+<p>当声明变量并将一个引用类型的值赋值给该变量时，则这个值的引用次数加 1，同一值被赋予另一个变量，该值的引用计数加 1 。当引用该值的变量被另一个值所取代，则引用计数减 1，当计数为 0 的时候，说明无法在访问这个值了，所有系统将会收回该值所占用的内存空间。</p>
+<p><span style="color:#ff502c;font-weight:bold;padding:0 2px">存在的缺陷：</span></p>
+<p>两个对象的相互循环引用，在函数执行完成的时候，两个对象相互的引用计数并未归 0 ，而是依然占据内存，无法回收，当该函数执行多次时，内存占用就会变多，导致大量的内存得不到回收。</p>
+<blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:12px 23px;background:#f8f8f8;color:#666;">
+    <p>最常见的就是在 IE BOM 和 DOM 中，使用的对象并不是 js 对象，所以垃圾回收是基于计数策略的。但是在 IE9 已经将 BOM 和 DOM 真正的转化为了 js 对象，所以循环引用的问题得到解决。</p>
+</blockquote>
+<h4 class="heading" data-id="heading-29">如何管理内存</h4>
+<p>虽然说是 <code>js</code> 的内存都是自动管理的，但是对于 <code>js</code>  还是存在一些问题的，最主要的一个问题就是<strong>分配给 Web 浏览器的可用内存数量通常比分配给桌面应用程序的少</strong>。</p>
+<blockquote>
+<p>为了能够让页面获得最好的性能，必须确保 js 变量占用最少的内存，最好的方式就是将不用的变量引用释放掉，也叫做<strong>解除引用</strong>。</p>
+</blockquote>
+<ul>
+<li>对于局部变量来说，函数执行完成离开环境变量，变量将自动解除。</li>
+<li>对于全局变量我们需要进行手动解除。（注意：解除引用并不意味被收回，而是将变量真正的脱离执行环境，下一次垃圾回收将其收回）</li>
+</ul>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;  <span class="hljs-comment">// 在堆内存中给数值变量分配空间</span>
+alert(a + <span class="hljs-number">100</span>);  <span class="hljs-comment">// 使用内存</span>
+<span class="hljs-keyword">var</span> a = <span class="hljs-literal">null</span>; <span class="hljs-comment">// 使用完毕之后，释放内存空间</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:10px 23px;background:#f8f8f8;color:#666;">
+    <p>补充：因为通过上边的垃圾回收机制的标记清除法的原理得知，只有与环境变量失去引用的变量才会被标记回收，所用上述例子通过将对象的引用设置为 null ，此变量也就失去了引用，等待被垃圾回收器回收。</p>
+</blockquote>
+<h3 class="heading" data-id="heading-30">深拷贝和浅拷贝</h3>
+<blockquote class="warning"><p>面试官：什么是深拷贝？什么是浅拷贝？
+</p></blockquote><p>上边在 <code>JavaScript</code> 基本类型中我们说到，数据类型分为<strong>基本类型和引用类型</strong>。对基本类型的拷贝就是对值复制进行一次拷贝，而对于引用类型来说，拷贝的不是值，而是<strong>值的地址</strong>，最终两个变量的地址指向的是同一个值。还是以前的例子：</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">var</span> b = a;
+b = <span class="hljs-number">30</span>;
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10值</span>
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 30值</span>
+
+<span class="hljs-keyword">var</span> obj1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();
+<span class="hljs-keyword">var</span> obj2 = obj1;
+obj2.name = <span class="hljs-string">"小鹿"</span>;
+<span class="hljs-built_in">console</span>.log(obj1.name); <span class="hljs-comment">// 小鹿</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>要想将 <code>obj1</code> 和 <code>obj2</code> 的关系断开，也就是不让他指向同一个地址。根据不同层次的拷贝，分为深拷贝和浅拷贝。</p>
+<ul>
+<li><strong>浅拷贝：</strong> 只进行一层关系的拷贝。</li>
+<li><strong>深拷贝：</strong> 进行无限层次的拷贝。</li>
+</ul>
+<blockquote class="warning"><p>面试官：浅拷贝和深拷贝分别如何实现的？有哪几种实现方式？
+</p></blockquote><ul>
+<li>自己实现一个浅拷贝：</li>
+</ul>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-comment">// 实现浅克隆</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shallowClone</span>(<span class="hljs-params">o</span>)</span>{
+    <span class="hljs-keyword">const</span> obj = {};
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> o){
+        obj[i] = o[i]
+    }
+    <span class="hljs-keyword">return</span> obj;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>扩展运算符实现：</li>
+</ul>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">let</span> a = {<span class="hljs-attr">c</span>: <span class="hljs-number">1</span>}
+<span class="hljs-keyword">let</span> b = {...a}
+a.c = <span class="hljs-number">2</span>
+<span class="hljs-built_in">console</span>.log(b.c) <span class="hljs-comment">// 1</span>
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li><code>Object.assign()</code>实现</li>
+</ul>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">let</span> a = {<span class="hljs-attr">c</span>: <span class="hljs-number">1</span>}
+<span class="hljs-keyword">let</span> b = <span class="hljs-built_in">Object</span>.assign({}, a)
+a.c = <span class="hljs-number">2</span>
+<span class="hljs-built_in">console</span>.log(b.c) <span class="hljs-comment">// 1</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>对于深拷贝来说，在浅拷贝的基础上加上递归，我们改动上边自己实现的浅拷贝代码：</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">var</span> a1 = {<span class="hljs-attr">b</span>: {<span class="hljs-attr">c</span>: {<span class="hljs-attr">d</span>: <span class="hljs-number">1</span>}};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clone</span>(<span class="hljs-params">source</span>) </span>{
+    <span class="hljs-keyword">var</span> target = {};
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> source) {
+        <span class="hljs-keyword">if</span> (source.hasOwnProperty(i)) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> source[i] === <span class="hljs-string">'object'</span>) {
+                target[i] = clone(source[i]); <span class="hljs-comment">// 递归</span>
+            } <span class="hljs-keyword">else</span> {
+                target[i] = source[i];
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> target;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>如果功底稍微扎实的小伙伴可以看出上边深拷贝存在的问题：</p>
+<ul>
+<li>参数没有做检验;</li>
+<li>判断对象不够严谨;</li>
+<li>没有考虑到数组，以及 <code>ES6</code> 的 <code>set, map, weakset, weakmap</code>兼容性。</li>
+<li>最严重的问题就是递归容易爆栈（递归层次很深的时候）。</li>
+<li>循环引用问题提。</li>
+</ul>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">var</span> a = {};
+a.a = a;
+clone(a); <span class="hljs-comment">// 会造成一个死循环</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>两种解决循环引用问题的办法：</p>
+<ul>
+<li><strong>暴力破解</strong></li>
+<li><strong>循环检测</strong></li>
+</ul>
+<p>还有一个最简单的实现深拷贝的方式，那就是利用 <code>JSON.parse(JSON.stringify(object))</code>,但是也存在一定的局限性。</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cloneJSON</span>(<span class="hljs-params">source</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(source));
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>对于这种方法来说，内部的原理实现也是使用的递归，递归到一定深度，也会出现爆栈问题。但是对于循环引用的问题不会出现，内部的解决方案正是用到了循环检测。对于详细的实现一个深拷贝，具体参考文章：[<a target="_blank" href="https://segmentfault.com/a/1190000016672263" rel="nofollow noopener noreferrer">深拷贝的终极探索</a>](<a target="_blank" href="https://segmentfault.com/a/1190000016672263" rel="nofollow noopener noreferrer">segmentfault.com/a/119000001…</a>)</p>
+<h3 class="heading" data-id="heading-31">异步编程</h3>
+<p>由于 <code>JavaScript</code> 是单线程的，单线程就意味着阻塞问题，当一个任务执行完成之后才能执行下一个任务。这样就会导致出现页面卡死的状态，页面无响应，影响用户的体验，所以不得不出现了同步和异步的解决方案。</p>
+<blockquote class="warning"><p>面试官：JS 为什么是单线程？又带来了哪些问题呢？
+</p></blockquote><p>JS 单线程的特点就是同一时刻只能执行一个任。这是由一些与用户的互动以及操作 <code>DOM</code> 等相关的操作决定了 JS 要使用单线程，否则使用多线程会带来复杂的同步问题。如果执行同步问题的话，多线程需要加锁，执行任务造成非常的繁琐。</p>
+<p>虽然 HTML5 标准规定，允许 <code>JavaScript</code> 脚本创建多个线程，但是子线程完全受主线程控制，且不得操作 <code>DOM</code>。</p>
+<p>上述开头我们也说到了，单线程带来的问题就是会导致阻塞问题，为了解决这个问题，就不得不涉及 JS 的两种任务，分别为同步任务和异步任务。</p>
+<blockquote class="warning"><p>面试官：JS 如何实现异步编程？
+</p></blockquote><p>最早的解决方案是使用回调函数，回调函数不是直接调用，而是在特定的事件或条件发生时另一方调用的，用于对该事件或条件进行响应。比如 Ajax 回调：</p>
+<pre><code class="hljs bash copyable" lang="bash">// jQuery 中的 ajax
+$.ajax({ 
+    <span class="hljs-built_in">type</span> : <span class="hljs-string">"post"</span>, 
+    url : <span class="hljs-string">'test.json'</span>, 
+    dataType : <span class="hljs-string">'json'</span>, 
+    success : <span class="hljs-keyword">function</span>(res) { 
+       // 响应成功回调
+    },
+    fail: <span class="hljs-keyword">function</span>(err){
+       // 响应失败回调
+    }
+}); 
+<span class="copy-code-btn">复制代码</span></code></pre><p>但是如果某个请求存在依赖性，如下：</p>
+<pre><code class="hljs bash copyable" lang="bash">$.ajax({
+    <span class="hljs-built_in">type</span>:<span class="hljs-string">"post"</span>,
+    success: <span class="hljs-keyword">function</span>(res){//成功回调
+        //再次异步请求
+        $.ajax({
+            <span class="hljs-built_in">type</span>:<span class="hljs-string">"post"</span>,
+            url:<span class="hljs-string">"...?id=res.id,
+            success:function(res){
+                 $.ajax({
+                    type:"</span>post<span class="hljs-string">",
+                    url:"</span>...?id=res.id,
+                    success:<span class="hljs-function"><span class="hljs-title">function</span></span>(){
+						// 往复循环
+                    }
+                })
+            }
+        })
+    }
+})
+<span class="copy-code-btn">复制代码</span></code></pre><p>就会形成不断的循环嵌套，我们称之为回调地狱。我们可以看出回调地狱有以下缺点：</p>
+<ul>
+<li>嵌套函数存在耦合性，一旦有所改动，牵一发而动全身。</li>
+<li>嵌套函数一多，就很难处理错误。</li>
+<li>回调函数不能使用 <code>try catch</code> 捕获异常(异常的捕获只能在函数执行的时候才能捕获到)。</li>
+<li>回调函数不能直接 <code>return</code>。</li>
+</ul>
+<p>以上有两个地方俺需要再进一步详细说明一下：</p>
+<ul>
+<li><strong>为什么不能捕获异常？</strong></li>
+</ul>
+<p>其实这跟 js 的运行机制相关，异步任务执行完成会加入任务队列，当执行栈中没有可执行任务了，主线程取出任务队列中的异步任务并入栈执行，当异步任务执行的时候，捕获异常的函数已经在执行栈内退出了，所以异常无法被捕获。</p>
+<ul>
+<li><strong>为什么不能return？</strong></li>
+</ul>
+<p>return 只能终止回调的函数的执行，而不能终止外部代码的执行。</p>
+<blockquote class="warning"><p>面试官：如何解决回调地狱问题呢？
+</p></blockquote><p>既然回调函数存在回调地狱问题，那我们如何解决呢？ES6 给我们提供了三种解决方案，分别是 Generator、Promise、async/await（ES7）。</p>
+<p>由于这部分涉及到 ES6 部分的知识，这一期是有关 JS 的，所以会在下一期进行延伸，这里不多涉及。</p>
+<p>【进传送门~】 <a target="_blank" href="https://juejin.im/post/5e4943d0f265da57537eaba9" rel="">《大前端吊打面试官系列》 之 ES6 精华篇（2020年）</a></p>
+<blockquote class="warning"><p>面试官：说说异步代码的执行顺序？Event Loop 的运行机制是如何的运行的？
+</p></blockquote><p>上边我们说到 <code>JS</code>  是单线程且使用同步和异步任务解决 <code>JS</code> 的阻塞问题，那么异步代码的执行顺序以及 <code>EventLoop</code> 是如何运作的呢？</p>
+<p>在深入事件循环机制之前，需要弄懂一下几个概念：</p>
+<ul>
+<li><span style="color:#ff502c;font-weight:bold;padding:0 2px">执行上下文</span>(<code>Execution context</code>)</li>
+<li><span style="color:#ff502c;font-weight:bold;padding:0 2px">执行栈</span>（<code>Execution stack</code>）</li>
+<li><span style="color:#ff502c;font-weight:bold;padding:0 2px">微任务</span>（<code>micro-task</code>）</li>
+<li><span style="color:#ff502c;font-weight:bold;padding:0 2px">宏任务</span>（<code>macro-task</code>）</li>
+</ul>
+<h4 class="heading" data-id="heading-32">执行上下文</h4>
+<p>执行上下文是一个抽象的概念，可以理解为是代码执行的一个环境。JS 的执行上下文分为三种，<span style="color:#ff502c;font-weight:bold;padding:0 2px">全局执行上下文、函数(局部)执行上下文、Eval 执行上下文</span>。</p>
+<ul>
+<li><strong>全局执行上下文</strong> —— 全局执行上下文指的是全局 <code>this</code> 指向的 <code>window</code>，可以是外部加载的 JS 文件或者本地<code>&lt;scripe&gt;&lt;/script&gt;</code>标签中的代码。</li>
+<li><strong>函数执行上下文</strong> —— 函数上下文也称为局部上下文，每个函数被调用的时候，都会创建一个新的局部上下文。</li>
+<li><strong>Eval 执行上下文</strong> —— 这个不经常用，所以不多讨论。</li>
+</ul>
+<h4 class="heading" data-id="heading-33">执行栈</h4>
+<p>执行栈，就是我们数据结构中的“栈”，它具有“先进后出”的特点，正是因为这种特点，在我们代码进行执行的时候，遇到一个执行上下文就将其依次压入执行栈中。</p>
+<p>当代码执行的时候，先执行位于栈顶的执行上下文中的代码，当栈顶的执行上下文代码执行完毕就会出栈，继续执行下一个位于栈顶的执行上下文。</p>
+<pre><code class="hljs bash copyable" lang="bash"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">foo</span></span>() {
+  console.log(<span class="hljs-string">'a'</span>);
+  bar();
+  console.log(<span class="hljs-string">'b'</span>);
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">bar</span></span>() {
+  console.log(<span class="hljs-string">'c'</span>);
+}
+
+foo();
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>初始化状态，执行栈任务为空。</li>
+<li>foo 函数执行，foo 进入执行栈，输出 a，碰到函数 bar。</li>
+<li>然后 bar 再进入执行栈，开始执行 bar 函数，输出 c。</li>
+<li>bar 函数执行完出栈，继续执行执行栈顶端的函数 foo，最后输出 b。</li>
+<li>foo 出栈，所有执行栈内任务执行完毕。</li>
+</ul>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/3/1700ac658612b96f?imageslim" data-width="830" data-height="426" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;830&quot; height=&quot;426&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h4 class="heading" data-id="heading-34">宏任务</h4>
+<p>对于宏任务一般包括：</p>
+<ul>
+<li>整体的 <code>script</code> 标签内的代码，</li>
+<li><code>setTimeout</code></li>
+<li><code>setInterval</code></li>
+<li><code>setImmediate</code></li>
+<li><code>I/O</code></li>
+</ul>
+<h4 class="heading" data-id="heading-35">微任务</h4>
+<p>对于微任务一般包括：</p>
+<ul>
+<li><code>Promise</code></li>
+<li><code>process.nextTick</code>(Node)</li>
+<li><code>MutationObserver</code></li>
+</ul>
+<blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:5px 23px;background:#f8f8f8;color:#666;">
+    <p>注意：nextTick 队列会比 Promie 队列先执行。</p>
+</blockquote>
+<h4 class="heading" data-id="heading-36">运行机制</h4>
+<p>以上概念弄明白之后，再来看循环机制是如何运行的呢？以下涉及到的任务执行顺序都是靠函数调用栈来实现的。</p>
+<p>1）首先，事件循环机制的是从 <code>&lt;script&gt;</code> 标签内的代码开始的，上边我们提到过，整个 script 标签作为一个宏任务处理的。</p>
+<p>2）在代码执行的过程中，如果遇到宏任务，如：<code>setTimeout</code>，就会将当前任务分发到对应的执行队列中去。</p>
+<p>3）当执行过程中，如果遇到微任务，如：<code>Pomise</code>，在创建 <code>Promise</code>实例对象时,代码顺序执行，如果到了执行· <code>then</code> 操作，该任务就会被分发到微任务队列中去。</p>
+<p>4）<code>script</code> 标签内的代码执行完毕，同时执行过程中所涉及到的宏任务也和微任务也分配到相应的队列中去。</p>
+<p>5）此时宏任务执行完毕，然后去微任务队列执行所有的存在的微任务。</p>
+<p>6）微任务执行完毕，第一轮的消息循环执行完毕，页面进行一次渲染。</p>
+<p>7）然后开始第二轮的消息循环，从宏任务队列中取出任务执行。</p>
+<p>8）如果两个任务队列没有任务可执行了，此时所有任务执行完毕。</p>
+<p><strong>实战一下：（动画演示）</strong></p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>消息运行机制<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>);
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>)
+        }, <span class="hljs-number">1000</span>);
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>);
+            resolve();
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'4'</span>);
+        }).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'5'</span>);
+        });
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'6'</span>);<span class="hljs-comment">// 1,3,4,6,5,2</span>
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>初始化状态，执行栈为空。</li>
+<li>首先执行 <code>&lt;script&gt;</code> 标签内的同步代码，此时全局的代码进入执行栈中，同步顺序执行代码，输出 1。</li>
+<li>执行过程中遇到异步代码 <code>setTimeout</code>（宏任务），将其分配到宏任务异步队列中。</li>
+<li>同步代码继续执行，遇到一个 <code>promise</code> 异步代码（微任务）。但是构造函数中的代码为同步代码，依次输出3、4，则 then 之后的任务加入到微任务队列中去。</li>
+<li>最后执行同步代码，输出 6。</li>
+<li>因为 <code>script</code>内的代码作为宏任务处理，所以此次循环进行到处理微任务队列中的所有异步任务，直达微任务队列中的所有任务执行完成为止，微任务队列中只有一个微任务，所以输出 5。</li>
+<li>此时页面要进行一次页面渲染，渲染完成之后，进行下一次循环。</li>
+<li>在宏任务队列中取出一个宏任务，也就是之前的 <code>setTimeout</code>，最后输出 2。</li>
+<li>此时任务队列为空，执行栈中为空，整个程序执行完毕。
+<figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/3/1700b54fedb0a0b9?imageslim" data-width="880" data-height="492" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;880&quot; height=&quot;492&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure></li>
+</ul>
+<p>以上难免有些啰嗦，所以简化整理如下步骤：</p>
+<ul>
+<li>一开始执行宏任务（script 中同步代码），执行完毕，调用栈为空。</li>
+<li>然后检查微任务队列是否有可执行任务，执行完所有微任务。</li>
+<li>进行页面渲染。</li>
+<li>第二轮从宏任务队列取出一个宏任务执行，重复以上循环。</li>
+</ul>
+<p><span style="color:#ff502c;font-weight:bold;padding:0 2px">本系列持续更新中.....</span></p>
+<h3 class="heading" data-id="heading-37">❤️ 最后不要忘记三连哦~ [点赞 + 收藏 + 评论]！</h3>
+<p>如果觉得文章不错，希望你能给小鹿的文章轻轻的点个赞，希望能够更多的面试者带来帮助，谢谢你！</p>
+<blockquote style="position: relative;border-left-color: #f75151;margin-left: 8px;padding:10px 23px;background:#f8f8f8;color:#666;">
+    <p>也可以扫描下方二维码，后台回复「进群」，即可加入小鹿的技术交流群哦~</p>
+    <p>获取一份小鹿自学的资料，后台回复：「资料」，精心整理的分享给你~</p>
+    <p>两年来，小鹿在公众号每天都会写原创和分享一些互联网的编程随想！</p>
+    <p>欢迎关注，写的不好再取关哦~</p>
+</blockquote>
+<h3 class="heading" data-id="heading-38">参考文献:</h3>
+<p>1、<a target="_blank" href="https://www.cnblogs.com/xiaoheimiaoer/p/4572558.html" rel="nofollow noopener noreferrer">www.cnblogs.com/xiaoheimiao…</a></p>
+<p>2、<a target="_blank" href="https://juejin.im/entry/584918612f301e005716add6" rel="">juejin.im/entry/58491…</a></p>
+<p>3、<a target="_blank" href="https://juejin.im/post/5ba32171f265da0ab719a6d7" rel="">juejin.im/post/5ba321…</a></p>
+<p>4、<a target="_blank" href="https://segmentfault.com/a/1190000012646203" rel="nofollow noopener noreferrer">segmentfault.com/a/119000001…</a></p>
+<p>5、前端面试之道</p>
+<p>6、<a target="_blank" href="https://segmentfault.com/a/1190000016672263" rel="nofollow noopener noreferrer">segmentfault.com/a/119000001…</a></p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/3/12/170cdcd9441f8a2e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="600" data-height="756" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;600&quot; height=&quot;756&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</div></article><div data-v-7407bc26="" data-v-23c7d456="" class="tag-list-box"><div data-v-7407bc26="" data-v-23c7d456="" class="tag-list-title">关注下面的标签，发现更多相似文章</div><div data-v-7407bc26="" data-v-23c7d456="" st:block="tagList" class="tag-list"><a data-v-7407bc26="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" class="item" data-v-23c7d456=""><div data-v-292b3648="" data-v-4d895a49="" data-v-7407bc26="" data-src="https://lc-gold-cdn.xitu.io/bac28828a49181c34110.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon" style="background-image: none; background-size: contain;"></div><div data-v-7407bc26="" class="tag-title">前端</div></a></div></div><a data-v-7407bc26="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" data-v-23c7d456=""><div data-v-7407bc26="" class="footer-author-block"><div data-v-60bba1f2="" data-v-7407bc26="" itemscope="itemscope" itemtype="http://schema.org/Person" class="author"><meta itemprop="url" content="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?w=679&amp;h=644&amp;f=png&amp;s=38731"><meta itemprop="name" content="程序员小鹿"><meta itemprop="jobTitle" content="全栈工程师"><div itemprop="memberOf" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="阿里爷爷"></div><div data-v-60bba1f2="" class="author-info-block"><a data-v-60bba1f2="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="avatar-link"><div data-v-292b3648="" data-v-11331c20="" data-v-60bba1f2="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a><div data-v-60bba1f2="" class="author-info-box"><div data-v-60bba1f2="" class="profile-box"><a data-v-44e95489="" data-v-60bba1f2="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username username ellipsis">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><span data-v-60bba1f2="" class="position ellipsis">全栈工程师 @ 阿里爷爷</span></div><div data-v-60bba1f2="" class="meta-box"><a data-v-60bba1f2="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7/posts" target="_blank" rel="" class="posts"><span data-v-60bba1f2="" class="count post-count">发布了 32 篇专栏 · </span></a><span data-v-60bba1f2="" class="count">获得点赞 3,072 · </span><span data-v-60bba1f2="" class="count">获得阅读 114,580</span></div></div><button data-v-fa88a374="" data-v-60bba1f2="" class="follow-button follow">关注</button></div></div></div></a><div data-v-7407bc26="" data-v-23c7d456="" st:block="banner" class="article-banner"><a data-v-7407bc26="" data-v-23c7d456="" st:name="link" st:state="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" class="banner-title" href="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" target="_blank">安装掘金浏览器插件</a><div data-v-7407bc26="" data-v-23c7d456="" class="banner-content">打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！</div></div><!----><!----><div data-v-4b46f152="" data-v-7407bc26="" class="comment-list-box" id="comment-box" data-v-23c7d456="" manual="true"><div data-v-4b46f152="" class="title">评论</div><div data-v-5d62a384="" data-v-4b46f152="" class="comment-form comment-form"><div data-v-5d62a384="" class="avatar-box"><div data-v-292b3648="" data-v-11331c20="" data-v-5d62a384="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></div><div data-v-5d62a384="" class="form-box"><div data-v-5d62a384="" class="input-box"><div data-v-8f167968="" data-v-5d62a384="" class="auth-card"><!----><div data-v-5d62a384="" data-v-8f167968="" contenteditable="true" spellcheck="false" placeholder="输入评论..." class="rich-input empty"><br data-v-5d62a384="" data-v-8f167968=""></div></div><!----></div><!----></div><input data-v-5d62a384="" type="file" class="hidden"></div><div data-v-1d85495c="" data-v-4b46f152="" class="comment-list comment-list"><div data-v-5db6962e="" data-v-1d85495c="" class="image-viewer-box"><!----></div><div data-v-1d85495c="" class="item"><div data-v-c3a00e66="" data-v-1d85495c="" class="comment comment"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5cadb8345188251afc02fbf2" class="user-popover-box popover"><!----><a data-v-c3a00e66="" href="https://juejin.im/user/5cadb8345188251afc02fbf2" target="_blank" rel="" class="user-link" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-c3a00e66="" data-src="https://user-gold-cdn.xitu.io/2020/1/2/16f640a32be1c0b7?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-c3a00e66="" class="content-box comment-divider-line"><div data-v-c3a00e66="" class="meta-box"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5cadb8345188251afc02fbf2" class="user-popover-box"><!----><a data-v-44e95489="" data-v-c3a00e66="" href="https://juejin.im/user/5cadb8345188251afc02fbf2" target="_blank" rel="" class="username username ellipsis" data-v-0f4ef93c="">modaohuohuo<!----></a></div><div data-v-c3a00e66="" class="position"></div></div><div data-v-c3a00e66="" class="content">这个动画演示，我可以</div><div data-v-c3a00e66="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-c3a00e66="" class="reply-stat"><time data-v-c3a00e66="" datetime="2020-04-06T06:16:45.984Z" title="Mon Apr 06 2020 14:16:45 GMT+0800 (中国标准时间)" class="time">10天前</time><div data-v-c3a00e66="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-c3a00e66="" class="action-box"><div data-v-c3a00e66="" class="like-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-c3a00e66="" class="comment-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-c3a00e66="" class="action-title">回复</span></div></div></div><!----><div data-v-39f2ce6a="" data-v-c3a00e66="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1d85495c="" class="item"><div data-v-c3a00e66="" data-v-1d85495c="" class="comment comment"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5d8980856fb9a06b2a207fba" class="user-popover-box popover"><!----><a data-v-c3a00e66="" href="https://juejin.im/user/5d8980856fb9a06b2a207fba" target="_blank" rel="" class="user-link" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-c3a00e66="" data-src="https://user-gold-cdn.xitu.io/2019/9/24/16d623a64207d782?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-c3a00e66="" class="content-box comment-divider-line"><div data-v-c3a00e66="" class="meta-box"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5d8980856fb9a06b2a207fba" class="user-popover-box"><!----><a data-v-44e95489="" data-v-c3a00e66="" href="https://juejin.im/user/5d8980856fb9a06b2a207fba" target="_blank" rel="" class="username username ellipsis" data-v-0f4ef93c="">壹朵小花吖<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-c3a00e66="" class="position"></div></div><div data-v-c3a00e66="" class="content">努力学习,i了i了<img class="emoji" draggable="false" alt="😘" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/1f618.svg"></div><div data-v-c3a00e66="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-c3a00e66="" class="reply-stat"><time data-v-c3a00e66="" datetime="2020-03-19T02:45:41.390Z" title="Thu Mar 19 2020 10:45:41 GMT+0800 (中国标准时间)" class="time">28天前</time><div data-v-c3a00e66="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-c3a00e66="" class="action-box"><div data-v-c3a00e66="" class="like-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-c3a00e66="" class="comment-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-c3a00e66="" class="action-title">回复</span></div></div></div><!----><div data-v-39f2ce6a="" data-v-c3a00e66="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1d85495c="" class="item"><div data-v-c3a00e66="" data-v-1d85495c="" class="comment comment"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="57a0d8eb0a2b580058202189" class="user-popover-box popover"><!----><a data-v-c3a00e66="" href="https://juejin.im/user/57a0d8eb0a2b580058202189" target="_blank" rel="" class="user-link" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-c3a00e66="" data-src="https://user-gold-cdn.xitu.io/2019/12/17/16f11eae4188f372?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-c3a00e66="" class="content-box comment-divider-line"><div data-v-c3a00e66="" class="meta-box"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="57a0d8eb0a2b580058202189" class="user-popover-box"><!----><a data-v-44e95489="" data-v-c3a00e66="" href="https://juejin.im/user/57a0d8eb0a2b580058202189" target="_blank" rel="" class="username username ellipsis" data-v-0f4ef93c="">杨大厨<!----></a></div><div data-v-c3a00e66="" class="position">打杂</div></div><div data-v-c3a00e66="" class="content">大佬，执行栈这块的结果有一处可能是笔误，写错了
+bar 函数执行完出栈，继续执行执行栈顶端的函数 foo，最后输出 c。   这块输出的应该是b<img class="emoji" draggable="false" alt="😁" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/1f601.svg"></div><div data-v-c3a00e66="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-c3a00e66="" class="reply-stat"><time data-v-c3a00e66="" datetime="2020-03-12T02:13:12.777Z" title="Thu Mar 12 2020 10:13:12 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-c3a00e66="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-c3a00e66="" class="action-box"><div data-v-c3a00e66="" class="like-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-c3a00e66="" class="comment-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-c3a00e66="" class="action-title">回复</span></div></div></div><!----><div data-v-39f2ce6a="" data-v-c3a00e66="" class="sub-comment-list sub-comment-list"><div data-v-39f2ce6a="" class="item"><div data-v-17ea9b53="" data-v-39f2ce6a="" class="sub-comment sub-comment"><div data-v-17ea9b53="" class="sub-comment-content-row"><div data-v-17ea9b53="" class="sub-comment-content-box"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box popover"><!----><a data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-17ea9b53="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-17ea9b53="" class="user-content-box"><div data-v-17ea9b53="" class="profie"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c="">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a><span data-v-17ea9b53="" class="author-badge-text">(作者)</span></a></div><div data-v-17ea9b53="" class="position">全栈工程师 @ 阿里爷爷</div></div><div data-v-17ea9b53="" class="content-box"><span data-v-17ea9b53=""> 回复 </span><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="57a0d8eb0a2b580058202189" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/57a0d8eb0a2b580058202189" target="_blank" rel="" class="username username be-replied" data-v-0f4ef93c="">杨大厨<!----></a></div><!----><span data-v-17ea9b53="">: </span><span data-v-17ea9b53="" class="content">很仔细，感谢，已修改！</span></div><!----><!----><div data-v-17ea9b53="" class="limit-all-box"><!----></div><div data-v-17ea9b53="" class="sub-comment-stat-box"><time data-v-17ea9b53="" datetime="2020-03-12T08:11:30.972Z" title="Thu Mar 12 2020 16:11:30 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-17ea9b53="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-17ea9b53="" class="sub-comment-action-box"><div data-v-17ea9b53="" class="like-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-17ea9b53="" class="comment-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-17ea9b53="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div><div data-v-1d85495c="" class="item"><div data-v-c3a00e66="" data-v-1d85495c="" class="comment comment"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5e4e9258e51d45270f52b8e9" class="user-popover-box popover"><!----><a data-v-c3a00e66="" href="https://juejin.im/user/5e4e9258e51d45270f52b8e9" target="_blank" rel="" class="user-link" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-c3a00e66="" data-src="https://mirror-gold-cdn.xitu.io/17062ebb1c174bc3272?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-c3a00e66="" class="content-box comment-divider-line"><div data-v-c3a00e66="" class="meta-box"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5e4e9258e51d45270f52b8e9" class="user-popover-box"><!----><a data-v-44e95489="" data-v-c3a00e66="" href="https://juejin.im/user/5e4e9258e51d45270f52b8e9" target="_blank" rel="" class="username username ellipsis" data-v-0f4ef93c="">不世<!----></a></div><div data-v-c3a00e66="" class="position"></div></div><div data-v-c3a00e66="" class="content">看完了，可是原型那里还是有点不太清楚</div><div data-v-c3a00e66="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-c3a00e66="" class="reply-stat"><time data-v-c3a00e66="" datetime="2020-03-01T12:06:59.318Z" title="Sun Mar 01 2020 20:06:59 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-c3a00e66="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-c3a00e66="" class="action-box"><div data-v-c3a00e66="" class="like-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-c3a00e66="" class="comment-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-c3a00e66="" class="action-title">回复</span></div></div></div><!----><div data-v-39f2ce6a="" data-v-c3a00e66="" class="sub-comment-list sub-comment-list"><div data-v-39f2ce6a="" class="item"><div data-v-17ea9b53="" data-v-39f2ce6a="" class="sub-comment sub-comment"><div data-v-17ea9b53="" class="sub-comment-content-row"><div data-v-17ea9b53="" class="sub-comment-content-box"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box popover"><!----><a data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-17ea9b53="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-17ea9b53="" class="user-content-box"><div data-v-17ea9b53="" class="profie"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c="">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a><span data-v-17ea9b53="" class="author-badge-text">(作者)</span></a></div><div data-v-17ea9b53="" class="position">全栈工程师 @ 阿里爷爷</div></div><div data-v-17ea9b53="" class="content-box"><span data-v-17ea9b53=""> 回复 </span><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5e4e9258e51d45270f52b8e9" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5e4e9258e51d45270f52b8e9" target="_blank" rel="" class="username username be-replied" data-v-0f4ef93c="">不世<!----></a></div><!----><span data-v-17ea9b53="">: </span><span data-v-17ea9b53="" class="content">原型地方需要多看  多画，多总结。</span></div><!----><!----><div data-v-17ea9b53="" class="limit-all-box"><!----></div><div data-v-17ea9b53="" class="sub-comment-stat-box"><time data-v-17ea9b53="" datetime="2020-03-02T01:33:01.854Z" title="Mon Mar 02 2020 09:33:01 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-17ea9b53="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-17ea9b53="" class="sub-comment-action-box"><div data-v-17ea9b53="" class="like-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-17ea9b53="" class="comment-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-17ea9b53="">回复</span></div></div></div><!----></div></div></div><!----></div></div><div data-v-39f2ce6a="" class="item"><div data-v-17ea9b53="" data-v-39f2ce6a="" class="sub-comment sub-comment"><div data-v-17ea9b53="" class="sub-comment-content-row"><div data-v-17ea9b53="" class="sub-comment-content-box"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5e4e9258e51d45270f52b8e9" class="user-popover-box popover"><!----><a data-v-17ea9b53="" href="https://juejin.im/user/5e4e9258e51d45270f52b8e9" target="_blank" rel="" class="username" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-17ea9b53="" data-src="https://mirror-gold-cdn.xitu.io/17062ebb1c174bc3272?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-17ea9b53="" class="user-content-box"><div data-v-17ea9b53="" class="profie"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5e4e9258e51d45270f52b8e9" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5e4e9258e51d45270f52b8e9" target="_blank" rel="" class="username" data-v-0f4ef93c="">不世<!----></a></div><div data-v-17ea9b53="" class="position"></div></div><div data-v-17ea9b53="" class="content-box"><span data-v-17ea9b53=""> 回复 </span><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5e4e9258e51d45270f52b8e9" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5e4e9258e51d45270f52b8e9" target="_blank" rel="" class="username username be-replied" data-v-0f4ef93c="">不世<!----></a></div><!----><span data-v-17ea9b53="">: </span><span data-v-17ea9b53="" class="content">好的，非常感谢</span></div><!----><!----><div data-v-17ea9b53="" class="limit-all-box"><!----></div><div data-v-17ea9b53="" class="sub-comment-stat-box"><time data-v-17ea9b53="" datetime="2020-03-02T03:13:46.540Z" title="Mon Mar 02 2020 11:13:46 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-17ea9b53="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-17ea9b53="" class="sub-comment-action-box"><div data-v-17ea9b53="" class="like-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-17ea9b53="" class="comment-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-17ea9b53="">回复</span></div></div></div><!----></div></div></div><!----></div></div><div data-v-39f2ce6a="" class="item fetch-more"><div data-v-39f2ce6a="" class="fetch-more-comment">加载更多</div></div></div></div><!----></div></div><div data-v-1d85495c="" class="item"><div data-v-c3a00e66="" data-v-1d85495c="" class="comment comment"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5dd21668518825107f77501e" class="user-popover-box popover"><!----><a data-v-c3a00e66="" href="https://juejin.im/user/5dd21668518825107f77501e" target="_blank" rel="" class="user-link" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-c3a00e66="" data-src="https://mirror-gold-cdn.xitu.io/16e7ca78f057506fc8b?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-c3a00e66="" class="content-box comment-divider-line"><div data-v-c3a00e66="" class="meta-box"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5dd21668518825107f77501e" class="user-popover-box"><!----><a data-v-44e95489="" data-v-c3a00e66="" href="https://juejin.im/user/5dd21668518825107f77501e" target="_blank" rel="" class="username username ellipsis" data-v-0f4ef93c="">极速时光机<!----></a></div><div data-v-c3a00e66="" class="position">进击的前端攻城狮 @ 没人要科技有限公司</div></div><div data-v-c3a00e66="" class="content">感谢，箭头函数this的指向还是不太懂</div><div data-v-c3a00e66="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-c3a00e66="" class="reply-stat"><time data-v-c3a00e66="" datetime="2020-03-01T08:48:38.800Z" title="Sun Mar 01 2020 16:48:38 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-c3a00e66="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-c3a00e66="" class="action-box"><div data-v-c3a00e66="" class="like-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-c3a00e66="" class="comment-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-c3a00e66="" class="action-title">回复</span></div></div></div><!----><div data-v-39f2ce6a="" data-v-c3a00e66="" class="sub-comment-list sub-comment-list"><div data-v-39f2ce6a="" class="item"><div data-v-17ea9b53="" data-v-39f2ce6a="" class="sub-comment sub-comment"><div data-v-17ea9b53="" class="sub-comment-content-row"><div data-v-17ea9b53="" class="sub-comment-content-box"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box popover"><!----><a data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-17ea9b53="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-17ea9b53="" class="user-content-box"><div data-v-17ea9b53="" class="profie"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c="">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a><span data-v-17ea9b53="" class="author-badge-text">(作者)</span></a></div><div data-v-17ea9b53="" class="position">全栈工程师 @ 阿里爷爷</div></div><div data-v-17ea9b53="" class="content-box"><span data-v-17ea9b53=""> 回复 </span><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5dd21668518825107f77501e" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5dd21668518825107f77501e" target="_blank" rel="" class="username username be-replied" data-v-0f4ef93c="">极速时光机<!----></a></div><!----><span data-v-17ea9b53="">: </span><span data-v-17ea9b53="" class="content">可以简答理解为，它最近一层包裹的非箭头函数的 this</span></div><!----><!----><div data-v-17ea9b53="" class="limit-all-box"><!----></div><div data-v-17ea9b53="" class="sub-comment-stat-box"><time data-v-17ea9b53="" datetime="2020-03-06T11:50:04.833Z" title="Fri Mar 06 2020 19:50:04 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-17ea9b53="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-17ea9b53="" class="sub-comment-action-box"><div data-v-17ea9b53="" class="like-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-17ea9b53="" class="comment-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-17ea9b53="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div><div data-v-1d85495c="" class="item"><div data-v-c3a00e66="" data-v-1d85495c="" class="comment comment"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5e5405466fb9a07c7f606e86" class="user-popover-box popover"><!----><a data-v-c3a00e66="" href="https://juejin.im/user/5e5405466fb9a07c7f606e86" target="_blank" rel="" class="user-link" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-c3a00e66="" data-src="https://user-gold-cdn.xitu.io/2020/2/25/17078389830bac3a?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-c3a00e66="" class="content-box comment-divider-line"><div data-v-c3a00e66="" class="meta-box"><div data-v-0f4ef93c="" data-v-c3a00e66="" st:block="userPopover" st:state="5e5405466fb9a07c7f606e86" class="user-popover-box"><!----><a data-v-44e95489="" data-v-c3a00e66="" href="https://juejin.im/user/5e5405466fb9a07c7f606e86" target="_blank" rel="" class="username username ellipsis" data-v-0f4ef93c="">热爱前端的人<!----></a></div><div data-v-c3a00e66="" class="position"></div></div><div data-v-c3a00e66="" class="content">感谢 之前迷迷糊糊的看完这篇文章真的懂了</div><div data-v-c3a00e66="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-c3a00e66="" class="reply-stat"><time data-v-c3a00e66="" datetime="2020-02-24T17:37:45.961Z" title="Tue Feb 25 2020 01:37:45 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-c3a00e66="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-c3a00e66="" class="action-box"><div data-v-c3a00e66="" class="like-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-c3a00e66="" class="comment-action action"><svg data-v-c3a00e66="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-c3a00e66="" fill="none" fill-rule="evenodd"><path data-v-c3a00e66="" d="M0 0h20v20H0z"></path> <path data-v-c3a00e66="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-c3a00e66="" class="action-title">回复</span></div></div></div><!----><div data-v-39f2ce6a="" data-v-c3a00e66="" class="sub-comment-list sub-comment-list"><div data-v-39f2ce6a="" class="item"><div data-v-17ea9b53="" data-v-39f2ce6a="" class="sub-comment sub-comment"><div data-v-17ea9b53="" class="sub-comment-content-row"><div data-v-17ea9b53="" class="sub-comment-content-box"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box popover"><!----><a data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c=""><div data-v-292b3648="" data-v-11331c20="" data-v-17ea9b53="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-17ea9b53="" class="user-content-box"><div data-v-17ea9b53="" class="profie"><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5c1f302c6fb9a049ec6b10d7" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username" data-v-0f4ef93c="">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a><span data-v-17ea9b53="" class="author-badge-text">(作者)</span></a></div><div data-v-17ea9b53="" class="position">全栈工程师 @ 阿里爷爷</div></div><div data-v-17ea9b53="" class="content-box"><span data-v-17ea9b53=""> 回复 </span><div data-v-0f4ef93c="" data-v-17ea9b53="" st:block="userPopover" st:state="5e5405466fb9a07c7f606e86" class="user-popover-box"><!----><a data-v-44e95489="" data-v-17ea9b53="" href="https://juejin.im/user/5e5405466fb9a07c7f606e86" target="_blank" rel="" class="username username be-replied" data-v-0f4ef93c="">热爱前端的人<!----></a></div><!----><span data-v-17ea9b53="">: </span><span data-v-17ea9b53="" class="content"><img class="emoji" draggable="false" alt="👍" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/1f44d.svg"></span></div><!----><!----><div data-v-17ea9b53="" class="limit-all-box"><!----></div><div data-v-17ea9b53="" class="sub-comment-stat-box"><time data-v-17ea9b53="" datetime="2020-02-25T00:04:39.206Z" title="Tue Feb 25 2020 08:04:39 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-17ea9b53="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-17ea9b53="" class="sub-comment-action-box"><div data-v-17ea9b53="" class="like-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-17ea9b53="" class="comment-action action"><svg data-v-17ea9b53="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-17ea9b53="" fill="none" fill-rule="evenodd"><path data-v-17ea9b53="" d="M0 0h20v20H0z"></path> <path data-v-17ea9b53="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-17ea9b53="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div></div><div data-v-4b46f152="" class="fetch-more-comment">查看更多 &gt;</div></div></div><!----><div data-v-7407bc26="" data-v-23c7d456="" st:block="recommended" class="main-area recommended-area shadow"><div data-v-7407bc26="" data-v-23c7d456="" class="recommended-entry-list-title">相关推荐</div><!----><ul data-v-158dab7e="" data-v-7407bc26="" st:block="entryList" class="entry-list recommended-entry-list" data-v-23c7d456=""><!----><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e979c755188257a6a0bd59c|1" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e97124df265da47b27d97ff" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5bea27965188250edf4ad8b7" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5bea27965188250edf4ad8b7" target="_blank" rel="" st:name="user" st:state="5bea27965188250edf4ad8b7" data-v-0f4ef93c="">ConardLi</a></div></li><li data-v-2d360bea="" class="item">13小时前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E6%B5%8F%E8%A7%88%E5%99%A8" target="_blank" rel="" st:name="tag" st:state="57089cf279bc44004c6266dc" class="tag">浏览器</a><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e97124df265da47b27d97ff" target="_blank" rel="" st:name="title" class="title">当浏览器全面禁用三方 Cookie</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">310</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e97124df265da47b27d97ff#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">59</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e97f1fbe51d4546f940c856|2" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e97f1316fb9a03c53519373" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5790c76dc4c9710054f0f58b" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5790c76dc4c9710054f0f58b" target="_blank" rel="" st:name="user" st:state="5790c76dc4c9710054f0f58b" data-v-0f4ef93c="">前端早早聊</a></div></li><li data-v-2d360bea="" class="item">7小时前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6" target="_blank" rel="" st:name="tag" st:state="55978433e4b0c4d3e6fddcb1" class="tag">前端框架</a><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e97f1316fb9a03c53519373" target="_blank" rel="" st:name="title" class="title">我，要把这 200 万张页面切出来上线</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">39</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e97f1316fb9a03c53519373#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">2</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-292b3648="" data-v-4d895a49="" data-v-2d360bea="" data-src="https://user-gold-cdn.xitu.io/2020/4/16/17181885968a9996?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e97ff21e51d4546c72e1d6a|3" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e97fe876fb9a03c2e542c1e" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5874526761ff4b006d4fd9a4" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5874526761ff4b006d4fd9a4" target="_blank" rel="" st:name="user" st:state="5874526761ff4b006d4fd9a4" data-v-0f4ef93c="">winty</a></div></li><li data-v-2d360bea="" class="item">6小时前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e97fe876fb9a03c2e542c1e" target="_blank" rel="" st:name="title" class="title">十道大厂面试题(含答案)总结</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">21</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e97fe876fb9a03c2e542c1e#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-292b3648="" data-v-4d895a49="" data-v-2d360bea="" data-src="https://user-gold-cdn.xitu.io/2020/4/16/17181bc1b6dae6d8?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><!----><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e97e6ca51882573a509b46c|4" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e97d4b5518825736d27a167" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5e804a1d6fb9a03c3550cc9e" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5e804a1d6fb9a03c3550cc9e" target="_blank" rel="" st:name="user" st:state="5e804a1d6fb9a03c3550cc9e" data-v-0f4ef93c="">Zz早睡早起身体棒</a></div></li><li data-v-2d360bea="" class="item">8小时前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e97d4b5518825736d27a167" target="_blank" rel="" st:name="title" class="title">在小白眼里TypeScript对于JavaScirpt的意义</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">17</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e97d4b5518825736d27a167#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">4</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e96c07f6fb9a03c947cd8cc|5" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e958d0f6fb9a03c6675cb5d" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5dc783e251882535ce3216d4" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5dc783e251882535ce3216d4" target="_blank" rel="" st:name="user" st:state="5dc783e251882535ce3216d4" data-v-0f4ef93c="">树酱</a></div></li><li data-v-2d360bea="" class="item">1天前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e958d0f6fb9a03c6675cb5d" target="_blank" rel="" st:name="title" class="title">《前端那些事》从0到1开发工具库</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">145</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e958d0f6fb9a03c6675cb5d#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">12</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><!----><!----><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e96c4ab51882573b569c2c1|4" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e96c3eee51d4546f5790df1" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5b52fd38f265da0f4c6fbd72" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5b52fd38f265da0f4c6fbd72" target="_blank" rel="" st:name="user" st:state="5b52fd38f265da0f4c6fbd72" data-v-0f4ef93c="">lzg9527</a></div></li><li data-v-2d360bea="" class="item">1天前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e96c3eee51d4546f5790df1" target="_blank" rel="" st:name="title" class="title">你也许不知道的javascript高级函数</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">118</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e96c3eee51d4546f5790df1#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">14</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-292b3648="" data-v-4d895a49="" data-v-2d360bea="" data-src="https://user-gold-cdn.xitu.io/2020/4/15/1717cf00fd398503?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e9652f651882573aa53b54d|5" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e95ed89518825739208ec79" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5ba3d3f0f265da0af77517be" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5ba3d3f0f265da0af77517be" target="_blank" rel="" st:name="user" st:state="5ba3d3f0f265da0af77517be" data-v-0f4ef93c="">接水怪</a></div></li><li data-v-2d360bea="" class="item">1天前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e95ed89518825739208ec79" target="_blank" rel="" st:name="title" class="title">《大前端进阶 安全》系列 HTTPS详解（通俗易懂）</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">181</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e95ed89518825739208ec79#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">1</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e96c1bcf265da47f318b96b|6" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e951ddb6fb9a03c5b2fcc24" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5940a1d2fe88c2006a44b609" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5940a1d2fe88c2006a44b609" target="_blank" rel="" st:name="user" st:state="5940a1d2fe88c2006a44b609" data-v-0f4ef93c="">Rick_Lee</a></div></li><li data-v-2d360bea="" class="item">1天前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e951ddb6fb9a03c5b2fcc24" target="_blank" rel="" st:name="title" class="title">近万字新手 chrome 扩展开发简单入门</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">96</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e951ddb6fb9a03c5b2fcc24#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">14</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e8b24b7e51d45471655081a|7" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e8b163ff265da47ee3f54a6" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><li data-v-2d360bea="" class="item hot">热</li><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="574f910b207703005cd8686a" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/574f910b207703005cd8686a" target="_blank" rel="" st:name="user" st:state="574f910b207703005cd8686a" data-v-0f4ef93c="">axuebin</a></div></li><li data-v-2d360bea="" class="item">10天前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e8b163ff265da47ee3f54a6" target="_blank" rel="" st:name="title" class="title">2020年前端面试复习必读文章【超百篇文章/赠复习导图】</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">1700</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e8b163ff265da47ee3f54a6#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">137</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-292b3648="" data-v-4d895a49="" data-v-2d360bea="" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714f6e26d3ebb87?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-158dab7e="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-45a8407d="" data-v-158dab7e="" class="entry-box"><div data-v-2d360bea="" data-v-45a8407d="" st:block="entry" st:state="5e9716e751882573b569c35b|8" class="entry"><a data-v-2d360bea="" href="https://juejin.im/post/5e96ca37f265da47af1816be" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-2d360bea="" class="content-box"><div data-v-2d360bea="" class="info-box"><div data-v-2d360bea="" class="info-row meta-row"><ul data-v-2d360bea="" class="meta-list"><!----><!----><li data-v-2d360bea="" class="item post">专栏</li><li data-v-2d360bea="" class="item username clickable"><div data-v-0f4ef93c="" data-v-2d360bea="" st:block="userPopover" st:state="5a925ffd6fb9a063331540b1" class="user-popover-box"><!----><a data-v-2d360bea="" href="https://juejin.im/user/5a925ffd6fb9a063331540b1" target="_blank" rel="" st:name="user" st:state="5a925ffd6fb9a063331540b1" data-v-0f4ef93c="">Dcison</a></div></li><li data-v-2d360bea="" class="item">23小时前</li><li data-v-2d360bea="" class="item tag"><a data-v-2d360bea="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-2d360bea="" class="info-row title-row"><!----><!----><a data-v-2d360bea="" href="https://juejin.im/post/5e96ca37f265da47af1816be" target="_blank" rel="" st:name="title" class="title">记一次移动端H5开发</a></div><div data-v-2d360bea="" class="info-row action-row"><ul data-v-2d360bea="" class="action-list"><li data-v-2d360bea="" st:name="likeBtn" class="item like clickable"><a data-v-2d360bea="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2d360bea="" class="count">8</span></a></li><li data-v-2d360bea="" st:name="commentBtn" class="item comment clickable"><a data-v-2d360bea="" href="https://juejin.im/post/5e96ca37f265da47af1816be#comment" target="_blank" rel="" class="title-box"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-2d360bea="" class="count">3</span></a></li><li data-v-2d360bea="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-2d360bea="" class="share-panel"><div data-v-2d360bea="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-2d360bea="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-2d360bea="" class="qr-code-box"><img data-v-2d360bea="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="qr-code"></div></div></div></li><li data-v-2d360bea="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-2d360bea="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-158dab7e="" class="item"><!----></li><!----></ul></div><div data-v-7286dda2="" data-v-7407bc26="" st:block="sidebar" class="sidebar sidebar" data-v-23c7d456=""><div data-v-200fbf1c="" data-v-625baef0="" data-v-7286dda2="" class="sidebar-block author-block shadow"><div data-v-200fbf1c="" class="block-title">关于作者</div><div data-v-200fbf1c="" class="block-body"><a data-v-625baef0="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="user-item item" data-v-200fbf1c=""><div data-v-292b3648="" data-v-11331c20="" data-v-625baef0="" data-src="https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/10/11/16db8d274b2edaa3?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><div data-v-625baef0="" class="info-box"><a data-v-44e95489="" data-v-625baef0="" href="https://juejin.im/user/5c1f302c6fb9a049ec6b10d7" target="_blank" rel="" class="username">程序员小鹿<a data-v-00e1e43c="" data-v-44e95489="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-00e1e43c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><div data-v-625baef0="" title="全栈工程师 @ 阿里爷爷" class="position">全栈工程师 @ 阿里爷爷</div></div></a><div data-v-625baef0="" data-v-200fbf1c="" class="stat-item item"><svg data-v-625baef0="" data-v-200fbf1c="" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" class="zan"><g data-v-625baef0="" data-v-200fbf1c="" fill="none" fill-rule="evenodd" transform="translate(0 .57)"><ellipse data-v-625baef0="" data-v-200fbf1c="" cx="12.5" cy="12.57" fill="#E1EFFF" rx="12.5" ry="12.57"></ellipse> <path data-v-625baef0="" data-v-200fbf1c="" fill="#7BB9FF" d="M8.596 11.238V19H7.033C6.463 19 6 18.465 6 17.807v-5.282c0-.685.483-1.287 1.033-1.287h1.563zm4.275-4.156A1.284 1.284 0 0 1 14.156 6c.885.016 1.412.722 1.595 1.07.334.638.343 1.687.114 2.361-.207.61-.687 1.412-.687 1.412h3.596c.38 0 .733.178.969.488.239.317.318.728.21 1.102l-1.628 5.645a1.245 1.245 0 0 1-1.192.922h-7.068v-7.889c1.624-.336 2.623-2.866 2.806-4.029z"></path></g></svg> <span data-v-625baef0="" data-v-200fbf1c="" class="content">获得点赞<span data-v-625baef0="" data-v-200fbf1c="" class="count">3,072</span></span></div><div data-v-625baef0="" data-v-200fbf1c="" class="stat-item item"><svg data-v-625baef0="" data-v-200fbf1c="" width="25" height="25" viewBox="0 0 25 25" class="icon stat-view-icon"><g data-v-625baef0="" data-v-200fbf1c="" fill="none" fill-rule="evenodd"><circle data-v-625baef0="" data-v-200fbf1c="" cx="12.5" cy="12.5" r="12.5" fill="#E1EFFF"></circle> <path data-v-625baef0="" data-v-200fbf1c="" fill="#7BB9FF" d="M4 12.5S6.917 7 12.75 7s8.75 5.5 8.75 5.5-2.917 5.5-8.75 5.5S4 12.5 4 12.5zm8.75 2.292c1.208 0 2.188-1.026 2.188-2.292 0-1.266-.98-2.292-2.188-2.292-1.208 0-2.188 1.026-2.188 2.292 0 1.266.98 2.292 2.188 2.292z"></path></g></svg> <span data-v-625baef0="" data-v-200fbf1c="" class="content">文章被阅读<span data-v-625baef0="" data-v-200fbf1c="" class="count">114,580</span></span></div><!----></div></div><!----><div data-v-200fbf1c="" data-v-4f1025eb="" data-v-548ff166="" data-v-7286dda2="" class="sidebar-block recommend recommend-index shadow"><div data-v-200fbf1c="" class="block-title">你可能感兴趣的小册</div><div data-v-200fbf1c="" class="block-body"><div data-v-4f1025eb="" data-v-200fbf1c="" class="book-list"><div data-v-4f1025eb="" data-v-200fbf1c="" class="book"><div data-v-4f1025eb="" data-v-200fbf1c="" class="poster"><div data-v-292b3648="" data-v-4d895a49="" data-v-4f1025eb="" data-src="https://user-gold-cdn.xitu.io/2018/10/29/166bdaf831fa3cce?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-200fbf1c="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/10/29/166bdaf831fa3cce?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-4f1025eb="" data-v-200fbf1c="" class="info"><div data-v-4f1025eb="" data-v-200fbf1c="" class="title">Python 实战：用 Scrapyd 打造个人化的爬虫部署管理控制台</div><div data-v-4f1025eb="" data-v-200fbf1c="" class="bought"><span data-v-4f1025eb="" data-v-200fbf1c="" class="num">1088人已购买</span><span data-v-4f1025eb="" data-v-200fbf1c="" class="try-read">试读</span></div></div></div><div data-v-4f1025eb="" data-v-200fbf1c="" class="book"><div data-v-4f1025eb="" data-v-200fbf1c="" class="poster"><div data-v-292b3648="" data-v-4d895a49="" data-v-4f1025eb="" data-src="https://user-gold-cdn.xitu.io/2019/2/25/16922a9c5a3527fa?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-200fbf1c="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/2/25/16922a9c5a3527fa?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-4f1025eb="" data-v-200fbf1c="" class="info"><div data-v-4f1025eb="" data-v-200fbf1c="" class="title">基于 ThreeJS 框架的魔方微信小游戏实践</div><div data-v-4f1025eb="" data-v-200fbf1c="" class="bought"><span data-v-4f1025eb="" data-v-200fbf1c="" class="num">897人已购买</span><span data-v-4f1025eb="" data-v-200fbf1c="" class="try-read">试读</span></div></div></div></div></div></div><div data-v-200fbf1c="" data-v-5bce0790="" data-v-7286dda2="" class="sidebar-block app-download-sidebar-block shadow"><!----><div data-v-200fbf1c="" class="block-body"><a data-v-5bce0790="" data-v-200fbf1c="" class="app-link" href="https://juejin.im/app" target="_blank"><img data-v-5bce0790="" data-v-200fbf1c="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/post.7cb7332.png" class="qr-img"><div data-v-5bce0790="" data-v-200fbf1c="" class="content-box"><div data-v-5bce0790="" data-v-200fbf1c="" class="headline">下载掘金客户端</div><div data-v-5bce0790="" data-v-200fbf1c="" class="desc">一个帮助开发者成长的社区</div></div><div data-v-5bce0790="" data-v-200fbf1c="" title="关闭" class="close-btn ion-close-round"></div></a></div></div><div data-v-200fbf1c="" data-v-4f3bf316="" data-v-7286dda2="" class="sidebar-block wechat-sidebar-block pure"><div data-v-32276d48="" data-v-4f3bf316="" class="wechat-banner" data-v-200fbf1c=""><img data-v-32276d48="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/frontend.1dae74a.png" class="wechat-img"></div><div data-v-4f3bf316="" data-v-200fbf1c="" title="关闭" class="close-btn ion-close-round"></div></div><div data-v-200fbf1c="" data-v-64a8a8ac="" data-v-7286dda2="" class="sidebar-block related-entry-sidebar-block shadow" st:block="relatedEntrySidebarBlock"><div data-v-200fbf1c="" class="block-title">相关文章</div><div data-v-200fbf1c="" class="block-body"><div data-v-64a8a8ac="" data-v-200fbf1c="" class="entry-list"><a data-v-64a8a8ac="" href="https://juejin.im/post/5e34d19de51d4558864b1d1f" target="_blank" rel="" st:name="link" class="item" data-v-200fbf1c=""><div data-v-64a8a8ac="" class="entry-title">🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇</div><div data-v-64a8a8ac="" class="entry-meta-box"><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-64a8a8ac="" class="count">854</span></div><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-64a8a8ac="" class="count">62</span></div></div></a><a data-v-64a8a8ac="" href="https://juejin.im/post/5dc6449ae51d452bd321252c" target="_blank" rel="" st:name="link" class="item" data-v-200fbf1c=""><div data-v-64a8a8ac="" class="entry-title">动画：什么是闭包？</div><div data-v-64a8a8ac="" class="entry-meta-box"><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-64a8a8ac="" class="count">315</span></div><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-64a8a8ac="" class="count">58</span></div></div></a><a data-v-64a8a8ac="" href="https://juejin.im/post/5e214c1a6fb9a02fc8247a86" target="_blank" rel="" st:name="link" class="item" data-v-200fbf1c=""><div data-v-64a8a8ac="" class="entry-title">🔥  《大前端吊打面试官系列》 之面试备战篇(近几十万字持续更新中，建议收藏~)</div><div data-v-64a8a8ac="" class="entry-meta-box"><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-64a8a8ac="" class="count">217</span></div><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-64a8a8ac="" class="count">19</span></div></div></a><a data-v-64a8a8ac="" href="https://juejin.im/post/5dda62cff265da7df03fca6f" target="_blank" rel="" st:name="link" class="item" data-v-200fbf1c=""><div data-v-64a8a8ac="" class="entry-title">动画：Flex布局 | 别再用传统方式进行网页布局了（上）</div><div data-v-64a8a8ac="" class="entry-meta-box"><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-64a8a8ac="" class="count">132</span></div><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-64a8a8ac="" class="count">14</span></div></div></a><a data-v-64a8a8ac="" href="https://juejin.im/post/5dcca1566fb9a02b787c4a88" target="_blank" rel="" st:name="link" class="item" data-v-200fbf1c=""><div data-v-64a8a8ac="" class="entry-title">图解 ：一篇彻底带你搞懂 JS 中的 this 指向问题</div><div data-v-64a8a8ac="" class="entry-meta-box"><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-64a8a8ac="" class="count">163</span></div><div data-v-64a8a8ac="" class="entry-meta"><img data-v-64a8a8ac="" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-64a8a8ac="" class="count">25</span></div></div></a></div></div></div><div data-v-7286dda2="" class="sticky-block-box"><div data-v-200fbf1c="" data-v-26763b8a="" data-v-7286dda2="" class="sidebar-block catalog-block pure"><nav data-v-311d93ec="" data-v-26763b8a="" class="article-catalog" data-v-200fbf1c="" style=""><div data-v-311d93ec="" class="catalog-title">目录</div><div data-v-311d93ec="" class="catalog-body"><ul data-v-311d93ec="" class="catalog-list" style="margin-top: 0px;"><li data-v-311d93ec="" class="item d1"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-0" title="📚更新日志">📚更新日志</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-1" title="接上篇文章《大前端吊打面试官系列》之备战面试篇，【传送门~】">接上篇文章《大前端吊打面试官系列》之备战面试篇，【传送门~】</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-2" title="本系列 Github 仓库 [传送门~]">本系列 Github 仓库 [传送门~]</a><!----></li></ul></li><li data-v-311d93ec="" class="item d1"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-3" title="目录">目录</a><!----></li><li data-v-311d93ec="" class="item d1"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-4" title="JavaScript 基础知识点">JavaScript 基础知识点</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-5" title="数据类型">数据类型</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-6" title="1、数据类型的存储形式">1、数据类型的存储形式</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-7" title="2、Null">2、Null</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-8" title="3、数据类型的判断">3、数据类型的判断</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-9" title="4、类型转换">4、类型转换</a><ul class="sub-list"><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-10" title="显式类型转换">显式类型转换</a><!----></li></ul></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-11" title="5、四则运算">5、四则运算</a><ul class="sub-list"><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-12" title="加法运算">加法运算</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-13" title="其他运算">其他运算</a><!----></li></ul></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-14" title="6、逻辑运算符">6、逻辑运算符</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-15" title="7、比较运算符">7、比较运算符</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-16" title="this">this</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-17" title="new">new</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-18" title="闭包">闭包</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-19" title="原型和原型链">原型和原型链</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-20" title="继承">继承</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-21" title="经典继承（构造函数）">经典继承（构造函数）</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-22" title="组合继承">组合继承</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-23" title="原型继承">原型继承</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-24" title="寄生式继承">寄生式继承</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-25" title="垃圾回收机制">垃圾回收机制</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-26" title="两种垃圾回收策略">两种垃圾回收策略</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-27" title="标记清除法">标记清除法</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-28" title="引用计数法">引用计数法</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-29" title="如何管理内存">如何管理内存</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-30" title="深拷贝和浅拷贝">深拷贝和浅拷贝</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-31" title="异步编程">异步编程</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-32" title="执行上下文">执行上下文</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-33" title="执行栈">执行栈</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-34" title="宏任务">宏任务</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-35" title="微任务">微任务</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-36" title="运行机制">运行机制</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-37" title="❤️ 最后不要忘记三连哦~ [点赞 + 收藏 + 评论]！">❤️ 最后不要忘记三连哦~ [点赞 + 收藏 + 评论]！</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e34d19de51d4558864b1d1f#heading-38" title="参考文献:">参考文献:</a><!----></li></ul></li></ul></div></nav></div></div></div><div data-v-18c05c07="" data-v-7407bc26="" class="article-suspended-panel article-suspended-panel" data-v-23c7d456=""><div data-v-18c05c07="" class="like-btn panel-btn like-adjust with-badge" badge="854"></div><div data-v-18c05c07="" class="comment-btn panel-btn comment-adjust with-badge" badge="62"></div><div data-v-18c05c07="" class="collect-btn panel-btn"><!----></div><div data-v-18c05c07="" class="share-title">分享</div><div data-v-18c05c07="" class="weibo-btn share-btn panel-btn"></div><div data-v-18c05c07="" class="qq-btn share-btn panel-btn"></div><div data-v-18c05c07="" class="wechat-btn share-btn panel-btn"><img data-v-18c05c07="" src="https://juejin.im/post/5e34d19de51d4558864b1d1f" class="wechat-qr-code-img shadow" style="display: none;"></div></div><div data-v-5db6962e="" data-v-7407bc26="" class="image-viewer-box" data-v-23c7d456=""><!----></div><!----></div></main></div><!----></div>
+      
+      
+      
+      <script type="text/javascript" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/runtime.cc2b750c14e4e98c0e3a.js"></script><script type="text/javascript" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/0.38bbdc24de2d86d47ad6.js"></script><script type="text/javascript" src="./🔥 动画：《大前端吊打面试官系列》 之原生 JavaScript 精华篇 - 掘金_files/1.b6186216ae7d3a6e6750.js"></script>
+    </body></html>
