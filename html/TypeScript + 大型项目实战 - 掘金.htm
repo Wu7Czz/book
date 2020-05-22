@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-6 -->
+<html lang="zh-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google-site-verification" content="cCHsgG9ktuCTgWgYfqCJql8AeR4gAne4DTZqztPoirE"><meta name="google-site-verification" content="nPvn9R5NJLsZKTv5VKIbn0OmkRcJ4PC6KdDoTX3n5Mw"><meta name="apple-itunes-app" content="app-id=987739104"><meta name="baidu-site-verification" content="qiK2a1kcFc"><meta name="360-site-verification" content="4c3c7d57d59f0e1a308462fbc7fd7e51"><meta name="sogou_site_verification" content="c49WUDZczQ"><style>body {
+        font-size: 16px;
+        line-height: 2;
+      }
+      a, button, input {
+        margin: 1rem 1.5rem;
+      }
+      img {
+        width: 0;
+        height: 0;
+      }
+      #juejin {
+        overflow-x: hidden;
+      }</style><title data-vue-meta="true">TypeScript + 大型项目实战 - 掘金</title><link rel="apple-touch-icon" sizes="180x180" href="https://b-gold-cdn.xitu.io/favicons/v2/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-16x16.png"><link rel="manifest" href="https://b-gold-cdn.xitu.io/favicons/v2/manifest.json"><link rel="mask-icon" href="https://b-gold-cdn.xitu.io/favicons/v2/safari-pinned-tab.svg" color="#5bbad5"><link rel="shortcut icon" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico"><meta name="msapplication-config" content="https://b-gold-cdn.xitu.io/favicons/v2/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="search" title="掘金" href="https://b-gold-cdn.xitu.io/conf/search.xml" type="application/opensearchdescription+xml"><link rel="stylesheet" href="./TypeScript + 大型项目实战 - 掘金_files/ionicons.min.css"><link rel="stylesheet" href="./TypeScript + 大型项目实战 - 掘金_files/iconfont.css"><link href="./TypeScript + 大型项目实战 - 掘金_files/0.f1fc61eda29199ce1f45.css" rel="stylesheet"><script async="" src="./TypeScript + 大型项目实战 - 掘金_files/hm.js"></script><script async="" src="./TypeScript + 大型项目实战 - 掘金_files/analytics.js"></script><script type="text/javascript" async="" src="./TypeScript + 大型项目实战 - 掘金_files/vds.js"></script><script type="text/javascript" async="" src="./TypeScript + 大型项目实战 - 掘金_files/collect-v.3.2.14.js"></script><script charset="utf-8" src="./TypeScript + 大型项目实战 - 掘金_files/4.281438b56343cf12fa0b.js"></script><meta data-vmid="keywords" name="keywords" content="Vue.js,JavaScript,前端,TypeScript" data-vue-meta="true"><meta data-vmid="description" name="description" content="写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块 一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等 每一个模" data-vue-meta="true"></head><body><div id="juejin" data-v-2a21baac=""><div class="global-component-box" data-v-2a21baac=""><!----><div data-v-5ef5fb43="" data-v-2a21baac="" class="alert-list alert-list"></div><div data-v-15608c17="" data-v-2a21baac="" class="suspension-panel suspension-panel"><button data-v-15608c17="" title="回到顶部" class="btn to-top-btn" style=""><i data-v-15608c17="" class="ion-android-arrow-dropup"></i></button><button data-v-15608c17="" title="建议反馈" class="btn meiqia-btn" style=""><i data-v-15608c17="" class="ion-chatbubble-working"></i></button></div><!----><!----><div class="emoji-barrage" data-v-94fd086c="" data-v-2a21baac=""><!----></div><div class="book-new-user-award-popup" style="display:none;" data-v-22fa60e5="" data-v-2a21baac=""><div class="content-box" style="display:;" data-v-22fa60e5=""><div class="close ion-close-round" data-v-22fa60e5=""></div><div class="header" data-v-22fa60e5=""><div class="icon" data-v-22fa60e5=""><img src="./TypeScript + 大型项目实战 - 掘金_files/icon.a87e5ae.svg" data-v-22fa60e5=""></div><div class="txt" data-v-22fa60e5="">新人专享好礼</div></div><div class="desc" data-v-22fa60e5="">凡未购买过小册的用户，均可领取三张 5 折新人专享券，购买小册时自动使用专享券，最高可节省 45 元。</div><div class="tickets" data-v-22fa60e5=""><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div></div><div class="remark" data-v-22fa60e5="">注：专享券的使用期限在领券的七天内。</div><div class="submit-btn" data-v-22fa60e5="">一键领取</div></div><div class="model success" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取成功</div><div class="content-text" data-v-22fa60e5="">购买小册时自动使用专享券</div><div class="btn-success-footer" data-v-22fa60e5=""><div class="btn-ok" data-v-22fa60e5="">知道了</div><div class="btn-ok btn-link" data-v-22fa60e5="">前往小册首页</div></div></div><div class="model fail" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取失败</div><div class="content-text" data-v-22fa60e5="">本活动仅适用于小册新用户</div><div class="btn-ok" data-v-22fa60e5="">知道了</div></div></div><!----><!----><div class="bind-phone-number-modal-box" data-v-269c0ad0="" data-v-2a21baac=""><div st:block="bindPhoneNumberModal" class="modal-mask" style="display:none;" data-v-269c0ad0=""></div><form class="bind-phone-number-form" style="display:none;" data-v-269c0ad0=""><i title="关闭" class="close-btn ion-close-round" data-v-269c0ad0=""></i><h1 class="title" data-v-269c0ad0="">提示</h1><h2 class="hint" data-v-269c0ad0="">根据我国<a href="http://www.cac.gov.cn/2017-08/25/c_1121541842.htm" target="_blank" style="color:#007fff">《互联网跟帖评论服务管理规定》</a>，您需要绑定手机号后才可在掘金社区内发布内容。</h2><div class="input-group" data-v-269c0ad0=""><div class="input-box" data-v-269c0ad0=""><input maxlength="64" placeholder="请输入要绑定的手机号码" value="" class="input" data-v-269c0ad0=""></div><!----><!----></div><button st:name="bindBtn" class="btn" data-v-269c0ad0="">绑定手机</button></form></div></div><!----><div data-v-6fdc8784="" data-v-fa2339b8="" data-v-2a21baac="" class="view-container"><div data-v-6fdc8784="" class="main-header-box"><header data-v-0c56945c="" data-v-6fdc8784="" class="main-header main-header visible"><div data-v-0c56945c="" class="container"><a data-v-0c56945c="" href="https://juejin.im/" class="logo"><img data-v-0c56945c="" src="./TypeScript + 大型项目实战 - 掘金_files/logo.a7995ad.svg" alt="掘金" class="logo-img"><img data-v-0c56945c="" src="./TypeScript + 大型项目实战 - 掘金_files/simplify-logo.3e3c253.svg" alt="掘金" class="mobile"></a><nav data-v-0c56945c="" role="navigation" class="main-nav"><ul data-v-0c56945c="" class="nav-list"><li data-v-0c56945c="" class="main-nav-list"><div data-v-0c56945c="" class="phone-show-menu"><span data-v-0c56945c="">首页</span><div data-v-0c56945c="" class="icon ion-arrow-down-b"></div></div><ul data-v-0c56945c="" class="phone-hide"><li data-v-0c56945c="" class="nav-item link-item route-active"><a data-v-0c56945c="" href="https://juejin.im/">首页</a></li><li data-v-0c56945c="" class="nav-item link-item activities"><a data-v-0c56945c="" href="https://juejin.im/pins">沸点</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/topics">话题</a></li><li data-v-0c56945c="" class="nav-item link-item book"><a data-v-0c56945c="" href="https://juejin.im/books">小册</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/events/all">活动</a></li></ul></li><li data-v-0c56945c="" class="nav-item search"><form data-v-0c56945c="" role="search" class="search-form"><input data-v-0c56945c="" type="search" maxlength="32" placeholder="搜索掘金" class="search-input"><img data-v-0c56945c="" src="./TypeScript + 大型项目实战 - 掘金_files/juejin-search-icon.6f8ba1b.svg" alt="搜索" class="search-icon"></form></li><li data-v-0c56945c="" class="nav-item add"><div data-v-0c56945c="" class="add-group"><button data-v-0c56945c="" class="add-btn">写文章</button><div data-v-0c56945c="" class="more"><i data-v-0c56945c="" class="more-icon ion-android-arrow-dropdown"></i></div><ul data-v-0c56945c="" class="more-list"><li data-v-0c56945c="" class="item">发布沸点</li><li data-v-0c56945c="" class="item">分享链接</li><!----></ul></div><!----></li><li data-v-0c56945c="" class="nav-item notification"><a data-v-0c56945c="" class="app-link" href="https://juejin.im/notification" target="_blank"><i data-v-0c56945c="" class="icon ion-android-notifications"></i><!----></a></li><li data-v-0c56945c="" class="nav-item menu"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-0c56945c="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded immediate" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><!----><ul data-v-0c56945c="" class="nav-menu user-dropdown-list" style="display: none;"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-write"></i><span data-v-0c56945c="">写文章</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-draft"></i><span data-v-0c56945c="">草稿</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0" class="link-icon"><i data-v-0c56945c="" class="fengwei fw-person"></i><span data-v-0c56945c="">我的主页</span><!----></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/likes"><img data-v-0c56945c="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="zan"><span data-v-0c56945c="">我赞过的</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/collections"><img data-v-0c56945c="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="collect"><span data-v-0c56945c="">我的收藏集</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/books?type=bought"><i data-v-0c56945c="" class="fengwei fw-bought"></i><span data-v-0c56945c="">已购</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/subscribe"><i data-v-0c56945c="" class="fengwei fw-tag"></i><span data-v-0c56945c="">标签管理</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/settings"><i data-v-0c56945c="" class="fengwei fw-setting"></i><span data-v-0c56945c="">设置</span></a></li><li data-v-0c56945c="" class="nav-menu-item more"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-info"></i><span data-v-0c56945c="">关于</span><i data-v-0c56945c="" class="ion-chevron-right more-icon"></i></a><ul data-v-0c56945c="" class="nav-menu more-dropdown-list"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/app" target="_blank">下载应用</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/about" target="_blank">关于</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://xitu.io/jobs" target="_blank">加入我们</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://github.com/xitu/gold-miner" rel="nofollow noopener noreferrer" target="_blank">翻译计划</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://bd.juejin.im/?utm_campaign=bd&amp;utm_source=web&amp;utm_medium=nav" target="_blank">合作伙伴</a></li></div></ul></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-logout"></i><span data-v-0c56945c="">登出</span></a></li></div></ul></li><!----><!----></ul></nav></div></header></div><main data-v-6fdc8784="" class="container main-container"><div data-v-fa2339b8="" data-v-6fdc8784="" class="view column-view"><div data-v-fa2339b8="" data-v-6fdc8784="" class="main-area article-area shadow"><article data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Article" class="article" data-v-6fdc8784=""><meta itemprop="url" content="https://juejin.im/post/5b54886ce51d45198f5c75d7"><meta itemprop="headline" content="TypeScript + 大型项目实战"><meta itemprop="keywords" content="Vue.js,JavaScript,前端,TypeScript"><meta itemprop="datePublished" content="2018-07-22T14:37:50.008Z"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?w=1024&amp;h=640&amp;f=jpeg&amp;s=40413"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="name" content="qiangdada"><meta itemprop="url" content="https://juejin.im/user/582e663467f3560063395f4c"></div><div itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="掘金"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://b-gold-cdn.xitu.io/icon/icon-white-180.png"><meta itemprop="width" content="180"><meta itemprop="height" content="180"></div></div><div data-v-fa2339b8="" class="author-info-block"><a data-v-fa2339b8="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2019/8/21/16cb4188c21018fe?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a><div data-v-fa2339b8="" class="author-info-box"><a data-v-263f3a32="" data-v-fa2339b8="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" class="username username ellipsis">qiangdada<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./TypeScript + 大型项目实战 - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a></a><div data-v-fa2339b8="" class="meta-box"><time data-v-fa2339b8="" datetime="2018-07-22T14:37:50.008Z" title="Sun Jul 22 2018 22:37:50 GMT+0800 (中国标准时间)" class="time">2018年07月22日</time><span data-v-fa2339b8="" class="views-count">阅读 40660</span><!----></div></div><button data-v-5789daef="" data-v-fa2339b8="" class="follow-button follow">关注</button></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" class="lazy thumb article-hero" style="background-image: none; background-size: cover;"></div><h1 data-v-fa2339b8="" class="article-title">TypeScript + 大型项目实战</h1><div data-v-fa2339b8="" data-id="5b5496bdf265da0fac1e14df" itemprop="articleBody" class="article-content"><h2 class="heading" data-id="heading-0">写在前面</h2>
+<p>TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。</p>
+<p>项目要做的事情大致分为以下几个大模块</p>
+<ul>
+<li>一站式管理平台</li>
+<li>规模化运维能力</li>
+<li>预案平台</li>
+<li>巡检平台</li>
+<li>全链路压测等</li>
+</ul>
+<p>每一个模块要做的事情也很多，由于牵扯到公司业务，具体要做的一些事情这里我就不一一列举了，反正项目整体规模还是很大的。</p>
+<h2 class="heading" data-id="heading-1">一、关于选型</h2>
+<p>在做了一些技术调研后，再结合项目之后的开发量级以及维护成本。最终我和同事在技术选型上得出一致结论，最终选型定为 Vue 最新全家桶 + TypeScript。</p>
+<p>那么问题来了，为什么大型项目非得用 TypeScript 呢，ES6、7 不行么？</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c239019ab71a9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="188" data-height="198" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;188&quot; height=&quot;198&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>其实也没说不行，只不过我个人更倾向在一些协作开发的大型项目中使用 TypeScript 。下面我列一些我做完调研后自己的一些看法</p>
+<ol>
+<li>
+<p>首先，TypeScript 具有类型系统，且是 JavaScript 的超集。 JavaScript 能做的，它能做。JavaScript 不能做的，它也能做。</p>
+</li>
+<li>
+<p>其次，TypeScript 已经比较成熟了，市面上相关资料也比较多，大部分的库和框架也读对 TypeScript 做了很好的支持。</p>
+</li>
+<li>
+<p>然后，保证优秀的前提下，它还在积极的开发完善之中，不断地会有新的特性加入进来</p>
+</li>
+<li>
+<p>JavaScript 是弱类型并且没有命名空间，导致很难模块化，使得其在大型的协作项目中不是很方便</p>
+</li>
+<li>
+<p>vscode、ws 等编辑器对 TypeScript 支持很友好</p>
+</li>
+<li>
+<p>TypeScript 在组件以及业务的类型校验上支持比较好，比如</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-comment">// 定义枚举</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">enum</span> StateEnum {
+  TO_BE_DONE = <span class="hljs-number">0</span>,
+  DOING = <span class="hljs-number">1</span>,
+  DONE = <span class="hljs-number">2</span>
+}
+
+<span class="hljs-comment">// 定义 item 接口</span>
+<span class="hljs-keyword">interface</span> SrvItem {
+  val: <span class="hljs-built_in">string</span>,
+  key: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-comment">// 定义服务接口</span>
+<span class="hljs-keyword">interface</span> SrvType {
+  name: <span class="hljs-built_in">string</span>,
+  key: <span class="hljs-built_in">string</span>,
+  state?: StateEnum,
+  item: <span class="hljs-built_in">Array</span>&lt;SrvItem&gt;
+}
+
+<span class="hljs-comment">// 然后定义初始值（如果不按照类型来，报错肯定是避免不了的）</span>
+<span class="hljs-keyword">const</span> types: SrvType = {
+  name: <span class="hljs-string">''</span>,
+  key: <span class="hljs-string">''</span>,
+  item: []
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>配合好编辑器，如果不按照定义好的类型来的话，编辑器本身就会给你报错，而不会等到编译才来报错</p>
+</li>
+<li>
+<p>命令空间 + 接口申明更方便类型校验，防止代码的不规范</p>
+<p>比如，你在一个 ajax.d.ts 文件定义了 ajax 的返回类型</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">namespace</span> Ajax {
+  <span class="hljs-comment">// axios 返回数据</span>
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> AxiosResponse {
+    data: AjaxResponse
+  }
+
+  <span class="hljs-comment">// 请求接口数据</span>
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> AjaxResponse {
+    code: <span class="hljs-built_in">number</span>,
+    data: object | <span class="hljs-literal">null</span> | <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">any</span>&gt;,
+    message: <span class="hljs-built_in">string</span>
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>然后在请求的时候就能进行使用</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">this</span>.axiosRequest({ key: <span class="hljs-string">'idc'</span> }).then(<span class="hljs-function">(<span class="hljs-params">res: Ajax.AjaxResponse</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(res)
+})
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>可以使用 泛型 来创建可重用的组件。比如你想创建一个参数类型和返回值类型是一样的通用方法</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>&lt;<span class="hljs-title">T</span>&gt; (<span class="hljs-params">arg: T</span>): <span class="hljs-title">T</span> </span>{
+  <span class="hljs-keyword">return</span> arg
+}
+<span class="hljs-keyword">let</span> output = foo(<span class="hljs-string">'string'</span>) <span class="hljs-comment">// type of output will be 'string'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>再比如，你想使用泛型来锁定代码里使用的类型</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> GenericInterface&lt;T&gt; {
+  (arg: T): T
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>&lt;<span class="hljs-title">T</span>&gt; (<span class="hljs-params">arg: T</span>): <span class="hljs-title">T</span> </span>{
+  <span class="hljs-keyword">return</span> arg
+}
+
+<span class="hljs-comment">// 锁定 myFoo 只能传入 number 类型的参数，传其他类型的参数则会报错</span>
+<span class="hljs-keyword">let</span> myFoo: GenericInterface&lt;<span class="hljs-built_in">number</span>&gt; = foo
+myFoo(<span class="hljs-number">123</span>)
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ol>
+<p>总之，还有很多使用 TypeScript 的好处，这里我就不一一列举了，感兴趣的小伙伴可以自己去查资料</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c239582fb860f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="28" data-height="28" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;28&quot; height=&quot;28&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-2">二、基础建设</h2>
+<h3 class="heading" data-id="heading-3">1、初始化结构</h3>
+<p>我这边使用的是最新版本脚手架 vue-cli 3 进行项目初始化的，初始化选项如下</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c23a218cb8f45?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1226" data-height="512" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1226&quot; height=&quot;512&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>生成的目录结构如下</p>
+<pre><code class="hljs shell copyable" lang="shell">├── public                          // 静态页面
+├── src                             // 主目录
+    ├── assets                      // 静态资源
+    ├── components                  // 组件
+    ├── views                       // 页面
+    ├── App.vue                     // 页面主入口
+    ├── main.ts                     // 脚本主入口
+    ├── registerServiceWorker.ts    // PWA 配置
+    ├── router.ts                   // 路由
+    ├── shims-tsx.d.ts              // 相关 tsx 模块注入
+    ├── shims-vue.d.ts              // Vue 模块注入
+    └── store.ts                    // vuex 配置
+├── tests                           // 测试用例
+├── .postcssrc.js                   // postcss 配置
+├── package.json                    // 依赖
+├── tsconfig.json                   // ts 配置
+└── tslint.json                     // tslint 配置
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-4">2、改造后的结构</h3>
+<p>显然这些是不能够满足正常业务的开发的，所以我这边做了一版基础建设方面的改造。改造完后项目结构如下</p>
+<pre><code class="hljs shell copyable" lang="shell">├── public                          // 静态页面
+├── scripts                         // 相关脚本配置
+├── src                             // 主目录
+    ├── assets                      // 静态资源
+    ├── filters                     // 过滤
+    ├── lib                         // 全局插件
+    ├── router                      // 路由配置
+    ├── store                       // vuex 配置
+    ├── styles                      // 样式
+    ├── types                       // 全局注入
+    ├── utils                       // 工具方法(axios封装，全局方法等)
+    ├── views                       // 页面
+    ├── App.vue                     // 页面主入口
+    ├── main.ts                     // 脚本主入口
+    ├── registerServiceWorker.ts    // PWA 配置
+├── tests                           // 测试用例
+├── .editorconfig                   // 编辑相关配置
+├── .npmrc                          // npm 源配置
+├── .postcssrc.js                   // postcss 配置
+├── babel.config.js                 // preset 记录
+├── cypress.json                    // e2e plugins
+├── f2eci.json                      // 部署相关配置
+├── package.json                    // 依赖
+├── README.md                       // 项目 readme
+├── tsconfig.json                   // ts 配置
+├── tslint.json                     // tslint 配置
+└── vue.config.js                   // webpack 配置
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-5">3、模块改造</h3>
+<p>接下来，我将介绍项目中部分模块的改造</p>
+<h4 class="heading" data-id="heading-6">i、路由懒加载</h4>
+<p>这里使用了 webpack 的按需加载 import，将相同模块的东西放到同一个 chunk 里面，在 <code>router/index.ts</code> 中写入</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-router'</span>
+
+Vue.use(Router)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router({
+  routes: [
+    { path: <span class="hljs-string">'/'</span>, name: <span class="hljs-string">'home'</span>, component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-comment">/* webpackChunkName: "home" */</span> <span class="hljs-string">'views/home/index.vue'</span>) }
+  ]
+})
+<span class="copy-code-btn">复制代码</span></code></pre><h4 class="heading" data-id="heading-7">ii、axios 封装</h4>
+<p>在 <code>utils/config.ts</code> 中写入 <code>axios</code> 相关配置（只列举了一小部分，具体请小伙伴们自己根据自身业务进行配置）</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">import</span> http <span class="hljs-keyword">from</span> <span class="hljs-string">'http'</span>
+<span class="hljs-keyword">import</span> https <span class="hljs-keyword">from</span> <span class="hljs-string">'https'</span>
+<span class="hljs-keyword">import</span> qs <span class="hljs-keyword">from</span> <span class="hljs-string">'qs'</span>
+<span class="hljs-keyword">import</span> { AxiosResponse, AxiosRequestConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">'axios'</span>
+
+<span class="hljs-keyword">const</span> axiosConfig: AxiosRequestConfig = {
+  baseURL: <span class="hljs-string">'/'</span>,
+  <span class="hljs-comment">// 请求后的数据处理</span>
+  transformResponse: [<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data: AxiosResponse</span>) </span>{
+    <span class="hljs-keyword">return</span> data
+  }],
+  <span class="hljs-comment">// 查询对象序列化函数</span>
+  paramsSerializer: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">params: <span class="hljs-built_in">any</span></span>) </span>{
+    <span class="hljs-keyword">return</span> qs.stringify(params)
+  },
+  <span class="hljs-comment">// 超时设置s</span>
+  timeout: <span class="hljs-number">30000</span>,
+  <span class="hljs-comment">// 跨域是否带Token</span>
+  withCredentials: <span class="hljs-literal">true</span>,
+  responseType: <span class="hljs-string">'json'</span>,
+  <span class="hljs-comment">// xsrf 设置</span>
+  xsrfCookieName: <span class="hljs-string">'XSRF-TOKEN'</span>,
+  xsrfHeaderName: <span class="hljs-string">'X-XSRF-TOKEN'</span>,
+  <span class="hljs-comment">// 最多转发数，用于node.js</span>
+  maxRedirects: <span class="hljs-number">5</span>,
+  <span class="hljs-comment">// 最大响应数据大小</span>
+  maxContentLength: <span class="hljs-number">2000</span>,
+  <span class="hljs-comment">// 自定义错误状态码范围</span>
+  validateStatus: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">status: <span class="hljs-built_in">number</span></span>) </span>{
+    <span class="hljs-keyword">return</span> status &gt;= <span class="hljs-number">200</span> &amp;&amp; status &lt; <span class="hljs-number">300</span>
+  },
+  <span class="hljs-comment">// 用于node.js</span>
+  httpAgent: <span class="hljs-keyword">new</span> http.Agent({ keepAlive: <span class="hljs-literal">true</span> }),
+  httpsAgent: <span class="hljs-keyword">new</span> https.Agent({ keepAlive: <span class="hljs-literal">true</span> })
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> axiosConfig
+<span class="copy-code-btn">复制代码</span></code></pre><p>接下来，需要在 <code>utils/api.ts</code> 中做一些全局的拦截操作，这里我在拦截器里统一处理了取消重复请求，如果你的业务不需要，请自行去掉</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">'axios'</span>
+<span class="hljs-keyword">import</span> config <span class="hljs-keyword">from</span> <span class="hljs-string">'./config'</span>
+
+<span class="hljs-comment">// 取消重复请求</span>
+<span class="hljs-keyword">let</span> pending: <span class="hljs-built_in">Array</span>&lt;{
+  url: <span class="hljs-built_in">string</span>,
+  cancel: <span class="hljs-built_in">Function</span>
+}&gt; = []
+<span class="hljs-keyword">const</span> cancelToken = axios.CancelToken
+<span class="hljs-keyword">const</span> removePending = <span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> p <span class="hljs-keyword">in</span> pending) {
+    <span class="hljs-keyword">let</span> item: <span class="hljs-built_in">any</span> = p
+    <span class="hljs-keyword">let</span> list: <span class="hljs-built_in">any</span> = pending[p]
+    <span class="hljs-comment">// 当前请求在数组中存在时执行函数体</span>
+    <span class="hljs-keyword">if</span> (list.url === config.url + <span class="hljs-string">'&amp;request_type='</span> + config.method) {
+      <span class="hljs-comment">// 执行取消操作</span>
+      list.cancel()
+      <span class="hljs-comment">// 从数组中移除记录</span>
+      pending.splice(item, <span class="hljs-number">1</span>)
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> service = axios.create(config)
+
+<span class="hljs-comment">// 添加请求拦截器</span>
+service.interceptors.request.use(
+  <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> {
+    removePending(config)
+    config.cancelToken = <span class="hljs-keyword">new</span> cancelToken(<span class="hljs-function">(<span class="hljs-params">c</span>) =&gt;</span> {
+      pending.push({ url: config.url + <span class="hljs-string">'&amp;request_type='</span> + config.method, cancel: c })
+    })
+    <span class="hljs-keyword">return</span> config
+  },
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(error)
+  }
+)
+
+<span class="hljs-comment">// 返回状态判断(添加响应拦截器)</span>
+service.interceptors.response.use(
+  <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    removePending(res.config)
+    <span class="hljs-keyword">return</span> res
+  },
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(error)
+  }
+)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> service
+<span class="copy-code-btn">复制代码</span></code></pre><p>为了方便，我们还需要定义一套固定的 axios 返回的格式，这个我们直接定义在全局即可。在 <code>types/ajax.d.ts</code> 文件中写入</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">namespace</span> Ajax {
+  <span class="hljs-comment">// axios 返回数据</span>
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> AxiosResponse {
+    data: AjaxResponse
+  }
+
+  <span class="hljs-comment">// 请求接口数据</span>
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> AjaxResponse {
+    code: <span class="hljs-built_in">number</span>,
+    data: <span class="hljs-built_in">any</span>,
+    message: <span class="hljs-built_in">string</span>
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>接下来，我们将会把所有的 <code>axios</code> 放到 <code>vuex</code> 的 <code>actions</code> 中做统一管理</p>
+<h4 class="heading" data-id="heading-8">iii、vuex 模块化管理</h4>
+<p>store 下面，一个文件夹代表一个模块，store 大致目录如下</p>
+<pre><code class="hljs shell copyable" lang="shell">├── home                            // 主目录
+    ├── index.ts                    // vuex state getters mutations action 管理
+    ├── interface.ts                // 接口管理
+└── index.ts                        // vuex 主入口
+<span class="copy-code-btn">复制代码</span></code></pre><p>在 <code>home/interface.ts</code> 中管理相关模块的接口</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> HomeContent {
+  name: <span class="hljs-built_in">string</span>
+  m1?: <span class="hljs-built_in">boolean</span>
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> State {
+  count: <span class="hljs-built_in">number</span>,
+  test1?: <span class="hljs-built_in">Array</span>&lt;HomeContent&gt;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>然后在 <code>home/index.ts</code> 定义相关 <code>vuex</code> 模块内容</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">import</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">'@/service'</span>
+<span class="hljs-keyword">import</span> { State } <span class="hljs-keyword">from</span> <span class="hljs-string">'./interface'</span>
+<span class="hljs-keyword">import</span> { Commit } <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span>
+
+<span class="hljs-keyword">interface</span> GetTodayWeatherParam {
+  city: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">const</span> state: State = {
+  count: <span class="hljs-number">0</span>,
+  test1: []
+}
+
+<span class="hljs-keyword">const</span> getters = {
+  count: <span class="hljs-function">(<span class="hljs-params">state: State</span>) =&gt;</span> state.count,
+  message: <span class="hljs-function">(<span class="hljs-params">state: State</span>) =&gt;</span> state.message
+}
+
+<span class="hljs-keyword">const</span> mutations = {
+  INCREMENT (state: State, num: <span class="hljs-built_in">number</span>) {
+    state.count += num
+  }
+}
+
+<span class="hljs-keyword">const</span> actions = {
+  <span class="hljs-keyword">async</span> getTodayWeather (context: { commit: Commit }, params: GetTodayWeatherParam) {
+    <span class="hljs-keyword">return</span> request.get(<span class="hljs-string">'/api/weatherApi'</span>, { params: params })
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  state,
+  getters,
+  mutations,
+  actions
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>然后我们就能在页面中使用了啦</p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"home"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ count }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"default"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"INCREMENT(2)"</span>&gt;</span>INCREMENT<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"DECREMENT(2)"</span>&gt;</span>DECREMENT<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"city"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入城市"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"danger"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"getCityWeather(city)"</span>&gt;</span>获取天气<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">import</span> { Component, Vue } <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-property-decorator'</span>
+<span class="hljs-keyword">import</span> { State, Getter, Mutation, Action } <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex-class'</span>
+
+@Component
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Home</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vue</span> </span>{
+  city: string = <span class="hljs-string">'上海'</span>
+    
+  @Getter(<span class="hljs-string">'count'</span>) count: number
+  @Mutation(<span class="hljs-string">'INCREMENT'</span>) INCREMENT: <span class="hljs-built_in">Function</span>
+  @Mutation(<span class="hljs-string">'DECREMENT'</span>) DECREMENT: <span class="hljs-built_in">Function</span>
+  @Action(<span class="hljs-string">'getTodayWeather'</span>) getTodayWeather: <span class="hljs-built_in">Function</span>
+
+  getCityWeather (city: string) {
+    <span class="hljs-keyword">this</span>.getTodayWeather({ <span class="hljs-attr">city</span>: city }).then(<span class="hljs-function">(<span class="hljs-params">res: Ajax.AjaxResponse</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> { low, high, type } = res.data.forecast[<span class="hljs-number">0</span>]
+      <span class="hljs-keyword">this</span>.$message.success(<span class="hljs-string">`<span class="hljs-subst">${city}</span>今日：<span class="hljs-subst">${type}</span> <span class="hljs-subst">${low}</span> - <span class="hljs-subst">${high}</span>`</span>)
+    })
+  }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>至于更多的改造，这里我就不再介绍了。接下来的小节将介绍一下 ts 在 vue 文件中的一些写法</p>
+<h2 class="heading" data-id="heading-9">三、vue 中 ts 的用法</h2>
+<h3 class="heading" data-id="heading-10">1、vue-property-decorator</h3>
+<p>这里单页面组件的书写采用的是 <a target="_blank" href="https://github.com/kaorun343/vue-property-decorator" rel="nofollow noopener noreferrer">vue-property-decorator</a> 库，该库完全依赖于 <a target="_blank" href="https://github.com/vuejs/vue-class-component" rel="nofollow noopener noreferrer">vue-class-component</a> ，也是 vue 官方推荐的库。</p>
+<p>单页面组件中，在 <code>@Component({})</code> 里面写 <code>props</code>、<code>data</code> 等调用起来极其不方便，而 <code>vue-property-decorator</code> 里面包含了 8 个装饰符则解决了此类问题，他们分别为</p>
+<ul>
+<li><code>@Emit</code>		   指定事件 emit，可以使用此修饰符，也可以直接使用 <code>this.$emit()</code></li>
+<li><code>@Inject</code>          指定依赖注入）</li>
+<li><code>@Mixins</code>          mixin 注入</li>
+<li><code>@Model</code>            指定 model</li>
+<li><code>@Prop</code>              指定 Prop</li>
+<li><code>@Provide</code>        指定 Provide</li>
+<li><code>@Watch</code>            指定 Watch</li>
+<li><code>@Component</code>    export from <code>vue-class-component</code></li>
+</ul>
+<p>举个🌰</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">import</span> {
+  Component, Prop, Watch, Vue
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-property-decorator'</span>
+
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyComponent <span class="hljs-keyword">extends</span> Vue {
+  dataA: <span class="hljs-built_in">string</span> = <span class="hljs-string">'test'</span>
+    
+  <span class="hljs-meta">@Prop</span>({ <span class="hljs-keyword">default</span>: <span class="hljs-number">0</span> })
+  propA: <span class="hljs-built_in">number</span>
+
+  <span class="hljs-comment">// watcher</span>
+  <span class="hljs-meta">@Watch</span>(<span class="hljs-string">'child'</span>)
+  onChildChanged (val: <span class="hljs-built_in">string</span>, oldVal: <span class="hljs-built_in">string</span>) {}
+  <span class="hljs-meta">@Watch</span>(<span class="hljs-string">'person'</span>, { immediate: <span class="hljs-literal">true</span>, deep: <span class="hljs-literal">true</span> })
+  onPersonChanged (val: Person, oldVal: Person) {}
+
+  <span class="hljs-comment">// 其他修饰符详情见上面的 github 地址，这里就不一一做说明了</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>解析之后会变成</p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  data () {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">dataA</span>: <span class="hljs-string">'test'</span>
+    }
+  },
+  <span class="hljs-attr">props</span>: {
+    <span class="hljs-attr">propA</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-built_in">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">0</span>
+    }
+  },
+  <span class="hljs-attr">watch</span>: {
+    <span class="hljs-string">'child'</span>: {
+      <span class="hljs-attr">handler</span>: <span class="hljs-string">'onChildChanged'</span>,
+      <span class="hljs-attr">immediate</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">deep</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-string">'person'</span>: {
+      <span class="hljs-attr">handler</span>: <span class="hljs-string">'onPersonChanged'</span>,
+      <span class="hljs-attr">immediate</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>
+    }
+  },
+  <span class="hljs-attr">methods</span>: {
+    onChildChanged (val, oldVal) {},
+    onPersonChanged (val, oldVal) {}
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-11">2、vuex-class</h3>
+<p><a target="_blank" href="https://github.com/ktsn/vuex-class/" rel="nofollow noopener noreferrer">vuex-class</a> 是一个基于 <a target="_blank" href="https://github.com/vuejs/vue" rel="nofollow noopener noreferrer">Vue</a>、<a target="_blank" href="https://github.com/vuejs/vuex" rel="nofollow noopener noreferrer">Vuex</a>、<a target="_blank" href="https://github.com/vuejs/vue-class-component" rel="nofollow noopener noreferrer">vue-class-component</a> 的库，和 <code>vue-property-decorator</code> 一样，它也提供了4 个修饰符以及 namespace，解决了 vuex 在 .vue 文件中使用上的不便的问题。</p>
+<ul>
+<li>@State</li>
+<li>@Getter</li>
+<li>@Mutation</li>
+<li>@Action</li>
+<li>namespace</li>
+</ul>
+<p>copy 一个官方的🌰</p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> Component <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-class-component'</span>
+<span class="hljs-keyword">import</span> {
+  State,
+  Getter,
+  Action,
+  Mutation,
+  <span class="hljs-keyword">namespace</span>
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex-class'</span>
+
+<span class="hljs-keyword">const</span> someModule = <span class="hljs-keyword">namespace</span>(<span class="hljs-string">'path/to/module'</span>)
+
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyComp <span class="hljs-keyword">extends</span> Vue {
+  <span class="hljs-meta">@State</span>(<span class="hljs-string">'foo'</span>) stateFoo
+  <span class="hljs-meta">@State</span>(<span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state.bar) stateBar
+  <span class="hljs-meta">@Getter</span>(<span class="hljs-string">'foo'</span>) getterFoo
+  <span class="hljs-meta">@Action</span>(<span class="hljs-string">'foo'</span>) actionFoo
+  <span class="hljs-meta">@Mutation</span>(<span class="hljs-string">'foo'</span>) mutationFoo
+  <span class="hljs-meta">@someModule</span>.Getter(<span class="hljs-string">'foo'</span>) moduleGetterFoo
+
+  <span class="hljs-comment">// If the argument is omitted, use the property name</span>
+  <span class="hljs-comment">// for each state/getter/action/mutation type</span>
+  <span class="hljs-meta">@State</span> foo
+  <span class="hljs-meta">@Getter</span> bar
+  <span class="hljs-meta">@Action</span> baz
+  <span class="hljs-meta">@Mutation</span> qux
+
+  created () {
+    <span class="hljs-keyword">this</span>.stateFoo <span class="hljs-comment">// -&gt; store.state.foo</span>
+    <span class="hljs-keyword">this</span>.stateBar <span class="hljs-comment">// -&gt; store.state.bar</span>
+    <span class="hljs-keyword">this</span>.getterFoo <span class="hljs-comment">// -&gt; store.getters.foo</span>
+    <span class="hljs-keyword">this</span>.actionFoo({ value: <span class="hljs-literal">true</span> }) <span class="hljs-comment">// -&gt; store.dispatch('foo', { value: true })</span>
+    <span class="hljs-keyword">this</span>.mutationFoo({ value: <span class="hljs-literal">true</span> }) <span class="hljs-comment">// -&gt; store.commit('foo', { value: true })</span>
+    <span class="hljs-keyword">this</span>.moduleGetterFoo <span class="hljs-comment">// -&gt; store.getters['path/to/module/foo']</span>
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>到这里，ts 在 .vue 文件中的用法介绍的也差不多了。我也相信小伙伴看到这，对其大致的语法糖也有了一定的了解了</p>
+<h3 class="heading" data-id="heading-12">3、一些建议</h3>
+<ul>
+<li>如果定义了 <code>.d.ts</code> 文件，请重新启动服务让你的服务能够识别你定义的模块，并重启 vscode 让编辑器也能够识别（真的恶心）</li>
+<li>设置好你的 <code>tsconfig</code> ，比如记得把 <code>strictPropertyInitialization</code> 设为 false，不然你定义一个变量就必须给它一个初始值。</li>
+<li>千万管理好你的路由层级，不然到时连正则都拯救不了你</li>
+<li>业务层面千万做好类型检测或者枚举定义，这样不仅便利了开发，还能在出了问题的时候迅速定位</li>
+<li>跨模块使用 vuex，请直接使用 <code>rootGetters</code></li>
+<li>如果你需要改造某组件库主题，请单开一个文件进行集中管理，别一个组件分一个文件去改动，不然编译起来速度堪忧</li>
+<li>能够复用团队其他人开发好的东西，尽量别去开发第二遍，不然到时浪费的可能就不是单纯的开发时间，还有 code review 的时间</li>
+</ul>
+<p>诸如此类的还有一堆，但更多的得你们自己去探寻。接下来，我将谈谈大型项目中团队协作的一些规范</p>
+<h2 class="heading" data-id="heading-13">四、如何进行团队协作</h2>
+<p>一个大的项目，肯定是多人一起并行，里面不仅有前端团队的合作，还有与产品同学的需求探（si）讨（bi），以及和后端同学的联调，甚至于还需要自己或者依靠 SRE 进行一些服务的配置。</p>
+<h3 class="heading" data-id="heading-14">1、前端开发规范</h3>
+<p>既然项目是基于 vue + ts 的且是多人协作，那么开发规范肯定是必须的，这样可以让并行开发变的容易起来。下面，我从当时我制定的规范中抽出一些给小伙伴们做个参考（仅做参考哈）</p>
+<p><strong>i. 页面开发摆放顺序</strong></p>
+<ul>
+<li>HTML</li>
+<li>TypeScript</li>
+<li>CSS</li>
+</ul>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>&gt;</span><span class="undefined">
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span>&gt;</span><span class="undefined">
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>ii. CSS 规则（使用 BEM 命名规则避免样式冲突，不使用 scoped）</strong></p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"home"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"home__count"</span>&gt;</span>{{ count }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"home__input"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span>&gt;</span><span class="undefined">
+.home {
+  text-align: center;
+  &amp;__count {}
+  &amp;__input {}
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>iii. vue 文件中 TS 上下文顺序</strong></p>
+<ul>
+<li>
+<p>data</p>
+</li>
+<li>
+<p>@Prop</p>
+</li>
+<li>
+<p>@State</p>
+</li>
+<li>
+<p>@Getter</p>
+</li>
+<li>
+<p>@Action</p>
+</li>
+<li>
+<p>@Mutation</p>
+</li>
+<li>
+<p>@Watch</p>
+</li>
+<li>
+<p>生命周期钩子</p>
+<ul>
+<li>
+<p>beforeCreate（按照生命周期钩子从上到下）</p>
+</li>
+<li>
+<p>created</p>
+</li>
+<li>
+<p>beforeMount</p>
+</li>
+<li>
+<p>mounted</p>
+</li>
+<li>
+<p>beforeUpdate</p>
+</li>
+<li>
+<p>updated</p>
+</li>
+<li>
+<p>activated</p>
+</li>
+<li>
+<p>deactivated</p>
+</li>
+<li>
+<p>beforeDestroy</p>
+</li>
+<li>
+<p>destroyed</p>
+</li>
+<li>
+<p>errorCaptured（最后一个生命周期钩子）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>路由钩子</p>
+<ul>
+<li>
+<p>beforeRouteEnter</p>
+</li>
+<li>
+<p>beforeRouteUpdate</p>
+</li>
+<li>
+<p>beforeRouteLeave</p>
+</li>
+</ul>
+</li>
+<li>
+<p>computed</p>
+</li>
+<li>
+<p>methods</p>
+</li>
+</ul>
+<p>组件引用，mixins，filters 等放在 @Component 里面</p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>&gt;</span><span class="javascript">
+@Component({
+  <span class="hljs-attr">components</span>: { HelloWorld },
+  <span class="hljs-attr">mixins</span>: [ Emitter ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Home</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vue</span> </span>{
+  city: string = <span class="hljs-string">'上海'</span>
+
+  @Prop({ <span class="hljs-attr">type</span>: [ <span class="hljs-built_in">Number</span>, <span class="hljs-built_in">String</span> ], <span class="hljs-attr">default</span>: <span class="hljs-number">16</span> })
+  size: number | string
+  @State(<span class="hljs-string">'state'</span>) state: StateInterface
+  @Getter(<span class="hljs-string">'count'</span>) count: <span class="hljs-built_in">Function</span>
+  @Action(<span class="hljs-string">'getTodayWeather'</span>) getTodayWeather: <span class="hljs-built_in">Function</span>
+  @Mutation(<span class="hljs-string">'DECREMENT'</span>) DECREMENT: <span class="hljs-built_in">Function</span>
+  
+  @Watch(<span class="hljs-string">'count'</span>)
+  onWatchCount (val: number) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onWatchCount'</span>, val)
+  }
+  
+  <span class="hljs-comment">// computed</span>
+  get styles () {}
+  
+  created () {}
+  mounted () {}
+  destroyed () {}
+
+  <span class="hljs-comment">// methods</span>
+  getCityWeather (city: string) {}
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>iv. vuex 模块化管理</strong></p>
+<p>store 下面一个文件夹对应一个模块，每一个模块都有一个 interface 进行接口管理，具体例子上文中有提到</p>
+<p><strong>v. 路由引入姿势</strong></p>
+<p>路由懒加载，上文中也有例子</p>
+<p><strong>vi. 文件命名规范</strong></p>
+<p>单词小写，单词之间用 '-' 分隔，如图</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c23b109f8f1c9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="528" data-height="882" src="./TypeScript + 大型项目实战 - 掘金_files/164c23b109f8f1c9"><figcaption></figcaption></figure><p></p>
+<p>名词在前，动词在后，如图</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c23b8ae65101b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="526" data-height="102" src="./TypeScript + 大型项目实战 - 掘金_files/164c23b8ae65101b"><figcaption></figcaption></figure><p></p>
+<p>相同模块描述在前，不同描述在后</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c23bb2466039f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="472" data-height="128" src="./TypeScript + 大型项目实战 - 掘金_files/164c23bb2466039f"><figcaption></figcaption></figure><p></p>
+<h3 class="heading" data-id="heading-15">2、与产品 + 后端等协作</h3>
+<p>千万记住以下三点：</p>
+<ol>
+<li>
+<p>要有礼貌的探（si）讨（bi）</p>
+</li>
+<li>
+<p>要很有礼貌的探（si）讨（bi）</p>
+</li>
+<li>
+<p>要非常有礼貌的探（si）讨（bi）</p>
+</li>
+</ol>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c23c0f0136ac8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="179" data-height="171" src="./TypeScript + 大型项目实战 - 掘金_files/164c23c0f0136ac8"><figcaption></figcaption></figure><p></p>
+<p>具体细节我曾在知乎里面有过回答，这里不赘述了。传送门：<a target="_blank" href="https://www.zhihu.com/question/61415974/answer/187589565" rel="nofollow noopener noreferrer">前后端分离，后台返回的数据前端没法写，怎么办？</a></p>
+<h3 class="heading" data-id="heading-16">3、人效提升</h3>
+<p>上一个点，谈了一下开发层面的的协作。这里，谈一谈人效提升。</p>
+<p>大家都知道，一个项目是否能够在预定的期限中完成开发 + 联调 + 测试 + 上线，最重要的因为就是每个人做事的效率。我们不能保证大家效率都很高，但我们得保障自己的开发效率。</p>
+<p>需求一下来，首先我们得保证的就是自己对需求的认知。一般对于老手来说，把需求过一遍心里就大致清楚做完这个需求大概需要多少时间，而新手则永远对完成时间没有一个很好的认知。</p>
+<p>那么，如何提升自己的开发效率呢？</p>
+<ul>
+<li>把需求拆分成模块</li>
+<li>把模块中的东西再次拆分成小细节</li>
+<li>评估小细节自身的开发时间</li>
+<li>评估小细节中某些可能存在的风险点的开发时间</li>
+<li>评估联调时间</li>
+<li>预留测试 + 修复 BUG 的时间节点</li>
+<li>预留 deadline （一般来说是 1  *（1 + 0.2））</li>
+<li>安排好自己的开发节点，以 1D（一天）作为单位</li>
+<li>记录好风险原因、风险点以及对应的规避方案</li>
+<li>如若预感要延期，需及时给出补救方案（比如：加班）</li>
+<li>记录 BUG 数量，以及对应的 BUG 人员（真的不是为了甩锅）</li>
+</ul>
+<h2 class="heading" data-id="heading-17">总结</h2>
+<p>文章到这也差不多了。聊了聊项目立项前的选型，也聊了聊项目初期的基础建设，还聊了聊 ts 在 .vue 中的使用，甚至项目开发中团队协作的一些事情也有聊。但毕竟文笔有限，很多点并不能娓娓道来，大多都是点到为止。如果觉得文章对小伙伴们有帮助的话，请不要吝啬你手中的赞</p>
+<p>如果小伙伴你们想了解更多的话，欢迎加入鄙人的交流群：731175396</p>
+<p>个人准备重新捡回自己的公众号了，之后每周保证一篇高质量好文，感兴趣的小伙伴可以关注一波。</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/8/22/16cb72706f31dd03?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="754" data-height="240" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;754&quot; height=&quot;240&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-18">最后的最后</h2>
+<p>美团 基础研发平台/前端技术中心 上海侧招人啦 ~~~</p>
+<p>前端开发 高级/资深</p>
+<p>岗位福利：
+15.5薪，15.5寸Mac，薪资25K-45K，股票期权。</p>
+<p>工作职责:</p>
+<ol>
+<li>负责web前端架构设计及代码的实现</li>
+<li>分析和发现系统中的可优化点，提高可靠性和性能</li>
+<li>常用的 Javascript 模块封装和性能优化，更新和维护公司前端开发组件库</li>
+<li>研究业界最新技术及其应用，解决创新研发过程中的关键问题和技术难点</li>
+</ol>
+<p>职位要求：</p>
+<ol>
+<li>精通 Javascript、H5、Sass/Less 和 HTML 前端模板引擎</li>
+<li>熟悉 ECMAScript，CommonJS，Promise，TypeScript 等标准，熟练使用Git</li>
+<li>精通面向对象的 JavaScript 开发，参与或设计过 JS 框架或公共组件开发经验</li>
+<li>熟练使用 Vue.js 或 React.js 框架，并研究过其源码实现，熟悉数据驱动原理</li>
+<li>对 Javascript 引擎实现机制、浏览器渲染性能有比较深入的研究</li>
+<li>熟悉 Node.js，了解 PHP/java/python 等后端语言之一</li>
+<li>熟悉 gulp，webpack 等前端构建工具，会搭建项目脚手架提升开发效率</li>
+<li>具有较好的问题解决能力、理解能力及学习能力，较好的协作能力和团队精神</li>
+<li>良好的自我驱动力，不拘泥于手头工作，勇于探索新技术并加以应用</li>
+</ol>
+<p>加分项：</p>
+<ol>
+<li>熟悉Node.js语言</li>
+<li>有开源作品或技术博客</li>
+<li>技术社区活跃分子</li>
+<li>Github上有独立作品</li>
+<li>Geek控，对技术有狂热兴趣和追求</li>
+<li>一线互联网公司经验</li>
+</ol>
+<p>对以上职位感兴趣的同学欢迎先加群：731175396，后联系我了解更多，或者直接投简历到我邮箱 xuqiang13@meituan.com</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/7/22/164c23c515d081da?imageslim" data-width="300" data-height="300" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</div></article><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-box"><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-title">关注下面的标签，发现更多相似文章</div><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="tagList" class="tag-list"><a data-v-fa2339b8="" href="https://juejin.im/tag/Vue.js" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://lc-gold-cdn.xitu.io/7b5c3eb591b671749fee.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon" style="background-image: none; background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">Vue.js</div></a><a data-v-fa2339b8="" href="https://juejin.im/tag/JavaScript" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://lc-gold-cdn.xitu.io/5d70fd6af940df373834.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon" style="background-image: none; background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">JavaScript</div></a><a data-v-fa2339b8="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://lc-gold-cdn.xitu.io/bac28828a49181c34110.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon" style="background-image: none; background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">前端</div></a><a data-v-fa2339b8="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://lc-gold-cdn.xitu.io/d788a559489fa6e30b25.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon" style="background-image: none; background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">TypeScript</div></a></div></div><a data-v-fa2339b8="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" data-v-6fdc8784=""><div data-v-fa2339b8="" class="footer-author-block"><div data-v-081ef9db="" data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Person" class="author"><meta itemprop="url" content="https://juejin.im/user/582e663467f3560063395f4c"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2019/8/21/16cb4188c21018fe?w=750&amp;h=728&amp;f=png&amp;s=562050"><meta itemprop="name" content="qiangdada"><meta itemprop="jobTitle" content="FE"><div itemprop="memberOf" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="美团 公众号：合格前端"></div><div data-v-081ef9db="" class="author-info-block"><a data-v-081ef9db="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-081ef9db="" data-src="https://user-gold-cdn.xitu.io/2019/8/21/16cb4188c21018fe?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a><div data-v-081ef9db="" class="author-info-box"><div data-v-081ef9db="" class="profile-box"><a data-v-263f3a32="" data-v-081ef9db="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" class="username username ellipsis">qiangdada<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./TypeScript + 大型项目实战 - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a></a><span data-v-081ef9db="" class="position ellipsis">FE @ 美团 公众号：合格前端</span></div><div data-v-081ef9db="" class="meta-box"><a data-v-081ef9db="" href="https://juejin.im/user/582e663467f3560063395f4c/posts" target="_blank" rel="" class="posts"><span data-v-081ef9db="" class="count post-count">发布了 19 篇专栏 · </span></a><span data-v-081ef9db="" class="count">获得点赞 5,323 · </span><span data-v-081ef9db="" class="count">获得阅读 164,055</span></div></div><button data-v-5789daef="" data-v-081ef9db="" class="follow-button follow">关注</button></div></div></div></a><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="banner" class="article-banner"><a data-v-fa2339b8="" data-v-6fdc8784="" st:name="link" st:state="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" class="banner-title" href="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" target="_blank">安装掘金浏览器插件</a><div data-v-fa2339b8="" data-v-6fdc8784="" class="banner-content">打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！</div></div><!----><!----><div data-v-0d823780="" data-v-fa2339b8="" class="comment-list-box" id="comment-box" data-v-6fdc8784="" manual="true"><div data-v-0d823780="" class="title">评论</div><div data-v-155bc796="" data-v-0d823780="" class="comment-form comment-form"><div data-v-155bc796="" class="avatar-box"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-155bc796="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></div><div data-v-155bc796="" class="form-box"><div data-v-155bc796="" class="input-box"><div data-v-cc6aae16="" data-v-155bc796="" class="auth-card"><!----><div data-v-155bc796="" data-v-cc6aae16="" contenteditable="true" spellcheck="false" placeholder="输入评论..." class="rich-input empty"><br data-v-155bc796="" data-v-cc6aae16=""></div></div><!----></div><!----></div><input data-v-155bc796="" type="file" class="hidden"></div><div data-v-1540c949="" data-v-0d823780="" class="comment-list comment-list"><div data-v-0a49d917="" data-v-1540c949="" class="image-viewer-box"><!----></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5e7b188ef265da576f533131" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5e7b188ef265da576f533131" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://b-gold-cdn.xitu.io/v3/static/img/default-avatar.e30559a.svg" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://b-gold-cdn.xitu.io/v3/static/img/default-avatar.e30559a.svg&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5e7b188ef265da576f533131" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5e7b188ef265da576f533131" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">hipilee<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">二位</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-03-25T12:05:48.867Z" title="Wed Mar 25 2020 20:05:48 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="595f53956fb9a06bb61fed54" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/595f53956fb9a06bb61fed54" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2018/8/2/164f85ee3ae8f2ca?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="595f53956fb9a06bb61fed54" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/595f53956fb9a06bb61fed54" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">晴天、<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./TypeScript + 大型项目实战 - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">佛挡杀佛</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-03-25T07:57:49.608Z" title="Wed Mar 25 2020 15:57:49 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c956ea1e51d453d681b912c" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5c956ea1e51d453d681b912c" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://mirror-gold-cdn.xitu.io/169a7b82c00b3ab988a?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c956ea1e51d453d681b912c" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5c956ea1e51d453d681b912c" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">MambaLi<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">赞</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-03-24T13:52:48.814Z" title="Tue Mar 24 2020 21:52:48 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d141a3df265da1b83339ef4" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5d141a3df265da1b83339ef4" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://mirror-gold-cdn.xitu.io/16b968683f2f2a237b2?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d141a3df265da1b83339ef4" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5d141a3df265da1b83339ef4" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">花染醉墨<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">在.vue里写ts后期编译灰常卡，mac上看出来，win上太明显</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-02-15T14:59:09.959Z" title="Sat Feb 15 2020 22:59:09 GMT+0800 (中国标准时间)" class="time">3月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="58dee9ac0ce463005820f3a6" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/58dee9ac0ce463005820f3a6" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://b-gold-cdn.xitu.io/v3/static/img/default-avatar.e30559a.svg" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://b-gold-cdn.xitu.io/v3/static/img/default-avatar.e30559a.svg&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="58dee9ac0ce463005820f3a6" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/58dee9ac0ce463005820f3a6" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">jglyy<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./TypeScript + 大型项目实战 - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">home/interface.ts 这个文件的意义何在，因为ts只会对静态类型检测，即使你 HomeContent 声明了一个不存在的属性 还是会通过编译的，难道只是为了方便以后阅读<img class="emoji" draggable="false" alt="😂" src="./TypeScript + 大型项目实战 - 掘金_files/1f602.svg"><img class="emoji" draggable="false" alt="😂" src="./TypeScript + 大型项目实战 - 掘金_files/1f602.svg"><img class="emoji" draggable="false" alt="😂" src="./TypeScript + 大型项目实战 - 掘金_files/1f602.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-01-19T09:51:34.229Z" title="Sun Jan 19 2020 17:51:34 GMT+0800 (中国标准时间)" class="time">4月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d2a101f518825331d14cc76" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5d2a101f518825331d14cc76" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://i.rianpu.cn/cdn/images/14.jpg" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d2a101f518825331d14cc76" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5d2a101f518825331d14cc76" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">sljis<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">不错</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2019-11-22T08:08:38.955Z" title="Fri Nov 22 2019 16:08:38 GMT+0800 (中国标准时间)" class="time">6月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div></div><div data-v-0d823780="" class="fetch-more-comment">查看更多 &gt;</div></div></div><!----><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="recommended" class="main-area recommended-area shadow"><div data-v-fa2339b8="" data-v-6fdc8784="" class="recommended-entry-list-title">相关推荐</div><!----><ul data-v-0dfe6a32="" data-v-fa2339b8="" st:block="entryList" class="entry-list recommended-entry-list" data-v-6fdc8784=""><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7793851882543143744cb|1" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec737b36fb9a04799583002" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e1eaa19e51d451c7e049dd8" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e1eaa19e51d451c7e049dd8" target="_blank" rel="" st:name="user" st:state="5e1eaa19e51d451c7e049dd8" data-v-b628736a="">蒋鹏飞</a></div></li><li data-v-ecbf465a="" class="item">8小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec737b36fb9a04799583002" target="_blank" rel="" st:name="title" class="title">不知道怎么封装代码？看看这几种设计模式吧！</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">81</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec737b36fb9a04799583002#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">11</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7306fe51d45784a354996|2" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73026f265da76da29cb25" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5b13f11d5188257da1245183" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5b13f11d5188257da1245183" target="_blank" rel="" st:name="user" st:state="5b13f11d5188257da1245183" data-v-b628736a="">晨曦时梦见兮</a></div></li><li data-v-ecbf465a="" class="item">13小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/JavaScript" target="_blank" rel="" st:name="tag" st:state="55964d83e4b08a686cc6b353" class="tag">JavaScript</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73026f265da76da29cb25" target="_blank" rel="" st:name="title" class="title">深入解析你不知道的 EventLoop 和浏览器渲染、帧动画、空闲回调（动图演示）</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">179</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73026f265da76da29cb25#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">22</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec53c626fb9a047ef135242|3" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><li data-v-ecbf465a="" class="item recommended">荐</li><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59e293e06fb9a0452340e835" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59e293e06fb9a0452340e835" target="_blank" rel="" st:name="user" st:state="59e293e06fb9a0452340e835" data-v-b628736a="">QUIKER</a></div></li><li data-v-ecbf465a="" class="item">21小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Vue.js" target="_blank" rel="" st:name="tag" st:state="555e9a98e4b00c57d9955f68" class="tag">Vue.js</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204" target="_blank" rel="" st:name="title" class="title">vue 3.x 如何有惊无险地快速入门</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">131</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">27</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec74e376fb9a047f0125d5b|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec74c6a518825430956ae65" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5c09fe905188257d5e39607a" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5c09fe905188257d5e39607a" target="_blank" rel="" st:name="user" st:state="5c09fe905188257d5e39607a" data-v-b628736a="">不写bug的米公子</a></div></li><li data-v-ecbf465a="" class="item">11小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/JavaScript" target="_blank" rel="" st:name="tag" st:state="55964d83e4b08a686cc6b353" class="tag">JavaScript</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec74c6a518825430956ae65" target="_blank" rel="" st:name="title" class="title">面试官：说说作用域和闭包吧</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">31</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec74c6a518825430956ae65#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">8</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/22/1723a89d8eb2c87c?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec5eabd6fb9a047bf705f03|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><li data-v-ecbf465a="" class="item recommended">荐</li><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5c9c1ca4e51d452742507adc" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5c9c1ca4e51d452742507adc" target="_blank" rel="" st:name="user" st:state="5c9c1ca4e51d452742507adc" data-v-b628736a="">小何何同学</a></div></li><li data-v-ecbf465a="" class="item">21小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55" target="_blank" rel="" st:name="title" class="title">我所理解的前端状态管理</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">86</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">35</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><!----><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec5e0a1f265da76c1132936|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c86351882542e722e15f" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e8558f3518825738f2b1327" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e8558f3518825738f2b1327" target="_blank" rel="" st:name="user" st:state="5e8558f3518825738f2b1327" data-v-b628736a="">阿里巴巴淘系技术</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c86351882542e722e15f" target="_blank" rel="" st:name="title" class="title">前端生产方式：过去 10 年回顾和未来 10 年展望</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">247</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c86351882542e722e15f#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">31</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/17234e12af31a517?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec792a76fb9a047d245c278|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec791fdf265da770d3daabd" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e0b10545188253a5f56c5c0" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e0b10545188253a5f56c5c0" target="_blank" rel="" st:name="user" st:state="5e0b10545188253a5f56c5c0" data-v-b628736a="">黄梵高</a></div></li><li data-v-ecbf465a="" class="item">6小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/JavaScript" target="_blank" rel="" st:name="tag" st:state="55964d83e4b08a686cc6b353" class="tag">JavaScript</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec791fdf265da770d3daabd" target="_blank" rel="" st:name="title" class="title">用英雄联盟的方式讲解JavaScript设计模式（二）！</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">20</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec791fdf265da770d3daabd#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">4</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/22/1723b94b5a4681ce?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7a240e51d45789839d5eb|6" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec79e76f265da771359fe8c" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5c90d966f265da61173a2cd8" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5c90d966f265da61173a2cd8" target="_blank" rel="" st:name="user" st:state="5c90d966f265da61173a2cd8" data-v-b628736a="">快狗打车前端团队</a></div></li><li data-v-ecbf465a="" class="item">5小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F" target="_blank" rel="" st:name="tag" st:state="57ea2013a22b9d006164c1f8" class="tag">微信小程序</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec79e76f265da771359fe8c" target="_blank" rel="" st:name="title" class="title">微信小程序图片保存到本地一次问题解决</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">14</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec79e76f265da771359fe8c#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/22/1723bd1671f39289?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec3391e5188250bdf5c3793|7" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec338436fb9a0432d76e0c4" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5a767928f265da4e78327344" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5a767928f265da4e78327344" target="_blank" rel="" st:name="user" st:state="5a767928f265da4e78327344" data-v-b628736a="">前端森林</a></div></li><li data-v-ecbf465a="" class="item">3天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Chrome" target="_blank" rel="" st:name="tag" st:state="555e9ae0e4b00c57d99562ee" class="tag">Chrome</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec338436fb9a0432d76e0c4" target="_blank" rel="" st:name="title" class="title">Chrome DevTools中的这些骚操作，你都知道吗？</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">847</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec338436fb9a0432d76e0c4#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">79</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/19/1722a96792420630?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec5c89551882543393c834c|8" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5c4aee51d457893029189" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5790c76dc4c9710054f0f58b" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5790c76dc4c9710054f0f58b" target="_blank" rel="" st:name="user" st:state="5790c76dc4c9710054f0f58b" data-v-b628736a="">前端早早聊</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E7%9B%91%E6%8E%A7" target="_blank" rel="" st:name="tag" st:state="5b45bfcef265da65f7d27f9b" class="tag">监控</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5c4aee51d457893029189" target="_blank" rel="" st:name="title" class="title">来，跟我一起 ，自研多端错误监控平台</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">215</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5c4aee51d457893029189#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">25</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./TypeScript + 大型项目实战 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/172349337a97017a?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" class="item"><!----></li><!----></ul></div><div data-v-7301278b="" data-v-fa2339b8="" st:block="sidebar" class="sidebar sidebar sticky" data-v-6fdc8784=""><div data-v-16442876="" data-v-76358071="" data-v-7301278b="" class="sidebar-block author-block shadow"><div data-v-16442876="" class="block-title">关于作者</div><div data-v-16442876="" class="block-body"><a data-v-76358071="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" class="user-item item" data-v-16442876=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-76358071="" data-src="https://user-gold-cdn.xitu.io/2019/8/21/16cb4188c21018fe?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div><div data-v-76358071="" class="info-box"><a data-v-263f3a32="" data-v-76358071="" href="https://juejin.im/user/582e663467f3560063395f4c" target="_blank" rel="" class="username">qiangdada<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./TypeScript + 大型项目实战 - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a></a><div data-v-76358071="" title="FE @ 美团 公众号：合格前端" class="position">FE @ 美团 公众号：合格前端</div></div></a><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" class="zan"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd" transform="translate(0 .57)"><ellipse data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.57" fill="#E1EFFF" rx="12.5" ry="12.57"></ellipse> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M8.596 11.238V19H7.033C6.463 19 6 18.465 6 17.807v-5.282c0-.685.483-1.287 1.033-1.287h1.563zm4.275-4.156A1.284 1.284 0 0 1 14.156 6c.885.016 1.412.722 1.595 1.07.334.638.343 1.687.114 2.361-.207.61-.687 1.412-.687 1.412h3.596c.38 0 .733.178.969.488.239.317.318.728.21 1.102l-1.628 5.645a1.245 1.245 0 0 1-1.192.922h-7.068v-7.889c1.624-.336 2.623-2.866 2.806-4.029z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">获得点赞<span data-v-76358071="" data-v-16442876="" class="count">5,323</span></span></div><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" width="25" height="25" viewBox="0 0 25 25" class="icon stat-view-icon"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd"><circle data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.5" r="12.5" fill="#E1EFFF"></circle> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M4 12.5S6.917 7 12.75 7s8.75 5.5 8.75 5.5-2.917 5.5-8.75 5.5S4 12.5 4 12.5zm8.75 2.292c1.208 0 2.188-1.026 2.188-2.292 0-1.266-.98-2.292-2.188-2.292-1.208 0-2.188 1.026-2.188 2.292 0 1.266.98 2.292 2.188 2.292z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">文章被阅读<span data-v-76358071="" data-v-16442876="" class="count">164,055</span></span></div><!----></div></div><!----><div data-v-16442876="" data-v-f69ccc58="" data-v-518a2f8f="" data-v-7301278b="" class="sidebar-block recommend recommend-index shadow"><div data-v-16442876="" class="block-title">你可能感兴趣的小册</div><div data-v-16442876="" class="block-body"><div data-v-f69ccc58="" data-v-16442876="" class="book-list"><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2019/6/13/16b515f4a633aa47?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img" data-v-16442876="" style="background-image: none; background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">基于 Swoole 的联机对战游戏实践</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">270人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2020/3/15/170dcdbe69f8bd21?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img" data-v-16442876="" style="background-image: none; background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">React SSR 服务端渲染原理解析与同构实践</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">965人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div></div></div></div><div data-v-16442876="" data-v-03315f79="" data-v-7301278b="" class="sidebar-block app-download-sidebar-block shadow"><!----><div data-v-16442876="" class="block-body"><a data-v-03315f79="" data-v-16442876="" class="app-link" href="https://juejin.im/app" target="_blank"><img data-v-03315f79="" data-v-16442876="" src="./TypeScript + 大型项目实战 - 掘金_files/post.7cb7332.png" class="qr-img"><div data-v-03315f79="" data-v-16442876="" class="content-box"><div data-v-03315f79="" data-v-16442876="" class="headline">下载掘金客户端</div><div data-v-03315f79="" data-v-16442876="" class="desc">一个帮助开发者成长的社区</div></div><div data-v-03315f79="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></a></div></div><div data-v-16442876="" data-v-3c6504c4="" data-v-7301278b="" class="sidebar-block wechat-sidebar-block pure"><div data-v-06f599f1="" data-v-3c6504c4="" class="wechat-banner" data-v-16442876=""><img data-v-06f599f1="" src="./TypeScript + 大型项目实战 - 掘金_files/frontend.1dae74a.png" class="wechat-img"></div><div data-v-3c6504c4="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></div><div data-v-16442876="" data-v-2998ad53="" data-v-7301278b="" class="sidebar-block related-entry-sidebar-block shadow" st:block="relatedEntrySidebarBlock"><div data-v-16442876="" class="block-title">相关文章</div><div data-v-16442876="" class="block-body"><div data-v-2998ad53="" data-v-16442876="" class="entry-list"><a data-v-2998ad53="" href="https://juejin.im/post/5a59db5a518825732d7f8ce5" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">合格前端系列第九弹-前端面试那些事</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">1258</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">35</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5d50d1d9f265da03aa25607b" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">AST 与前端工程化实战</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">423</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">29</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5d45be46f265da03cf7a70d7" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">「2019 JSConf.Asia - 尤雨溪」在框架设计中寻求平衡</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">263</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">35</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ac3c143f265da23a3356ede" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">合格前端系列第十一弹-初探 Nuxt.js 秘密花园</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">309</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">28</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5cced0096fb9a032426510ad" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">细谈 vue - slot 篇</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">179</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./TypeScript + 大型项目实战 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">13</span></div></div></a></div></div></div><div data-v-7301278b="" class="sticky-block-box"><div data-v-16442876="" data-v-48b1e3e4="" data-v-7301278b="" class="sidebar-block catalog-block pure"><nav data-v-1a96e633="" data-v-48b1e3e4="" class="article-catalog" data-v-16442876="" style=""><div data-v-1a96e633="" class="catalog-title">目录</div><div data-v-1a96e633="" class="catalog-body"><ul data-v-1a96e633="" class="catalog-list" style="margin-top: 0px;"><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-0" title="写在前面">写在前面</a><!----></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-1" title="一、关于选型">一、关于选型</a><!----></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-2" title="二、基础建设">二、基础建设</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-3" title="1、初始化结构">1、初始化结构</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-4" title="2、改造后的结构">2、改造后的结构</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-5" title="3、模块改造">3、模块改造</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-6" title="i、路由懒加载">i、路由懒加载</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-7" title="ii、axios 封装">ii、axios 封装</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-8" title="iii、vuex 模块化管理">iii、vuex 模块化管理</a><!----></li></ul></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-9" title="三、vue 中 ts 的用法">三、vue 中 ts 的用法</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-10" title="1、vue-property-decorator">1、vue-property-decorator</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-11" title="2、vuex-class">2、vuex-class</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-12" title="3、一些建议">3、一些建议</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-13" title="四、如何进行团队协作">四、如何进行团队协作</a><ul class="sub-list"><li class="item d2 active"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-14" title="1、前端开发规范">1、前端开发规范</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-15" title="2、与产品 + 后端等协作">2、与产品 + 后端等协作</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-16" title="3、人效提升">3、人效提升</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-17" title="总结">总结</a><!----></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5b54886ce51d45198f5c75d7#heading-18" title="最后的最后">最后的最后</a><!----></li></ul></div></nav></div></div></div><div data-v-b753df20="" data-v-fa2339b8="" class="article-suspended-panel article-suspended-panel" data-v-6fdc8784=""><div data-v-b753df20="" class="like-btn panel-btn like-adjust with-badge" badge="1312"></div><div data-v-b753df20="" class="comment-btn panel-btn comment-adjust with-badge" badge="68"></div><div data-v-b753df20="" class="collect-btn panel-btn"><!----></div><div data-v-b753df20="" class="share-title">分享</div><div data-v-b753df20="" class="weibo-btn share-btn panel-btn"></div><div data-v-b753df20="" class="qq-btn share-btn panel-btn"></div><div data-v-b753df20="" class="wechat-btn share-btn panel-btn"><img data-v-b753df20="" src="https://juejin.im/post/5b54886ce51d45198f5c75d7" class="wechat-qr-code-img shadow" style="display: none;"></div></div><div data-v-0a49d917="" data-v-fa2339b8="" class="image-viewer-box" data-v-6fdc8784=""><!----></div><!----></div></main></div><!----></div>
+      
+      
+      
+      <script type="text/javascript" src="./TypeScript + 大型项目实战 - 掘金_files/runtime.cc2b750c14e4e98c0e3a.js"></script><script type="text/javascript" src="./TypeScript + 大型项目实战 - 掘金_files/0.0b214b1cb6731ce0f8d8.js"></script><script type="text/javascript" src="./TypeScript + 大型项目实战 - 掘金_files/1.63ca4ab7fc5bd9c1cbc0.js"></script>
+    </body></html>

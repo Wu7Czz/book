@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc -->
+<html lang="zh-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google-site-verification" content="cCHsgG9ktuCTgWgYfqCJql8AeR4gAne4DTZqztPoirE"><meta name="google-site-verification" content="nPvn9R5NJLsZKTv5VKIbn0OmkRcJ4PC6KdDoTX3n5Mw"><meta name="apple-itunes-app" content="app-id=987739104"><meta name="baidu-site-verification" content="qiK2a1kcFc"><meta name="360-site-verification" content="4c3c7d57d59f0e1a308462fbc7fd7e51"><meta name="sogou_site_verification" content="c49WUDZczQ"><style>body {
+        font-size: 16px;
+        line-height: 2;
+      }
+      a, button, input {
+        margin: 1rem 1.5rem;
+      }
+      img {
+        width: 0;
+        height: 0;
+      }
+      #juejin {
+        overflow-x: hidden;
+      }</style><title data-vue-meta="true">9k字 | Promise/async/Generator实现原理解析 - 掘金</title><link rel="apple-touch-icon" sizes="180x180" href="https://b-gold-cdn.xitu.io/favicons/v2/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-16x16.png"><link rel="manifest" href="https://b-gold-cdn.xitu.io/favicons/v2/manifest.json"><link rel="mask-icon" href="https://b-gold-cdn.xitu.io/favicons/v2/safari-pinned-tab.svg" color="#5bbad5"><link rel="shortcut icon" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico"><meta name="msapplication-config" content="https://b-gold-cdn.xitu.io/favicons/v2/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="search" title="掘金" href="https://b-gold-cdn.xitu.io/conf/search.xml" type="application/opensearchdescription+xml"><link rel="stylesheet" href="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/ionicons.min.css"><link rel="stylesheet" href="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/iconfont.css"><link href="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/0.f1fc61eda29199ce1f45.css" rel="stylesheet"><script async="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/hm.js"></script><script async="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/analytics.js"></script><script type="text/javascript" async="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/vds.js"></script><script type="text/javascript" async="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect-v.3.2.14.js"></script><script charset="utf-8" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/4.281438b56343cf12fa0b.js"></script><meta data-vmid="keywords" name="keywords" content="前端" data-vue-meta="true"><meta data-vmid="description" name="description" content="笔者刚接触async/await时，就被其暂停执行的特性吸引了，心想在没有原生API支持的情况下，await居然能挂起当前方法，实现暂停执行，我感到十分好奇。好奇心驱使我一层一层剥开有关JS异步编程的一切。阅读完本文，读者应该能够了解： Promise的实现" data-vue-meta="true"></head><body><div id="juejin" data-v-2a21baac=""><div class="global-component-box" data-v-2a21baac=""><!----><div data-v-5ef5fb43="" data-v-2a21baac="" class="alert-list alert-list"></div><div data-v-15608c17="" data-v-2a21baac="" class="suspension-panel suspension-panel"><button data-v-15608c17="" title="回到顶部" class="btn to-top-btn" style=""><i data-v-15608c17="" class="ion-android-arrow-dropup"></i></button><button data-v-15608c17="" title="建议反馈" class="btn meiqia-btn" style=""><i data-v-15608c17="" class="ion-chatbubble-working"></i></button></div><!----><!----><div class="emoji-barrage" data-v-94fd086c="" data-v-2a21baac=""><!----></div><div class="book-new-user-award-popup" style="display:none;" data-v-22fa60e5="" data-v-2a21baac=""><div class="content-box" style="display:;" data-v-22fa60e5=""><div class="close ion-close-round" data-v-22fa60e5=""></div><div class="header" data-v-22fa60e5=""><div class="icon" data-v-22fa60e5=""><img src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/icon.a87e5ae.svg" data-v-22fa60e5=""></div><div class="txt" data-v-22fa60e5="">新人专享好礼</div></div><div class="desc" data-v-22fa60e5="">凡未购买过小册的用户，均可领取三张 5 折新人专享券，购买小册时自动使用专享券，最高可节省 45 元。</div><div class="tickets" data-v-22fa60e5=""><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div></div><div class="remark" data-v-22fa60e5="">注：专享券的使用期限在领券的七天内。</div><div class="submit-btn" data-v-22fa60e5="">一键领取</div></div><div class="model success" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取成功</div><div class="content-text" data-v-22fa60e5="">购买小册时自动使用专享券</div><div class="btn-success-footer" data-v-22fa60e5=""><div class="btn-ok" data-v-22fa60e5="">知道了</div><div class="btn-ok btn-link" data-v-22fa60e5="">前往小册首页</div></div></div><div class="model fail" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取失败</div><div class="content-text" data-v-22fa60e5="">本活动仅适用于小册新用户</div><div class="btn-ok" data-v-22fa60e5="">知道了</div></div></div><!----><!----><div class="bind-phone-number-modal-box" data-v-269c0ad0="" data-v-2a21baac=""><div st:block="bindPhoneNumberModal" class="modal-mask" style="display:none;" data-v-269c0ad0=""></div><form class="bind-phone-number-form" style="display:none;" data-v-269c0ad0=""><i title="关闭" class="close-btn ion-close-round" data-v-269c0ad0=""></i><h1 class="title" data-v-269c0ad0="">提示</h1><h2 class="hint" data-v-269c0ad0="">根据我国<a href="http://www.cac.gov.cn/2017-08/25/c_1121541842.htm" target="_blank" style="color:#007fff">《互联网跟帖评论服务管理规定》</a>，您需要绑定手机号后才可在掘金社区内发布内容。</h2><div class="input-group" data-v-269c0ad0=""><div class="input-box" data-v-269c0ad0=""><input maxlength="64" placeholder="请输入要绑定的手机号码" value="" class="input" data-v-269c0ad0=""></div><!----><!----></div><button st:name="bindBtn" class="btn" data-v-269c0ad0="">绑定手机</button></form></div></div><!----><div data-v-6fdc8784="" data-v-fa2339b8="" data-v-2a21baac="" class="view-container"><div data-v-6fdc8784="" class="main-header-box"><header data-v-0c56945c="" data-v-6fdc8784="" class="main-header main-header"><div data-v-0c56945c="" class="container"><a data-v-0c56945c="" href="https://juejin.im/" class="logo"><img data-v-0c56945c="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/logo.a7995ad.svg" alt="掘金" class="logo-img"><img data-v-0c56945c="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/simplify-logo.3e3c253.svg" alt="掘金" class="mobile"></a><nav data-v-0c56945c="" role="navigation" class="main-nav"><ul data-v-0c56945c="" class="nav-list"><li data-v-0c56945c="" class="main-nav-list"><div data-v-0c56945c="" class="phone-show-menu"><span data-v-0c56945c="">首页</span><div data-v-0c56945c="" class="icon ion-arrow-down-b"></div></div><ul data-v-0c56945c="" class="phone-hide"><li data-v-0c56945c="" class="nav-item link-item route-active"><a data-v-0c56945c="" href="https://juejin.im/">首页</a></li><li data-v-0c56945c="" class="nav-item link-item activities"><a data-v-0c56945c="" href="https://juejin.im/pins">沸点</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/topics">话题</a></li><li data-v-0c56945c="" class="nav-item link-item book"><a data-v-0c56945c="" href="https://juejin.im/books">小册</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/events/all">活动</a></li></ul></li><li data-v-0c56945c="" class="nav-item search"><form data-v-0c56945c="" role="search" class="search-form"><input data-v-0c56945c="" type="search" maxlength="32" placeholder="搜索掘金" class="search-input"><img data-v-0c56945c="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/juejin-search-icon.6f8ba1b.svg" alt="搜索" class="search-icon"></form></li><li data-v-0c56945c="" class="nav-item add"><div data-v-0c56945c="" class="add-group"><button data-v-0c56945c="" class="add-btn">写文章</button><div data-v-0c56945c="" class="more"><i data-v-0c56945c="" class="more-icon ion-android-arrow-dropdown"></i></div><ul data-v-0c56945c="" class="more-list"><li data-v-0c56945c="" class="item">发布沸点</li><li data-v-0c56945c="" class="item">分享链接</li><!----></ul></div><!----></li><li data-v-0c56945c="" class="nav-item notification"><a data-v-0c56945c="" class="app-link" href="https://juejin.im/notification" target="_blank"><i data-v-0c56945c="" class="icon ion-android-notifications"></i><!----></a></li><li data-v-0c56945c="" class="nav-item menu"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-0c56945c="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded immediate" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><!----><ul data-v-0c56945c="" class="nav-menu user-dropdown-list" style="display: none;"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-write"></i><span data-v-0c56945c="">写文章</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-draft"></i><span data-v-0c56945c="">草稿</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0" class="link-icon"><i data-v-0c56945c="" class="fengwei fw-person"></i><span data-v-0c56945c="">我的主页</span><!----></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/likes"><img data-v-0c56945c="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="zan"><span data-v-0c56945c="">我赞过的</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/collections"><img data-v-0c56945c="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="collect"><span data-v-0c56945c="">我的收藏集</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/books?type=bought"><i data-v-0c56945c="" class="fengwei fw-bought"></i><span data-v-0c56945c="">已购</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/subscribe"><i data-v-0c56945c="" class="fengwei fw-tag"></i><span data-v-0c56945c="">标签管理</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/settings"><i data-v-0c56945c="" class="fengwei fw-setting"></i><span data-v-0c56945c="">设置</span></a></li><li data-v-0c56945c="" class="nav-menu-item more"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-info"></i><span data-v-0c56945c="">关于</span><i data-v-0c56945c="" class="ion-chevron-right more-icon"></i></a><ul data-v-0c56945c="" class="nav-menu more-dropdown-list"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/app" target="_blank">下载应用</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/about" target="_blank">关于</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://xitu.io/jobs" target="_blank">加入我们</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://github.com/xitu/gold-miner" rel="nofollow noopener noreferrer" target="_blank">翻译计划</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://bd.juejin.im/?utm_campaign=bd&amp;utm_source=web&amp;utm_medium=nav" target="_blank">合作伙伴</a></li></div></ul></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-logout"></i><span data-v-0c56945c="">登出</span></a></li></div></ul></li><!----><!----></ul></nav></div></header></div><main data-v-6fdc8784="" class="container main-container"><div data-v-fa2339b8="" data-v-6fdc8784="" class="view column-view"><div data-v-fa2339b8="" data-v-6fdc8784="" class="main-area article-area shadow"><article data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Article" class="article" data-v-6fdc8784=""><meta itemprop="url" content="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc"><meta itemprop="headline" content="9k字 | Promise/async/Generator实现原理解析"><meta itemprop="keywords" content="前端"><meta itemprop="datePublished" content="2020-03-19T00:25:34.648Z"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/4/4/17145e6c00a5d9e1?w=4088&amp;h=2300&amp;f=jpeg&amp;s=899471"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="name" content="写代码像蔡徐抻"><meta itemprop="url" content="https://juejin.im/user/5d194f8151882517de2ae188"></div><div itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="掘金"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://b-gold-cdn.xitu.io/icon/icon-white-180.png"><meta itemprop="width" content="180"><meta itemprop="height" content="180"></div></div><div data-v-fa2339b8="" class="author-info-block"><a data-v-fa2339b8="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-fa2339b8="" class="author-info-box"><a data-v-263f3a32="" data-v-fa2339b8="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username username ellipsis">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><div data-v-fa2339b8="" class="meta-box"><time data-v-fa2339b8="" datetime="2020-03-19T00:25:34.648Z" title="Thu Mar 19 2020 08:25:34 GMT+0800 (中国标准时间)" class="time">2020年03月19日</time><span data-v-fa2339b8="" class="views-count">阅读 29540</span><!----></div></div><button data-v-5789daef="" data-v-fa2339b8="" class="follow-button follow">关注</button></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2020/4/4/17145e6c00a5d9e1?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" class="lazy thumb article-hero loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/4/4/17145e6c00a5d9e1?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1&quot;); background-size: cover;"></div><h1 data-v-fa2339b8="" class="article-title">9k字 | Promise/async/Generator实现原理解析</h1><div data-v-fa2339b8="" data-id="5e72bbfee51d4526ef5fb035" itemprop="articleBody" class="article-content"><p>笔者刚接触<code>async/await</code>时，就被其暂停执行的特性吸引了，心想在没有原生API支持的情况下，await居然能挂起当前方法，实现暂停执行，我感到十分好奇。好奇心驱使我一层一层剥开有关JS异步编程的一切。阅读完本文，读者应该能够了解：</p>
+<ol>
+<li><code>Promise</code>的实现原理</li>
+<li><code>async/await</code>的实现原理</li>
+<li><code>Generator</code>的实现原理</li>
+</ol>
+<h1 class="heading" data-id="heading-0">Promise实现</h1>
+<p>在成文过程中，笔者查阅了很多讲解Promise实现的文章，但感觉大多文章都很难称得上条理清晰，有的上来就放大段Promise规范翻译，有的在Promise基础使用上浪费篇幅，又或者把一个简单的东西长篇大论，过度讲解，我推荐头铁的同学直接拉到本章小结看最终实现，结合着注释直接啃代码也能理解十之八九</p>
+<p>回归正题，文章开头我们先点一下Promise为我们解决了什么问题：在传统的异步编程中，如果异步之间存在依赖关系，我们就需要通过层层嵌套回调来满足这种依赖，如果嵌套层数过多，可读性和可维护性都变得很差，产生所谓“回调地狱”，而Promise将回调嵌套改为链式调用，增加可读性和可维护性。下面我们就来一步步实现一个Promise：</p>
+<h2 class="heading" data-id="heading-1">1. 观察者模式</h2>
+<p>我们先来看一个最简单的Promise使用：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        resolve(<span class="hljs-string">'result'</span>)
+    },
+    <span class="hljs-number">1000</span>);
+}) 
+
+p1.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res), err =&gt; <span class="hljs-built_in">console</span>.log(err))
+<span class="copy-code-btn">复制代码</span></code></pre><p>观察这个例子，我们分析Promise的调用流程：</p>
+<ul>
+<li><code>Promise</code>的构造方法接收一个<code>executor()</code>，在<code>new Promise()</code>时就立刻执行这个executor回调</li>
+<li><code>executor()</code>内部的异步任务被放入宏/微任务队列，等待执行</li>
+<li><code>then()</code>被执行，收集成功/失败回调，放入成功/失败队列</li>
+<li><code>executor()</code>的异步任务被执行，触发<code>resolve/reject</code>，从成功/失败队列中取出回调依次执行</li>
+</ul>
+<p>其实熟悉设计模式的同学，很容易就能意识到这是个<strong>观察者模式</strong>，这种<code>收集依赖 -&gt; 触发通知 -&gt; 取出依赖执行</code> 的方式，被广泛运用于观察者模式的实现，在Promise里，执行顺序是<code>then收集依赖 -&gt; 异步触发resolve -&gt; resolve执行依赖</code>。依此，我们可以勾勒出Promise的大致形状：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPromise</span> </span>{
+  <span class="hljs-comment">// 构造方法接收一个回调</span>
+  <span class="hljs-keyword">constructor</span>(executor) {
+    <span class="hljs-keyword">this</span>._resolveQueue = []    <span class="hljs-comment">// then收集的执行成功的回调队列</span>
+    <span class="hljs-keyword">this</span>._rejectQueue = []     <span class="hljs-comment">// then收集的执行失败的回调队列</span>
+
+    <span class="hljs-comment">// 由于resolve/reject是在executor内部被调用, 因此需要使用箭头函数固定this指向, 否则找不到this._resolveQueue</span>
+    <span class="hljs-keyword">let</span> _resolve = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-comment">// 从成功队列里取出回调依次执行</span>
+      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._resolveQueue.length) {
+        <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._resolveQueue.shift()
+        callback(val)
+      }
+    }
+    <span class="hljs-comment">// 实现同resolve</span>
+    <span class="hljs-keyword">let</span> _reject = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._rejectQueue.length) {
+        <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._rejectQueue.shift()
+        callback(val)
+      }
+    }
+    <span class="hljs-comment">// new Promise()时立即执行executor,并传入resolve和reject</span>
+    executor(_resolve, _reject)
+  }
+
+  <span class="hljs-comment">// then方法,接收一个成功的回调和一个失败的回调，并push进对应队列</span>
+  then(resolveFn, rejectFn) {
+    <span class="hljs-keyword">this</span>._resolveQueue.push(resolveFn)
+    <span class="hljs-keyword">this</span>._rejectQueue.push(rejectFn)
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>写完代码我们可以测试一下:</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    resolve(<span class="hljs-string">'result'</span>)
+  }, <span class="hljs-number">1000</span>);
+})
+p1.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res))
+<span class="hljs-comment">//一秒后输出result</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>我们运用观察者模式简单的实现了一下<code>then</code>和<code>resolve</code>，使我们能够在then方法的回调里取得异步操作的返回值，但我们这个Promise离最终实现还有很长的距离，下面我们来一步步补充这个Promise：</p>
+<h2 class="heading" data-id="heading-2">2. Promise A+规范</h2>
+<p>上面我们已经简单地实现了一个超低配版Promise，但我们会看到很多文章和我们写的不一样，他们的Promise实现中还引入了各种状态控制，这是由于ES6的Promise实现需要遵循<a target="_blank" href="https://promisesaplus.com/" rel="nofollow noopener noreferrer">Promise/A+规范</a>，是规范对Promise的状态控制做了要求。Promise/A+的规范比较长，这里只总结两条核心规则：</p>
+<blockquote>
+<ol>
+<li>Promise本质是一个状态机，且状态只能为以下三种：<code>Pending（等待态）</code>、<code>Fulfilled（执行态）</code>、<code>Rejected（拒绝态）</code>，状态的变更是单向的，只能从Pending -&gt; Fulfilled 或 Pending -&gt; Rejected，状态变更不可逆</li>
+<li><code>then方法</code>接收两个可选参数，分别对应状态改变时触发的回调。then方法返回一个promise。then 方法可以被同一个 promise 调用多次。</li>
+</ol>
+</blockquote>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2018/2/26/161d2454e68ff07b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="800" data-height="600" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/161d2454e68ff07b"><figcaption></figcaption></figure>
+根据规范，我们补充一下Promise的代码：<p></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//Promise/A+规范的三种状态</span>
+<span class="hljs-keyword">const</span> PENDING = <span class="hljs-string">'pending'</span>
+<span class="hljs-keyword">const</span> FULFILLED = <span class="hljs-string">'fulfilled'</span>
+<span class="hljs-keyword">const</span> REJECTED = <span class="hljs-string">'rejected'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPromise</span> </span>{
+  <span class="hljs-comment">// 构造方法接收一个回调</span>
+  <span class="hljs-keyword">constructor</span>(executor) {
+    <span class="hljs-keyword">this</span>._status = PENDING     <span class="hljs-comment">// Promise状态</span>
+    <span class="hljs-keyword">this</span>._resolveQueue = []    <span class="hljs-comment">// 成功队列, resolve时触发</span>
+    <span class="hljs-keyword">this</span>._rejectQueue = []     <span class="hljs-comment">// 失败队列, reject时触发</span>
+
+    <span class="hljs-comment">// 由于resolve/reject是在executor内部被调用, 因此需要使用箭头函数固定this指向, 否则找不到this._resolveQueue</span>
+    <span class="hljs-keyword">let</span> _resolve = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._status !== PENDING) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 对应规范中的"状态只能由pending到fulfilled或rejected"</span>
+      <span class="hljs-keyword">this</span>._status = FULFILLED              <span class="hljs-comment">// 变更状态</span>
+
+      <span class="hljs-comment">// 这里之所以使用一个队列来储存回调,是为了实现规范要求的 "then 方法可以被同一个 promise 调用多次"</span>
+      <span class="hljs-comment">// 如果使用一个变量而非队列来储存回调,那么即使多次p1.then()也只会执行一次回调</span>
+      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._resolveQueue.length) {    
+        <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._resolveQueue.shift()
+        callback(val)
+      }
+    }
+    <span class="hljs-comment">// 实现同resolve</span>
+    <span class="hljs-keyword">let</span> _reject = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._status !== PENDING) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 对应规范中的"状态只能由pending到fulfilled或rejected"</span>
+      <span class="hljs-keyword">this</span>._status = REJECTED               <span class="hljs-comment">// 变更状态</span>
+      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._rejectQueue.length) {
+        <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._rejectQueue.shift()
+        callback(val)
+      }
+    }
+    <span class="hljs-comment">// new Promise()时立即执行executor,并传入resolve和reject</span>
+    executor(_resolve, _reject)
+  }
+
+  <span class="hljs-comment">// then方法,接收一个成功的回调和一个失败的回调</span>
+  then(resolveFn, rejectFn) {
+    <span class="hljs-keyword">this</span>._resolveQueue.push(resolveFn)
+    <span class="hljs-keyword">this</span>._rejectQueue.push(rejectFn)
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h2 class="heading" data-id="heading-3">3. then的链式调用</h2>
+<p>补充完规范，我们接着来实现链式调用，这是Promise实现的重点和难点，我们先来看一下then是如何链式调用的：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  resolve(<span class="hljs-number">1</span>)
+})
+
+p1
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-comment">//then回调中可以return一个Promise</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        resolve(<span class="hljs-number">2</span>)
+      }, <span class="hljs-number">1000</span>);
+    })
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-comment">//then回调中也可以return一个值</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+  })
+<span class="copy-code-btn">复制代码</span></code></pre><p>输出</p>
+<pre><code class="hljs bash copyable" lang="bash">1
+2
+3
+<span class="copy-code-btn">复制代码</span></code></pre><p>我们思考一下如何实现这种链式调用：</p>
+<ol>
+<li>显然<code>.then()</code>需要返回一个Promise，这样才能找到then方法，所以我们会把then方法的返回值包装成Promise。</li>
+<li><code>.then()</code>的回调需要拿到上一个<code>.then()</code>的返回值</li>
+<li><code>.then()</code>的回调需要顺序执行，以上面这段代码为例，虽然中间return了一个Promise，但执行顺序仍要保证是1-&gt;2-&gt;3。我们要等待当前Promise状态变更后，再执行下一个then收集的回调，这就要求我们对then的返回值分类讨论</li>
+</ol>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// then方法</span>
+then(resolveFn, rejectFn) {
+  <span class="hljs-comment">//return一个新的promise</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    <span class="hljs-comment">//把resolveFn重新包装一下,再push进resolve执行队列,这是为了能够获取回调的返回值进行分类讨论</span>
+    <span class="hljs-keyword">const</span> fulfilledFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//执行第一个(当前的)Promise的成功回调,并获取返回值</span>
+        <span class="hljs-keyword">let</span> x = resolveFn(value)
+        <span class="hljs-comment">//分类讨论返回值,如果是Promise,那么等待Promise状态变更,否则直接resolve</span>
+        <span class="hljs-comment">//这里resolve之后，就能被下一个.then()的回调获取到返回值，从而实现链式调用</span>
+        x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+      } <span class="hljs-keyword">catch</span> (error) {
+        reject(error)
+      }
+    }
+    <span class="hljs-comment">//把后续then收集的依赖都push进当前Promise的成功回调队列中(_rejectQueue), 这是为了保证顺序调用</span>
+    <span class="hljs-keyword">this</span>._resolveQueue.push(fulfilledFn)
+
+    <span class="hljs-comment">//reject同理</span>
+    <span class="hljs-keyword">const</span> rejectedFn  = <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">let</span> x = rejectFn(error)
+        x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+      } <span class="hljs-keyword">catch</span> (error) {
+        reject(error)
+      }
+    }
+    <span class="hljs-keyword">this</span>._rejectQueue.push(rejectedFn)
+  })
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>然后我们就能测试一下链式调用：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    resolve(<span class="hljs-number">1</span>)
+  }, <span class="hljs-number">500</span>);
+})
+
+p1
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+  })
+
+<span class="hljs-comment">//输出 1 2 3</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-4">4.值穿透 &amp; 状态已变更的情况</h2>
+<p>我们已经初步完成了链式调用，但是对于 then() 方法，我们还要两个细节需要处理一下</p>
+<ol>
+<li><strong>值穿透</strong>：根据规范，如果 then() 接收的参数不是function，那么我们应该忽略它。如果没有忽略，当then()回调不为function时将会抛出异常，导致链式调用中断</li>
+<li><strong>处理状态为resolve/reject的情况</strong>：其实我们上边 then() 的写法是对应状态为<code>padding</code>的情况，但是有些时候，resolve/reject 在 then() 之前就被执行（比如<code>Promise.resolve().then()</code>），如果这个时候还把then()回调push进resolve/reject的执行队列里，那么回调将不会被执行，因此对于状态已经变为<code>fulfilled</code>或<code>rejected</code>的情况，我们直接执行then回调：</li>
+</ol>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// then方法,接收一个成功的回调和一个失败的回调</span>
+  then(resolveFn, rejectFn) {
+    <span class="hljs-comment">// 根据规范，如果then的参数不是function，则我们需要忽略它, 让链式调用继续往下执行</span>
+    <span class="hljs-keyword">typeof</span> resolveFn !== <span class="hljs-string">'function'</span> ? resolveFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value : <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">typeof</span> rejectFn !== <span class="hljs-string">'function'</span> ? rejectFn = <span class="hljs-function"><span class="hljs-params">reason</span> =&gt;</span> {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(reason <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>? reason.message:reason);
+    } : <span class="hljs-literal">null</span>
+  
+    <span class="hljs-comment">// return一个新的promise</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      <span class="hljs-comment">// 把resolveFn重新包装一下,再push进resolve执行队列,这是为了能够获取回调的返回值进行分类讨论</span>
+      <span class="hljs-keyword">const</span> fulfilledFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-comment">// 执行第一个(当前的)Promise的成功回调,并获取返回值</span>
+          <span class="hljs-keyword">let</span> x = resolveFn(value)
+          <span class="hljs-comment">// 分类讨论返回值,如果是Promise,那么等待Promise状态变更,否则直接resolve</span>
+          x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+        } <span class="hljs-keyword">catch</span> (error) {
+          reject(error)
+        }
+      }
+  
+      <span class="hljs-comment">// reject同理</span>
+      <span class="hljs-keyword">const</span> rejectedFn  = <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-keyword">let</span> x = rejectFn(error)
+          x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+        } <span class="hljs-keyword">catch</span> (error) {
+          reject(error)
+        }
+      }
+  
+      <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">this</span>._status) {
+        <span class="hljs-comment">// 当状态为pending时,把then回调push进resolve/reject执行队列,等待执行</span>
+        <span class="hljs-keyword">case</span> PENDING:
+          <span class="hljs-keyword">this</span>._resolveQueue.push(fulfilledFn)
+          <span class="hljs-keyword">this</span>._rejectQueue.push(rejectedFn)
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-comment">// 当状态已经变为resolve/reject时,直接执行then回调</span>
+        <span class="hljs-keyword">case</span> FULFILLED:
+          fulfilledFn(<span class="hljs-keyword">this</span>._value)    <span class="hljs-comment">// this._value是上一个then回调return的值(见完整版代码)</span>
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> REJECTED:
+          rejectedFn(<span class="hljs-keyword">this</span>._value)
+          <span class="hljs-keyword">break</span>;
+      }
+    })
+  }
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-5">5.兼容同步任务</h2>
+<p>完成了then的链式调用以后，我们再处理一个前边的细节，然后放出完整代码。上文我们说过，Promise的执行顺序是<code>new Promise -&gt; then()收集回调 -&gt; resolve/reject执行回调</code>，这一顺序是建立在<strong>executor是异步任务</strong>的前提上的，如果executor是一个同步任务，那么顺序就会变成<code>new Promise -&gt; resolve/reject执行回调 -&gt; then()收集回调</code>，resolve的执行跑到then之前去了，为了兼容这种情况，我们给<code>resolve/reject</code>执行回调的操作包一个setTimeout，让它异步执行。</p>
+<blockquote>
+<p>这里插一句，有关这个setTimeout，其实还有一番学问。虽然规范没有要求回调应该被放进宏任务队列还是微任务队列，但其实Promise的默认实现是放进了微任务队列，我们的实现（包括大多数Promise手动实现和polyfill的转化）都是使用setTimeout放入了宏任务队列（当然我们也可以用MutationObserver模拟微任务）</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//Promise/A+规定的三种状态</span>
+<span class="hljs-keyword">const</span> PENDING = <span class="hljs-string">'pending'</span>
+<span class="hljs-keyword">const</span> FULFILLED = <span class="hljs-string">'fulfilled'</span>
+<span class="hljs-keyword">const</span> REJECTED = <span class="hljs-string">'rejected'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPromise</span> </span>{
+  <span class="hljs-comment">// 构造方法接收一个回调</span>
+  <span class="hljs-keyword">constructor</span>(executor) {
+    <span class="hljs-keyword">this</span>._status = PENDING     <span class="hljs-comment">// Promise状态</span>
+    <span class="hljs-keyword">this</span>._value = <span class="hljs-literal">undefined</span>    <span class="hljs-comment">// 储存then回调return的值</span>
+    <span class="hljs-keyword">this</span>._resolveQueue = []    <span class="hljs-comment">// 成功队列, resolve时触发</span>
+    <span class="hljs-keyword">this</span>._rejectQueue = []     <span class="hljs-comment">// 失败队列, reject时触发</span>
+
+    <span class="hljs-comment">// 由于resolve/reject是在executor内部被调用, 因此需要使用箭头函数固定this指向, 否则找不到this._resolveQueue</span>
+    <span class="hljs-keyword">let</span> _resolve = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-comment">//把resolve执行回调的操作封装成一个函数,放进setTimeout里,以兼容executor是同步代码的情况</span>
+      <span class="hljs-keyword">const</span> run = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._status !== PENDING) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 对应规范中的"状态只能由pending到fulfilled或rejected"</span>
+        <span class="hljs-keyword">this</span>._status = FULFILLED              <span class="hljs-comment">// 变更状态</span>
+        <span class="hljs-keyword">this</span>._value = val                     <span class="hljs-comment">// 储存当前value</span>
+
+        <span class="hljs-comment">// 这里之所以使用一个队列来储存回调,是为了实现规范要求的 "then 方法可以被同一个 promise 调用多次"</span>
+        <span class="hljs-comment">// 如果使用一个变量而非队列来储存回调,那么即使多次p1.then()也只会执行一次回调</span>
+        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._resolveQueue.length) {    
+          <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._resolveQueue.shift()
+          callback(val)
+        }
+      }
+      setTimeout(run)
+    }
+    <span class="hljs-comment">// 实现同resolve</span>
+    <span class="hljs-keyword">let</span> _reject = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> run = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._status !== PENDING) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 对应规范中的"状态只能由pending到fulfilled或rejected"</span>
+        <span class="hljs-keyword">this</span>._status = REJECTED               <span class="hljs-comment">// 变更状态</span>
+        <span class="hljs-keyword">this</span>._value = val                     <span class="hljs-comment">// 储存当前value</span>
+        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._rejectQueue.length) {
+          <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._rejectQueue.shift()
+          callback(val)
+        }
+      }
+      setTimeout(run)
+    }
+    <span class="hljs-comment">// new Promise()时立即执行executor,并传入resolve和reject</span>
+    executor(_resolve, _reject)
+  }
+
+  <span class="hljs-comment">// then方法,接收一个成功的回调和一个失败的回调</span>
+  then(resolveFn, rejectFn) {
+    <span class="hljs-comment">// 根据规范，如果then的参数不是function，则我们需要忽略它, 让链式调用继续往下执行</span>
+    <span class="hljs-keyword">typeof</span> resolveFn !== <span class="hljs-string">'function'</span> ? resolveFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value : <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">typeof</span> rejectFn !== <span class="hljs-string">'function'</span> ? rejectFn = <span class="hljs-function"><span class="hljs-params">reason</span> =&gt;</span> {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(reason <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>? reason.message:reason);
+    } : <span class="hljs-literal">null</span>
+  
+    <span class="hljs-comment">// return一个新的promise</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      <span class="hljs-comment">// 把resolveFn重新包装一下,再push进resolve执行队列,这是为了能够获取回调的返回值进行分类讨论</span>
+      <span class="hljs-keyword">const</span> fulfilledFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-comment">// 执行第一个(当前的)Promise的成功回调,并获取返回值</span>
+          <span class="hljs-keyword">let</span> x = resolveFn(value)
+          <span class="hljs-comment">// 分类讨论返回值,如果是Promise,那么等待Promise状态变更,否则直接resolve</span>
+          x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+        } <span class="hljs-keyword">catch</span> (error) {
+          reject(error)
+        }
+      }
+  
+      <span class="hljs-comment">// reject同理</span>
+      <span class="hljs-keyword">const</span> rejectedFn  = <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-keyword">let</span> x = rejectFn(error)
+          x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+        } <span class="hljs-keyword">catch</span> (error) {
+          reject(error)
+        }
+      }
+  
+      <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">this</span>._status) {
+        <span class="hljs-comment">// 当状态为pending时,把then回调push进resolve/reject执行队列,等待执行</span>
+        <span class="hljs-keyword">case</span> PENDING:
+          <span class="hljs-keyword">this</span>._resolveQueue.push(fulfilledFn)
+          <span class="hljs-keyword">this</span>._rejectQueue.push(rejectedFn)
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-comment">// 当状态已经变为resolve/reject时,直接执行then回调</span>
+        <span class="hljs-keyword">case</span> FULFILLED:
+          fulfilledFn(<span class="hljs-keyword">this</span>._value)    <span class="hljs-comment">// this._value是上一个then回调return的值(见完整版代码)</span>
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> REJECTED:
+          rejectedFn(<span class="hljs-keyword">this</span>._value)
+          <span class="hljs-keyword">break</span>;
+      }
+    })
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>然后我们可以测试一下这个Promise：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  resolve(<span class="hljs-number">1</span>)          <span class="hljs-comment">//同步executor测试</span>
+})
+
+p1
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>          <span class="hljs-comment">//链式调用测试</span>
+  })
+  .then()             <span class="hljs-comment">//值穿透测试</span>
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      resolve(<span class="hljs-number">3</span>)      <span class="hljs-comment">//返回Promise测试</span>
+    })
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(res)
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'reject测试'</span>)   <span class="hljs-comment">//reject测试</span>
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {}, err =&gt; {
+    <span class="hljs-built_in">console</span>.log(err)
+  })
+
+<span class="hljs-comment">// 输出 </span>
+<span class="hljs-comment">// 1 </span>
+<span class="hljs-comment">// 2 </span>
+<span class="hljs-comment">// 3 </span>
+<span class="hljs-comment">// Error: reject测试</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>到这里，我们已经实现了Promise的主要功能<code>(｀∀´)Ψ</code>剩下的几个方法都非常简单，我们顺手收拾掉：</p>
+<br>
+<h2 class="heading" data-id="heading-6">Promise.prototype.catch()</h2>
+<blockquote>
+<p><code>catch()方法</code>返回一个Promise，并且处理拒绝的情况。它的行为与调用Promise.prototype.then(undefined, onRejected) 相同。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//catch方法其实就是执行一下then的第二个回调</span>
+<span class="hljs-keyword">catch</span>(rejectFn) {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.then(<span class="hljs-literal">undefined</span>, rejectFn)
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-7">Promise.prototype.finally()</h2>
+<blockquote>
+<p><code>finally()方法</code>返回一个Promise。在promise结束时，无论结果是fulfilled或者是rejected，都会执行指定的回调函数。在finally之后，还可以继续then。并且会将值原封不动的传递给后面的then</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//finally方法</span>
+<span class="hljs-keyword">finally</span>(callback) {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.then(
+    <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> MyPromise.resolve(callback()).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> value),             <span class="hljs-comment">// MyPromise.resolve执行回调,并在then中return结果传递给后面的Promise</span>
+    reason =&gt; MyPromise.resolve(callback()).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">throw</span> reason })  <span class="hljs-comment">// reject同理</span>
+  )
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>PS. 有同学问我<code>MyPromise.resolve(callback())</code>的意义，这里补充解释一下：这个写法其实涉及到一个<code>finally()</code>的使用细节，<strong>finally()如果return了一个reject状态的Promise，将会改变当前Promise的状态</strong>，这个<code>MyPromise.resolve</code>就用于改变Promise状态，在finally()没有返回reject态Promise或throw错误的情况下，去掉<code>MyPromise.resolve</code>也是一样的（欢迎大家向我提问，勘误的过程中也能很好地加深自己对Promise的理解，大家可以在各个交流群里直接@我）</p>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://www.jianshu.com/p/f0b94daf9bf7" rel="nofollow noopener noreferrer">对 Promise.prototype.finally() 的粗浅理解</a></p>
+</blockquote>
+<br>
+<h2 class="heading" data-id="heading-8">Promise.resolve()</h2>
+<blockquote>
+<p><code>Promise.resolve(value)</code>方法返回一个以给定值解析后的Promise 对象。如果该值为promise，返回这个promise；如果这个值是thenable（即带有"then" 方法)），返回的promise会“跟随”这个thenable的对象，采用它的最终状态；否则返回的promise将以此值完成。此函数将类promise对象的多层嵌套展平。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//静态的resolve方法</span>
+<span class="hljs-keyword">static</span> resolve(value) {
+  <span class="hljs-keyword">if</span>(value <span class="hljs-keyword">instanceof</span> MyPromise) <span class="hljs-keyword">return</span> value <span class="hljs-comment">// 根据规范, 如果参数是Promise实例, 直接return这个实例</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> resolve(value))
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-9">Promise.reject()</h2>
+<blockquote>
+<p><code>Promise.reject()</code>方法返回一个带有拒绝原因的Promise对象。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//静态的reject方法</span>
+<span class="hljs-keyword">static</span> reject(reason) {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> reject(reason))
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-10">Promise.all()</h2>
+<blockquote>
+<p><code>Promise.all(iterable)</code>方法返回一个 Promise 实例，此实例在 iterable 参数内所有的 promise 都“完成（resolved）”或参数中不包含 promise 时回调完成（resolve）；如果参数中  promise 有一个失败（rejected），此实例回调失败（reject），失败原因的是第一个失败 promise 的结果。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//静态的all方法</span>
+<span class="hljs-keyword">static</span> all(promiseArr) {
+  <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">let</span> result = []
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    promiseArr.forEach(<span class="hljs-function">(<span class="hljs-params">p, i</span>) =&gt;</span> {
+      <span class="hljs-comment">//Promise.resolve(p)用于处理传入值不为Promise的情况</span>
+      MyPromise.resolve(p).then(
+        <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+          index++
+          result[i] = val
+          <span class="hljs-comment">//所有then执行后, resolve结果</span>
+          <span class="hljs-keyword">if</span>(index === promiseArr.length) {
+            resolve(result)
+          }
+        },
+        err =&gt; {
+          <span class="hljs-comment">//有一个Promise被reject时，MyPromise的状态变为reject</span>
+          reject(err)
+        }
+      )
+    })
+  })
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-11">Promise.race()</h2>
+<blockquote>
+<p><code>Promise.race(iterable)</code>方法返回一个 promise，一旦迭代器中的某个promise解决或拒绝，返回的 promise就会解决或拒绝。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">static</span> race(promiseArr) {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    <span class="hljs-comment">//同时执行Promise,如果有一个Promise的状态发生改变,就变更新MyPromise的状态</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> p <span class="hljs-keyword">of</span> promiseArr) {
+      MyPromise.resolve(p).then(  <span class="hljs-comment">//Promise.resolve(p)用于处理传入值不为Promise的情况</span>
+        value =&gt; {
+          resolve(value)        <span class="hljs-comment">//注意这个resolve是上边new MyPromise的</span>
+        },
+        err =&gt; {
+          reject(err)
+        }
+      )
+    }
+  })
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-12">完整代码</h2>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//Promise/A+规定的三种状态</span>
+<span class="hljs-keyword">const</span> PENDING = <span class="hljs-string">'pending'</span>
+<span class="hljs-keyword">const</span> FULFILLED = <span class="hljs-string">'fulfilled'</span>
+<span class="hljs-keyword">const</span> REJECTED = <span class="hljs-string">'rejected'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPromise</span> </span>{
+  <span class="hljs-comment">// 构造方法接收一个回调</span>
+  <span class="hljs-keyword">constructor</span>(executor) {
+    <span class="hljs-keyword">this</span>._status = PENDING     <span class="hljs-comment">// Promise状态</span>
+    <span class="hljs-keyword">this</span>._value = <span class="hljs-literal">undefined</span>    <span class="hljs-comment">// 储存then回调return的值</span>
+    <span class="hljs-keyword">this</span>._resolveQueue = []    <span class="hljs-comment">// 成功队列, resolve时触发</span>
+    <span class="hljs-keyword">this</span>._rejectQueue = []     <span class="hljs-comment">// 失败队列, reject时触发</span>
+
+    <span class="hljs-comment">// 由于resolve/reject是在executor内部被调用, 因此需要使用箭头函数固定this指向, 否则找不到this._resolveQueue</span>
+    <span class="hljs-keyword">let</span> _resolve = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-comment">//把resolve执行回调的操作封装成一个函数,放进setTimeout里,以兼容executor是同步代码的情况</span>
+      <span class="hljs-keyword">const</span> run = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._status !== PENDING) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 对应规范中的"状态只能由pending到fulfilled或rejected"</span>
+        <span class="hljs-keyword">this</span>._status = FULFILLED              <span class="hljs-comment">// 变更状态</span>
+        <span class="hljs-keyword">this</span>._value = val                     <span class="hljs-comment">// 储存当前value</span>
+
+        <span class="hljs-comment">// 这里之所以使用一个队列来储存回调,是为了实现规范要求的 "then 方法可以被同一个 promise 调用多次"</span>
+        <span class="hljs-comment">// 如果使用一个变量而非队列来储存回调,那么即使多次p1.then()也只会执行一次回调</span>
+        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._resolveQueue.length) {    
+          <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._resolveQueue.shift()
+          callback(val)
+        }
+      }
+      setTimeout(run)
+    }
+    <span class="hljs-comment">// 实现同resolve</span>
+    <span class="hljs-keyword">let</span> _reject = <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> run = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._status !== PENDING) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 对应规范中的"状态只能由pending到fulfilled或rejected"</span>
+        <span class="hljs-keyword">this</span>._status = REJECTED               <span class="hljs-comment">// 变更状态</span>
+        <span class="hljs-keyword">this</span>._value = val                     <span class="hljs-comment">// 储存当前value</span>
+        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>._rejectQueue.length) {
+          <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>._rejectQueue.shift()
+          callback(val)
+        }
+      }
+      setTimeout(run)
+    }
+    <span class="hljs-comment">// new Promise()时立即执行executor,并传入resolve和reject</span>
+    executor(_resolve, _reject)
+  }
+
+  <span class="hljs-comment">// then方法,接收一个成功的回调和一个失败的回调</span>
+  then(resolveFn, rejectFn) {
+    <span class="hljs-comment">// 根据规范，如果then的参数不是function，则我们需要忽略它, 让链式调用继续往下执行</span>
+    <span class="hljs-keyword">typeof</span> resolveFn !== <span class="hljs-string">'function'</span> ? resolveFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value : <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">typeof</span> rejectFn !== <span class="hljs-string">'function'</span> ? rejectFn = <span class="hljs-function"><span class="hljs-params">reason</span> =&gt;</span> {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(reason <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>? reason.message:reason);
+    } : <span class="hljs-literal">null</span>
+  
+    <span class="hljs-comment">// return一个新的promise</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      <span class="hljs-comment">// 把resolveFn重新包装一下,再push进resolve执行队列,这是为了能够获取回调的返回值进行分类讨论</span>
+      <span class="hljs-keyword">const</span> fulfilledFn = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-comment">// 执行第一个(当前的)Promise的成功回调,并获取返回值</span>
+          <span class="hljs-keyword">let</span> x = resolveFn(value)
+          <span class="hljs-comment">// 分类讨论返回值,如果是Promise,那么等待Promise状态变更,否则直接resolve</span>
+          x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+        } <span class="hljs-keyword">catch</span> (error) {
+          reject(error)
+        }
+      }
+  
+      <span class="hljs-comment">// reject同理</span>
+      <span class="hljs-keyword">const</span> rejectedFn  = <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-keyword">let</span> x = rejectFn(error)
+          x <span class="hljs-keyword">instanceof</span> MyPromise ? x.then(resolve, reject) : resolve(x)
+        } <span class="hljs-keyword">catch</span> (error) {
+          reject(error)
+        }
+      }
+  
+      <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">this</span>._status) {
+        <span class="hljs-comment">// 当状态为pending时,把then回调push进resolve/reject执行队列,等待执行</span>
+        <span class="hljs-keyword">case</span> PENDING:
+          <span class="hljs-keyword">this</span>._resolveQueue.push(fulfilledFn)
+          <span class="hljs-keyword">this</span>._rejectQueue.push(rejectedFn)
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-comment">// 当状态已经变为resolve/reject时,直接执行then回调</span>
+        <span class="hljs-keyword">case</span> FULFILLED:
+          fulfilledFn(<span class="hljs-keyword">this</span>._value)    <span class="hljs-comment">// this._value是上一个then回调return的值(见完整版代码)</span>
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> REJECTED:
+          rejectedFn(<span class="hljs-keyword">this</span>._value)
+          <span class="hljs-keyword">break</span>;
+      }
+    })
+  }
+
+  <span class="hljs-comment">//catch方法其实就是执行一下then的第二个回调</span>
+  <span class="hljs-keyword">catch</span>(rejectFn) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.then(<span class="hljs-literal">undefined</span>, rejectFn)
+  }
+
+  <span class="hljs-comment">//finally方法</span>
+  <span class="hljs-keyword">finally</span>(callback) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.then(
+      <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> MyPromise.resolve(callback()).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> value),             <span class="hljs-comment">//执行回调,并returnvalue传递给后面的then</span>
+      reason =&gt; MyPromise.resolve(callback()).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-keyword">throw</span> reason })  <span class="hljs-comment">//reject同理</span>
+    )
+  }
+
+  <span class="hljs-comment">//静态的resolve方法</span>
+  <span class="hljs-keyword">static</span> resolve(value) {
+    <span class="hljs-keyword">if</span>(value <span class="hljs-keyword">instanceof</span> MyPromise) <span class="hljs-keyword">return</span> value <span class="hljs-comment">//根据规范, 如果参数是Promise实例, 直接return这个实例</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> resolve(value))
+  }
+
+  <span class="hljs-comment">//静态的reject方法</span>
+  <span class="hljs-keyword">static</span> reject(reason) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> reject(reason))
+  }
+
+  <span class="hljs-comment">//静态的all方法</span>
+  <span class="hljs-keyword">static</span> all(promiseArr) {
+    <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">let</span> result = []
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      promiseArr.forEach(<span class="hljs-function">(<span class="hljs-params">p, i</span>) =&gt;</span> {
+        <span class="hljs-comment">//Promise.resolve(p)用于处理传入值不为Promise的情况</span>
+        MyPromise.resolve(p).then(
+          <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+            index++
+            result[i] = val
+            <span class="hljs-keyword">if</span>(index === promiseArr.length) {
+              resolve(result)
+            }
+          },
+          err =&gt; {
+            reject(err)
+          }
+        )
+      })
+    })
+  }
+
+  <span class="hljs-comment">//静态的race方法</span>
+  <span class="hljs-keyword">static</span> race(promiseArr) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      <span class="hljs-comment">//同时执行Promise,如果有一个Promise的状态发生改变,就变更新MyPromise的状态</span>
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> p <span class="hljs-keyword">of</span> promiseArr) {
+        MyPromise.resolve(p).then(  <span class="hljs-comment">//Promise.resolve(p)用于处理传入值不为Promise的情况</span>
+          value =&gt; {
+            resolve(value)        <span class="hljs-comment">//注意这个resolve是上边new MyPromise的</span>
+          },
+          err =&gt; {
+            reject(err)
+          }
+        )
+      }
+    })
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>洋洋洒洒150多行的代码，到这里，我们终于可以给Promise的实现做一个结尾了。我们从一个最简单的Promise使用实例开始，通过对调用流程的分析，根据观察者模式实现了Promise的大致骨架，然后依据Promise/A+规范填充代码，重点实现了then 的链式调用，最后完成了Promise的静态/实例方法。其实Promise实现在整体上并没有太复杂的思想，但我们日常使用的时候往往忽略了很多Promise细节，因而很难写出一个符合规范的Promise实现，源码的实现过程，其实也是对Promise使用细节重新学习的过程。</p>
+<h1 class="heading" data-id="heading-13">async/await实现</h1>
+<p>虽然前边花了这么多篇幅讲Promise的实现，不过探索<code>async/await</code>暂停执行的机制才是我们的初衷，下面我们就来进入这一块的内容。同样地，开头我们点一下async/await的使用意义。
+在多个回调依赖的场景中，尽管Promise通过链式调用取代了回调嵌套，但过多的链式调用可读性仍然不佳，流程控制也不方便，ES7 提出的async 函数，终于让 JS 对于异步操作有了终极解决方案，简洁优美地解决了以上两个问题。</p>
+<blockquote>
+<p>设想一个这样的场景，异步任务a-&gt;b-&gt;c之间存在依赖关系，如果我们通过then链式调用来处理这些关系，可读性并不是很好，如果我们想控制其中某个过程，比如在某些条件下，b不往下执行到c，那么也不是很方便控制</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-built_in">Promise</span>.resolve(a)
+  .then(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> {
+    <span class="hljs-comment">// do something</span>
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> {
+    <span class="hljs-comment">// do something</span>
+  })
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>但是如果通过async/await来实现这个场景，可读性和流程控制都会方便不少。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> a = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.resolve(a);
+  <span class="hljs-keyword">const</span> b = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.resolve(b);
+  <span class="hljs-keyword">const</span> c = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.resolve(c);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<p>那么我们要如何实现一个async/await呢，首先我们要知道，<strong>async/await实际上是对Generator（生成器）的封装</strong>，是一个语法糖。由于Generator出现不久就被async/await取代了，很多同学对Generator比较陌生，因此我们先来看看Generator的用法：</p>
+<blockquote>
+<p>ES6 新引入了 Generator 函数，可以通过 yield 关键字，把函数的执行流挂起，通过next()方法可以切换到下一个状态，为改变执行流程提供了可能，从而为异步编程提供解决方案。</p>
+</blockquote>
+<pre><code class="hljs JS copyable" lang="JS"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">myGenerator</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> <span class="hljs-string">'1'</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-string">'2'</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'3'</span>
+}
+
+<span class="hljs-keyword">const</span> gen = myGenerator();  <span class="hljs-comment">// 获取迭代器</span>
+gen.next()  <span class="hljs-comment">//{value: "1", done: false}</span>
+gen.next()  <span class="hljs-comment">//{value: "2", done: false}</span>
+gen.next()  <span class="hljs-comment">//{value: "3", done: true}</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>也可以通过给<code>next()</code>传参, 让yield具有返回值</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">myGenerator</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-string">'1'</span>)  <span class="hljs-comment">//test1</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-string">'2'</span>)  <span class="hljs-comment">//test2</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-string">'3'</span>)  <span class="hljs-comment">//test3</span>
+}
+
+<span class="hljs-comment">// 获取迭代器</span>
+<span class="hljs-keyword">const</span> gen = myGenerator();
+
+gen.next()
+gen.next(<span class="hljs-string">'test1'</span>)
+gen.next(<span class="hljs-string">'test2'</span>)
+gen.next(<span class="hljs-string">'test3'</span>)
+<span class="copy-code-btn">复制代码</span></code></pre><p>我们看到Generator的用法，应该️会感到很熟悉，<code>*/yield</code>和<code>async/await</code>看起来其实已经很相似了，它们都提供了暂停执行的功能，但二者又有三点不同：</p>
+<ul>
+<li><code>async/await</code>自带执行器，不需要手动调用next()就能自动执行下一步</li>
+<li><code>async</code>函数返回值是Promise对象，而Generator返回的是生成器对象</li>
+<li><code>await</code>能够返回Promise的resolve/reject的值</li>
+</ul>
+<p><strong>我们对async/await的实现，其实也就是对应以上三点封装Generator</strong></p>
+<h2 class="heading" data-id="heading-14">1.自动执行</h2>
+<p>我们先来看一下，对于这样一个Generator，手动执行是怎样一个流程</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">myGenerator</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">2</span>);
+  <span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">3</span>);
+}
+
+<span class="hljs-comment">// 手动执行迭代器</span>
+<span class="hljs-keyword">const</span> gen = myGenerator()
+gen.next().value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(val)
+  gen.next().value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(val)
+    gen.next().value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(val)
+    })
+  })
+})
+
+<span class="hljs-comment">//输出1 2 3</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>我们也可以通过给<code>gen.next()</code>传值的方式，让yield能返回resolve的值</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">myGenerator</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>))   <span class="hljs-comment">//1</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">2</span>))   <span class="hljs-comment">//2</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">3</span>))   <span class="hljs-comment">//3</span>
+}
+
+<span class="hljs-comment">// 手动执行迭代器</span>
+<span class="hljs-keyword">const</span> gen = myGenerator()
+gen.next().value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+  <span class="hljs-comment">// console.log(val)</span>
+  gen.next(val).value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+    <span class="hljs-comment">// console.log(val)</span>
+    gen.next(val).value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+      <span class="hljs-comment">// console.log(val)</span>
+      gen.next(val)
+    })
+  })
+})
+<span class="copy-code-btn">复制代码</span></code></pre><p>显然，手动执行的写法看起来既笨拙又丑陋，我们希望生成器函数能自动往下执行，且yield能返回resolve的值，基于这两个需求，我们进行一个基本的封装，这里<code>async/await</code>是关键字，不能重写，我们用函数来模拟：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params">gen</span>) </span>{
+  <span class="hljs-keyword">var</span> g = gen()                     <span class="hljs-comment">//由于每次gen()获取到的都是最新的迭代器,因此获取迭代器操作要放在_next()之前,否则会进入死循环</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_next</span>(<span class="hljs-params">val</span>) </span>{             <span class="hljs-comment">//封装一个方法, 递归执行g.next()</span>
+    <span class="hljs-keyword">var</span> res = g.next(val)           <span class="hljs-comment">//获取迭代器对象，并返回resolve的值</span>
+    <span class="hljs-keyword">if</span>(res.done) <span class="hljs-keyword">return</span> res.value   <span class="hljs-comment">//递归终止条件</span>
+    res.value.then(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {         <span class="hljs-comment">//Promise的then方法是实现自动迭代的前提</span>
+      _next(val)                    <span class="hljs-comment">//等待Promise完成就自动执行下一个next，并传入resolve的值</span>
+    })
+  }
+  _next()  <span class="hljs-comment">//第一次执行</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>对于我们之前的例子，我们就能这样执行：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">myGenerator</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>))   <span class="hljs-comment">//1</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">2</span>))   <span class="hljs-comment">//2</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">3</span>))   <span class="hljs-comment">//3</span>
+}
+
+run(myGenerator)
+<span class="copy-code-btn">复制代码</span></code></pre><p>这样我们就初步实现了一个<code>async/await</code>。上边的代码只有五六行，但并不是一下就能看明白的，我们之前用了四个例子来做铺垫，也是为了让读者更好地理解这段代码。 简单来说，我们封装了一个run方法，run方法里我们把执行下一步的操作封装成<code>_next()</code>，每次Promise.then()的时候都去执行<code>_next()</code>，实现自动迭代的效果。在迭代的过程中，我们还把resolve的值传入<code>gen.next()</code>，使得yield得以返回Promise的resolve的值</p>
+<blockquote>
+<p>这里插一句，是不是只有<code>.then方法</code>这样的形式才能完成我们自动执行的功能呢？答案是否定的，yield后边除了接Promise，还可以接<code>thunk函数</code>，thunk函数不是一个新东西，所谓thunk函数，就是<strong>单参的只接受回调的函数</strong>，详细介绍可以看<a target="_blank" href="https://user-gold-cdn.xitu.io/2020/3/15/170dc5e88df6c208" rel="nofollow noopener noreferrer">阮一峰Thunk 函数的含义和用法</a>，无论是Promise还是thunk函数，其核心都是通过<strong>传入回调</strong>的方式来实现Generator的自动执行。thunk函数只作为一个拓展知识，理解有困难的同学也可以跳过这里，并不影响后续理解。</p>
+</blockquote>
+<h2 class="heading" data-id="heading-15">2.返回Promise &amp; 异常处理</h2>
+<p>虽然我们实现了Generator的自动执行以及让yield返回resolve的值，但上边的代码还存在着几点问题：</p>
+<ol>
+<li><strong>需要兼容基本类型</strong>：这段代码能自动执行的前提是<code>yield</code>后面跟Promise，为了兼容后面跟着基本类型值的情况，我们需要把yield跟的内容(<code>gen().next.value</code>)都用<code>Promise.resolve()</code>转化一遍</li>
+<li><strong>缺少错误处理</strong>：上边代码里的Promise如果执行失败，就会导致后续执行直接中断，我们需要通过调用<code>Generator.prototype.throw()</code>，把错误抛出来，才能被外层的try-catch捕获到</li>
+<li><strong>返回值是Promise</strong>：<code>async/await</code>的返回值是一个Promise，我们这里也需要保持一致，给返回值包一个Promise</li>
+</ol>
+<p>我们改造一下run方法：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params">gen</span>) </span>{
+  <span class="hljs-comment">//把返回值包装成promise</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    <span class="hljs-keyword">var</span> g = gen()
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_next</span>(<span class="hljs-params">val</span>) </span>{
+      <span class="hljs-comment">//错误处理</span>
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">var</span> res = g.next(val) 
+      } <span class="hljs-keyword">catch</span>(err) {
+        <span class="hljs-keyword">return</span> reject(err); 
+      }
+      <span class="hljs-keyword">if</span>(res.done) {
+        <span class="hljs-keyword">return</span> resolve(res.value);
+      }
+      <span class="hljs-comment">//res.value包装为promise，以兼容yield后面跟基本类型的情况</span>
+      <span class="hljs-built_in">Promise</span>.resolve(res.value).then(
+        <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+          _next(val);
+        }, 
+        err =&gt; {
+          <span class="hljs-comment">//抛出错误</span>
+          g.throw(err)
+        });
+    }
+    _next();
+  });
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>然后我们可以测试一下：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">myGenerator</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>)) 
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>)   <span class="hljs-comment">//2</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">'error'</span>))
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-built_in">console</span>.log(error)
+  }
+}
+
+<span class="hljs-keyword">const</span> result = run(myGenerator)     <span class="hljs-comment">//result是一个Promise</span>
+<span class="hljs-comment">//输出 1 2 error</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>到这里，一个<code>async/await</code>的实现基本完成了。最后我们可以看一下babel对async/await的转换结果，其实整体的思路是一样的，但是写法稍有不同：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//相当于我们的run()</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_asyncToGenerator</span>(<span class="hljs-params">fn</span>) </span>{
+  <span class="hljs-comment">// return一个function，和async保持一致。我们的run直接执行了Generator，其实是不太规范的</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+    <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+      <span class="hljs-keyword">var</span> gen = fn.apply(self, args);
+
+      <span class="hljs-comment">//相当于我们的_next()</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_next</span>(<span class="hljs-params">value</span>) </span>{
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, <span class="hljs-string">'next'</span>, value);
+      }
+      <span class="hljs-comment">//处理异常</span>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_throw</span>(<span class="hljs-params">err</span>) </span>{
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, <span class="hljs-string">'throw'</span>, err);
+      }
+      _next(<span class="hljs-literal">undefined</span>);
+    });
+  };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncGeneratorStep</span>(<span class="hljs-params">gen, resolve, reject, _next, _throw, key, arg</span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> info = gen[key](arg);
+    <span class="hljs-keyword">var</span> value = info.value;
+  } <span class="hljs-keyword">catch</span> (error) {
+    reject(error);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">if</span> (info.done) {
+    resolve(value);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">Promise</span>.resolve(value).then(_next, _throw);
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>使用方式：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> foo = _asyncToGenerator(<span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>))   <span class="hljs-comment">//1</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>)                    <span class="hljs-comment">//2</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'3'</span>
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-built_in">console</span>.log(error)
+  }
+})
+
+foo().then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(res)                          <span class="hljs-comment">//3</span>
+})
+<span class="copy-code-btn">复制代码</span></code></pre><p>有关<code>async/await</code>的实现，到这里就告一段落了。但是直到结尾，我们也不知道await到底是如何暂停执行的，有关await暂停执行的秘密，我们还要到Generator的实现中去寻找答案</p>
+<h1 class="heading" data-id="heading-16">Generator实现</h1>
+<p>我们从一个简单的Generator使用实例开始，一步步探究Generator的实现原理：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> <span class="hljs-string">'result1'</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-string">'result2'</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-string">'result3'</span>
+}
+  
+<span class="hljs-keyword">const</span> gen = foo()
+<span class="hljs-built_in">console</span>.log(gen.next().value)
+<span class="hljs-built_in">console</span>.log(gen.next().value)
+<span class="hljs-built_in">console</span>.log(gen.next().value)
+<span class="copy-code-btn">复制代码</span></code></pre><p>我们可以在<a target="_blank" href="https://babeljs.io/repl/#?browsers=&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=GYVwdgxgLglg9mAVAAmHOAKAlMg3gKGWQE8YBTAGwBNkByAJzIGcQKoBGWwk86uxlmwBMXIqUo0GzVlADMXAL7d8EBEyjIA5mTDIAvKnTYVauBTIA6CnE0ZtYC2DIAPKNgsA3AIYUQZLCZgTGaW1rb2ji5uWJ4-fgGqQSFWNnY6ka7u3r7-QA&amp;debug=false&amp;forceAllTransforms=false&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=false&amp;fileSize=false&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=es2015%2Creact%2Cstage-2&amp;prettier=false&amp;targets=&amp;version=7.5.5&amp;externalPlugins=" rel="nofollow noopener noreferrer">babel官网</a>上在线转化这段代码，看看ES5环境下是如何实现Generator的：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-meta">"use strict"</span>;
+
+<span class="hljs-keyword">var</span> _marked =
+<span class="hljs-comment">/*#__PURE__*/</span>
+regeneratorRuntime.mark(foo);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> regeneratorRuntime.wrap(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo$</span>(<span class="hljs-params">_context</span>) </span>{
+    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">switch</span> (_context.prev = _context.next) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+          _context.next = <span class="hljs-number">2</span>;
+          <span class="hljs-keyword">return</span> <span class="hljs-string">'result1'</span>;
+
+        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+          _context.next = <span class="hljs-number">4</span>;
+          <span class="hljs-keyword">return</span> <span class="hljs-string">'result2'</span>;
+
+        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+          _context.next = <span class="hljs-number">6</span>;
+          <span class="hljs-keyword">return</span> <span class="hljs-string">'result3'</span>;
+
+        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"end"</span>:
+          <span class="hljs-keyword">return</span> _context.stop();
+      }
+    }
+  }, _marked);
+}
+
+<span class="hljs-keyword">var</span> gen = foo();
+<span class="hljs-built_in">console</span>.log(gen.next().value);
+<span class="hljs-built_in">console</span>.log(gen.next().value);
+<span class="hljs-built_in">console</span>.log(gen.next().value);
+<span class="copy-code-btn">复制代码</span></code></pre><p>代码咋一看不长，但如果仔细观察会发现有两个不认识的东西 —— <code>regeneratorRuntime.mark</code>和<code>regeneratorRuntime.wrap</code>，这两者其实是 regenerator-runtime 模块里的两个方法，regenerator-runtime 模块来自facebook的 regenerator 模块，完整代码在<a target="_blank" href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js" rel="nofollow noopener noreferrer">runtime.js</a>，这个runtime有700多行...-_-||，因此我们不能全讲，不太重要的部分我们就简单地过一下，重点讲解暂停执行相关部分代码</p>
+<blockquote>
+<p>个人觉得啃源码的效果不是很好，建议读者拉到末尾先看结论和简略版实现，源码作为一个补充理解</p>
+</blockquote>
+<h2 class="heading" data-id="heading-17">regeneratorRuntime.mark()</h2>
+<p><code>regeneratorRuntime.mark(foo)</code>这个方法在第一行被调用，我们先看一下runtime里mark()方法的定义</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//runtime.js里的定义稍有不同，多了一些判断，以下是编译后的代码</span>
+runtime.mark = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">genFun</span>) </span>{
+  genFun.__proto__ = GeneratorFunctionPrototype;
+  genFun.prototype = <span class="hljs-built_in">Object</span>.create(Gp);
+  <span class="hljs-keyword">return</span> genFun;
+};
+<span class="copy-code-btn">复制代码</span></code></pre><p>这里边<code>GeneratorFunctionPrototype</code>和<code>Gp</code>我们都不认识，他们被定义在runtime里，不过没关系，我们只要知道<code>mark()方法</code>为生成器函数（foo）绑定了一系列原型就可以了，这里就简单地过了</p>
+<h2 class="heading" data-id="heading-18">regeneratorRuntime.wrap()</h2>
+<p>从上面babel转化的代码我们能看到，执行<code>foo()</code>，其实就是执行<code>wrap()</code>，那么这个方法起到什么作用呢，他想包装一个什么东西呢，我们先来看看wrap方法的定义：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//runtime.js里的定义稍有不同，多了一些判断，以下是编译后的代码</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wrap</span>(<span class="hljs-params">innerFn, outerFn, self</span>) </span>{
+  <span class="hljs-keyword">var</span> generator = <span class="hljs-built_in">Object</span>.create(outerFn.prototype);
+  <span class="hljs-keyword">var</span> context = <span class="hljs-keyword">new</span> Context([]);
+  generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+  <span class="hljs-keyword">return</span> generator;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>wrap方法先是创建了一个generator，并继承<code>outerFn.prototype</code>；然后new了一个<code>context对象</code>；<code>makeInvokeMethod方法</code>接收<code>innerFn(对应foo$)</code>、<code>context</code>和<code>this</code>，并把返回值挂到<code>generator._invoke</code>上；最后return了generator。<strong>其实wrap()相当于是给generator增加了一个_invoke方法</strong></p>
+<p>这段代码肯定让人产生很多疑问，outerFn.prototype是什么，Context又是什么，makeInvokeMethod又做了哪些操作。下面我们就来一一解答：</p>
+<blockquote>
+<p><code>outerFn.prototype</code>其实就是<code>genFun.prototype</code>，</p>
+</blockquote>
+<p>这个我们结合一下上面的代码就能知道</p>
+<blockquote>
+<p><code>context</code>可以直接理解为这样一个全局对象，用于储存各种状态和上下文：</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">var</span> ContinueSentinel = {};
+
+<span class="hljs-keyword">var</span> context = {
+  <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">method</span>: <span class="hljs-string">"next"</span>,
+  <span class="hljs-attr">next</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">prev</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">abrupt</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">type, arg</span>) </span>{
+    <span class="hljs-keyword">var</span> record = {};
+    record.type = type;
+    record.arg = arg;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.complete(record);
+  },
+  <span class="hljs-attr">complete</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">record, afterLoc</span>) </span>{
+    <span class="hljs-keyword">if</span> (record.type === <span class="hljs-string">"return"</span>) {
+      <span class="hljs-keyword">this</span>.rval = <span class="hljs-keyword">this</span>.arg = record.arg;
+      <span class="hljs-keyword">this</span>.method = <span class="hljs-string">"return"</span>;
+      <span class="hljs-keyword">this</span>.next = <span class="hljs-string">"end"</span>;
+    }
+
+    <span class="hljs-keyword">return</span> ContinueSentinel;
+  },
+  <span class="hljs-attr">stop</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.done = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.rval;
+  }
+};
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p><code>makeInvokeMethod</code>的定义如下，它return了一个<code>invoke方法</code>，invoke用于判断当前状态和执行下一步，其实就是我们调用的<code>next()</code></p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//以下是编译后的代码</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeInvokeMethod</span>(<span class="hljs-params">innerFn, context</span>) </span>{
+  <span class="hljs-comment">// 将状态置为start</span>
+  <span class="hljs-keyword">var</span> state = <span class="hljs-string">"start"</span>;
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">invoke</span>(<span class="hljs-params">method, arg</span>) </span>{
+    <span class="hljs-comment">// 已完成</span>
+    <span class="hljs-keyword">if</span> (state === <span class="hljs-string">"completed"</span>) {
+      <span class="hljs-keyword">return</span> { <span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">true</span> };
+    }
+    
+    context.method = method;
+    context.arg = arg;
+
+    <span class="hljs-comment">// 执行中</span>
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+      state = <span class="hljs-string">"executing"</span>;
+
+      <span class="hljs-keyword">var</span> record = {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"normal"</span>,
+        <span class="hljs-attr">arg</span>: innerFn.call(self, context)    <span class="hljs-comment">// 执行下一步,并获取状态(其实就是switch里边return的值)</span>
+      };
+
+      <span class="hljs-keyword">if</span> (record.type === <span class="hljs-string">"normal"</span>) {
+        <span class="hljs-comment">// 判断是否已经执行完成</span>
+        state = context.done ? <span class="hljs-string">"completed"</span> : <span class="hljs-string">"yield"</span>;
+
+        <span class="hljs-comment">// ContinueSentinel其实是一个空对象,record.arg === {}则跳过return进入下一个循环</span>
+        <span class="hljs-comment">// 什么时候record.arg会为空对象呢, 答案是没有后续yield语句或已经return的时候,也就是switch返回了空值的情况(跟着上面的switch走一下就知道了)</span>
+        <span class="hljs-keyword">if</span> (record.arg === ContinueSentinel) {
+          <span class="hljs-keyword">continue</span>;
+        }
+        <span class="hljs-comment">// next()的返回值</span>
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">value</span>: record.arg,
+          <span class="hljs-attr">done</span>: context.done
+        };
+      }
+    }
+  };
+}
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>为什么<code>generator._invoke</code>实际上就是<code>gen.next</code>呢，因为在runtime对于next()的定义中，next()其实就return了_invoke方法</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// Helper for defining the .next, .throw, and .return methods of the</span>
+<span class="hljs-comment">// Iterator interface in terms of a single ._invoke method.</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defineIteratorMethods</span>(<span class="hljs-params">prototype</span>) </span>{
+    [<span class="hljs-string">"next"</span>, <span class="hljs-string">"throw"</span>, <span class="hljs-string">"return"</span>].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">method</span>) </span>{
+      prototype[method] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg</span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._invoke(method, arg);
+      };
+    });
+}
+
+defineIteratorMethods(Gp);
+<span class="copy-code-btn">复制代码</span></code></pre><h2 class="heading" data-id="heading-19">低配实现 &amp; 调用流程分析</h2>
+<p>这么一遍源码下来，估计很多读者还是懵逼的，毕竟源码中纠集了很多概念和封装，一时半会不好完全理解，让我们跳出源码，实现一个简单的Generator，然后再回过头看源码，会得到更清晰的认识</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// 生成器函数根据yield语句将代码分割为switch-case块，后续通过切换_context.prev和_context.next来分别执行各个case</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gen$</span>(<span class="hljs-params">_context</span>) </span>{
+  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">switch</span> (_context.prev = _context.next) {
+      <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+        _context.next = <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'result1'</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        _context.next = <span class="hljs-number">4</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'result2'</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+        _context.next = <span class="hljs-number">6</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'result3'</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"end"</span>:
+        <span class="hljs-keyword">return</span> _context.stop();
+    }
+  }
+}
+
+<span class="hljs-comment">// 低配版context  </span>
+<span class="hljs-keyword">var</span> context = {
+  <span class="hljs-attr">next</span>:<span class="hljs-number">0</span>,
+  <span class="hljs-attr">prev</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">stop</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stop</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.done = <span class="hljs-literal">true</span>
+  }
+}
+
+<span class="hljs-comment">// 低配版invoke</span>
+<span class="hljs-keyword">let</span> gen = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">next</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      value = context.done ? <span class="hljs-literal">undefined</span>: gen$(context)
+      done = context.done
+      <span class="hljs-keyword">return</span> {
+        value,
+        done
+      }
+    }
+  }
+} 
+
+<span class="hljs-comment">// 测试使用</span>
+<span class="hljs-keyword">var</span> g = gen() 
+g.next()  <span class="hljs-comment">// {value: "result1", done: false}</span>
+g.next()  <span class="hljs-comment">// {value: "result2", done: false}</span>
+g.next()  <span class="hljs-comment">// {value: "result3", done: false}</span>
+g.next()  <span class="hljs-comment">// {value: undefined, done: true}</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>这段代码并不难理解，我们分析一下调用流程：</p>
+<ol>
+<li>我们定义的<code>function*</code>生成器函数被转化为以上代码</li>
+<li>转化后的代码分为三大块：
+<ul>
+<li><code>gen$(_context)</code>由yield分割生成器函数代码而来</li>
+<li><code>context对象</code>用于储存函数执行上下文</li>
+<li><code>invoke()方法</code>定义next()，用于执行gen$(_context)来跳到下一步</li>
+</ul>
+</li>
+<li>当我们调用<code>g.next()</code>，就相当于调用<code>invoke()方法</code>，执行<code>gen$(_context)</code>，进入switch语句，switch根据context的标识，执行对应的case块，return对应结果</li>
+<li>当生成器函数运行到末尾（没有下一个yield或已经return），switch匹配不到对应代码块，就会return空值，这时<code>g.next()</code>返回<code>{value: undefined, done: true}</code></li>
+</ol>
+<p>从中我们可以看出，<strong>Generator实现的核心在于<code>上下文的保存</code>，函数并没有真的被挂起，每一次yield，其实都执行了一遍传入的生成器函数，只是在这个过程中间用了一个context对象储存上下文，使得每次执行生成器函数的时候，都可以从上一个执行结果开始执行，看起来就像函数被挂起了一样</strong></p>
+<h1 class="heading" data-id="heading-20">总结 &amp; 致谢</h1>
+<p>有关Promise、async/await、Generator的原理就实现到这里了，感谢大家能够跟我一起走完全程，不知不觉，我们花了近9千字来讲述有关异步编程的故事，异步编程的世界环环相扣，一开始，笔者只是出于对await挂起机制的好奇，后来，从一个 "await是如何实现暂停执行" 的小问题，引出了对异步编程的一系列思考和实现原理。三者的实现，其实也是前端异步编程一步步演化推进的过程。</p>
+<p>成文过程中得到很多大佬的帮助，这四篇参考文章都是我阅读了很多相关文章后精选的四篇，建议大家结合阅读，大佬们写的比我好很多，另外感谢冴羽大佬在Generator机制上给予的解惑~</p>
+<blockquote>
+<p>前端技匠：<a target="_blank" href="https://juejin.im/post/5dc3894051882517a652dbd7" rel="">各种源码实现，你想要的这里都有</a><br>
+神三元：<a target="_blank" href="https://juejin.im/post/5bd9a846e51d45684979d126" rel="">我如何实现Promise</a><br>
+winty：<a target="_blank" href="https://juejin.im/post/5dc28ea66fb9a04a881d1ac0#heading-0" rel="">async/await 原理及执行顺序分析</a><br>
+冴羽：<a target="_blank" href="https://juejin.im/post/5bd85cfbf265da0a9e535c10" rel="">ES6 系列之 Babel 将 Generator   编译成了什么样子</a></p>
+</blockquote>
+<br>
+<p><strong>最后卑微求个赞Thanks♪(･ω･)ﾉ</strong></p>
+<br>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/3/18/170e9422ebae9f7f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="714" data-height="380" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/170e9422ebae9f7f"><figcaption></figcaption></figure><p></p>
+<br>
+<blockquote>
+<p>往期文章</p>
+</blockquote>
+<blockquote>
+<ol>
+<li><a target="_blank" href="https://juejin.im/post/5def4831e51d45584b585000" rel="">10行代码看尽redux实现 —— 全面剖析redux &amp; react-redux &amp; redux中间件设计实现 | 8k字</a></li>
+<li><a target="_blank" href="https://juejin.im/post/5dde545bf265da06074f13cc" rel="">红黑树上红黑果，红黑树下你和我 —— 红黑树入门 | 6k字</a></li>
+<li><a target="_blank" href="https://juejin.im/post/5dd38d84f265da0beb53d529" rel="">SSR从入门到放弃 —— 深入React服务端渲染原理 | 1W字</a>？</li>
+</ol>
+</blockquote>
+</div></article><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-box"><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-title">关注下面的标签，发现更多相似文章</div><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="tagList" class="tag-list"><a data-v-fa2339b8="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://lc-gold-cdn.xitu.io/bac28828a49181c34110.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon loaded" style="background-image: url(&quot;https://lc-gold-cdn.xitu.io/bac28828a49181c34110.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1&quot;); background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">前端</div></a></div></div><a data-v-fa2339b8="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" data-v-6fdc8784=""><div data-v-fa2339b8="" class="footer-author-block"><div data-v-081ef9db="" data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Person" class="author"><meta itemprop="url" content="https://juejin.im/user/5d194f8151882517de2ae188"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?w=748&amp;h=728&amp;f=png&amp;s=280989"><meta itemprop="name" content="写代码像蔡徐抻"><meta itemprop="jobTitle" content="时长一年半的React练习生"><!----><div data-v-081ef9db="" class="author-info-block"><a data-v-081ef9db="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-081ef9db="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-081ef9db="" class="author-info-box"><div data-v-081ef9db="" class="profile-box"><a data-v-263f3a32="" data-v-081ef9db="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username username ellipsis">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><span data-v-081ef9db="" class="position ellipsis">时长一年半的React练习生</span></div><div data-v-081ef9db="" class="meta-box"><a data-v-081ef9db="" href="https://juejin.im/user/5d194f8151882517de2ae188/posts" target="_blank" rel="" class="posts"><span data-v-081ef9db="" class="count post-count">发布了 5 篇专栏 · </span></a><span data-v-081ef9db="" class="count">获得点赞 3,330 · </span><span data-v-081ef9db="" class="count">获得阅读 141,669</span></div></div><button data-v-5789daef="" data-v-081ef9db="" class="follow-button follow">关注</button></div></div></div></a><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="banner" class="article-banner"><a data-v-fa2339b8="" data-v-6fdc8784="" st:name="link" st:state="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" class="banner-title" href="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" target="_blank">安装掘金浏览器插件</a><div data-v-fa2339b8="" data-v-6fdc8784="" class="banner-content">打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！</div></div><!----><!----><div data-v-0d823780="" data-v-fa2339b8="" class="comment-list-box" id="comment-box" data-v-6fdc8784="" manual="true"><div data-v-0d823780="" class="title">评论</div><div data-v-155bc796="" data-v-0d823780="" class="comment-form comment-form"><div data-v-155bc796="" class="avatar-box"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-155bc796="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></div><div data-v-155bc796="" class="form-box"><div data-v-155bc796="" class="input-box"><div data-v-cc6aae16="" data-v-155bc796="" class="auth-card"><!----><div data-v-155bc796="" data-v-cc6aae16="" contenteditable="true" spellcheck="false" placeholder="输入评论..." class="rich-input empty"><br data-v-155bc796="" data-v-cc6aae16=""></div></div><!----></div><!----></div><input data-v-155bc796="" type="file" class="hidden"></div><div data-v-1540c949="" data-v-0d823780="" class="comment-list comment-list"><div data-v-0a49d917="" data-v-1540c949="" class="image-viewer-box"><!----></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5caac76ee51d452b6008a451" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5caac76ee51d452b6008a451" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/4/27/171b996d5db9a97e?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/4/27/171b996d5db9a97e?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5caac76ee51d452b6008a451" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5caac76ee51d452b6008a451" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">徐小懒<!----></a></div><div data-v-164d9344="" class="position">前端小懒 @ 某某公司</div></div><div data-v-164d9344="" class="content">看里作者的说辞，头铁的直接看完结的代码，我去看了一下，我的头果然是面粉捏的<img class="emoji" draggable="false" alt="😂" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/1f602.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-21T09:17:21.651Z" title="Thu May 21 2020 17:17:21 GMT+0800 (中国标准时间)" class="time">1天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="59fb04805188254a701e6562" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/59fb04805188254a701e6562" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://mirror-gold-cdn.xitu.io/168e08afadfce707dff?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08afadfce707dff?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="59fb04805188254a701e6562" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/59fb04805188254a701e6562" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">🔨ING〰<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">大师，你的每篇文章我都认真看了，真的是很棒<img class="emoji" draggable="false" alt="👍" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/1f44d.svg"><img class="emoji" draggable="false" alt="👍" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/1f44d.svg"><img class="emoji" draggable="false" alt="👍" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/1f44d.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-08T00:54:10.649Z" title="Fri May 08 2020 08:54:10 GMT+0800 (中国标准时间)" class="time">14天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><span data-v-164d9344="" class="action-title">1</span></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="59211bd8570c350069aa5b94" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/59211bd8570c350069aa5b94" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2019/8/18/16ca54f725090a43?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/8/18/16ca54f725090a43?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="59211bd8570c350069aa5b94" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/59211bd8570c350069aa5b94" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">angelayun<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position">前端开发工程师</div></div><div data-v-164d9344="" class="content">真心不错！</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-04T13:06:43.796Z" title="Mon May 04 2020 21:06:43 GMT+0800 (中国标准时间)" class="time">18天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5cd27f626fb9a032106be4bc" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5cd27f626fb9a032106be4bc" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2019/8/27/16cd17aab7f3e2ae?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/8/27/16cd17aab7f3e2ae?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5cd27f626fb9a032106be4bc" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5cd27f626fb9a032106be4bc" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">KangGary<!----></a></div><div data-v-164d9344="" class="position">前端开发 @ 安恒信息</div></div><div data-v-164d9344="" class="content">求一篇Markdown 邮箱:xuxianzhe1998@163.com</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-04-16T05:29:48.813Z" title="Thu Apr 16 2020 13:29:48 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5ddc9a8e6fb9a07abe5f2c71" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5ddc9a8e6fb9a07abe5f2c71" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/4/12/1716cb5587b68ce4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5ddc9a8e6fb9a07abe5f2c71" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5ddc9a8e6fb9a07abe5f2c71" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">孤烟<!----></a></div><div data-v-164d9344="" class="position">高级前端</div></div><div data-v-164d9344="" class="content">大佬，有兴趣投稿么？我想转载你的文章，可以markdown发我下吗，邮箱:moofyu@163.com</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-04-13T07:49:43.329Z" title="Mon Apr 13 2020 15:49:43 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><div data-v-0aa2f002="" class="item"><div data-v-406f083c="" data-v-0aa2f002="" class="sub-comment sub-comment"><div data-v-406f083c="" class="sub-comment-content-row"><div data-v-406f083c="" class="sub-comment-content-box"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5d194f8151882517de2ae188" class="user-popover-box popover"><!----><a data-v-406f083c="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-406f083c="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-406f083c="" class="user-content-box"><div data-v-406f083c="" class="profie"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5d194f8151882517de2ae188" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username" data-v-b628736a="">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a><span data-v-406f083c="" class="author-badge-text">(作者)</span></a></div><div data-v-406f083c="" class="position">时长一年半的React练习生</div></div><div data-v-406f083c="" class="content-box"><span data-v-406f083c=""> 回复 </span><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5ddc9a8e6fb9a07abe5f2c71" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5ddc9a8e6fb9a07abe5f2c71" target="_blank" rel="" class="username username be-replied" data-v-b628736a="">孤烟<!----></a></div><!----><span data-v-406f083c="">: </span><span data-v-406f083c="" class="content">好的哈，晚上发你</span></div><!----><!----><div data-v-406f083c="" class="limit-all-box"><!----></div><div data-v-406f083c="" class="sub-comment-stat-box"><time data-v-406f083c="" datetime="2020-04-13T08:00:35.897Z" title="Mon Apr 13 2020 16:00:35 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-406f083c="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-406f083c="" class="sub-comment-action-box"><div data-v-406f083c="" class="like-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-406f083c="" class="comment-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-406f083c="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5e8bf08d5188257375467cef" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5e8bf08d5188257375467cef" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://b-gold-cdn.xitu.io/v3/static/img/default-avatar.e30559a.svg" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5e8bf08d5188257375467cef" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5e8bf08d5188257375467cef" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">赵清欢<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">哈喽，我想转载你的这篇文章，麻烦给个联系方式呀</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-04-11T10:11:24.041Z" title="Sat Apr 11 2020 18:11:24 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><div data-v-0aa2f002="" class="item"><div data-v-406f083c="" data-v-0aa2f002="" class="sub-comment sub-comment"><div data-v-406f083c="" class="sub-comment-content-row"><div data-v-406f083c="" class="sub-comment-content-box"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5d194f8151882517de2ae188" class="user-popover-box popover"><!----><a data-v-406f083c="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-406f083c="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-406f083c="" class="user-content-box"><div data-v-406f083c="" class="profie"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5d194f8151882517de2ae188" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username" data-v-b628736a="">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a><span data-v-406f083c="" class="author-badge-text">(作者)</span></a></div><div data-v-406f083c="" class="position">时长一年半的React练习生</div></div><div data-v-406f083c="" class="content-box"><span data-v-406f083c=""> 回复 </span><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5e8bf08d5188257375467cef" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5e8bf08d5188257375467cef" target="_blank" rel="" class="username username be-replied" data-v-b628736a="">赵清欢<!----></a></div><!----><span data-v-406f083c="">: </span><span data-v-406f083c="" class="content">可以直接转载噢，注明作者和来源就行了<img class="emoji" draggable="false" alt="👻" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/1f47b.svg">如果需要markdown文件可以留下邮箱哈</span></div><!----><!----><div data-v-406f083c="" class="limit-all-box"><!----></div><div data-v-406f083c="" class="sub-comment-stat-box"><time data-v-406f083c="" datetime="2020-04-11T10:47:00.675Z" title="Sat Apr 11 2020 18:47:00 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-406f083c="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-406f083c="" class="sub-comment-action-box"><div data-v-406f083c="" class="like-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-406f083c="" class="comment-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-406f083c="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div></div><div data-v-0d823780="" class="fetch-more-comment">查看更多 &gt;</div></div></div><!----><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="recommended" class="main-area recommended-area shadow"><div data-v-fa2339b8="" data-v-6fdc8784="" class="recommended-entry-list-title">相关推荐</div><!----><ul data-v-0dfe6a32="" data-v-fa2339b8="" st:block="entryList" class="entry-list recommended-entry-list" data-v-6fdc8784=""><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7793851882543143744cb|1" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec737b36fb9a04799583002" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e1eaa19e51d451c7e049dd8" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e1eaa19e51d451c7e049dd8" target="_blank" rel="" st:name="user" st:state="5e1eaa19e51d451c7e049dd8" data-v-b628736a="">蒋鹏飞</a></div></li><li data-v-ecbf465a="" class="item">7小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec737b36fb9a04799583002" target="_blank" rel="" st:name="title" class="title">不知道怎么封装代码？看看这几种设计模式吧！</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">77</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec737b36fb9a04799583002#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">10</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec53c626fb9a047ef135242|2" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><li data-v-ecbf465a="" class="item recommended">荐</li><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59e293e06fb9a0452340e835" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59e293e06fb9a0452340e835" target="_blank" rel="" st:name="user" st:state="59e293e06fb9a0452340e835" data-v-b628736a="">QUIKER</a></div></li><li data-v-ecbf465a="" class="item">21小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Vue.js" target="_blank" rel="" st:name="tag" st:state="555e9a98e4b00c57d9955f68" class="tag">Vue.js</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204" target="_blank" rel="" st:name="title" class="title">vue 3.x 如何有惊无险地快速入门</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">129</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">27</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec5eabd6fb9a047bf705f03|3" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><li data-v-ecbf465a="" class="item recommended">荐</li><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5c9c1ca4e51d452742507adc" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5c9c1ca4e51d452742507adc" target="_blank" rel="" st:name="user" st:state="5c9c1ca4e51d452742507adc" data-v-b628736a="">小何何同学</a></div></li><li data-v-ecbf465a="" class="item">21小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55" target="_blank" rel="" st:name="title" class="title">我所理解的前端状态管理</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">85</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">35</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec5e0a1f265da76c1132936|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c86351882542e722e15f" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e8558f3518825738f2b1327" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e8558f3518825738f2b1327" target="_blank" rel="" st:name="user" st:state="5e8558f3518825738f2b1327" data-v-b628736a="">阿里巴巴淘系技术</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c86351882542e722e15f" target="_blank" rel="" st:name="title" class="title">前端生产方式：过去 10 年回顾和未来 10 年展望</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">247</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c86351882542e722e15f#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">31</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/17234e12af31a517?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7a240e51d45789839d5eb|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec79e76f265da771359fe8c" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5c90d966f265da61173a2cd8" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5c90d966f265da61173a2cd8" target="_blank" rel="" st:name="user" st:state="5c90d966f265da61173a2cd8" data-v-b628736a="">快狗打车前端团队</a></div></li><li data-v-ecbf465a="" class="item">5小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F" target="_blank" rel="" st:name="tag" st:state="57ea2013a22b9d006164c1f8" class="tag">微信小程序</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec79e76f265da771359fe8c" target="_blank" rel="" st:name="title" class="title">微信小程序图片保存到本地一次问题解决</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">14</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec79e76f265da771359fe8c#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/22/1723bd1671f39289?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><!----><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec3391e5188250bdf5c3793|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec338436fb9a0432d76e0c4" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5a767928f265da4e78327344" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5a767928f265da4e78327344" target="_blank" rel="" st:name="user" st:state="5a767928f265da4e78327344" data-v-b628736a="">前端森林</a></div></li><li data-v-ecbf465a="" class="item">3天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Chrome" target="_blank" rel="" st:name="tag" st:state="555e9ae0e4b00c57d99562ee" class="tag">Chrome</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec338436fb9a0432d76e0c4" target="_blank" rel="" st:name="title" class="title">Chrome DevTools中的这些骚操作，你都知道吗？</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">846</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec338436fb9a0432d76e0c4#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">79</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/19/1722a96792420630?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec5c89551882543393c834c|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5c4aee51d457893029189" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5790c76dc4c9710054f0f58b" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5790c76dc4c9710054f0f58b" target="_blank" rel="" st:name="user" st:state="5790c76dc4c9710054f0f58b" data-v-b628736a="">前端早早聊</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E7%9B%91%E6%8E%A7" target="_blank" rel="" st:name="tag" st:state="5b45bfcef265da65f7d27f9b" class="tag">监控</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5c4aee51d457893029189" target="_blank" rel="" st:name="title" class="title">来，跟我一起 ，自研多端错误监控平台</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">215</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec5c4aee51d457893029189#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">25</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/172349337a97017a?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec48d6c51882542e3021937|6" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec381215188256d776342cd" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5b7c1be9e51d4538b35bfc32" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5b7c1be9e51d4538b35bfc32" target="_blank" rel="" st:name="user" st:state="5b7c1be9e51d4538b35bfc32" data-v-b628736a="">沉末_</a></div></li><li data-v-ecbf465a="" class="item">2天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a><a data-v-ecbf465a="" href="https://juejin.im/tag/Webpack" target="_blank" rel="" st:name="tag" st:state="55e325a100b0ded317d2f846" class="tag">Webpack</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec381215188256d776342cd" target="_blank" rel="" st:name="title" class="title">如何修改 node_modules 里的文件（同事看了直呼内行）</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">377</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec381215188256d776342cd#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">84</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec730d2f265da76de5cd0b8|7" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec730bae51d4578732e61b6" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5ddb9df7f265da7e25461fa9" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5ddb9df7f265da7e25461fa9" target="_blank" rel="" st:name="user" st:state="5ddb9df7f265da7e25461fa9" data-v-b628736a="">卖好车大前端团队</a></div></li><li data-v-ecbf465a="" class="item">13小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec730bae51d4578732e61b6" target="_blank" rel="" st:name="title" class="title">Vue 项目优化技巧</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">17</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec730bae51d4578732e61b6#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">2</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec61a0251882543073485b4|8" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec61993e51d45789f23d1f0" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5799b3a2c4c971005ab64cbc" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5799b3a2c4c971005ab64cbc" target="_blank" rel="" st:name="user" st:state="5799b3a2c4c971005ab64cbc" data-v-b628736a="">京东设计中心JDC</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Vue.js" target="_blank" rel="" st:name="tag" st:state="555e9a98e4b00c57d9955f68" class="tag">Vue.js</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E5%89%8D%E7%AB%AF" target="_blank" rel="" st:name="tag" st:state="5597a05ae4b08a686ce56f6f" class="tag">前端</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec61993e51d45789f23d1f0" target="_blank" rel="" st:name="title" class="title">十分钟快速上手NutUI</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">57</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec61993e51d45789f23d1f0#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">7</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/17235d4551c23b8e?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" class="item"><!----></li><!----></ul></div><div data-v-7301278b="" data-v-fa2339b8="" st:block="sidebar" class="sidebar sidebar top sticky" data-v-6fdc8784=""><div data-v-16442876="" data-v-76358071="" data-v-7301278b="" class="sidebar-block author-block shadow"><div data-v-16442876="" class="block-title">关于作者</div><div data-v-16442876="" class="block-body"><a data-v-76358071="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="user-item item" data-v-16442876=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-76358071="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><div data-v-76358071="" class="info-box"><a data-v-263f3a32="" data-v-76358071="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><div data-v-76358071="" title="时长一年半的React练习生" class="position">时长一年半的React练习生</div></div></a><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" class="zan"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd" transform="translate(0 .57)"><ellipse data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.57" fill="#E1EFFF" rx="12.5" ry="12.57"></ellipse> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M8.596 11.238V19H7.033C6.463 19 6 18.465 6 17.807v-5.282c0-.685.483-1.287 1.033-1.287h1.563zm4.275-4.156A1.284 1.284 0 0 1 14.156 6c.885.016 1.412.722 1.595 1.07.334.638.343 1.687.114 2.361-.207.61-.687 1.412-.687 1.412h3.596c.38 0 .733.178.969.488.239.317.318.728.21 1.102l-1.628 5.645a1.245 1.245 0 0 1-1.192.922h-7.068v-7.889c1.624-.336 2.623-2.866 2.806-4.029z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">获得点赞<span data-v-76358071="" data-v-16442876="" class="count">3,330</span></span></div><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" width="25" height="25" viewBox="0 0 25 25" class="icon stat-view-icon"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd"><circle data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.5" r="12.5" fill="#E1EFFF"></circle> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M4 12.5S6.917 7 12.75 7s8.75 5.5 8.75 5.5-2.917 5.5-8.75 5.5S4 12.5 4 12.5zm8.75 2.292c1.208 0 2.188-1.026 2.188-2.292 0-1.266-.98-2.292-2.188-2.292-1.208 0-2.188 1.026-2.188 2.292 0 1.266.98 2.292 2.188 2.292z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">文章被阅读<span data-v-76358071="" data-v-16442876="" class="count">141,669</span></span></div><!----></div></div><!----><div data-v-16442876="" data-v-f69ccc58="" data-v-518a2f8f="" data-v-7301278b="" class="sidebar-block recommend recommend-index shadow"><div data-v-16442876="" class="block-title">你可能感兴趣的小册</div><div data-v-16442876="" class="block-body"><div data-v-f69ccc58="" data-v-16442876="" class="book-list"><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2018/9/25/1660fbe842f693b1?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-16442876="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/9/25/1660fbe842f693b1?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">Netty 入门与实战：仿写微信 IM 即时通讯系统</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">7688人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2018/9/11/165c7a188e490e48?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-16442876="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/9/11/165c7a188e490e48?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">基于 hapi 的 Node.js 小程序后端开发实践指南</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">2873人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div></div></div></div><div data-v-16442876="" data-v-03315f79="" data-v-7301278b="" class="sidebar-block app-download-sidebar-block shadow"><!----><div data-v-16442876="" class="block-body"><a data-v-03315f79="" data-v-16442876="" class="app-link" href="https://juejin.im/app" target="_blank"><img data-v-03315f79="" data-v-16442876="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/post.7cb7332.png" class="qr-img"><div data-v-03315f79="" data-v-16442876="" class="content-box"><div data-v-03315f79="" data-v-16442876="" class="headline">下载掘金客户端</div><div data-v-03315f79="" data-v-16442876="" class="desc">一个帮助开发者成长的社区</div></div><div data-v-03315f79="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></a></div></div><div data-v-16442876="" data-v-3c6504c4="" data-v-7301278b="" class="sidebar-block wechat-sidebar-block pure"><div data-v-06f599f1="" data-v-3c6504c4="" class="wechat-banner" data-v-16442876=""><img data-v-06f599f1="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/frontend.1dae74a.png" class="wechat-img"></div><div data-v-3c6504c4="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></div><div data-v-16442876="" data-v-2998ad53="" data-v-7301278b="" class="sidebar-block related-entry-sidebar-block shadow" st:block="relatedEntrySidebarBlock"><div data-v-16442876="" class="block-title">相关文章</div><div data-v-16442876="" class="block-body"><div data-v-2998ad53="" data-v-16442876="" class="entry-list"><a data-v-2998ad53="" href="https://juejin.im/post/5ec737b36fb9a04799583002" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">不知道怎么封装代码？看看这几种设计模式吧！</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">77</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">10</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec537486fb9a047bb6a4204" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">vue 3.x 如何有惊无险地快速入门</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">129</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">27</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec5ea9a51882542e6477c55" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">我所理解的前端状态管理</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">85</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">35</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec4c86351882542e722e15f" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">前端生产方式：过去 10 年回顾和未来 10 年展望</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">247</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">31</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec79e76f265da771359fe8c" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">微信小程序图片保存到本地一次问题解决</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">14</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">0</span></div></div></a></div></div></div><div data-v-7301278b="" class="sticky-block-box"><div data-v-16442876="" data-v-48b1e3e4="" data-v-7301278b="" class="sidebar-block catalog-block pure"><nav data-v-1a96e633="" data-v-48b1e3e4="" class="article-catalog" data-v-16442876="" style=""><div data-v-1a96e633="" class="catalog-title">目录</div><div data-v-1a96e633="" class="catalog-body"><ul data-v-1a96e633="" class="catalog-list" style="margin-top: 0px;"><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-0" title="Promise实现">Promise实现</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-1" title="1. 观察者模式">1. 观察者模式</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-2" title="2. Promise A+规范">2. Promise A+规范</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-3" title="3. then的链式调用">3. then的链式调用</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-4" title="4.值穿透 &amp; 状态已变更的情况">4.值穿透 &amp; 状态已变更的情况</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-5" title="5.兼容同步任务">5.兼容同步任务</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-6" title="Promise.prototype.catch()">Promise.prototype.catch()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-7" title="Promise.prototype.finally()">Promise.prototype.finally()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-8" title="Promise.resolve()">Promise.resolve()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-9" title="Promise.reject()">Promise.reject()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-10" title="Promise.all()">Promise.all()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-11" title="Promise.race()">Promise.race()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-12" title="完整代码">完整代码</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-13" title="async/await实现">async/await实现</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-14" title="1.自动执行">1.自动执行</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-15" title="2.返回Promise &amp; 异常处理">2.返回Promise &amp; 异常处理</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-16" title="Generator实现">Generator实现</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-17" title="regeneratorRuntime.mark()">regeneratorRuntime.mark()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-18" title="regeneratorRuntime.wrap()">regeneratorRuntime.wrap()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-19" title="低配实现 &amp; 调用流程分析">低配实现 &amp; 调用流程分析</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1 active"><a href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc#heading-20" title="总结 &amp; 致谢">总结 &amp; 致谢</a><!----></li></ul></div></nav></div></div></div><div data-v-b753df20="" data-v-fa2339b8="" class="article-suspended-panel article-suspended-panel" data-v-6fdc8784=""><div data-v-b753df20="" class="like-btn panel-btn like-adjust with-badge" badge="985"></div><div data-v-b753df20="" class="comment-btn panel-btn comment-adjust with-badge" badge="66"></div><div data-v-b753df20="" class="collect-btn panel-btn"><!----></div><div data-v-b753df20="" class="share-title">分享</div><div data-v-b753df20="" class="weibo-btn share-btn panel-btn"></div><div data-v-b753df20="" class="qq-btn share-btn panel-btn"></div><div data-v-b753df20="" class="wechat-btn share-btn panel-btn"><img data-v-b753df20="" src="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" class="wechat-qr-code-img shadow" style="display: none;"></div></div><div data-v-0a49d917="" data-v-fa2339b8="" class="image-viewer-box" data-v-6fdc8784=""><!----></div><!----></div></main></div><!----></div>
+      
+      
+      
+      <script type="text/javascript" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/runtime.cc2b750c14e4e98c0e3a.js"></script><script type="text/javascript" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/0.0b214b1cb6731ce0f8d8.js"></script><script type="text/javascript" src="./9k字 _ Promise_async_Generator实现原理解析 - 掘金_files/1.63ca4ab7fc5bd9c1cbc0.js"></script>
+    </body></html>
