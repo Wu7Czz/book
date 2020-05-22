@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="78 224 567 257" width="567" height="257">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="PingFang SC" font-size="16" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="400">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="Arrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="12" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="400">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.11.2 
+    <dc:date>2019-09-07 10:07:38 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_18">
+        <rect x="79" y="270" width="279.5" height="210" fill="white"/>
+        <rect x="79" y="270" width="279.5" height="210" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_17">
+        <rect x="477" y="270" width="167.5" height="210" fill="white"/>
+        <rect x="477" y="270" width="167.5" height="210" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_16">
+        <text transform="translate(210.902 229)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">UI</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <text transform="translate(517.214 229)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="6394885e-20" y="15">Web Worker</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <rect x="91.402" y="409" width="254.696" height="28.447998" fill="white"/>
+        <rect x="91.402" y="409" width="254.696" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(96.402 412.224)" fill="black">
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="69.372" y="17">真实Video组件</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <rect x="500.451" y="316.5" width="120.598" height="28.447998" fill="white"/>
+        <rect x="500.451" y="316.5" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(505.451 321.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="16.931" y="15">User Code</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <rect x="500.451" y="409" width="120.598" height="28.447998" fill="white"/>
+        <rect x="500.451" y="409" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(505.451 412.224)" fill="black">
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="18.323" y="17">Video组件</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <rect x="91.402" y="316.5" width="120.598" height="28.447998" fill="white"/>
+        <rect x="91.402" y="316.5" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(96.402 321.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="36.619" y="15">DOM</tspan>
+        </text>
+      </g>
+      <g id="Line_10">
+        <line x1="560.75" y1="344.948" x2="560.75" y2="399.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_9">
+        <line x1="500.451" y1="423.224" x2="355.998" y2="423.224" marker-end="url(#Arrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_8">
+        <line x1="208.43968" y1="409" x2="167.82154" y2="352.9637" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_7">
+        <rect x="404.40596" y="407.224" width="42" height="32" fill="white"/>
+        <text transform="translate(409.40596 412.224)" fill="black">
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="17">数据</tspan>
+        </text>
+      </g>
+      <g id="Graphic_6">
+        <rect x="145.83675" y="361.3758" width="79.36" height="32" fill="white"/>
+        <text transform="translate(150.83675 368.8758)" fill="black">
+          <tspan font-family="PingFang SC" font-size="12" font-weight="400" fill="black" x="8.67" y="13">操作</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" y="13">DOM</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <rect x="516.96" y="361.1154" width="87.58" height="27" fill="white"/>
+        <text transform="translate(521.96 366.1154)" fill="black">
+          <tspan font-family="PingFang SC" font-size="12" font-weight="400" fill="black" x="8739676e-19" y="13">使用video组件</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="225.5" y="316.5" width="120.598" height="28.447998" fill="white"/>
+        <rect x="225.5" y="316.5" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(230.5 321.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="36.771" y="15">BOM</tspan>
+        </text>
+      </g>
+      <g id="Line_3">
+        <line x1="229.06032" y1="409" x2="269.67846" y2="352.9637" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="221.4607" y="363.3606" width="61.792" height="27" fill="white"/>
+        <text transform="translate(226.4607 368.3606)" fill="black">
+          <tspan font-family="PingFang SC" font-size="12" font-weight="400" fill="black" x="6394885e-19" y="13">操作</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" y="13">BOM</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

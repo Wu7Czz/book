@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-83 132 502 256" width="502" height="256">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="16" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="400">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="PingFang SC" font-size="12" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="400">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.11.2 
+    <dc:date>2019-09-07 12:10:54 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_19">
+        <rect x="-82" y="178" width="292.5" height="209.5" fill="white"/>
+        <rect x="-82" y="178" width="292.5" height="209.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_18">
+        <rect x="286" y="178" width="132.286" height="209.5" fill="white"/>
+        <rect x="286" y="178" width="132.286" height="209.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_17">
+        <text transform="translate(62.902 137)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">UI</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <text transform="translate(308.607 137)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="6394885e-20" y="15">Web Worker</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <rect x="-70.049" y="286.474" width="268.598" height="89.526" fill="white"/>
+        <rect x="-70.049" y="286.474" width="268.598" height="89.526" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_14">
+        <rect x="291.844" y="222.526" width="120.598" height="28.447998" fill="white"/>
+        <rect x="291.844" y="222.526" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(296.844 227.526)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="16.931" y="15">User Code</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <rect x="291.844" y="317.013" width="120.598" height="28.447998" fill="white"/>
+        <rect x="291.844" y="317.013" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(296.844 322.013)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="30.555" y="15">Master</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <rect x="-70.049" y="193.5" width="120.598" height="28.447998" fill="white"/>
+        <rect x="-70.049" y="193.5" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-65.049 198.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="36.619" y="15">DOM</tspan>
+        </text>
+      </g>
+      <g id="Line_11">
+        <line x1="352.143" y1="250.974" x2="352.143" y2="307.113" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_10">
+        <line x1="291.844" y1="331.23334" x2="198.80588" y2="331.2277" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_9">
+        <line x1="37.43127" y1="286.474" x2="3.860042" y2="230.44045" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_8">
+        <rect x="225.86246" y="315.2307" width="44.864" height="32" fill="white"/>
+        <text transform="translate(230.86246 320.2307)" fill="black">
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="6963319e-19" y="17">Data</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <rect x="-21.33586" y="238.61578" width="79.36" height="32" fill="white"/>
+        <text transform="translate(-16.33586 246.11578)" fill="black">
+          <tspan font-family="PingFang SC" font-size="12" font-weight="400" fill="black" x="8.67" y="13">操作</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" y="13">DOM</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <rect x="77.5" y="193.5" width="120.598" height="28.447998" fill="white"/>
+        <rect x="77.5" y="193.5" width="120.598" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(82.5 198.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="36.771" y="15">BOM</tspan>
+        </text>
+      </g>
+      <g id="Line_4">
+        <line x1="90.90528" y1="286.474" x2="124.26377" y2="230.4541" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_3">
+        <rect x="79.28914" y="240.59676" width="61.792" height="27" fill="white"/>
+        <text transform="translate(84.28914 245.59676)" fill="black">
+          <tspan font-family="PingFang SC" font-size="12" font-weight="400" fill="black" x="6394885e-19" y="13">操作</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="black" y="13">BOM</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <rect x="-62.5709" y="296" width="139.5" height="28.447998" fill="white"/>
+        <rect x="-62.5709" y="296" width="139.5" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-57.5709 301)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="22.51" y="15">Component</tspan>
+        </text>
+      </g>
+      <g id="Graphic_26">
+        <rect x="-62.5709" y="338" width="139.5" height="28.447998" fill="white"/>
+        <rect x="-62.5709" y="338" width="139.5" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-57.5709 343)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x=".894" y="15">native capabilities</tspan>
+        </text>
+      </g>
+      <g id="Graphic_27">
+        <rect x="86.69212" y="296" width="102.21376" height="70.448" fill="white"/>
+        <rect x="86.69212" y="296" width="102.21376" height="70.448" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(91.69212 322)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="26.554884" y="15">Slave</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

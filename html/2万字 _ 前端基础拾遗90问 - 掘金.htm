@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://juejin.im/post/5e8b261ae51d4546c0382ab4 -->
+<html lang="zh-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google-site-verification" content="cCHsgG9ktuCTgWgYfqCJql8AeR4gAne4DTZqztPoirE"><meta name="google-site-verification" content="nPvn9R5NJLsZKTv5VKIbn0OmkRcJ4PC6KdDoTX3n5Mw"><meta name="apple-itunes-app" content="app-id=987739104"><meta name="baidu-site-verification" content="qiK2a1kcFc"><meta name="360-site-verification" content="4c3c7d57d59f0e1a308462fbc7fd7e51"><meta name="sogou_site_verification" content="c49WUDZczQ"><style>body {
+        font-size: 16px;
+        line-height: 2;
+      }
+      a, button, input {
+        margin: 1rem 1.5rem;
+      }
+      img {
+        width: 0;
+        height: 0;
+      }
+      #juejin {
+        overflow-x: hidden;
+      }</style><title data-vue-meta="true">2万字 | 前端基础拾遗90问 - 掘金</title><link rel="apple-touch-icon" sizes="180x180" href="https://b-gold-cdn.xitu.io/favicons/v2/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-16x16.png"><link rel="manifest" href="https://b-gold-cdn.xitu.io/favicons/v2/manifest.json"><link rel="mask-icon" href="https://b-gold-cdn.xitu.io/favicons/v2/safari-pinned-tab.svg" color="#5bbad5"><link rel="shortcut icon" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico"><meta name="msapplication-config" content="https://b-gold-cdn.xitu.io/favicons/v2/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="search" title="掘金" href="https://b-gold-cdn.xitu.io/conf/search.xml" type="application/opensearchdescription+xml"><link rel="stylesheet" href="./2万字 _ 前端基础拾遗90问 - 掘金_files/ionicons.min.css"><link rel="stylesheet" href="./2万字 _ 前端基础拾遗90问 - 掘金_files/iconfont.css"><link href="./2万字 _ 前端基础拾遗90问 - 掘金_files/0.f1fc61eda29199ce1f45.css" rel="stylesheet"><script async="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/hm.js"></script><script async="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/analytics.js"></script><script type="text/javascript" async="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/vds.js"></script><script type="text/javascript" async="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect-v.3.2.14.js"></script><script charset="utf-8" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/4.281438b56343cf12fa0b.js"></script><meta data-vmid="keywords" name="keywords" content="面试" data-vue-meta="true"><meta data-vmid="description" name="description" content="大家好，我是练习时长一年半的前端练习生，喜欢唱、跳、rap、敲代码。本文是笔者一年多来对前端基础知识的总结和思考，这些题目对自己是总结，对大家也是一点微薄的资料，希望能给大家带来一些帮助和启发。成文过程中得到了许多大佬的帮助，在此感谢恺哥的小册、神三元同学的前" data-vue-meta="true"></head><body><div id="juejin" data-v-2a21baac=""><div class="global-component-box" data-v-2a21baac=""><!----><div data-v-5ef5fb43="" data-v-2a21baac="" class="alert-list alert-list"></div><div data-v-15608c17="" data-v-2a21baac="" class="suspension-panel suspension-panel"><button data-v-15608c17="" title="回到顶部" class="btn to-top-btn" style=""><i data-v-15608c17="" class="ion-android-arrow-dropup"></i></button><button data-v-15608c17="" title="建议反馈" class="btn meiqia-btn" style=""><i data-v-15608c17="" class="ion-chatbubble-working"></i></button></div><!----><!----><div class="emoji-barrage" data-v-94fd086c="" data-v-2a21baac=""><!----></div><div class="book-new-user-award-popup" style="display:none;" data-v-22fa60e5="" data-v-2a21baac=""><div class="content-box" style="display:;" data-v-22fa60e5=""><div class="close ion-close-round" data-v-22fa60e5=""></div><div class="header" data-v-22fa60e5=""><div class="icon" data-v-22fa60e5=""><img src="./2万字 _ 前端基础拾遗90问 - 掘金_files/icon.a87e5ae.svg" data-v-22fa60e5=""></div><div class="txt" data-v-22fa60e5="">新人专享好礼</div></div><div class="desc" data-v-22fa60e5="">凡未购买过小册的用户，均可领取三张 5 折新人专享券，购买小册时自动使用专享券，最高可节省 45 元。</div><div class="tickets" data-v-22fa60e5=""><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div></div><div class="remark" data-v-22fa60e5="">注：专享券的使用期限在领券的七天内。</div><div class="submit-btn" data-v-22fa60e5="">一键领取</div></div><div class="model success" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取成功</div><div class="content-text" data-v-22fa60e5="">购买小册时自动使用专享券</div><div class="btn-success-footer" data-v-22fa60e5=""><div class="btn-ok" data-v-22fa60e5="">知道了</div><div class="btn-ok btn-link" data-v-22fa60e5="">前往小册首页</div></div></div><div class="model fail" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取失败</div><div class="content-text" data-v-22fa60e5="">本活动仅适用于小册新用户</div><div class="btn-ok" data-v-22fa60e5="">知道了</div></div></div><!----><!----><div class="bind-phone-number-modal-box" data-v-269c0ad0="" data-v-2a21baac=""><div st:block="bindPhoneNumberModal" class="modal-mask" style="display:none;" data-v-269c0ad0=""></div><form class="bind-phone-number-form" style="display:none;" data-v-269c0ad0=""><i title="关闭" class="close-btn ion-close-round" data-v-269c0ad0=""></i><h1 class="title" data-v-269c0ad0="">提示</h1><h2 class="hint" data-v-269c0ad0="">根据我国<a href="http://www.cac.gov.cn/2017-08/25/c_1121541842.htm" target="_blank" style="color:#007fff">《互联网跟帖评论服务管理规定》</a>，您需要绑定手机号后才可在掘金社区内发布内容。</h2><div class="input-group" data-v-269c0ad0=""><div class="input-box" data-v-269c0ad0=""><input maxlength="64" placeholder="请输入要绑定的手机号码" value="" class="input" data-v-269c0ad0=""></div><!----><!----></div><button st:name="bindBtn" class="btn" data-v-269c0ad0="">绑定手机</button></form></div></div><!----><div data-v-6fdc8784="" data-v-fa2339b8="" data-v-2a21baac="" class="view-container"><div data-v-6fdc8784="" class="main-header-box"><header data-v-0c56945c="" data-v-6fdc8784="" class="main-header main-header"><div data-v-0c56945c="" class="container"><a data-v-0c56945c="" href="https://juejin.im/" class="logo"><img data-v-0c56945c="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/logo.a7995ad.svg" alt="掘金" class="logo-img"><img data-v-0c56945c="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/simplify-logo.3e3c253.svg" alt="掘金" class="mobile"></a><nav data-v-0c56945c="" role="navigation" class="main-nav"><ul data-v-0c56945c="" class="nav-list"><li data-v-0c56945c="" class="main-nav-list"><div data-v-0c56945c="" class="phone-show-menu"><span data-v-0c56945c="">首页</span><div data-v-0c56945c="" class="icon ion-arrow-down-b"></div></div><ul data-v-0c56945c="" class="phone-hide"><li data-v-0c56945c="" class="nav-item link-item route-active"><a data-v-0c56945c="" href="https://juejin.im/">首页</a></li><li data-v-0c56945c="" class="nav-item link-item activities"><a data-v-0c56945c="" href="https://juejin.im/pins">沸点</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/topics">话题</a></li><li data-v-0c56945c="" class="nav-item link-item book"><a data-v-0c56945c="" href="https://juejin.im/books">小册</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/events/all">活动</a></li></ul></li><li data-v-0c56945c="" class="nav-item search"><form data-v-0c56945c="" role="search" class="search-form"><input data-v-0c56945c="" type="search" maxlength="32" placeholder="搜索掘金" class="search-input"><img data-v-0c56945c="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/juejin-search-icon.6f8ba1b.svg" alt="搜索" class="search-icon"></form></li><li data-v-0c56945c="" class="nav-item add"><div data-v-0c56945c="" class="add-group"><button data-v-0c56945c="" class="add-btn">写文章</button><div data-v-0c56945c="" class="more"><i data-v-0c56945c="" class="more-icon ion-android-arrow-dropdown"></i></div><ul data-v-0c56945c="" class="more-list"><li data-v-0c56945c="" class="item">发布沸点</li><li data-v-0c56945c="" class="item">分享链接</li><!----></ul></div><!----></li><li data-v-0c56945c="" class="nav-item notification"><a data-v-0c56945c="" class="app-link" href="https://juejin.im/notification" target="_blank"><i data-v-0c56945c="" class="icon ion-android-notifications"></i><!----></a></li><li data-v-0c56945c="" class="nav-item menu"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-0c56945c="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded immediate" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><!----><ul data-v-0c56945c="" class="nav-menu user-dropdown-list" style="display: none;"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-write"></i><span data-v-0c56945c="">写文章</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-draft"></i><span data-v-0c56945c="">草稿</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0" class="link-icon"><i data-v-0c56945c="" class="fengwei fw-person"></i><span data-v-0c56945c="">我的主页</span><!----></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/likes"><img data-v-0c56945c="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="zan"><span data-v-0c56945c="">我赞过的</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/collections"><img data-v-0c56945c="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="collect"><span data-v-0c56945c="">我的收藏集</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/books?type=bought"><i data-v-0c56945c="" class="fengwei fw-bought"></i><span data-v-0c56945c="">已购</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/subscribe"><i data-v-0c56945c="" class="fengwei fw-tag"></i><span data-v-0c56945c="">标签管理</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/settings"><i data-v-0c56945c="" class="fengwei fw-setting"></i><span data-v-0c56945c="">设置</span></a></li><li data-v-0c56945c="" class="nav-menu-item more"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-info"></i><span data-v-0c56945c="">关于</span><i data-v-0c56945c="" class="ion-chevron-right more-icon"></i></a><ul data-v-0c56945c="" class="nav-menu more-dropdown-list"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/app" target="_blank">下载应用</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/about" target="_blank">关于</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://xitu.io/jobs" target="_blank">加入我们</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://github.com/xitu/gold-miner" rel="nofollow noopener noreferrer" target="_blank">翻译计划</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://bd.juejin.im/?utm_campaign=bd&amp;utm_source=web&amp;utm_medium=nav" target="_blank">合作伙伴</a></li></div></ul></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-logout"></i><span data-v-0c56945c="">登出</span></a></li></div></ul></li><!----><!----></ul></nav></div></header></div><main data-v-6fdc8784="" class="container main-container"><div data-v-fa2339b8="" data-v-6fdc8784="" class="view column-view"><div data-v-fa2339b8="" data-v-6fdc8784="" class="main-area article-area shadow"><article data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Article" class="article" data-v-6fdc8784=""><meta itemprop="url" content="https://juejin.im/post/5e8b261ae51d4546c0382ab4"><meta itemprop="headline" content="2万字 | 前端基础拾遗90问"><meta itemprop="keywords" content="面试"><meta itemprop="datePublished" content="2020-04-06T16:47:27.593Z"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/4/7/171505cf0c883a6e?w=2100&amp;h=1400&amp;f=jpeg&amp;s=683149"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="name" content="写代码像蔡徐抻"><meta itemprop="url" content="https://juejin.im/user/5d194f8151882517de2ae188"></div><div itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="掘金"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://b-gold-cdn.xitu.io/icon/icon-white-180.png"><meta itemprop="width" content="180"><meta itemprop="height" content="180"></div></div><div data-v-fa2339b8="" class="author-info-block"><a data-v-fa2339b8="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-fa2339b8="" class="author-info-box"><a data-v-263f3a32="" data-v-fa2339b8="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username username ellipsis">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><div data-v-fa2339b8="" class="meta-box"><time data-v-fa2339b8="" datetime="2020-04-06T16:47:27.593Z" title="Tue Apr 07 2020 00:47:27 GMT+0800 (中国标准时间)" class="time">2020年04月07日</time><span data-v-fa2339b8="" class="views-count">阅读 90782</span><!----></div></div><button data-v-5789daef="" data-v-fa2339b8="" class="follow-button follow">关注</button></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2020/4/7/171505cf0c883a6e?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" class="lazy thumb article-hero loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/4/7/171505cf0c883a6e?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1&quot;); background-size: cover;"></div><h1 data-v-fa2339b8="" class="article-title">2万字 | 前端基础拾遗90问</h1><div data-v-fa2339b8="" data-id="5e8b5d1f51882573834ec793" itemprop="articleBody" class="article-content"><p>大家好，我是练习时长一年半的前端练习生，喜欢唱、跳、rap、敲代码。本文是笔者一年多来对前端基础知识的总结和思考，这些题目对自己是总结，对大家也是一点微薄的资料，希望能给大家带来一些帮助和启发。成文过程中得到了许多大佬的帮助，在此感谢恺哥的<a target="_blank" href="https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5c024ecbf265da616a476638" rel="">小册</a>、神三元同学的<a target="_blank" href="https://github.com/sanyuan0704/sanyuan0704.github.io" rel="nofollow noopener noreferrer">前端每日一问</a>以及许多素未谋面的朋友们，让我等萌新也有机会在前人的财富中拾人牙慧，班门弄斧<code>Thanks♪(･ω･)ﾉ</code></p>
+<blockquote>
+<p>本文将从以下十一个维度为读者总结前端基础知识</p>
+</blockquote>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/17150295c4bb639b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="1133" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17150295c4bb639b"><figcaption></figcaption></figure><p></p>
+<h1 class="heading" data-id="heading-0">JS基础</h1>
+<h2 class="heading" data-id="heading-1">1. 如何在ES5环境下实现let</h2>
+<blockquote>
+<p>这个问题实质上是在回答<code>let</code>和<code>var</code>有什么区别，对于这个问题，我们可以直接查看<code>babel</code>转换前后的结果，看一下在循环中通过<code>let</code>定义的变量是如何解决变量提升的问题</p>
+</blockquote>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/1714616e2fd53bf8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="408" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714616e2fd53bf8"><figcaption></figcaption></figure>
+babel在let定义的变量前加了道下划线，避免在块级作用域外访问到该变量，除了对变量名的转换，我们也可以通过自执行函数来模拟块级作用域<p></p>
+<pre><code class="hljs js copyable" lang="js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i ++){
+    <span class="hljs-built_in">console</span>.log(i)  <span class="hljs-comment">// 0 1 2 3 4</span>
+  }
+})();
+
+<span class="hljs-built_in">console</span>.log(i)      <span class="hljs-comment">// Uncaught ReferenceError: i is not defined</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>不过这个问题并没有结束，我们回到<code>var</code>和<code>let/const</code>的区别上：</p>
+<ul>
+<li><code>var</code>声明的变量会挂到window上，而<code>let</code>和<code>const</code>不会</li>
+<li><code>var</code>声明的变量存在变量提升，而<code>let</code>和<code>const</code>不会</li>
+<li><code>let</code>和<code>const</code>声明形成块作用域，只能在块作用域里访问，不能跨块访问，也不能跨函数访问</li>
+<li>同一作用域下<code>let</code>和<code>const</code>不能声明同名变量，而<code>var</code>可以</li>
+<li>暂时性死区，<code>let</code>和<code>const</code>声明的变量不能在声明前被使用</li>
+</ul>
+<p>babel的转化，其实只实现了第2、3、5点</p>
+<br>
+<h2 class="heading" data-id="heading-2">2. 如何在ES5环境下实现const</h2>
+<p>实现const的关键在于<code>Object.defineProperty()</code>这个API，这个API用于在一个对象上增加或修改属性。通过配置属性描述符，可以精确地控制属性行为。<code>Object.defineProperty()</code> 接收三个参数：</p>
+<blockquote>
+<p>Object.defineProperty(obj, prop, desc)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">obj</td>
+<td style="text-align:center">要在其上定义属性的对象</td>
+</tr>
+<tr>
+<td style="text-align:center">prop</td>
+<td style="text-align:center">要定义或修改的属性的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">descriptor</td>
+<td style="text-align:center">将被定义或修改的属性描述符</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性描述符</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">value</td>
+<td style="text-align:left">该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined</td>
+<td style="text-align:center">undefined</td>
+</tr>
+<tr>
+<td style="text-align:center">get</td>
+<td style="text-align:left">一个给属性提供 getter 的方法，如果没有 getter 则为 undefined</td>
+<td style="text-align:center">undefined</td>
+</tr>
+<tr>
+<td style="text-align:center">set</td>
+<td style="text-align:left">一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法</td>
+<td style="text-align:center">undefined</td>
+</tr>
+<tr>
+<td style="text-align:center">writable</td>
+<td style="text-align:left">当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">enumerable</td>
+<td style="text-align:left">enumerable定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">Configurable</td>
+<td style="text-align:left">configurable特性表示对象的属性是否可以被删除，以及除value和writable特性外的其他特性是否可以被修改</td>
+<td style="text-align:center">false</td>
+</tr>
+</tbody>
+</table>
+<p>对于const不可修改的特性，我们通过设置writable属性来实现</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_const</span>(<span class="hljs-params">key, value</span>) </span>{    
+    <span class="hljs-keyword">const</span> desc = {        
+        value,        
+        <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>    
+    }    
+    <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">window</span>, key, desc)
+}
+    
+_const(<span class="hljs-string">'obj'</span>, {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>})   <span class="hljs-comment">//定义obj</span>
+obj.b = <span class="hljs-number">2</span>               <span class="hljs-comment">//可以正常给obj的属性赋值</span>
+obj = {}                <span class="hljs-comment">//无法赋值新对象</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>参考资料：<a target="_blank" href="https://juejin.im/post/5ce3b2d451882533287a767f" rel="">如何在 ES5 环境下实现一个const ？</a></p>
+<h2 class="heading" data-id="heading-3">3. 手写call()</h2>
+<blockquote>
+<p><code>call() 方法</code>使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数<br>
+语法：<code>function.call(thisArg, arg1, arg2, ...)</code></p>
+</blockquote>
+<p><code>call()</code>的原理比较简单，由于函数的this指向它的直接调用者，我们变更调用者即完成this指向的变更：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//变更函数调用者示例</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)
+}
+
+<span class="hljs-comment">// 测试</span>
+<span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'写代码像蔡徐抻'</span>
+}
+obj.foo = foo   <span class="hljs-comment">// 变更foo的调用者</span>
+obj.foo()       <span class="hljs-comment">// '写代码像蔡徐抻'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>基于以上原理, 我们两句代码就能实现call()</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-built_in">Function</span>.prototype.myCall = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">thisArg, ...args</span>) </span>{
+    thisArg.fn = <span class="hljs-keyword">this</span>              <span class="hljs-comment">// this指向调用call的对象,即我们要改变this指向的函数</span>
+    <span class="hljs-keyword">return</span> thisArg.fn(...args)     <span class="hljs-comment">// 执行函数并return其执行结果</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>但是我们有一些细节需要处理：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-built_in">Function</span>.prototype.myCall = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">thisArg, ...args</span>) </span>{
+    <span class="hljs-keyword">const</span> fn = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">'fn'</span>)        <span class="hljs-comment">// 声明一个独有的Symbol属性, 防止fn覆盖已有属性</span>
+    thisArg = thisArg || <span class="hljs-built_in">window</span>    <span class="hljs-comment">// 若没有传入this, 默认绑定window对象</span>
+    thisArg[fn] = <span class="hljs-keyword">this</span>              <span class="hljs-comment">// this指向调用call的对象,即我们要改变this指向的函数</span>
+    <span class="hljs-keyword">const</span> result = thisArg[fn](...args)  <span class="hljs-comment">// 执行当前函数</span>
+    <span class="hljs-keyword">delete</span> thisArg[fn]              <span class="hljs-comment">// 删除我们声明的fn属性</span>
+    <span class="hljs-keyword">return</span> result                  <span class="hljs-comment">// 返回函数执行结果</span>
+}
+
+<span class="hljs-comment">//测试</span>
+foo.myCall(obj)     <span class="hljs-comment">// 输出'写代码像蔡徐抻'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-4">4. 手写apply()</h2>
+<blockquote>
+<p>apply() 方法调用一个具有给定this值的函数，以及作为一个数组（或类似数组对象）提供的参数。<br>
+语法：func.apply(thisArg, [argsArray])</p>
+</blockquote>
+<p><code>apply()</code>和<code>call()</code>类似，区别在于call()接收参数列表，而apply()接收一个参数数组，所以我们在call()的实现上简单改一下入参形式即可</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-built_in">Function</span>.prototype.myApply = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">thisArg, args</span>) </span>{
+    <span class="hljs-keyword">const</span> fn = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">'fn'</span>)        <span class="hljs-comment">// 声明一个独有的Symbol属性, 防止fn覆盖已有属性</span>
+    thisArg = thisArg || <span class="hljs-built_in">window</span>    <span class="hljs-comment">// 若没有传入this, 默认绑定window对象</span>
+    thisArg[fn] = <span class="hljs-keyword">this</span>              <span class="hljs-comment">// this指向调用call的对象,即我们要改变this指向的函数</span>
+    <span class="hljs-keyword">const</span> result = thisArg[fn](...args)  <span class="hljs-comment">// 执行当前函数（此处说明一下：虽然apply()接收的是一个数组，但在调用原函数时，依然要展开参数数组。可以对照原生apply()，原函数接收到展开的参数数组）</span>
+    <span class="hljs-keyword">delete</span> thisArg[fn]              <span class="hljs-comment">// 删除我们声明的fn属性</span>
+    <span class="hljs-keyword">return</span> result                  <span class="hljs-comment">// 返回函数执行结果</span>
+}
+
+<span class="hljs-comment">//测试</span>
+foo.myApply(obj, [])     <span class="hljs-comment">// 输出'写代码像蔡徐抻'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-5">5. 手写bind()</h2>
+<blockquote>
+<p><code>bind()</code> 方法创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。<br>
+语法: function.bind(thisArg, arg1, arg2, ...)</p>
+</blockquote>
+<p>从用法上看，似乎给call/apply包一层function就实现了bind()：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-built_in">Function</span>.prototype.myBind = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">thisArg, ...args</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.apply(thisArg, args)
+    }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>但我们忽略了三点：</p>
+<ol>
+<li>bind()除了this还接收其他参数，bind()返回的函数也接收参数，这两部分的参数都要传给返回的函数</li>
+<li>new会改变this指向：如果bind绑定后的函数被new了，那么this指向会发生改变，指向当前函数的实例</li>
+<li>没有保留原函数在原型链上的属性和方法</li>
+</ol>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-built_in">Function</span>.prototype.myBind = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">thisArg, ...args</span>) </span>{
+    <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+    <span class="hljs-comment">// new优先级</span>
+    <span class="hljs-keyword">var</span> fbound = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        self.apply(<span class="hljs-keyword">this</span> <span class="hljs-keyword">instanceof</span> self ? <span class="hljs-keyword">this</span> : thisArg, args.concat(<span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>)))
+    }
+    <span class="hljs-comment">// 继承原型上的属性和方法</span>
+    fbound.prototype = <span class="hljs-built_in">Object</span>.create(self.prototype);
+
+    <span class="hljs-keyword">return</span> fbound;
+}
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-keyword">const</span> obj = { <span class="hljs-attr">name</span>: <span class="hljs-string">'写代码像蔡徐抻'</span> }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>)
+}
+
+foo.myBind(obj, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>)()    <span class="hljs-comment">//输出写代码像蔡徐抻 ['a', 'b', 'c']</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-6">6. 手写一个防抖函数</h2>
+<p>防抖和节流的概念都比较简单，所以我们就不在“防抖节流是什么”这个问题上浪费过多篇幅了，简单点一下：</p>
+<blockquote>
+<p>防抖，即<code>短时间内大量触发同一事件，只会执行一次函数</code>，实现原理为<code>设置一个定时器，约定在xx毫秒后再触发事件处理，每次触发事件都会重新设置计时器，直到xx毫秒内无第二次操作</code>，防抖常用于搜索框/滚动条的监听事件处理，如果不做防抖，每输入一个字/滚动屏幕，都会触发事件处理，造成性能浪费。</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">func, wait</span>) </span>{
+    <span class="hljs-keyword">let</span> timeout = <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> context = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span>
+        <span class="hljs-keyword">if</span> (timeout) clearTimeout(timeout)
+        timeout = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            func.apply(context, args)
+        }, wait)
+    }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-7">7. 手写一个节流函数</h2>
+<blockquote>
+<p>防抖是<code>延迟执行</code>，而节流是<code>间隔执行</code>，函数节流即<code>每隔一段时间就执行一次</code>，实现原理为<code>设置一个定时器，约定xx毫秒后执行事件，如果时间到了，那么执行函数并重置定时器</code>，和防抖的区别在于，防抖每次触发事件都重置定时器，而节流在定时器到时间后再清空定时器</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">func, wait</span>) </span>{
+    <span class="hljs-keyword">let</span> timeout = <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> context = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span>
+        <span class="hljs-keyword">if</span> (!timeout) {
+            timeout = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+                timeout = <span class="hljs-literal">null</span>
+                func.apply(context, args)
+            }, wait)
+        }
+
+    }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>实现方式2：使用两个时间戳<code>prev旧时间戳</code>和<code>now新时间戳</code>，每次触发事件都判断二者的时间差，如果到达规定时间，执行函数并重置旧时间戳</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">func, wait</span>) </span>{
+    <span class="hljs-keyword">var</span> prev = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> now = <span class="hljs-built_in">Date</span>.now();
+        <span class="hljs-keyword">let</span> context = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span>;
+        <span class="hljs-keyword">if</span> (now - prev &gt; wait) {
+            func.apply(context, args);
+            prev = now;
+        }
+    }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-8">8. 数组扁平化</h2>
+<blockquote>
+<p>对于<code>[1, [1,2], [1,2,3]]</code>这样多层嵌套的数组，我们如何将其扁平化为<code>[1, 1, 2, 1, 2, 3]</code>这样的一维数组呢：</p>
+</blockquote>
+<p><strong>1.ES6的flat()</strong></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]]
+arr.flat(<span class="hljs-literal">Infinity</span>)  <span class="hljs-comment">// [1, 1, 2, 1, 2, 3]</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>2.序列化后正则</strong></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]]
+<span class="hljs-keyword">const</span> str = <span class="hljs-string">`[<span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(arr).replace(<span class="hljs-regexp">/(\[|\])/g</span>, <span class="hljs-string">''</span>)}</span>]`</span>
+<span class="hljs-built_in">JSON</span>.parse(str)   <span class="hljs-comment">// [1, 1, 2, 1, 2, 3]</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>3.递归</strong><br>
+对于树状结构的数据，最直接的处理方式就是递归</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]]
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">let</span> result = []
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> item <span class="hljs-keyword">of</span> arr) {
+    item <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span> ? result = result.concat(flat(item)) : result.push(item)
+  }
+  <span class="hljs-keyword">return</span> result
+}
+
+flat(arr) <span class="hljs-comment">// [1, 1, 2, 1, 2, 3]</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>4.reduce()递归</strong></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]]
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat</span>(<span class="hljs-params">arr</span>) </span>{
+  <span class="hljs-keyword">return</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">prev, cur</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> prev.concat(cur <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span> ? flat(cur) : cur)
+  }, [])
+}
+
+flat(arr)  <span class="hljs-comment">// [1, 1, 2, 1, 2, 3]</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>5.迭代+展开运算符</strong></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// 每次while都会合并一层的元素，这里第一次合并结果为[1, 1, 2, 1, 2, 3, [4,4,4]]</span>
+<span class="hljs-comment">// 然后arr.some判定数组中是否存在数组，因为存在[4,4,4]，继续进入第二次循环进行合并</span>
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,[<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>]]]
+<span class="hljs-keyword">while</span> (arr.some(<span class="hljs-built_in">Array</span>.isArray)) {
+  arr = [].concat(...arr);
+}
+
+<span class="hljs-built_in">console</span>.log(arr)  <span class="hljs-comment">// [1, 1, 2, 1, 2, 3, 4, 4, 4]</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-9">9. 手写一个Promise</h2>
+<blockquote>
+<p>实现一个符合规范的Promise篇幅比较长，建议阅读笔者上一篇文章：<a target="_blank" href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" rel="">异步编程二三事 | Promise/async/Generator实现原理解析 | 9k字</a></p>
+</blockquote>
+<br>
+<h1 class="heading" data-id="heading-10">JS面向对象</h1>
+<p>在JS中一切皆对象，但JS并不是一种真正的面向对象(OOP)的语言，因为它缺少<code>类(class)</code>的概念。虽然ES6引入了<code>class</code>和<code>extends</code>，使我们能够轻易地实现类和继承。但JS并不存在真实的类，JS的类是通过函数以及原型链机制模拟的，本小节的就来探究如何在ES5环境下利用函数和原型链实现JS面向对象的特性</p>
+<p>在开始之前，我们先回顾一下原型链的知识，后续<code>new</code>和<code>继承</code>等实现都是基于原型链机制。很多介绍原型链的资料都能写上洋洋洒洒几千字，但我觉得读者们不需要把原型链想太复杂，容易把自己绕进去，其实在我看来，原型链的核心只需要记住三点：</p>
+<ol>
+<li>每个对象都有<code>__proto__属性</code>，该属性指向其原型对象，在调用实例的方法和属性时，如果在实例对象上找不到，就会往原型对象上找</li>
+<li>构造函数的<code>prototype属性</code>也指向实例的原型对象</li>
+<li>原型对象的<code>constructor属性</code>指向构造函数</li>
+</ol>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/4/17144d68b7d0eea1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="256" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17144d68b7d0eea1"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-11">1. 模拟实现new</h2>
+<p>首先我们要知道<code>new</code>做了什么</p>
+<ol>
+<li><strong>创建一个新对象，并继承其构造函数的<code>prototype</code></strong>，这一步是为了继承构造函数原型上的属性和方法</li>
+<li><strong>执行构造函数，方法内的<code>this</code>被指定为该新实例</strong>，这一步是为了执行构造函数内的赋值操作</li>
+<li><strong>返回新实例</strong>（规范规定，如果构造方法返回了一个对象，那么返回该对象，否则返回第一步创建的新对象）</li>
+</ol>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// new是关键字,这里我们用函数来模拟,new Foo(args) &lt;=&gt; myNew(Foo, args)</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myNew</span>(<span class="hljs-params">foo, ...args</span>) </span>{
+  <span class="hljs-comment">// 创建新对象,并继承构造方法的prototype属性, 这一步是为了把obj挂原型链上, 相当于obj.__proto__ = Foo.prototype</span>
+  <span class="hljs-keyword">let</span> obj = <span class="hljs-built_in">Object</span>.create(foo.prototype)  
+  
+  <span class="hljs-comment">// 执行构造方法, 并为其绑定新this, 这一步是为了让构造方法能进行this.name = name之类的操作, args是构造方法的入参, 因为这里用myNew模拟, 所以入参从myNew传入</span>
+  <span class="hljs-keyword">let</span> result = foo.apply(obj, args)
+
+  <span class="hljs-comment">// 如果构造方法已经return了一个对象，那么就返回该对象，否则返回myNew创建的新对象（一般情况下，构造方法不会返回新实例，但使用者可以选择返回新实例来覆盖new创建的对象）</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(result) === <span class="hljs-string">'[object Object]'</span> ? result : obj
+}
+
+<span class="hljs-comment">// 测试：</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">name</span>) </span>{
+  <span class="hljs-keyword">this</span>.name = name
+}
+<span class="hljs-keyword">const</span> newObj = myNew(Foo, <span class="hljs-string">'zhangsan'</span>)
+<span class="hljs-built_in">console</span>.log(newObj)                 <span class="hljs-comment">// Foo {name: "zhangsan"}</span>
+<span class="hljs-built_in">console</span>.log(newObj <span class="hljs-keyword">instanceof</span> Foo)  <span class="hljs-comment">// true</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-12">2. ES5如何实现继承</h2>
+<p>说到继承，最容易想到的是ES6的<code>extends</code>，当然如果只回答这个肯定不合格，我们要从函数和原型链的角度上实现继承，下面我们一步步地、递进地实现一个合格的继承</p>
+<h3 class="heading" data-id="heading-13">一. 原型链继承</h3>
+<p>原型链继承的原理很简单，直接让子类的原型对象指向父类实例，当子类实例找不到对应的属性和方法时，就会往它的原型对象，也就是父类实例上找，从而实现对父类的属性和方法的继承</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// 父类</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">'写代码像蔡徐抻'</span>
+}
+<span class="hljs-comment">// 父类的原型方法</span>
+Parent.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+}
+<span class="hljs-comment">// 子类</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>{}
+
+<span class="hljs-comment">// 让子类的原型对象指向父类实例, 这样一来在Child实例中找不到的属性和方法就会到原型对象(父类实例)上寻找</span>
+Child.prototype = <span class="hljs-keyword">new</span> Parent()
+Child.prototype.constructor = Child <span class="hljs-comment">// 根据原型链的规则,顺便绑定一下constructor, 这一步不影响继承, 只是在用到constructor时会需要</span>
+
+<span class="hljs-comment">// 然后Child实例就能访问到父类及其原型上的name属性和getName()方法</span>
+<span class="hljs-keyword">const</span> child = <span class="hljs-keyword">new</span> Child()
+child.name          <span class="hljs-comment">// '写代码像蔡徐抻'</span>
+child.getName()     <span class="hljs-comment">// '写代码像蔡徐抻'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>原型继承的缺点:</p>
+</blockquote>
+<ol>
+<li>由于所有Child实例原型都指向同一个Parent实例, 因此对某个Child实例的父类引用类型变量修改会影响所有的Child实例</li>
+<li>在创建子类实例时无法向父类构造传参, 即没有实现<code>super()</code>的功能</li>
+</ol>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// 示例:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.name = [<span class="hljs-string">'写代码像蔡徐抻'</span>] 
+}
+Parent.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>{}
+
+Child.prototype = <span class="hljs-keyword">new</span> Parent()
+Child.prototype.constructor = Child 
+
+<span class="hljs-comment">// 测试</span>
+<span class="hljs-keyword">const</span> child1 = <span class="hljs-keyword">new</span> Child()
+<span class="hljs-keyword">const</span> child2 = <span class="hljs-keyword">new</span> Child()
+child1.name[<span class="hljs-number">0</span>] = <span class="hljs-string">'foo'</span>
+<span class="hljs-built_in">console</span>.log(child1.name)          <span class="hljs-comment">// ['foo']</span>
+<span class="hljs-built_in">console</span>.log(child2.name)          <span class="hljs-comment">// ['foo'] (预期是['写代码像蔡徐抻'], 对child1.name的修改引起了所有child实例的变化)</span>
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-14">二. 构造函数继承</h3>
+<p>构造函数继承，即在子类的构造函数中执行父类的构造函数，并为其绑定子类的<code>this</code>，让父类的构造函数把成员属性和方法都挂到<code>子类的this</code>上去，这样既能避免实例之间共享一个原型实例，又能向父类构造方法传参</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = [name]
+}
+Parent.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>{
+    Parent.call(<span class="hljs-keyword">this</span>, <span class="hljs-string">'zhangsan'</span>)   <span class="hljs-comment">// 执行父类构造方法并绑定子类的this, 使得父类中的属性能够赋到子类的this上</span>
+}
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-keyword">const</span> child1 = <span class="hljs-keyword">new</span> Child()
+<span class="hljs-keyword">const</span> child2 = <span class="hljs-keyword">new</span> Child()
+child1.name[<span class="hljs-number">0</span>] = <span class="hljs-string">'foo'</span>
+<span class="hljs-built_in">console</span>.log(child1.name)          <span class="hljs-comment">// ['foo']</span>
+<span class="hljs-built_in">console</span>.log(child2.name)          <span class="hljs-comment">// ['zhangsan']</span>
+child2.getName()                  <span class="hljs-comment">// 报错,找不到getName(), 构造函数继承的方式继承不到父类原型上的属性和方法</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>构造函数继承的缺点:</p>
+</blockquote>
+<ol>
+<li>继承不到父类原型上的属性和方法</li>
+</ol>
+<h3 class="heading" data-id="heading-15">三. 组合式继承</h3>
+<p>既然原型链继承和构造函数继承各有互补的优缺点, 那么我们为什么不组合起来使用呢, 所以就有了综合二者的组合式继承</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = [name]
+}
+Parent.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// 构造函数继承</span>
+    Parent.call(<span class="hljs-keyword">this</span>, <span class="hljs-string">'zhangsan'</span>) 
+}
+<span class="hljs-comment">//原型链继承</span>
+Child.prototype = <span class="hljs-keyword">new</span> Parent()
+Child.prototype.constructor = Child
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-keyword">const</span> child1 = <span class="hljs-keyword">new</span> Child()
+<span class="hljs-keyword">const</span> child2 = <span class="hljs-keyword">new</span> Child()
+child1.name[<span class="hljs-number">0</span>] = <span class="hljs-string">'foo'</span>
+<span class="hljs-built_in">console</span>.log(child1.name)          <span class="hljs-comment">// ['foo']</span>
+<span class="hljs-built_in">console</span>.log(child2.name)          <span class="hljs-comment">// ['zhangsan']</span>
+child2.getName()                  <span class="hljs-comment">// ['zhangsan']</span>
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>组合式继承的缺点:</p>
+</blockquote>
+<ol>
+<li>每次创建子类实例都执行了两次构造函数(<code>Parent.call()</code>和<code>new Parent()</code>)，虽然这并不影响对父类的继承，但子类创建实例时，原型中会存在两份相同的属性和方法，这并不优雅</li>
+</ol>
+<h3 class="heading" data-id="heading-16">四. 寄生式组合继承</h3>
+<p>为了解决构造函数被执行两次的问题, 我们将<code>指向父类实例</code>改为<code>指向父类原型</code>, 减去一次构造函数的执行</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = [name]
+}
+Parent.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// 构造函数继承</span>
+    Parent.call(<span class="hljs-keyword">this</span>, <span class="hljs-string">'zhangsan'</span>) 
+}
+<span class="hljs-comment">//原型链继承</span>
+<span class="hljs-comment">// Child.prototype = new Parent()</span>
+Child.prototype = Parent.prototype  <span class="hljs-comment">//将`指向父类实例`改为`指向父类原型`</span>
+Child.prototype.constructor = Child
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-keyword">const</span> child1 = <span class="hljs-keyword">new</span> Child()
+<span class="hljs-keyword">const</span> child2 = <span class="hljs-keyword">new</span> Child()
+child1.name[<span class="hljs-number">0</span>] = <span class="hljs-string">'foo'</span>
+<span class="hljs-built_in">console</span>.log(child1.name)          <span class="hljs-comment">// ['foo']</span>
+<span class="hljs-built_in">console</span>.log(child2.name)          <span class="hljs-comment">// ['zhangsan']</span>
+child2.getName()                  <span class="hljs-comment">// ['zhangsan']</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>但这种方式存在一个问题，由于子类原型和父类原型指向同一个对象，我们对子类原型的操作会影响到父类原型，例如给<code>Child.prototype</code>增加一个getName()方法，那么会导致<code>Parent.prototype</code>也增加或被覆盖一个getName()方法，为了解决这个问题，我们给<code>Parent.prototype</code>做一个浅拷贝</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = [name]
+}
+Parent.prototype.getName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// 构造函数继承</span>
+    Parent.call(<span class="hljs-keyword">this</span>, <span class="hljs-string">'zhangsan'</span>) 
+}
+<span class="hljs-comment">//原型链继承</span>
+<span class="hljs-comment">// Child.prototype = new Parent()</span>
+Child.prototype = <span class="hljs-built_in">Object</span>.create(Parent.prototype)  <span class="hljs-comment">//将`指向父类实例`改为`指向父类原型`</span>
+Child.prototype.constructor = Child
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-keyword">const</span> child = <span class="hljs-keyword">new</span> Child()
+<span class="hljs-keyword">const</span> parent = <span class="hljs-keyword">new</span> Parent()
+child.getName()                  <span class="hljs-comment">// ['zhangsan']</span>
+parent.getName()                 <span class="hljs-comment">// 报错, 找不到getName()</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>到这里我们就完成了ES5环境下的继承的实现，这种继承方式称为<code>寄生组合式继承</code>，是目前最成熟的继承方式，babel对ES6继承的转化也是使用了寄生组合式继承</p>
+<p>我们回顾一下实现过程：<br>
+一开始最容易想到的是<code>原型链继承</code>，通过把子类实例的原型指向父类实例来继承父类的属性和方法，但原型链继承的缺陷在于<code>对子类实例继承的引用类型的修改会影响到所有的实例对象</code>以及<code>无法向父类的构造方法传参</code>。<br>
+因此我们引入了<code>构造函数继承</code>, 通过在子类构造函数中调用父类构造函数并传入子类this来获取父类的属性和方法，但构造函数继承也存在缺陷，构造函数继承<code>不能继承到父类原型链上的属性和方法</code>。<br>
+所以我们综合了两种继承的优点，提出了<code>组合式继承</code>，但组合式继承也引入了新的问题，它<code>每次创建子类实例都执行了两次父类构造方法</code>，我们通过将<code>子类原型指向父类实例</code>改为<code>子类原型指向父类原型的浅拷贝</code>来解决这一问题，也就是最终实现 —— <code>寄生组合式继承</code></p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714fd86c8983189?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="887" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714fd86c8983189"><figcaption></figcaption></figure>
+<br><p></p>
+<h1 class="heading" data-id="heading-17">V8引擎机制</h1>
+<h2 class="heading" data-id="heading-18">1. V8如何执行一段JS代码</h2>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/5/1701324268cca319?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="960" data-height="540" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1701324268cca319"><figcaption></figcaption></figure><p></p>
+<ol>
+<li><strong>预解析</strong>：检查语法错误但不生成AST</li>
+<li><strong>生成AST</strong>：经过词法/语法分析，生成抽象语法树</li>
+<li><strong>生成字节码</strong>：基线编译器(Ignition)将AST转换成字节码</li>
+<li><strong>生成机器码</strong>：优化编译器(Turbofan)将字节码转换成优化过的机器码，此外在逐行执行字节码的过程中，如果一段代码经常被执行，那么V8会将这段代码直接转换成机器码保存起来，下一次执行就不必经过字节码，优化了执行速度</li>
+</ol>
+<p>上面几点只是V8执行机制的极简总结，建议阅读参考资料：</p>
+<blockquote>
+<p>1.<a target="_blank" href="https://juejin.im/post/5dc4d823f265da4d4c202d3b" rel="">V8 是怎么跑起来的 —— V8 的 JavaScript 执行管道</a><br>
+2.<a target="_blank" href="https://juejin.im/post/5df1ed1f6fb9a015fd69b78d" rel="">JavaScript 引擎 V8 执行流程概述</a></p>
+</blockquote>
+<h2 class="heading" data-id="heading-19">2. 介绍一下引用计数和标记清除</h2>
+<ul>
+<li><strong>引用计数</strong>：给一个变量赋值引用类型，则该对象的引用次数+1，如果这个变量变成了其他值，那么该对象的引用次数-1，垃圾回收器会回收引用次数为0的对象。但是当对象循环引用时，会导致引用次数永远无法归零，造成内存无法释放。</li>
+<li><strong>标记清除</strong>：垃圾收集器先给内存中所有对象加上标记，然后从根节点开始遍历，去掉被引用的对象和运行环境中对象的标记，剩下的被标记的对象就是无法访问的等待回收的对象。</li>
+</ul>
+<h2 class="heading" data-id="heading-20">3. V8如何进行垃圾回收</h2>
+<p>JS引擎中对变量的存储主要有两种位置，栈内存和堆内存，栈内存存储基本类型数据以及引用类型数据的内存地址，堆内存储存引用类型的数据</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/17149730709e41a4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="988" data-height="388" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17149730709e41a4"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>栈内存的回收：</p>
+</blockquote>
+<p>栈内存调用栈上下文切换后就被回收，比较简单</p>
+<blockquote>
+<p>堆内存的回收：</p>
+</blockquote>
+<p>V8的堆内存分为新生代内存和老生代内存，新生代内存是临时分配的内存，存在时间短，老生代内存存在时间长</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/1714980cac75fc32?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1144" data-height="68" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714980cac75fc32"><figcaption></figcaption></figure><p></p>
+<ul>
+<li>新生代内存回收机制：
+<ul>
+<li>新生代内存容量小，64位系统下仅有32M。新生代内存分为<strong>From、To</strong>两部分，进行垃圾回收时，先扫描From，将非存活对象回收，将存活对象顺序复制到To中，之后调换From/To，等待下一次回收</li>
+</ul>
+</li>
+<li>老生代内存回收机制
+<ul>
+<li><strong>晋升</strong>：如果新生代的变量经过多次回收依然存在，那么就会被放入老生代内存中</li>
+<li><strong>标记清除</strong>：老生代内存会先遍历所有对象并打上标记，然后对正在使用或被强引用的对象取消标记，回收被标记的对象</li>
+<li><strong>整理内存碎片</strong>：把对象挪到内存的一端</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://juejin.im/post/5ad3f1156fb9a028b86e78be#heading-10" rel="">聊聊V8引擎的垃圾回收</a></p>
+</blockquote>
+<h2 class="heading" data-id="heading-21">4. JS相较于C++等语言为什么慢，V8做了哪些优化</h2>
+<ol>
+<li>JS的问题：
+<ul>
+<li><strong>动态类型</strong>：导致每次存取属性/寻求方法时候，都需要先检查类型；此外动态类型也很难在编译阶段进行优化</li>
+<li><strong>属性存取</strong>：C++/Java等语言中方法、属性是存储在数组中的，仅需数组位移就可以获取，而JS存储在对象中，每次获取都要进行哈希查询</li>
+</ul>
+</li>
+<li>V8的优化：
+<ul>
+<li><strong>优化JIT(即时编译)</strong>：相较于C++/Java这类编译型语言，JS一边解释一边执行，效率低。V8对这个过程进行了优化：如果一段代码被执行多次，那么V8会把这段代码转化为机器码缓存下来，下次运行时直接使用机器码。</li>
+<li><strong>隐藏类</strong>：对于C++这类语言来说，仅需几个指令就能通过偏移量获取变量信息，而JS需要进行字符串匹配，效率低，V8借用了类和偏移位置的思想，将对象划分成不同的组，即隐藏类</li>
+<li><strong>内嵌缓存</strong>：即缓存对象查询的结果。常规查询过程是：获取隐藏类地址 -&gt; 根据属性名查找偏移值 -&gt; 计算该属性地址，内嵌缓存就是对这一过程结果的缓存</li>
+<li><strong>垃圾回收管理</strong>：上文已介绍</li>
+</ul>
+</li>
+</ol>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/1714a1f7c054c657?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="824" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714a1f7c054c657"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://zhuanlan.zhihu.com/p/27628685" rel="nofollow noopener noreferrer">为什么V8引擎这么快？</a></p>
+</blockquote>
+<br>
+<h1 class="heading" data-id="heading-22">浏览器渲染机制</h1>
+<h2 class="heading" data-id="heading-23">1. 浏览器的渲染过程是怎样的</h2>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/5/17013323c225bd62?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="604" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17013323c225bd62"><figcaption></figcaption></figure>
+大体流程如下：<p></p>
+<ol>
+<li>HTML和CSS经过各自解析，生成DOM树和CSSOM树</li>
+<li>合并成为渲染树</li>
+<li>根据渲染树进行布局</li>
+<li>最后调用GPU进行绘制，显示在屏幕上</li>
+</ol>
+<h2 class="heading" data-id="heading-24">2. 如何根据浏览器渲染机制加快首屏速度</h2>
+<ol>
+<li><strong>优化文件大小</strong>：HTML和CSS的加载和解析都会阻塞渲染树的生成，从而影响首屏展示速度，因此我们可以通过优化文件大小、减少CSS文件层级的方法来加快首屏速度</li>
+<li><strong>避免资源下载阻塞文档解析</strong>：浏览器解析到&lt;script&gt;标签时，会阻塞文档解析，直到脚本执行完成，因此我们通常把&lt;script&gt;标签放在底部，或者加上<code>defer、async</code>来进行异步下载</li>
+</ol>
+<h2 class="heading" data-id="heading-25">3. 什么是回流(重排)，什么情况下会触发回流</h2>
+<ul>
+<li>当元素的尺寸或者位置发生了变化，就需要重新计算渲染树，这就是回流</li>
+<li>DOM元素的几何属性(<code>width/height/padding/margin/border</code>)发生变化时会触发回流</li>
+<li>DOM元素移动或增加会触发回流</li>
+<li>读写<code>offset/scroll/client</code>等属性时会触发回流</li>
+<li>调用<code>window.getComputedStyle</code>会触发回流</li>
+</ul>
+<h2 class="heading" data-id="heading-26">4. 什么是重绘，什么情况下会触发重绘</h2>
+<ul>
+<li>DOM样式发生了变化，但没有影响DOM的几何属性时，会触发重绘，而不会触发回流。重绘由于DOM位置信息不需要更新，省去了布局过程，因而性能上优于回流</li>
+</ul>
+<h2 class="heading" data-id="heading-27">5. 什么是GPU加速，如何使用GPU加速，GPU加速的缺点</h2>
+<ul>
+<li><strong>优点</strong>：使用transform、opacity、filters等属性时，会直接在GPU中完成处理，这些属性的变化不会引起回流重绘</li>
+<li><strong>缺点</strong>：GPU渲染字体会导致字体模糊，过多的GPU处理会导致内存问题</li>
+</ul>
+<h2 class="heading" data-id="heading-28">6. 如何减少回流</h2>
+<ul>
+<li>使用<code>class</code>替代<code>style</code>，减少style的使用</li>
+<li>使用<code>resize、scroll</code>时进行防抖和节流处理，这两者会直接导致回流</li>
+<li>使用<code>visibility</code>替换<code>display: none</code>，因为前者只会引起重绘，后者会引发回流</li>
+<li>批量修改元素时，可以先让元素脱离文档流，等修改完毕后，再放入文档流</li>
+<li>避免触发同步布局事件，我们在获取<code>offsetWidth</code>这类属性的值时，可以使用变量将查询结果存起来，避免多次查询，每次对<code>offset/scroll/client</code>等属性进行查询时都会触发回流</li>
+<li>对于复杂动画效果,使用绝对定位让其脱离文档流，复杂的动画效果会频繁地触发回流重绘，我们可以将动画元素设置绝对定位从而脱离文档流避免反复回流重绘。</li>
+</ul>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/1714a1d84ab05ba9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="937" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714a1d84ab05ba9"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://juejin.im/post/5ce120fbe51d4510a50334fa" rel="">必须明白的浏览器渲染机制</a></p>
+</blockquote>
+<br>
+<h1 class="heading" data-id="heading-29">浏览器缓存策略</h1>
+<h2 class="heading" data-id="heading-30">1. 介绍一下浏览器缓存位置和优先级</h2>
+<ol>
+<li>Service Worker</li>
+<li>Memory Cache（内存缓存）</li>
+<li>Disk Cache（硬盘缓存）</li>
+<li>Push Cache（推送缓存）</li>
+<li>以上缓存都没命中就会进行网络请求</li>
+</ol>
+<h2 class="heading" data-id="heading-31">2. 说说不同缓存间的差别</h2>
+<blockquote>
+<ol>
+<li>Service Worker</li>
+</ol>
+</blockquote>
+<p>和Web Worker类似，是独立的线程，我们可以在这个线程中缓存文件，在主线程需要的时候读取这里的文件，Service Worker使我们可以自由选择缓存哪些文件以及文件的匹配、读取规则，并且缓存是持续性的</p>
+<blockquote>
+<ol start="2">
+<li>Memory Cache</li>
+</ol>
+</blockquote>
+<p>即内存缓存，内存缓存不是持续性的，缓存会随着进程释放而释放</p>
+<blockquote>
+<ol start="3">
+<li>Disk Cache</li>
+</ol>
+</blockquote>
+<p>即硬盘缓存，相较于内存缓存，硬盘缓存的持续性和容量更优，它会根据HTTP header的字段判断哪些资源需要缓存</p>
+<blockquote>
+<ol start="4">
+<li>Push Cache</li>
+</ol>
+</blockquote>
+<p>即推送缓存，是HTTP/2的内容，目前应用较少</p>
+<h2 class="heading" data-id="heading-32">3. 介绍一下浏览器缓存策略</h2>
+<blockquote>
+<p>强缓存(不要向服务器询问的缓存)</p>
+</blockquote>
+<p><strong>设置Expires</strong></p>
+<ul>
+<li>即过期时间，例如<code>「Expires: Thu, 26 Dec 2019 10:30:42 GMT」</code>表示缓存会在这个时间后失效，这个过期日期是绝对日期，如果修改了本地日期，或者本地日期与服务器日期不一致，那么将导致缓存过期时间错误。</li>
+</ul>
+<p><strong>设置Cache-Control</strong></p>
+<ul>
+<li>HTTP/1.1新增字段，Cache-Control可以通过<code>max-age</code>字段来设置过期时间，例如<code>「Cache-Control:max-age=3600」</code>除此之外Cache-Control还能设置<code>private/no-cache</code>等多种字段</li>
+</ul>
+<blockquote>
+<p>协商缓存(需要向服务器询问缓存是否已经过期)</p>
+</blockquote>
+<p><strong>Last-Modified</strong></p>
+<ul>
+<li>即最后修改时间，浏览器第一次请求资源时，服务器会在响应头上加上<code>Last-Modified</code> ，当浏览器再次请求该资源时，浏览器会在请求头中带上<code>If-Modified-Since</code> 字段，字段的值就是之前服务器返回的最后修改时间，服务器对比这两个时间，若相同则返回304，否则返回新资源，并更新Last-Modified</li>
+</ul>
+<p><strong>ETag</strong></p>
+<ul>
+<li>HTTP/1.1新增字段，表示文件唯一标识，只要文件内容改动，ETag就会重新计算。缓存流程和 Last-Modified 一样：服务器发送 ETag 字段 -&gt; 浏览器再次请求时发送 If-None-Match -&gt; 如果ETag值不匹配，说明文件已经改变，返回新资源并更新ETag，若匹配则返回304</li>
+</ul>
+<blockquote>
+<p>两者对比</p>
+</blockquote>
+<ul>
+<li>ETag 比 Last-Modified 更准确：如果我们打开文件但并没有修改，Last-Modified 也会改变，并且 Last-Modified 的单位时间为一秒，如果一秒内修改完了文件，那么还是会命中缓存</li>
+<li>如果什么缓存策略都没有设置，那么浏览器会取响应头中的 Date 减去 Last-Modified 值的 10% 作为缓存时间</li>
+</ul>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/1714a298b93c3208?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="582" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714a298b93c3208"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://juejin.im/post/58eacff90ce4630058668257" rel="">浏览器缓存机制剖析</a></p>
+</blockquote>
+<br>
+<h1 class="heading" data-id="heading-33">网络相关</h1>
+<h2 class="heading" data-id="heading-34">1. 讲讲网络OSI七层模型，TCP/IP和HTTP分别位于哪一层</h2>
+<p></p><figure><img alt="alt" class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/1/28/16fec363208256b8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="960" data-height="720" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/16fec363208256b8"><figcaption></figcaption></figure><p></p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>概述</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>物理层</td>
+<td>网络连接介质，如网线、光缆，数据在其中以比特为单位传输</td>
+<td>bit</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>数据链路层将比特封装成数据帧并传递</td>
+<td>帧</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>定义IP地址，定义路由功能，建立主机到主机的通信</td>
+<td>数据包</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>负责将数据进行可靠或者不可靠传递，建立端口到端口的通信</td>
+<td>数据段</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>控制应用程序之间会话能力，区分不同的进程</td>
+<td></td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>数据格式标识，基本压缩加密功能</td>
+<td></td>
+</tr>
+<tr>
+<td>应用层</td>
+<td>各种应用软件</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h2 class="heading" data-id="heading-35">2. 常见HTTP状态码有哪些</h2>
+<blockquote>
+<p>2xx 开头（请求成功）</p>
+</blockquote>
+<p><code>200 OK</code>：客户端发送给服务器的请求被正常处理并返回</p>
+<br>
+<blockquote>
+<p>3xx 开头（重定向）</p>
+</blockquote>
+<p><code>301 Moved Permanently</code>：永久重定向，请求的网页已永久移动到新位置。 服务器返回此响应时，会自动将请求者转到新位置</p>
+<p><code>302 Moved Permanently</code>：临时重定向，请求的网页已临时移动到新位置。服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求</p>
+<p><code>304 Not Modified</code>：未修改，自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容</p>
+<br>
+<blockquote>
+<p>4xx 开头（客户端错误）</p>
+</blockquote>
+<p><code>400 Bad Request</code>：错误请求，服务器不理解请求的语法，常见于客户端传参错误</p>
+<p><code>401 Unauthorized</code>：未授权，表示发送的请求需要有通过 HTTP 认证的认证信息，常见于客户端未登录</p>
+<p><code>403 Forbidden</code>：禁止，服务器拒绝请求，常见于客户端权限不足</p>
+<p><code>404 Not Found</code>：未找到，服务器找不到对应资源</p>
+<br>
+<blockquote>
+<p>5xx 开头（服务端错误）</p>
+</blockquote>
+<p><code>500 Inter Server Error</code>：服务器内部错误，服务器遇到错误，无法完成请求</p>
+<p><code>501 Not Implemented</code>：尚未实施，服务器不具备完成请求的功能</p>
+<p><code>502 Bad Gateway</code>：作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</p>
+<p><code>503 service unavailable</code>：服务不可用，服务器目前无法使用（处于超载或停机维护状态）。通常是暂时状态。</p>
+<br>
+<h2 class="heading" data-id="heading-36">3. GET请求和POST请求有何区别</h2>
+<blockquote>
+<p>标准答案：</p>
+</blockquote>
+<ul>
+<li>GET请求参数放在URL上，POST请求参数放在请求体里</li>
+<li>GET请求参数长度有限制，POST请求参数长度可以非常大</li>
+<li>POST请求相较于GET请求安全一点点，因为GET请求的参数在URL上，且有历史记录</li>
+<li>GET请求能缓存，POST不能</li>
+</ul>
+<blockquote>
+<p>更进一步：</p>
+</blockquote>
+<p>其实HTTP协议并没有要求GET/POST请求参数必须放在URL上或请求体里，也没有规定GET请求的长度，目前对URL的长度限制，是各家浏览器设置的限制。GET和POST的根本区别在于：<strong>GET请求是幂等性的，而POST请求不是</strong></p>
+<blockquote>
+<p>幂等性，指的是对某一资源进行一次或多次请求都具有相同的副作用。例如搜索就是一个幂等的操作，而删除、新增则不是一个幂等操作。</p>
+</blockquote>
+<p>由于GET请求是幂等的，在网络不好的环境中，GET请求可能会重复尝试，造成重复操作数据的风险，因此，GET请求用于无副作用的操作(如搜索)，新增/删除等操作适合用POST</p>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://juejin.im/entry/597ca6caf265da3e301e64db" rel="">HTTP｜GET 和 POST 区别？网上多数答案都是错的</a></p>
+</blockquote>
+<br>
+<h2 class="heading" data-id="heading-37">4. HTTP的请求报文由哪几部分组成</h2>
+<blockquote>
+<p>一个HTTP请求报文由请求行（request line）、请求头（header）、空行和请求数据4个部分组成</p>
+</blockquote>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2020/2/1/16ffe7606c8db5e7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="466" data-height="165" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;466&quot; height=&quot;165&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure>
+响应报文和请求报文结构类似，不再赘述<p></p>
+<h2 class="heading" data-id="heading-38">5. HTTP常见请求/响应头及其含义</h2>
+<blockquote>
+<p>通用头（请求头和响应头都有的首部）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:left">作用</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Cache-Control</td>
+<td style="text-align:left">控制缓存</td>
+<td>public：表示响应可以被任何对象缓存(包括客户端/代理服务器)<br>private(默认值)：响应只能被单个客户缓存,不能被代理服务器缓存<br>no-cache：缓存要经过服务器验证，在浏览器使用缓存前，会对比ETag，若没变则返回304，使用缓存<br>no-store：禁止任何缓存</td>
+</tr>
+<tr>
+<td style="text-align:center">Connection</td>
+<td style="text-align:left">是否需要持久连接(HTTP 1.1默认持久连接)</td>
+<td>keep-alive / close</td>
+</tr>
+<tr>
+<td style="text-align:center">Transfer-Encoding</td>
+<td style="text-align:left">报文主体的传输编码格式</td>
+<td>chunked(分块) / identity(未压缩和修改) / gzip(LZ77压缩) / compress(LZW压缩,弃用) / deflate(zlib结构压缩)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>请求头</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Accept</td>
+<td style="text-align:left">告知（服务器）客户端可以处理的内容类型</td>
+<td style="text-align:left">text/html、image/*、*/*</td>
+</tr>
+<tr>
+<td style="text-align:center">If-Modified-Since</td>
+<td style="text-align:left">将<code>Last-Modified</code>的值发送给服务器，询问资源是否已经过期(被修改)，过期则返回新资源，否则返回304</td>
+<td style="text-align:left">示例：If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT</td>
+</tr>
+<tr>
+<td style="text-align:center">If-Unmodified-Since</td>
+<td style="text-align:left">将<code>Last-Modified</code>的值发送给服务器，询问文件是否被修改，若没有则返回200，否则返回412预处理错误，可用于断点续传。通俗点说<code>If-Unmodified-Since</code>是文件没有修改时下载，<code>If-Modified-Since</code>是文件修改时下载</td>
+<td style="text-align:left">示例：If-Unmodified-Since: Wed, 21 Oct 2015 07:28:00 GMT</td>
+</tr>
+<tr>
+<td style="text-align:center">If-None-Match</td>
+<td style="text-align:left">将<code>ETag</code>的值发送给服务器，询问资源是否已经过期(被修改)，过期则返回新资源，否则返回304</td>
+<td style="text-align:left">示例：If-None-Match: "bfc13a6472992d82d"</td>
+</tr>
+<tr>
+<td style="text-align:center">If-Match</td>
+<td style="text-align:left">将<code>ETag</code>的值发送给服务器，询问文件是否被修改，若没有则返回200，否则返回412预处理错误，可用于断点续传</td>
+<td style="text-align:left">示例：If-Match: "bfc129c88ca92d82d"</td>
+</tr>
+<tr>
+<td style="text-align:center">Range</td>
+<td style="text-align:left">告知服务器返回文件的哪一部分, 用于断点续传</td>
+<td style="text-align:left">示例：Range: bytes=200-1000, 2000-6576, 19000-</td>
+</tr>
+<tr>
+<td style="text-align:center">Host</td>
+<td style="text-align:left">指明了服务器的域名（对于虚拟主机来说），以及（可选的）服务器监听的TCP端口号</td>
+<td style="text-align:left">示例：Host:www.baidu.com</td>
+</tr>
+<tr>
+<td style="text-align:center">User-Agent</td>
+<td style="text-align:left">告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本</td>
+<td style="text-align:left">User-Agent: Mozilla/&lt;version&gt; (&lt;system-information&gt;) &lt;platform&gt; (&lt;platform-details&gt;) &lt;extensions&gt;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>响应头</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Location</td>
+<td style="text-align:left">需要将页面重新定向至的地址。一般在响应码为3xx的响应中才会有意义</td>
+<td style="text-align:left">Location: &lt;url&gt;</td>
+</tr>
+<tr>
+<td style="text-align:center">ETag</td>
+<td style="text-align:left">资源的特定版本的标识符，如果内容没有改变，Web服务器不需要发送完整的响应</td>
+<td style="text-align:left">ETag: "&lt;etag_value&gt;"</td>
+</tr>
+<tr>
+<td style="text-align:center">Server</td>
+<td style="text-align:left">处理请求的源头服务器所用到的软件相关信息</td>
+<td style="text-align:left">Server: &lt;product&gt;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>实体头（针对请求报文和响应报文的实体部分使用首部）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Allow</td>
+<td style="text-align:left">资源可支持http请求的方法</td>
+<td style="text-align:left">Allow: &lt;http-methods&gt;，示例：Allow: GET, POST, HEAD</td>
+</tr>
+<tr>
+<td style="text-align:center">Last-Modified</td>
+<td style="text-align:left">资源最后的修改时间，用作一个验证器来判断接收到的或者存储的资源是否彼此一致，精度不如ETag</td>
+<td style="text-align:left">示例：Last-Modified: Wed, 21 Oct 2020 07:28:00 GMT</td>
+</tr>
+<tr>
+<td style="text-align:center">Expires</td>
+<td style="text-align:left">响应过期时间</td>
+<td style="text-align:left">Expires: &lt;http-date&gt;，示例：Expires: Wed, 21 Oct 2020 07:28:00 GMT</td>
+</tr>
+</tbody>
+</table>
+<p>HTTP首部当然不止这么几个，但为了避免写太多大家记不住(<s>主要是别的我也没去看</s>)，这里只介绍了一些常用的，详细的可以看<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers" rel="nofollow noopener noreferrer">MDN的文档</a></p>
+<br>
+<h2 class="heading" data-id="heading-39">6. HTTP/1.0和HTTP/1.1有什么区别</h2>
+<ul>
+<li><strong>长连接：</strong> HTTP/1.1支持长连接和请求的流水线，在一个TCP连接上可以传送多个HTTP请求，避免了因为多次建立TCP连接的时间消耗和延时</li>
+<li><strong>缓存处理：</strong> HTTP/1.1引入<code>Entity tag，If-Unmodified-Since, If-Match, If-None-Match</code>等新的请求头来控制缓存，详见浏览器缓存小节</li>
+<li><strong>带宽优化及网络连接的使用：</strong> HTTP1.1则在请求头引入了range头域，支持断点续传功能</li>
+<li><strong>Host头处理：</strong> 在HTTP/1.0中认为每台服务器都有唯一的IP地址，但随着虚拟主机技术的发展，多个主机共享一个IP地址愈发普遍，HTTP1.1的请求消息和响应消息都应支持Host头域，且请求消息中如果没有Host头域会400错误</li>
+</ul>
+<br>
+<h2 class="heading" data-id="heading-40">7. 介绍一下HTTP/2.0新特性</h2>
+<ul>
+<li><strong>多路复用：</strong> 即多个请求都通过一个TCP连接并发地完成</li>
+<li><strong>服务端推送：</strong> 服务端能够主动把资源推送给客户端</li>
+<li><strong>新的二进制格式：</strong> HTTP/2采用二进制格式传输数据，相比于HTTP/1.1的文本格式，二进制格式具有更好的解析性和拓展性</li>
+<li><strong>header压缩：</strong> HTTP/2压缩消息头，减少了传输数据的大小</li>
+</ul>
+<br>
+<h2 class="heading" data-id="heading-41">8. 说说HTTP/2.0多路复用基本原理以及解决的问题</h2>
+<blockquote>
+<p>HTTP/2解决的问题，就是HTTP/1.1存在的问题：</p>
+</blockquote>
+<ul>
+<li><strong>TCP慢启动：</strong> TCP连接建立后，会经历一个先慢后快的发送过程，就像汽车启动一般，如果我们的网页文件(HTML/JS/CSS/icon)都经过一次慢启动，对性能是不小的损耗。另外慢启动是TCP为了减少网络拥塞的一种策略，我们是没有办法改变的。</li>
+<li><strong>多条TCP连接竞争带宽：</strong> 如果同时建立多条TCP连接，当带宽不足时就会竞争带宽，影响关键资源的下载。</li>
+<li><strong>HTTP/1.1队头阻塞：</strong> 尽管HTTP/1.1长链接可以通过一个TCP连接传输多个请求，但同一时刻只能处理一个请求，当前请求未结束前，其他请求只能处于阻塞状态。</li>
+</ul>
+<p>为了解决以上几个问题，<strong>HTTP/2一个域名只使用一个TCP⻓连接来传输数据，而且请求直接是并行的、非阻塞的，这就是多路复用</strong></p>
+<p><strong>实现原理：</strong> HTTP/2引入了一个二进制分帧层，客户端和服务端进行传输时，数据会先经过二进制分帧层处理，转化为一个个带有请求ID的帧，这些帧在传输完成后根据ID组合成对应的数据。</p>
+<br>
+<h2 class="heading" data-id="heading-42">9. 说说HTTP/3.0</h2>
+<p>尽管HTTP/2解决了很多1.1的问题，但HTTP/2仍然存在一些缺陷，这些缺陷并不是来自于HTTP/2协议本身，而是来源于底层的TCP协议，我们知道TCP链接是可靠的连接，如果出现了丢包，那么整个连接都要等待重传，HTTP/1.1可以同时使用6个TCP连接，一个阻塞另外五个还能工作，但HTTP/2只有一个TCP连接，阻塞的问题便被放大了。</p>
+<p>由于TCP协议已经被广泛使用，我们很难直接修改TCP协议，基于此，HTTP/3选择了一个折衷的方法——UDP协议，HTTP/2在UDP的基础上实现多路复用、0-RTT、TLS加密、流量控制、丢包重传等功能。</p>
+<br>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://juejin.im/post/5dbe8eba5188254fe019dabb#heading-9" rel="">http发展史(http0.9、http1.0、http1.1、http2、http3)梳理笔记</a> (推荐阅读)</p>
+</blockquote>
+<br>
+<h2 class="heading" data-id="heading-43">10. HTTP和HTTPS有何区别</h2>
+<ul>
+<li>HTTPS使用443端口，而HTTP使用80</li>
+<li>HTTPS需要申请证书</li>
+<li>HTTP是超文本传输协议，是明文传输；HTTPS是经过SSL加密的协议，传输更安全</li>
+<li>HTTPS比HTTP慢，因为HTTPS除了TCP握手的三个包，还要加上SSL握手的九个包</li>
+</ul>
+<h2 class="heading" data-id="heading-44">11. HTTPS是如何进行加密的</h2>
+<p>我们通过分析几种加密方式，层层递进，理解HTTPS的加密方式以及为什么使用这种加密方式：</p>
+<blockquote>
+<p>对称加密</p>
+</blockquote>
+<p>客户端和服务器公用一个密匙用来对消息加解密，这种方式称为对称加密。客户端和服务器约定好一个加密的密匙。客户端在发消息前用该密匙对消息加密，发送给服务器后，服务器再用该密匙进行解密拿到消息。
+</p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/3/170097ce30734773?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="623" data-height="200" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/170097ce30734773"><figcaption></figcaption></figure>
+这种方式一定程度上保证了数据的安全性，但密钥一旦泄露(密钥在传输过程中被截获)，传输内容就会暴露，因此我们要寻找一种安全传递密钥的方法。<p></p>
+<blockquote>
+<p>非对称加密</p>
+</blockquote>
+<p>采用非对称加密时，客户端和服务端均拥有一个公钥和私钥，公钥加密的内容只有对应的私钥能解密。私钥自己留着，公钥发给对方。这样在发送消息前，先用对方的公钥对消息进行加密，收到后再用自己的私钥进行解密。这样攻击者只拿到传输过程中的公钥也无法破解传输的内容
+</p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/3/1700980f4879f2b8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="688" data-height="262" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1700980f4879f2b8"><figcaption></figcaption></figure>
+尽管非对称加密解决了由于密钥被获取而导致传输内容泄露的问题，但中间人仍然可以用<code>篡改公钥</code>的方式来获取或篡改传输内容，而且非对称加密的性能比对称加密的性能差了不少
+<figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/3/17009369c26da64b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="640" data-height="370" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17009369c26da64b"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>第三方认证</p>
+</blockquote>
+<p>上面这种方法的弱点在于，客户端不知道公钥是由服务端返回，还是中间人返回的，因此我们再引入一个第三方认证的环节：即第三方使用私钥加密我们<code>自己的公钥</code>，浏览器已经内置一些权威第三方认证机构的公钥，浏览器会使用<code>第三方的公钥</code>来解开<code>第三方私钥加密过的我们自己的公钥</code>，从而获取公钥，如果能成功解密，就说明获取到的<code>自己的公钥</code>是正确的</p>
+<p>但第三方认证也未能完全解决问题，第三方认证是面向所有人的，中间人也能申请证书，如果中间人使用自己的证书掉包原证书，客户端还是无法确认公钥的真伪</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/3/1700962e1949c343?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="640" data-height="369" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1700962e1949c343"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>数字签名</p>
+</blockquote>
+<p>为了让客户端能够验证公钥的来源，我们给公钥加上一个数字签名，这个数字签名是由企业、网站等各种信息和公钥经过单向hash而来，一旦构成数字签名的信息发生变化，hash值就会改变，这就构成了公钥来源的唯一标识。</p>
+<p>具体来说，服务端本地生成一对密钥，然后拿着公钥以及企业、网站等各种信息到CA(第三方认证中心)去申请数字证书，CA会通过一种单向hash算法(比如MD5)，生成一串摘要，这串摘要就是这堆信息的唯一标识，然后CA还会使用自己的私钥对摘要进行加密，连同我们自己服务器的公钥一同发送给我我们。</p>
+<p>浏览器拿到数字签名后，会使用<strong>浏览器本地内置</strong>的CA公钥解开数字证书并验证，从而拿到正确的公钥。由于非对称加密性能低下，拿到公钥以后，客户端会随机生成一个对称密钥，使用这个公钥加密并发送给服务端，服务端用自己的私钥解开对称密钥，此后的加密连接就通过这个对称密钥进行对称加密。</p>
+<p>综上所述，HTTPS在验证阶段使用非对称加密+第三方认证+数字签名获取正确的公钥，获取到正确的公钥后以对称加密的方式通信</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714e043d3a1add2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="856" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714e043d3a1add2"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>参考资料：<a target="_blank" href="https://juejin.im/post/5b0274ac6fb9a07aaa118f49#heading-5" rel="">看图学HTTPS</a></p>
+</blockquote>
+<br>
+<h1 class="heading" data-id="heading-45">前端安全</h1>
+<h2 class="heading" data-id="heading-46">什么是CSRF攻击</h2>
+<blockquote>
+<p>CSRF即Cross-site request forgery(跨站请求伪造)，是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。</p>
+</blockquote>
+<p>假如黑客在自己的站点上放置了其他网站的外链，例如<code>"www.weibo.com/api</code>，默认情况下，浏览器会带着<code>weibo.com</code>的cookie访问这个网址，如果用户已登录过该网站且网站没有对CSRF攻击进行防御，那么服务器就会认为是用户本人在调用此接口并执行相关操作，致使账号被劫持。</p>
+<h2 class="heading" data-id="heading-47">如何防御CSRF攻击</h2>
+<ul>
+<li>验证<code>Token</code>：浏览器请求服务器时，服务器返回一个token，每个请求都需要同时带上token和cookie才会被认为是合法请求</li>
+<li>验证<code>Referer</code>：通过验证请求头的Referer来验证来源站点，但请求头很容易伪造</li>
+<li>设置<code>SameSite</code>：设置cookie的SameSite，可以让cookie不随跨域请求发出，但浏览器兼容不一</li>
+</ul>
+<h2 class="heading" data-id="heading-48">什么是XSS攻击</h2>
+<blockquote>
+<p>XSS即Cross Site Scripting（跨站脚本），指的是通过利用网页开发时留下的漏洞，注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。常见的例如在评论区植入JS代码，用户进入评论页时代码被执行，造成页面被植入广告、账号信息被窃取</p>
+</blockquote>
+<h2 class="heading" data-id="heading-49">XSS攻击有哪些类型</h2>
+<ul>
+<li><strong>存储型</strong>：即攻击被存储在服务端，常见的是在评论区插入攻击脚本，如果脚本被储存到服务端，那么所有看见对应评论的用户都会受到攻击。</li>
+<li><strong>反射型</strong>：攻击者将脚本混在URL里，服务端接收到URL将恶意代码当做参数取出并拼接在HTML里返回，浏览器解析此HTML后即执行恶意代码</li>
+<li><strong>DOM型</strong>：将攻击脚本写在URL中，诱导用户点击该URL，如果URL被解析，那么攻击脚本就会被运行。和前两者的差别主要在于DOM型攻击不经过服务端</li>
+</ul>
+<h2 class="heading" data-id="heading-50">如何防御XSS攻击</h2>
+<ul>
+<li><strong>输入检查</strong>：对输入内容中的<code>&lt;script&gt;&lt;iframe&gt;</code>等标签进行转义或者过滤</li>
+<li><strong>设置httpOnly</strong>：很多XSS攻击目标都是窃取用户cookie伪造身份认证，设置此属性可防止JS获取cookie</li>
+<li><strong>开启CSP</strong>，即开启白名单，可阻止白名单以外的资源加载和运行</li>
+</ul>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714ff9939df9d71?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="878" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714ff9939df9d71"><figcaption></figcaption></figure><p></p>
+<br>
+<h1 class="heading" data-id="heading-51">排序算法</h1>
+<h2 class="heading" data-id="heading-52">1. 手写冒泡排序</h2>
+<blockquote>
+<p>冒泡排序应该是很多人第一个接触的排序，比较简单，不展开讲解了</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>)</span>{
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr.length - i - <span class="hljs-number">1</span>; j++) {
+      <span class="hljs-keyword">if</span>(arr[j] &gt; arr[j+<span class="hljs-number">1</span>]) {
+        <span class="hljs-keyword">let</span> temp = arr[j]
+        arr[j] = arr[j+<span class="hljs-number">1</span>]
+        arr[j+<span class="hljs-number">1</span>] = temp
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> arr
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-53">2. 如何优化一个冒泡排序</h2>
+<blockquote>
+<p>冒泡排序总会执行(N-1)+(N-2)+(N-3)+..+2+1趟，但如果运行到当中某一趟时排序已经完成，或者输入的是一个有序数组，那么后边的比较就都是多余的，为了避免这种情况，我们增加一个flag，判断排序是否在中途就已经完成（也就是判断有无发生元素交换）</p>
+</blockquote>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>)</span>{
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+  <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr.length - i - <span class="hljs-number">1</span>; j++) {
+      <span class="hljs-keyword">if</span>(arr[j] &gt; arr[j+<span class="hljs-number">1</span>]) {
+        flag = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">let</span> temp = arr[j]
+        arr[j] = arr[j+<span class="hljs-number">1</span>]
+        arr[j+<span class="hljs-number">1</span>] = temp
+      }
+    }
+    <span class="hljs-comment">// 这个flag的含义是：如果`某次循环`中没有交换过元素，那么意味着排序已经完成</span>
+    <span class="hljs-keyword">if</span>(flag)<span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-keyword">return</span> arr
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-54">3. 手写快速排序</h2>
+<blockquote>
+<p>快排基本步骤：</p>
+</blockquote>
+<ol>
+<li>选取基准元素</li>
+<li>比基准元素小的元素放到左边，大的放右边</li>
+<li>在左右子数组中重复步骤一二，直到数组只剩下一个元素</li>
+<li>向上逐级合并数组</li>
+</ol>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>{
+    <span class="hljs-keyword">if</span>(arr.length &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr          <span class="hljs-comment">//递归终止条件</span>
+    <span class="hljs-keyword">const</span> pivot = arr.length / <span class="hljs-number">2</span> | <span class="hljs-number">0</span>        <span class="hljs-comment">//基准点</span>
+    <span class="hljs-keyword">const</span> pivotValue = arr.splice(pivot, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">const</span> leftArr = []
+    <span class="hljs-keyword">const</span> rightArr = []
+    arr.forEach(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {
+        val &gt; pivotValue ? rightArr.push(val) : leftArr.push(val)
+    })
+    <span class="hljs-keyword">return</span> [ ...quickSort(leftArr), pivotValue, ...quickSort(rightArr)]
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-55">4. 如何优化一个快速排序</h2>
+<blockquote>
+<p>原地排序</p>
+</blockquote>
+<p>上边这个快排只是让读者找找感觉，我们不能这样写快排，如果每次都开两个数组，会消耗很多内存空间，数据量大时可能造成内存溢出，我们要避免开新的内存空间，即原地完成排序</p>
+<p>我们可以用元素交换来取代开新数组，在每一次分区的时候直接在原数组上交换元素，<strong>将小于基准数的元素挪到数组开头</strong>，以<code>[5,1,4,2,3]</code>为例：</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/17148debd6e97be5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="863" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17148debd6e97be5"><figcaption></figcaption></figure>
+我们定义一个pos指针, 标识等待置换的元素的位置, 然后逐一遍历数组元素, 遇到比基准数小的就和arr[pos]交换位置, 然后pos++<p></p>
+<p>代码实现：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr, left, right</span>) </span>{          <span class="hljs-comment">//这个left和right代表分区后“新数组”的区间下标，因为这里没有新开数组，所以需要left/right来确认新数组的位置</span>
+    <span class="hljs-keyword">if</span> (left &lt; right) {
+        <span class="hljs-keyword">let</span> pos = left - <span class="hljs-number">1</span>                      <span class="hljs-comment">//pos即“被置换的位置”，第一趟为-1</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = left; i &lt;= right; i++) {    <span class="hljs-comment">//循环遍历数组，置换元素</span>
+            <span class="hljs-keyword">let</span> pivot = arr[right]              <span class="hljs-comment">//选取数组最后一位作为基准数，</span>
+            <span class="hljs-keyword">if</span>(arr[i] &lt;= pivot) {               <span class="hljs-comment">//若小于等于基准数，pos++，并置换元素, 这里使用小于等于而不是小于, 其实是为了避免因为重复数据而进入死循环</span>
+                pos++
+                <span class="hljs-keyword">let</span> temp = arr[pos]
+                arr[pos] = arr[i]
+                arr[i] = temp
+            }
+        }
+        <span class="hljs-comment">//一趟排序完成后，pos位置即基准数的位置，以pos的位置分割数组</span>
+        quickSort(arr, left, pos - <span class="hljs-number">1</span>)        
+        quickSort(arr, pos + <span class="hljs-number">1</span>, right)
+    }
+    <span class="hljs-keyword">return</span> arr      <span class="hljs-comment">//数组只包含1或0个元素时(即left&gt;=right)，递归终止</span>
+}
+
+<span class="hljs-comment">//使用</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> end = arr.length - <span class="hljs-number">1</span>;
+quickSort(arr, start, end)
+<span class="copy-code-btn">复制代码</span></code></pre><p>这个交换的过程还是需要一些时间理解消化的，详细分析可以看这篇：<a target="_blank" href="https://segmentfault.com/a/1190000017814119" rel="nofollow noopener noreferrer">js算法-快速排序(Quicksort)</a></p>
+<blockquote>
+<p>三路快排</p>
+</blockquote>
+<p>上边这个快排还谈不上优化，应当说是快排的纠正写法，其实有两个问题我们还能优化一下：</p>
+<ol>
+<li><strong>有序数组的情况</strong>：如果输入的数组是有序的，而取基准点时也顺序取，就可能导致基准点一侧的子数组一直为空, 使时间复杂度退化到O(n2)</li>
+<li><strong>大量重复数据的情况</strong>：例如输入的数据是<code>[1,2,2,2,2,3]</code>, 无论基准点取1、2还是3, 都会导致基准点两侧数组大小不平衡, 影响快排效率</li>
+</ol>
+<p>对于第一个问题, 我们可以通过在取基准点的时候随机化来解决，对于第二个问题，我们可以使用<code>三路快排</code>的方式来优化，比方说对于上面的<code>[1,2,2,2,2,3]</code>，我们基准点取2，在分区的时候，将数组元素分为<code>小于2|等于2|大于2</code>三个区域，其中等于基准点的部分不再进入下一次排序, 这样就大大提高了快排效率</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/17148dfeda004833?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="676" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17148dfeda004833"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-56">5. 手写归并排序</h2>
+<blockquote>
+<p>归并排序和快排的思路类似，都是递归分治，区别在于快排边分区边排序，而归并在分区完成后才会排序</p>
+</blockquote>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/2/2/1700388b88d9102c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1258" data-height="437" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1700388b88d9102c"><figcaption></figcaption></figure><p></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">arr</span>) </span>{
+    <span class="hljs-keyword">if</span>(arr.length &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr		<span class="hljs-comment">//数组元素被划分到剩1个时，递归终止</span>
+    <span class="hljs-keyword">const</span> midIndex = arr.length/<span class="hljs-number">2</span> | <span class="hljs-number">0</span>
+    <span class="hljs-keyword">const</span> leftArr = arr.slice(<span class="hljs-number">0</span>, midIndex)
+    <span class="hljs-keyword">const</span> rightArr = arr.slice(midIndex, arr.length)
+    <span class="hljs-keyword">return</span> merge(mergeSort(leftArr), mergeSort(rightArr))	<span class="hljs-comment">//先划分，后合并</span>
+}
+
+<span class="hljs-comment">//合并</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">leftArr, rightArr</span>) </span>{
+    <span class="hljs-keyword">const</span> result = []
+    <span class="hljs-keyword">while</span>(leftArr.length &amp;&amp; rightArr.length) {
+    	leftArr[<span class="hljs-number">0</span>] &lt;= rightArr[<span class="hljs-number">0</span>] ? result.push(leftArr.shift()) : result.push(rightArr.shift())
+    }
+    <span class="hljs-keyword">while</span>(leftArr.length) result.push(leftArr.shift())
+    <span class="hljs-keyword">while</span>(rightArr.length) result.push(rightArr.shift())
+    <span class="hljs-keyword">return</span> result
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h2 class="heading" data-id="heading-57">6. 手写堆排序</h2>
+<blockquote>
+<p>堆是一棵特殊的树, 只要满足<code>这棵树是完全二叉树</code>和<code>堆中每一个节点的值都大于或小于其左右孩子节点</code>这两个条件, 那么就是一个堆, 根据<code>堆中每一个节点的值都大于或小于其左右孩子节点</code>, 又分为大根堆和小根堆</p>
+</blockquote>
+<p>堆排序的流程：</p>
+<ol>
+<li>初始化大(小)根堆，此时根节点为最大(小)值，将根节点与最后一个节点(数组最后一个元素)交换</li>
+<li>除开最后一个节点，重新调整大(小)根堆，使根节点为最大(小)值</li>
+<li>重复步骤二，直到堆中元素剩一个，排序完成</li>
+</ol>
+<p>以<code>[1,5,4,2,3]</code>为例构筑大根堆：</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/17148e2325d08c76?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="1119" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17148e2325d08c76"><figcaption></figcaption></figure>
+代码实现：<p></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">// 堆排序</span>
+<span class="hljs-keyword">const</span> heapSort = <span class="hljs-function"><span class="hljs-params">array</span> =&gt;</span> {
+        <span class="hljs-comment">// 我们用数组来储存这个大根堆,数组就是堆本身</span>
+	<span class="hljs-comment">// 初始化大顶堆，从第一个非叶子结点开始</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(array.length / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>); i &gt;= <span class="hljs-number">0</span>; i--) {
+		heapify(array, i, array.length);
+	}
+	<span class="hljs-comment">// 排序，每一次 for 循环找出一个当前最大值，数组长度减一</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(array.length - <span class="hljs-number">1</span>); i &gt; <span class="hljs-number">0</span>; i--) {
+		<span class="hljs-comment">// 根节点与最后一个节点交换</span>
+		swap(array, <span class="hljs-number">0</span>, i);
+		<span class="hljs-comment">// 从根节点开始调整，并且最后一个结点已经为当前最大值，不需要再参与比较，所以第三个参数为 i，即比较到最后一个结点前一个即可</span>
+		heapify(array, <span class="hljs-number">0</span>, i);
+	}
+	<span class="hljs-keyword">return</span> array;
+};
+
+<span class="hljs-comment">// 交换两个节点</span>
+<span class="hljs-keyword">const</span> swap = <span class="hljs-function">(<span class="hljs-params">array, i, j</span>) =&gt;</span> {
+	<span class="hljs-keyword">let</span> temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+};
+
+<span class="hljs-comment">// 将 i 结点以下的堆整理为大顶堆，注意这一步实现的基础实际上是：</span>
+<span class="hljs-comment">// 假设结点 i 以下的子堆已经是一个大顶堆，heapify 函数实现的</span>
+<span class="hljs-comment">// 功能是实际上是：找到 结点 i 在包括结点 i 的堆中的正确位置。</span>
+<span class="hljs-comment">// 后面将写一个 for 循环，从第一个非叶子结点开始，对每一个非叶子结点</span>
+<span class="hljs-comment">// 都执行 heapify 操作，所以就满足了结点 i 以下的子堆已经是一大顶堆</span>
+<span class="hljs-keyword">const</span> heapify = <span class="hljs-function">(<span class="hljs-params">array, i, length</span>) =&gt;</span> {
+	<span class="hljs-keyword">let</span> temp = array[i]; <span class="hljs-comment">// 当前父节点</span>
+	<span class="hljs-comment">// j &lt; length 的目的是对结点 i 以下的结点全部做顺序调整</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>; j &lt; length; j = <span class="hljs-number">2</span> * j + <span class="hljs-number">1</span>) {
+		temp = array[i]; <span class="hljs-comment">// 将 array[i] 取出，整个过程相当于找到 array[i] 应处于的位置</span>
+		<span class="hljs-keyword">if</span> (j + <span class="hljs-number">1</span> &lt; length &amp;&amp; array[j] &lt; array[j + <span class="hljs-number">1</span>]) {
+			j++; <span class="hljs-comment">// 找到两个孩子中较大的一个，再与父节点比较</span>
+		}
+		<span class="hljs-keyword">if</span> (temp &lt; array[j]) {
+			swap(array, i, j); <span class="hljs-comment">// 如果父节点小于子节点:交换；否则跳出</span>
+			i = j; <span class="hljs-comment">// 交换后，temp 的下标变为 j</span>
+		} <span class="hljs-keyword">else</span> {
+			<span class="hljs-keyword">break</span>;
+		}
+	}
+}
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>参考资料: <a target="_blank" href="https://www.jianshu.com/p/90bf2dcd6a7b" rel="nofollow noopener noreferrer">JS实现堆排序</a></p>
+</blockquote>
+<h2 class="heading" data-id="heading-58">7. 归并、快排、堆排有何区别</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">排序</th>
+<th style="text-align:center">时间复杂度(最好情况)</th>
+<th style="text-align:center">时间复杂度(最坏情况)</th>
+<th style="text-align:center">空间复杂度</th>
+<th style="text-align:center">稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">快速排序</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(n^2)</td>
+<td style="text-align:center">O(logn)~O(n)</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(n)</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">堆排序</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+</tbody>
+</table>
+<p>其实从表格中我们可以看到，就时间复杂度而言，快排并没有很大优势，然而为什么快排会成为最常用的排序手段，这是因为时间复杂度只能说明<code>随着数据量的增加，算法时间代价增长的趋势</code>，并不直接代表实际执行时间，实际运行时间还包括了很多常数参数的差别，此外在面对不同类型数据(比如有序数据、大量重复数据)时，表现也不同，综合来说，快排的时间效率是最高的</p>
+<p>在实际运用中, 并不只使用一种排序手段, 例如V8的<code>Array.sort()</code>就采取了<strong>当 n&lt;=10 时, 采用插入排序, 当 n&gt;10 时，采用三路快排</strong>的排序策略</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714ffee2595a85c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="673" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714ffee2595a85c"><figcaption></figcaption></figure><p></p>
+<br>
+<h1 class="heading" data-id="heading-59">设计模式</h1>
+<p>设计模式有许多种，这里挑出几个常用的：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">设计模式</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">单例模式</td>
+<td style="text-align:center">一个类只能构造出唯一实例</td>
+<td style="text-align:center">Redux/Vuex的store</td>
+</tr>
+<tr>
+<td style="text-align:center">工厂模式</td>
+<td style="text-align:center">对创建对象逻辑的封装</td>
+<td style="text-align:center">jQuery的$(selector)</td>
+</tr>
+<tr>
+<td style="text-align:center">观察者模式</td>
+<td style="text-align:center">当一个对象被修改时，会自动通知它的依赖对象</td>
+<td style="text-align:center">Redux的subscribe、Vue的双向绑定</td>
+</tr>
+<tr>
+<td style="text-align:center">装饰器模式</td>
+<td style="text-align:center">对类的包装，动态地拓展类的功能</td>
+<td style="text-align:center">React高阶组件、ES7 装饰器</td>
+</tr>
+<tr>
+<td style="text-align:center">适配器模式</td>
+<td style="text-align:center">兼容新旧接口，对类的包装</td>
+<td style="text-align:center">封装旧API</td>
+</tr>
+<tr>
+<td style="text-align:center">代理模式</td>
+<td style="text-align:center">控制对象的访问</td>
+<td style="text-align:center">事件代理、ES6的Proxy</td>
+</tr>
+</tbody>
+</table>
+<h2 class="heading" data-id="heading-60">1. 介绍一下单一职责原则和开放封闭原则</h2>
+<ul>
+<li>
+<p><strong>单一职责原则</strong>：一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。</p>
+</li>
+<li>
+<p><strong>开放封闭原则</strong>：核心的思想是软件实体（类、模块、函数等）是可扩展的、但不可修改的。也就是说,对扩展是开放的,而对修改是封闭的。</p>
+</li>
+</ul>
+<br>
+<h2 class="heading" data-id="heading-61">2. 单例模式</h2>
+<p>单例模式即一个类只能构造出唯一实例，单例模式的意义在于<strong>共享、唯一</strong>，<code>Redux/Vuex</code>中的store、<code>JQ</code>的$或者业务场景中的购物车、登录框都是单例模式的应用</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SingletonLogin</span> </span>{
+  <span class="hljs-keyword">constructor</span>(name,password){
+    <span class="hljs-keyword">this</span>.name = name
+    <span class="hljs-keyword">this</span>.password = password
+  }
+  <span class="hljs-keyword">static</span> getInstance(name,password){
+    <span class="hljs-comment">//判断对象是否已经被创建,若创建则返回旧对象</span>
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.instance)<span class="hljs-keyword">this</span>.instance = <span class="hljs-keyword">new</span> SingletonLogin(name,password)
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.instance
+  }
+}
+ 
+<span class="hljs-keyword">let</span> obj1 = SingletonLogin.getInstance(<span class="hljs-string">'CXK'</span>,<span class="hljs-string">'123'</span>)
+<span class="hljs-keyword">let</span> obj2 = SingletonLogin.getInstance(<span class="hljs-string">'CXK'</span>,<span class="hljs-string">'321'</span>)
+ 
+<span class="hljs-built_in">console</span>.log(obj1===obj2)    <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(obj1)           <span class="hljs-comment">// {name:CXK,password:123}</span>
+<span class="hljs-built_in">console</span>.log(obj2)           <span class="hljs-comment">// 输出的依然是{name:CXK,password:123}</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-62">3. 工厂模式</h2>
+<p>工厂模式即对创建对象逻辑的封装，或者可以简单理解为对<code>new</code>的封装，这种封装就像创建对象的工厂，故名工厂模式。工厂模式常见于大型项目，比如JQ的$对象，我们创建选择器对象时之所以没有new selector就是因为$()已经是一个工厂方法，其他例子例如<code>React.createElement()</code>、<code>Vue.component()</code>都是工厂模式的实现。工厂模式有多种：<code>简单工厂模式</code>、<code>工厂方法模式</code>、<code>抽象工厂模式</code>，这里只以简单工厂模式为例：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+  <span class="hljs-keyword">constructor</span>(name, auth) {
+    <span class="hljs-keyword">this</span>.name = name
+    <span class="hljs-keyword">this</span>.auth = auth
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserFactory</span> </span>{
+  <span class="hljs-keyword">static</span> createUser(name, auth) {
+    <span class="hljs-comment">//工厂内部封装了创建对象的逻辑:</span>
+    <span class="hljs-comment">//权限为admin时,auth=1, 权限为user时, auth为2</span>
+    <span class="hljs-comment">//使用者在外部创建对象时,不需要知道各个权限对应哪个字段, 不需要知道赋权的逻辑，只需要知道创建了一个管理员和用户</span>
+    <span class="hljs-keyword">if</span>(auth === <span class="hljs-string">'admin'</span>)  <span class="hljs-keyword">new</span> User(name, <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">if</span>(auth === <span class="hljs-string">'user'</span>)  <span class="hljs-keyword">new</span> User(name, <span class="hljs-number">2</span>)
+  }
+}
+
+<span class="hljs-keyword">const</span> admin = UserFactory.createUser(<span class="hljs-string">'cxk'</span>, <span class="hljs-string">'admin'</span>);
+<span class="hljs-keyword">const</span> user = UserFactory.createUser(<span class="hljs-string">'cxk'</span>, <span class="hljs-string">'user'</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-63">4. 观察者模式</h2>
+<p>观察者模式算是前端最常用的设计模式了，观察者模式概念很简单：观察者监听被观察者的变化，被观察者发生改变时，通知所有的观察者。观察者模式被广泛用于监听事件的实现，有关观察者模式的详细应用，可以看我另一篇讲解<a target="_blank" href="https://juejin.im/post/5def4831e51d45584b585000#heading-3" rel="">Redux实现的文章</a></p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-comment">//观察者</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Observer</span> </span>{    
+  <span class="hljs-keyword">constructor</span> (fn) {      
+    <span class="hljs-keyword">this</span>.update = fn    
+  }
+}
+<span class="hljs-comment">//被观察者</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Subject</span> </span>{    
+    <span class="hljs-keyword">constructor</span>() {        
+        <span class="hljs-keyword">this</span>.observers = []          <span class="hljs-comment">//观察者队列    </span>
+    }    
+    addObserver(observer) {          
+        <span class="hljs-keyword">this</span>.observers.push(observer)<span class="hljs-comment">//往观察者队列添加观察者    </span>
+    }    
+    notify() {                       <span class="hljs-comment">//通知所有观察者,实际上是把观察者的update()都执行了一遍       </span>
+        <span class="hljs-keyword">this</span>.observers.forEach(<span class="hljs-function"><span class="hljs-params">observer</span> =&gt;</span> {        
+            observer.update()            <span class="hljs-comment">//依次取出观察者,并执行观察者的update方法        </span>
+        })    
+    }
+}
+
+<span class="hljs-keyword">var</span> subject = <span class="hljs-keyword">new</span> Subject()       <span class="hljs-comment">//被观察者</span>
+<span class="hljs-keyword">const</span> update = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'被观察者发出通知'</span>)}  <span class="hljs-comment">//收到广播时要执行的方法</span>
+<span class="hljs-keyword">var</span> ob1 = <span class="hljs-keyword">new</span> Observer(update)    <span class="hljs-comment">//观察者1</span>
+<span class="hljs-keyword">var</span> ob2 = <span class="hljs-keyword">new</span> Observer(update)    <span class="hljs-comment">//观察者2</span>
+subject.addObserver(ob1)          <span class="hljs-comment">//观察者1订阅subject的通知</span>
+subject.addObserver(ob2)          <span class="hljs-comment">//观察者2订阅subject的通知</span>
+subject.notify()                  <span class="hljs-comment">//发出广播,执行所有观察者的update方法</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>有些文章也把观察者模式称为发布订阅模式，其实二者是有所区别的，发布订阅相较于观察者模式多一个调度中心。</p>
+<br>
+<h2 class="heading" data-id="heading-64">5. 装饰器模式</h2>
+<p>装饰器模式，可以理解为对类的一个包装，动态地拓展类的功能，ES7的<code>装饰器</code>语法以及React中的<code>高阶组件</code>（HoC）都是这一模式的实现。react-redux的connect()也运用了装饰器模式，这里以ES7的装饰器为例：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">info</span>(<span class="hljs-params">target</span>) </span>{
+  target.prototype.name = <span class="hljs-string">'张三'</span>
+  target.prototype.age = <span class="hljs-number">10</span>
+}
+
+@info
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Man</span> </span>{}
+
+<span class="hljs-keyword">let</span> man = <span class="hljs-keyword">new</span> Man()
+man.name <span class="hljs-comment">// 张三</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-65">6. 适配器模式</h2>
+<p>适配器模式，将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。我们在生活中就常常有使用适配器的场景，例如出境旅游插头插座不匹配，这时我们就需要使用转换插头，也就是适配器来帮我们解决问题。</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Adaptee</span> </span>{
+  test() {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">'旧接口'</span>
+  }
+}
+ 
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Target</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+      <span class="hljs-keyword">this</span>.adaptee = <span class="hljs-keyword">new</span> Adaptee()
+  }
+  test() {
+      <span class="hljs-keyword">let</span> info = <span class="hljs-keyword">this</span>.adaptee.test()
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`适配<span class="hljs-subst">${info}</span>`</span>
+  }
+}
+ 
+<span class="hljs-keyword">let</span> target = <span class="hljs-keyword">new</span> Target()
+<span class="hljs-built_in">console</span>.log(target.test())
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-66">7. 代理模式</h2>
+<p>代理模式，为一个对象找一个替代对象，以便对原对象进行访问。即在访问者与目标对象之间加一层代理，通过代理做授权和控制。最常见的例子是经纪人代理明星业务，假设你作为一个投资者，想联系明星打广告，那么你就需要先经过代理经纪人，经纪人对你的资质进行考察，并通知你明星排期，替明星本人过滤不必要的信息。事件代理、<code>JQuery的$.proxy</code>、ES6的<code>proxy</code>都是这一模式的实现，下面以ES6的proxy为例：</p>
+<pre><code class="hljs js copyable" lang="js"><span class="hljs-keyword">const</span> idol = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'蔡x抻'</span>,
+  <span class="hljs-attr">phone</span>: <span class="hljs-number">10086</span>,
+  <span class="hljs-attr">price</span>: <span class="hljs-number">1000000</span>  <span class="hljs-comment">//报价</span>
+}
+
+<span class="hljs-keyword">const</span> agent = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(idol, {
+  <span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">target</span>) </span>{
+    <span class="hljs-comment">//拦截明星电话的请求,只提供经纪人电话</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'经纪人电话:10010'</span>
+  },
+  <span class="hljs-attr">set</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">target, key, value</span>) </span>{
+    <span class="hljs-keyword">if</span>(key === <span class="hljs-string">'price'</span> ) {
+      <span class="hljs-comment">//经纪人过滤资质</span>
+      <span class="hljs-keyword">if</span>(value &lt; target.price) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'报价过低'</span>)
+      target.price = value
+    }
+  }
+})
+
+
+agent.phone        <span class="hljs-comment">//经纪人电话:10010</span>
+agent.price = <span class="hljs-number">100</span>  <span class="hljs-comment">//Uncaught Error: 报价过低</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/171465b92f6ded5e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="553" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/171465b92f6ded5e"><figcaption></figcaption></figure><p></p>
+<br>
+<h1 class="heading" data-id="heading-67">HTML相关</h1>
+<h2 class="heading" data-id="heading-68">1. 说说HTML5在标签、属性、存储、API上的新特性</h2>
+<ul>
+<li>标签：新增语义化标签（<code>aside / figure / section / header / footer / nav</code>等），增加多媒体标签<code>video</code>和<code>audio</code>，使得样式和结构更加分离</li>
+<li>属性：增强表单，主要是增强了<code>input</code>的type属性；<code>meta</code>增加charset以设置字符集；<code>script</code>增加async以异步加载脚本</li>
+<li>存储：增加<code>localStorage</code>、<code>sessionStorage</code>和<code>indexedDB</code>，引入了<code>application cache</code>对web和应用进行缓存</li>
+<li>API：增加<code>拖放API</code>、<code>地理定位</code>、<code>SVG绘图</code>、<code>canvas绘图</code>、<code>Web Worker</code>、<code>WebSocket</code></li>
+</ul>
+<br>
+<h2 class="heading" data-id="heading-69">2. doctype的作用是什么？</h2>
+<p>声明文档类型，告知浏览器用什么文档标准解析这个文档：</p>
+<ul>
+<li>怪异模式：浏览器使用自己的模式解析文档，不加doctype时默认为怪异模式</li>
+<li>标准模式：浏览器以W3C的标准解析文档</li>
+</ul>
+<br>
+<h2 class="heading" data-id="heading-70">3. 几种前端储存以及它们之间的区别</h2>
+<ul>
+<li><strong>cookies</strong>： HTML5之前本地储存的主要方式，大小只有4k，HTTP请求头会自动带上cookie，兼容性好</li>
+<li><strong>localStorage</strong>：HTML5新特性，持久性存储，即使页面关闭也不会被清除，以键值对的方式存储，大小为5M</li>
+<li><strong>sessionStorage</strong>：HTML5新特性，操作及大小同localStorage，和localStorage的区别在于sessionStorage在选项卡(页面)被关闭时即清除，且不同选项卡之间的sessionStorage不互通</li>
+<li><strong>IndexedDB</strong>： NoSQL型数据库，类比MongoDB，使用键值对进行储存，异步操作数据库，支持事务，储存空间可以在250MB以上，但是IndexedDB受同源策略限制</li>
+<li><strong>Web SQL</strong>：是在浏览器上模拟的关系型数据库，开发者可以通过SQL语句来操作Web SQL，是HTML5以外一套独立的规范，兼容性差</li>
+</ul>
+<br>
+<h2 class="heading" data-id="heading-71">4. href和src有什么区别</h2>
+<p><code>href（hyperReference）</code>即超文本引用：当浏览器遇到href时，会并行的地下载资源，不会阻塞页面解析，例如我们使用<code>&lt;link&gt;</code>引入CSS，浏览器会并行地下载CSS而不阻塞页面解析. 因此我们在引入CSS时建议使用<code>&lt;link&gt;</code>而不是<code>@import</code></p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> /&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><code>src（resource）</code>即资源，当浏览器遇到src时，会暂停页面解析，直到该资源下载或执行完毕，这也是script标签之所以放底部的原因</p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"script.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-72">5. meta有哪些属性，作用是什么</h2>
+<p>meta标签用于描述网页的<code>元信息</code>，如网站作者、描述、关键词，meta通过<code>name=xxx</code>和<code>content=xxx</code>的形式来定义信息，常用设置如下：</p>
+<ul>
+<li>charset：定义HTML文档的字符集</li>
+</ul>
+<pre><code class="hljs js copyable" lang="js"> &lt;meta charset=<span class="hljs-string">"UTF-8"</span> &gt;
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>http-equiv：可用于模拟http请求头，可设置过期时间、缓存、刷新</li>
+</ul>
+<pre><code class="hljs js copyable" lang="js">＜meta http-equiv=<span class="hljs-string">"expires"</span> content=<span class="hljs-string">"Wed, 20 Jun 2019 22:33:00 GMT"</span>＞
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>viewport：视口，用于控制页面宽高及缩放比例</li>
+</ul>
+<pre><code class="hljs js copyable" lang="js">&lt;meta 
+    name=<span class="hljs-string">"viewport"</span> 
+    content=<span class="hljs-string">"width=device-width, initial-scale=1, maximum-scale=1"</span>
+&gt;
+<span class="copy-code-btn">复制代码</span></code></pre><h2 class="heading" data-id="heading-73">6. viewport有哪些参数，作用是什么</h2>
+<ul>
+<li>width/height，宽高，默认宽度980px</li>
+<li>initial-scale，初始缩放比例，1~10</li>
+<li>maximum-scale/minimum-scale，允许用户缩放的最大/小比例</li>
+<li>user-scalable，用户是否可以缩放 (yes/no)</li>
+</ul>
+<h2 class="heading" data-id="heading-74">7. http-equive属性的作用和参数</h2>
+<ul>
+<li>expires，指定过期时间</li>
+<li>progma，设置no-cache可以禁止缓存</li>
+<li>refresh，定时刷新</li>
+<li>set-cookie，可以设置cookie</li>
+<li>X-UA-Compatible，使用浏览器版本</li>
+<li>apple-mobile-web-app-status-bar-style，针对WebApp全屏模式，隐藏状态栏/设置状态栏颜色</li>
+</ul>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/5/171467924210a82d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="645" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/171467924210a82d"><figcaption></figcaption></figure><p></p>
+<br>
+<h1 class="heading" data-id="heading-75">CSS相关</h1>
+<h2 class="heading" data-id="heading-76">清除浮动的方法</h2>
+<blockquote>
+<p>为什么要清除浮动：清除浮动是为了解决子元素浮动而导致父元素高度塌陷的问题</p>
+</blockquote>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714f4a5ef80d8ad?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="275" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714f4a5ef80d8ad"><figcaption></figcaption></figure>
+<strong>1.添加新元素</strong><p></p>
+<pre><code class="hljs html copyable" lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"parent"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"child"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 添加一个空元素，利用css提供的clear:both清除浮动 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"clear: both"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>2.使用伪元素</strong></p>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-comment">/* 对父元素添加伪元素 */</span>
+<span class="hljs-selector-class">.parent</span><span class="hljs-selector-pseudo">::after</span>{
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">clear</span>:both;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><strong>3.触发父元素BFC</strong></p>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-comment">/* 触发父元素BFC */</span>
+<span class="hljs-selector-class">.parent</span> {
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-comment">/* float: left; */</span>
+  <span class="hljs-comment">/* position: absolute; */</span>
+  <span class="hljs-comment">/* display: inline-block */</span>
+  <span class="hljs-comment">/* 以上属性均可触发BFC */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<h2 class="heading" data-id="heading-77">介绍一下flex布局</h2>
+<p>其实我本来还写了一节水平/垂直居中相关的，不过感觉内容过于基础还占长篇幅，所以删去了，作为一篇总结性的文章，这一小节也不应该从“flex是什么”开始讲，主轴、侧轴这些概念相信用过flex布局都知道，所以我们直接flex的几个属性讲起：</p>
+<blockquote>
+<p>容器属性（使用在flex布局容器上的属性）</p>
+</blockquote>
+<ul>
+<li>justify-content<br>
+<strong>定义了子元素在主轴(横轴)上的对齐方式</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">justify-content</span>: center | flex-start | flex-end | space-between | space-around;
+    <span class="hljs-comment">/* 主轴对齐方式：居中 | 左对齐(默认值) | 右对齐 | 两端对齐(子元素间边距相等) | 周围对齐(每个子元素两侧margin相等） */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>align-items<br>
+<strong>定义了定义项目在交叉轴(竖轴)上对齐方式</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">align-items</span>: center | flex-start | flex-end | baseline | stretch;
+    <span class="hljs-comment">/* 侧轴对齐方式：居中 | 上对齐 | 下对齐 | 项目的第一行文字的基线对齐 | 如果子元素未设置高度，将占满整个容器的高度（默认值） */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>flex-direction<br>
+<strong>主轴(横轴)方向</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">flex-direction</span>: row | row-reverse | column | column-reverse;
+    <span class="hljs-comment">/* 主轴方向：水平由左至右排列（默认值） | 水平由右向左 | 垂直由上至下 | 垂直由下至上 */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>flex-wrap<br>
+<strong>换行方式</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;
+    <span class="hljs-comment">/* 换行方式：不换行（默认值） | 换行 | 反向换行 */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>flex-flow<br>
+<strong>flex-flow属性是flex-direction属性和flex-wrap的简写</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+    <span class="hljs-comment">/* 默认值：row nowrap */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>align-content<br>
+<strong>定义多根轴线的对齐方式</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.container</span> {
+    <span class="hljs-attribute">align-content</span>: center | flex-start | flex-end | space-between | space-around | stretch;
+    <span class="hljs-comment">/* 默认值：与交叉轴的中点对齐 | 与交叉轴的起点对齐 | 与交叉轴的终点对齐 | 与交叉轴两端对齐 | 每根轴线两侧的间隔都相等 | （默认值）：轴线占满整个交叉轴 */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><br>
+<blockquote>
+<p>项目属性（使用在容器内子元素上的属性）</p>
+</blockquote>
+<ul>
+<li>flex-grow<br>
+<strong>定义项目的放大比例，默认为0，即使有剩余空间也不放大</strong>。如果所有子元素flex-grow为1，那么将等分剩余空间，如果某个子元素flex-grow为2，那么这个子元素将占据2倍的剩余空间</li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-grow</span>: &lt;number&gt;; <span class="hljs-comment">/* default 0 */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>flex-shrink<br>
+<strong>定义项目的缩小比例，默认为1，即如果空间不足，子元素将缩小</strong>。如果所有子元素<code>flex-shrink</code>都为1，某个子元素<code>flex-shrink</code>为0，那么该子元素将不缩小</li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-shrink</span>: &lt;number&gt;; <span class="hljs-comment">/* default 1 */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>flex-basis<br>
+<strong>定义在分配多余空间之前，项目占据的主轴空间</strong>，默认auto，即子元素本来的大小，如果设定为一个固定的值，那么子元素将占据固定空间</li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="hljs-comment">/* default auto */</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>flex<br>
+<strong>flex属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为0 1 auto，即有剩余空间不放大，剩余空间不够将缩小，子元素占据自身大小</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex</span>: none | [ &lt;<span class="hljs-string">'flex-grow'</span>&gt; &lt;<span class="hljs-string">'flex-shrink'</span>&gt;? || &lt;<span class="hljs-string">'flex-basis'</span>&gt; ]
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>flex有两个快捷值：<code>auto</code>和<code>none</code>，分别代表<code>1 1 auto</code>（有剩余空间则平均分配，空间不够将等比缩小，子元素占据空间等于自身大小）和<code>0 0 auto</code>（有剩余空间也不分配，空间不够也不缩小，子元素占据空间等于自身大小）</p>
+<ul>
+<li>order<br>
+<strong>定义项目的排列顺序。数值越小，排列越靠前，默认为0</strong></li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">order</span>: &lt;integer&gt;;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>align-self<br>
+<strong>定义单个子元素的排列方式</strong>，例如align-items设置了center，使得所有子元素居中对齐，那么可以通过给某个子元素设置align-self来单独设置子元素的排序方式</li>
+</ul>
+<pre><code class="hljs css copyable" lang="css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><blockquote>
+<p>参考资料：<a target="_blank" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" rel="nofollow noopener noreferrer">阮一峰Flex布局</a></p>
+</blockquote>
+<br>
+<h2 class="heading" data-id="heading-78">常见布局</h2>
+<blockquote>
+<p>编辑中，请稍等-_-||</p>
+</blockquote>
+<br>
+<h2 class="heading" data-id="heading-79">什么是BFC</h2>
+<p>BFC全称 Block Formatting Context 即<code>块级格式上下文</code>，简单的说，BFC是页面上的一个隔离的独立容器，不受外界干扰或干扰外界</p>
+<h2 class="heading" data-id="heading-80">如何触发BFC</h2>
+<ul>
+<li><code>float</code>不为 none</li>
+<li><code>overflow</code>的值不为 visible</li>
+<li><code>position</code> 为 absolute 或 fixed</li>
+<li><code>display</code>的值为 inline-block 或 table-cell 或 table-caption 或 grid</li>
+</ul>
+<h2 class="heading" data-id="heading-81">BFC的渲染规则是什么</h2>
+<ul>
+<li>BFC是页面上的一个隔离的独立容器，不受外界干扰或干扰外界</li>
+<li>计算BFC的高度时，浮动子元素也参与计算（即内部有浮动元素时也不会发生高度塌陷）</li>
+<li>BFC的区域不会与float的元素区域重叠</li>
+<li>BFC内部的元素会在垂直方向上放置</li>
+<li>BFC内部两个相邻元素的margin会发生重叠</li>
+</ul>
+<h2 class="heading" data-id="heading-82">BFC的应用场景</h2>
+<ul>
+<li><strong>清除浮动</strong>：BFC内部的浮动元素会参与高度计算，因此可用于清除浮动，防止高度塌陷</li>
+<li><strong>避免某元素被浮动元素覆盖</strong>：BFC的区域不会与浮动元素的区域重叠</li>
+<li><strong>阻止外边距重叠</strong>：属于同一个BFC的两个相邻Box的margin会发生折叠，不同BFC不会发生折叠</li>
+</ul>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714e0acba58457f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1222" data-height="1280" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1714e0acba58457f"><figcaption></figcaption></figure><p></p>
+<br>
+<h1 class="heading" data-id="heading-83">总结</h1>
+<p>对于前端基础知识的讲解，到这里就告一小段落。前端的世界纷繁复杂，远非笔者寥寥几笔所能勾画，笔者就像在沙滩上拾取贝壳的孩童，有时侥幸拾取收集一二，就为之欢欣鼓舞，迫不及待与伙伴们分享。</p>
+<p>最后还想可耻地抒(自)发(夸)一下(•‾̑⌣‾̑•)✧˖°：<br>
+不知不觉，在掘金已经水了半年有余，这半年来我写下了近6万字，不过其实一共只有5篇文章，这是因为我并不想写水文，不想把基础的东西水上几千字几十篇来混赞升级。写下的文章，首先要能说服自己。要对自己写下的东西负责任，即使是一张图、一个标点。例如第一张图，我调整了不下十次，第一次我直接截取babel的转化结果，觉得不好看，换成了代码块，还是不好看，又换成了carbon的代码图，第一次下载，发现两张图宽度不一样，填充宽度重新下载，又发现自己的代码少了一个空格，重新下载，为了实现两张图并排效果，写了一个HTML来调整两张图的样式，为了保证每张图的内容和边距一致，我一边截图，一边记录下每次截图的尺寸和边距，每次截图都根据上一次的数据调整边距。</p>
+<p>其实我并非提倡把时间花在这些细枝末节上，只是单纯觉得，文章没写好，就不能发出来，就像小野二郎先生说的那样：“菜做的不好，就不能拿给客人吃”，世间的大道理，往往都这样通俗简单。</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/7/17150434a619ad33?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="500" data-height="385" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/17150434a619ad33"><figcaption></figcaption></figure><p></p>
+<blockquote>
+<p>往期文章：</p>
+</blockquote>
+<p><strong>1. <a target="_blank" href="https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc" rel="">异步编程二三事 | Promise/async/Generator实现原理解析 | 9k字</a></strong><br>
+<strong>2. <a target="_blank" href="https://juejin.im/post/5def4831e51d45584b585000" rel="">10行代码看尽redux实现 —— redux &amp; react-redux &amp; redux中间件设计实现 | 8k字</a></strong><br>
+<strong>3.<a target="_blank" href="https://juejin.im/post/5dde545bf265da06074f13cc" rel="">红黑树上红黑果，红黑树下你和我 —— 红黑树入门 | 6k字</a></strong><br>
+<strong>4. <a target="_blank" href="https://juejin.im/post/5dd38d84f265da0beb53d529" rel="">深入React服务端渲染原理 | 1W字</a></strong></p>
+</div></article><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-box"><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-title">关注下面的标签，发现更多相似文章</div><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="tagList" class="tag-list"><a data-v-fa2339b8="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://lc-gold-cdn.xitu.io/85dd1ce8008458ac220c.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon loaded" style="background-image: url(&quot;https://lc-gold-cdn.xitu.io/85dd1ce8008458ac220c.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1&quot;); background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">面试</div></a></div></div><a data-v-fa2339b8="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" data-v-6fdc8784=""><div data-v-fa2339b8="" class="footer-author-block"><div data-v-081ef9db="" data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Person" class="author"><meta itemprop="url" content="https://juejin.im/user/5d194f8151882517de2ae188"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?w=748&amp;h=728&amp;f=png&amp;s=280989"><meta itemprop="name" content="写代码像蔡徐抻"><meta itemprop="jobTitle" content="时长一年半的React练习生"><!----><div data-v-081ef9db="" class="author-info-block"><a data-v-081ef9db="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-081ef9db="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-081ef9db="" class="author-info-box"><div data-v-081ef9db="" class="profile-box"><a data-v-263f3a32="" data-v-081ef9db="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username username ellipsis">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><span data-v-081ef9db="" class="position ellipsis">时长一年半的React练习生</span></div><div data-v-081ef9db="" class="meta-box"><a data-v-081ef9db="" href="https://juejin.im/user/5d194f8151882517de2ae188/posts" target="_blank" rel="" class="posts"><span data-v-081ef9db="" class="count post-count">发布了 5 篇专栏 · </span></a><span data-v-081ef9db="" class="count">获得点赞 3,331 · </span><span data-v-081ef9db="" class="count">获得阅读 141,687</span></div></div><button data-v-5789daef="" data-v-081ef9db="" class="follow-button follow">关注</button></div></div></div></a><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="banner" class="article-banner"><a data-v-fa2339b8="" data-v-6fdc8784="" st:name="link" st:state="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" class="banner-title" href="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" target="_blank">安装掘金浏览器插件</a><div data-v-fa2339b8="" data-v-6fdc8784="" class="banner-content">打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！</div></div><!----><!----><div data-v-0d823780="" data-v-fa2339b8="" class="comment-list-box" id="comment-box" data-v-6fdc8784="" manual="true"><div data-v-0d823780="" class="title">评论</div><div data-v-155bc796="" data-v-0d823780="" class="comment-form comment-form"><div data-v-155bc796="" class="avatar-box"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-155bc796="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></div><div data-v-155bc796="" class="form-box"><div data-v-155bc796="" class="input-box"><div data-v-cc6aae16="" data-v-155bc796="" class="auth-card"><!----><div data-v-155bc796="" data-v-cc6aae16="" contenteditable="true" spellcheck="false" placeholder="输入评论..." class="rich-input empty"><br data-v-155bc796="" data-v-cc6aae16=""></div></div><!----></div><!----></div><input data-v-155bc796="" type="file" class="hidden"></div><div data-v-1540c949="" data-v-0d823780="" class="comment-list comment-list"><div data-v-0a49d917="" data-v-1540c949="" class="image-viewer-box"><!----></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d653f4f518825258a7735e6" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5d653f4f518825258a7735e6" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/172364c62863453c?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/21/172364c62863453c?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d653f4f518825258a7735e6" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5d653f4f518825258a7735e6" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">特伦没有苏<!----></a></div><div data-v-164d9344="" class="position">前端开发</div></div><div data-v-164d9344="" class="content">先mark一下</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-18T09:06:56.224Z" title="Mon May 18 2020 17:06:56 GMT+0800 (中国标准时间)" class="time">4天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="59fb04805188254a701e6562" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/59fb04805188254a701e6562" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://mirror-gold-cdn.xitu.io/168e08afadfce707dff?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08afadfce707dff?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="59fb04805188254a701e6562" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/59fb04805188254a701e6562" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">🔨ING〰<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">总结的太棒了，为你点赞<img class="emoji" draggable="false" alt="👍" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f44d.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-07T01:09:50.672Z" title="Thu May 07 2020 09:09:50 GMT+0800 (中国标准时间)" class="time">15天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><span data-v-164d9344="" class="action-title">1</span></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5a25f742f265da430b7b155d" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5a25f742f265da430b7b155d" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2019/12/9/16ee90c416558133?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/12/9/16ee90c416558133?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5a25f742f265da430b7b155d" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5a25f742f265da430b7b155d" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">十三_先生<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position">高级前端工程师 @ 某一线互联网公司</div></div><div data-v-164d9344="" class="content">赞</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-01T08:22:20.910Z" title="Fri May 01 2020 16:22:20 GMT+0800 (中国标准时间)" class="time">21天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c4ebc72e51d4511dc7306ce" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5c4ebc72e51d4511dc7306ce" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2019/11/29/16eb4a5dc8ea8fa9?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c4ebc72e51d4511dc7306ce" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5c4ebc72e51d4511dc7306ce" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">极客James<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a></div><div data-v-164d9344="" class="position">大前端</div></div><div data-v-164d9344="" class="content">加油<img class="emoji" draggable="false" alt="💪" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f4aa.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-04-26T02:02:35.752Z" title="Sun Apr 26 2020 10:02:35 GMT+0800 (中国标准时间)" class="time">26天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c2c753de51d451d46034c60" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5c2c753de51d451d46034c60" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/4/27/171baeb971f8e780?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c2c753de51d451d46034c60" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5c2c753de51d451d46034c60" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">请_叫我苏轼好吗<!----></a></div><div data-v-164d9344="" class="position">请_叫我苏轼好吗 @ 请_叫我苏轼好吗</div></div><div data-v-164d9344="" class="content">真的只有一年半的前端经验？ <img class="emoji" draggable="false" alt="😂" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f602.svg"><img class="emoji" draggable="false" alt="😂" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f602.svg"><img class="emoji" draggable="false" alt="😂" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f602.svg"><img class="emoji" draggable="false" alt="😂" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f602.svg"><img class="emoji" draggable="false" alt="😂" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f602.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-04-24T07:37:58.446Z" title="Fri Apr 24 2020 15:37:58 GMT+0800 (中国标准时间)" class="time">28天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c2c753de51d451d46034c60" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5c2c753de51d451d46034c60" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/4/27/171baeb971f8e780?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5c2c753de51d451d46034c60" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5c2c753de51d451d46034c60" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">请_叫我苏轼好吗<!----></a></div><div data-v-164d9344="" class="position">请_叫我苏轼好吗 @ 请_叫我苏轼好吗</div></div><div data-v-164d9344="" class="content">写的真好啊 小编<img class="emoji" draggable="false" alt="😁" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f601.svg"><img class="emoji" draggable="false" alt="😁" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f601.svg"><img class="emoji" draggable="false" alt="😁" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f601.svg"><img class="emoji" draggable="false" alt="😁" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f601.svg"><img class="emoji" draggable="false" alt="😁" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1f601.svg"></div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-04-24T05:44:52.003Z" title="Fri Apr 24 2020 13:44:52 GMT+0800 (中国标准时间)" class="time">28天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div></div><div data-v-0d823780="" class="fetch-more-comment">查看更多 &gt;</div></div></div><!----><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="recommended" class="main-area recommended-area shadow"><div data-v-fa2339b8="" data-v-6fdc8784="" class="recommended-entry-list-title">相关推荐</div><!----><ul data-v-0dfe6a32="" data-v-fa2339b8="" st:block="entryList" class="entry-list recommended-entry-list" data-v-6fdc8784=""><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7306fe51d45784a354996|1" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73026f265da76da29cb25" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5b13f11d5188257da1245183" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5b13f11d5188257da1245183" target="_blank" rel="" st:name="user" st:state="5b13f11d5188257da1245183" data-v-b628736a="">晨曦时梦见兮</a></div></li><li data-v-ecbf465a="" class="item">14小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/JavaScript" target="_blank" rel="" st:name="tag" st:state="55964d83e4b08a686cc6b353" class="tag">JavaScript</a><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73026f265da76da29cb25" target="_blank" rel="" st:name="title" class="title">深入解析你不知道的 EventLoop 和浏览器渲染、帧动画、空闲回调（动图演示）</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">189</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73026f265da76da29cb25#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">23</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec1e04d5188255fd54df800|2" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec0ff4a6fb9a043271c76e9" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59b416065188257e671b670a" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59b416065188257e671b670a" target="_blank" rel="" st:name="user" st:state="59b416065188257e671b670a" data-v-b628736a="">敖丙</a></div></li><li data-v-ecbf465a="" class="item">4天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a><a data-v-ecbf465a="" href="https://juejin.im/tag/Java" target="_blank" rel="" st:name="tag" st:state="559a7207e4b08a686d25703e" class="tag">Java</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec0ff4a6fb9a043271c76e9" target="_blank" rel="" st:name="title" class="title">一个月面了几家大厂   总结了5W字的后端面经（持续更新）</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">444</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec0ff4a6fb9a043271c76e9#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">38</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec79021e51d4578a475e5d2|3" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec78921f265da77057e23a4" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59354d1eac502e0068b3305d" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59354d1eac502e0068b3305d" target="_blank" rel="" st:name="user" st:state="59354d1eac502e0068b3305d" data-v-b628736a="">FE_莫问</a></div></li><li data-v-ecbf465a="" class="item">7小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec78921f265da77057e23a4" target="_blank" rel="" st:name="title" class="title">面试系列——手写代码实现（一）</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">2</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec78921f265da77057e23a4#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/22/1723b8ab90b1ecd2?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec4c806e51d4578787b9326|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c676f265da77172014b6" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="57c52e228ac2470063548ab5" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/57c52e228ac2470063548ab5" target="_blank" rel="" st:name="user" st:state="57c52e228ac2470063548ab5" data-v-b628736a="">PLAsusu</a></div></li><li data-v-ecbf465a="" class="item">2天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c676f265da77172014b6" target="_blank" rel="" st:name="title" class="title">3年渣渣前端的面试分享</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">95</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4c676f265da77172014b6#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">51</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec73d01e51d457859654e16|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73c99f265da770c0ee3b1" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5b8f1d426fb9a019d7477421" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5b8f1d426fb9a019d7477421" target="_blank" rel="" st:name="user" st:state="5b8f1d426fb9a019d7477421" data-v-b628736a="">派大新</a></div></li><li data-v-ecbf465a="" class="item">13小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73c99f265da770c0ee3b1" target="_blank" rel="" st:name="title" class="title">阿里面试回顾： 说说强引用、软引用、弱引用、虚引用？</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">8</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73c99f265da770c0ee3b1#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">1</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/22/1723a45eb4f20f1d?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><!----><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec21254e51d4528dd23d1ad|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec2123e6fb9a0433c50b64f" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="576e489079bc44005bf2e248" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/576e489079bc44005bf2e248" target="_blank" rel="" st:name="user" st:state="576e489079bc44005bf2e248" data-v-b628736a="">桃翁</a></div></li><li data-v-ecbf465a="" class="item">4天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec2123e6fb9a0433c50b64f" target="_blank" rel="" st:name="title" class="title">蚂蚁、字节、滴滴面试经历总结</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">345</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec2123e6fb9a0433c50b64f#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">43</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec697e76fb9a047de53b80c|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6966ae51d45788b599fa8" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5eb0e639f265da7b9e1a7539" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5eb0e639f265da7b9e1a7539" target="_blank" rel="" st:name="user" st:state="5eb0e639f265da7b9e1a7539" data-v-b628736a="">Android面试官</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6966ae51d45788b599fa8" target="_blank" rel="" st:name="title" class="title">必问的事件分发，你答得上来吗</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">9</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6966ae51d45788b599fa8#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec4de05f265da76d223ad2d|6" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4dde8f265da76d223ad2c" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59fa7a4af265da430d575778" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59fa7a4af265da430d575778" target="_blank" rel="" st:name="user" st:state="59fa7a4af265da430d575778" data-v-b628736a="">河畔讲师</a></div></li><li data-v-ecbf465a="" class="item">2天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4dde8f265da76d223ad2c" target="_blank" rel="" st:name="title" class="title">腾讯两道手写面试题，进来看一下？</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">32</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec4dde8f265da76d223ad2c#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">26</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5eb55e0a6fb9a0436d41a62d|7" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5eb55ceb6fb9a0436748297d" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59ffc33751882554b836ee63" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59ffc33751882554b836ee63" target="_blank" rel="" st:name="user" st:state="59ffc33751882554b836ee63" data-v-b628736a="">LinDaiDai_霖呆呆</a></div></li><li data-v-ecbf465a="" class="item">14天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/%E9%9D%A2%E8%AF%95" target="_blank" rel="" st:name="tag" st:state="55979fe6e4b08a686ce562fe" class="tag">面试</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5eb55ceb6fb9a0436748297d" target="_blank" rel="" st:name="title" class="title">霖呆呆的近期面试128题汇总(含超详细答案) | 掘金技术征文</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">812</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5eb55ceb6fb9a0436748297d#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">184</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/8/171f4761dd0fffc9?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" class="item"><!----></li><!----></ul></div><div data-v-7301278b="" data-v-fa2339b8="" st:block="sidebar" class="sidebar sidebar top sticky" data-v-6fdc8784=""><div data-v-16442876="" data-v-76358071="" data-v-7301278b="" class="sidebar-block author-block shadow"><div data-v-16442876="" class="block-title">关于作者</div><div data-v-16442876="" class="block-body"><a data-v-76358071="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="user-item item" data-v-16442876=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-76358071="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/1720611905f5dfef?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><div data-v-76358071="" class="info-box"><a data-v-263f3a32="" data-v-76358071="" href="https://juejin.im/user/5d194f8151882517de2ae188" target="_blank" rel="" class="username">写代码像蔡徐抻<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a><div data-v-76358071="" title="时长一年半的React练习生" class="position">时长一年半的React练习生</div></div></a><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" class="zan"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd" transform="translate(0 .57)"><ellipse data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.57" fill="#E1EFFF" rx="12.5" ry="12.57"></ellipse> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M8.596 11.238V19H7.033C6.463 19 6 18.465 6 17.807v-5.282c0-.685.483-1.287 1.033-1.287h1.563zm4.275-4.156A1.284 1.284 0 0 1 14.156 6c.885.016 1.412.722 1.595 1.07.334.638.343 1.687.114 2.361-.207.61-.687 1.412-.687 1.412h3.596c.38 0 .733.178.969.488.239.317.318.728.21 1.102l-1.628 5.645a1.245 1.245 0 0 1-1.192.922h-7.068v-7.889c1.624-.336 2.623-2.866 2.806-4.029z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">获得点赞<span data-v-76358071="" data-v-16442876="" class="count">3,331</span></span></div><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" width="25" height="25" viewBox="0 0 25 25" class="icon stat-view-icon"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd"><circle data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.5" r="12.5" fill="#E1EFFF"></circle> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M4 12.5S6.917 7 12.75 7s8.75 5.5 8.75 5.5-2.917 5.5-8.75 5.5S4 12.5 4 12.5zm8.75 2.292c1.208 0 2.188-1.026 2.188-2.292 0-1.266-.98-2.292-2.188-2.292-1.208 0-2.188 1.026-2.188 2.292 0 1.266.98 2.292 2.188 2.292z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">文章被阅读<span data-v-76358071="" data-v-16442876="" class="count">141,687</span></span></div><!----></div></div><!----><div data-v-16442876="" data-v-f69ccc58="" data-v-518a2f8f="" data-v-7301278b="" class="sidebar-block recommend recommend-index shadow"><div data-v-16442876="" class="block-title">你可能感兴趣的小册</div><div data-v-16442876="" class="block-body"><div data-v-f69ccc58="" data-v-16442876="" class="book-list"><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2019/6/3/16b1977c2f3a0ed0?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-16442876="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/6/3/16b1977c2f3a0ed0?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">图解 Kafka 之核心原理</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">1119人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2019/5/10/16a9d7ca96cf1e2f?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-16442876="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/5/10/16a9d7ca96cf1e2f?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">图解  Kafka 之实战指南</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">2770人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div></div></div></div><div data-v-16442876="" data-v-03315f79="" data-v-7301278b="" class="sidebar-block app-download-sidebar-block shadow"><!----><div data-v-16442876="" class="block-body"><a data-v-03315f79="" data-v-16442876="" class="app-link" href="https://juejin.im/app" target="_blank"><img data-v-03315f79="" data-v-16442876="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/post.7cb7332.png" class="qr-img"><div data-v-03315f79="" data-v-16442876="" class="content-box"><div data-v-03315f79="" data-v-16442876="" class="headline">下载掘金客户端</div><div data-v-03315f79="" data-v-16442876="" class="desc">一个帮助开发者成长的社区</div></div><div data-v-03315f79="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></a></div></div><div data-v-16442876="" data-v-3c6504c4="" data-v-7301278b="" class="sidebar-block wechat-sidebar-block pure"><div data-v-06f599f1="" data-v-3c6504c4="" class="wechat-banner" data-v-16442876=""><img data-v-06f599f1="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/frontend.1dae74a.png" class="wechat-img"></div><div data-v-3c6504c4="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></div><div data-v-16442876="" data-v-2998ad53="" data-v-7301278b="" class="sidebar-block related-entry-sidebar-block shadow" st:block="relatedEntrySidebarBlock"><div data-v-16442876="" class="block-title">相关文章</div><div data-v-16442876="" class="block-body"><div data-v-2998ad53="" data-v-16442876="" class="entry-list"><a data-v-2998ad53="" href="https://juejin.im/post/5ec73026f265da76da29cb25" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">深入解析你不知道的 EventLoop 和浏览器渲染、帧动画、空闲回调（动图演示）</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">189</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">23</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec0ff4a6fb9a043271c76e9" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">一个月面了几家大厂   总结了5W字的后端面经（持续更新）</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">444</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">38</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec78921f265da77057e23a4" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">面试系列——手写代码实现（一）</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">2</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">0</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec4c676f265da77172014b6" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">3年渣渣前端的面试分享</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">95</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">51</span></div></div></a></div></div></div><div data-v-7301278b="" class="sticky-block-box"><div data-v-16442876="" data-v-48b1e3e4="" data-v-7301278b="" class="sidebar-block catalog-block pure"><nav data-v-1a96e633="" data-v-48b1e3e4="" class="article-catalog" data-v-16442876="" style=""><div data-v-1a96e633="" class="catalog-title">目录</div><div data-v-1a96e633="" class="catalog-body"><ul data-v-1a96e633="" class="catalog-list" style="margin-top: -1918.1px;"><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-0" title="JS基础">JS基础</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-1" title="1. 如何在ES5环境下实现let">1. 如何在ES5环境下实现let</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-2" title="2. 如何在ES5环境下实现const">2. 如何在ES5环境下实现const</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-3" title="3. 手写call()">3. 手写call()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-4" title="4. 手写apply()">4. 手写apply()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-5" title="5. 手写bind()">5. 手写bind()</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-6" title="6. 手写一个防抖函数">6. 手写一个防抖函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-7" title="7. 手写一个节流函数">7. 手写一个节流函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-8" title="8. 数组扁平化">8. 数组扁平化</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-9" title="9. 手写一个Promise">9. 手写一个Promise</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-10" title="JS面向对象">JS面向对象</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-11" title="1. 模拟实现new">1. 模拟实现new</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-12" title="2. ES5如何实现继承">2. ES5如何实现继承</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-13" title="一. 原型链继承">一. 原型链继承</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-14" title="二. 构造函数继承">二. 构造函数继承</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-15" title="三. 组合式继承">三. 组合式继承</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-16" title="四. 寄生式组合继承">四. 寄生式组合继承</a><!----></li></ul></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-17" title="V8引擎机制">V8引擎机制</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-18" title="1. V8如何执行一段JS代码">1. V8如何执行一段JS代码</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-19" title="2. 介绍一下引用计数和标记清除">2. 介绍一下引用计数和标记清除</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-20" title="3. V8如何进行垃圾回收">3. V8如何进行垃圾回收</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-21" title="4. JS相较于C++等语言为什么慢，V8做了哪些优化">4. JS相较于C++等语言为什么慢，V8做了哪些优化</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-22" title="浏览器渲染机制">浏览器渲染机制</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-23" title="1. 浏览器的渲染过程是怎样的">1. 浏览器的渲染过程是怎样的</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-24" title="2. 如何根据浏览器渲染机制加快首屏速度">2. 如何根据浏览器渲染机制加快首屏速度</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-25" title="3. 什么是回流(重排)，什么情况下会触发回流">3. 什么是回流(重排)，什么情况下会触发回流</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-26" title="4. 什么是重绘，什么情况下会触发重绘">4. 什么是重绘，什么情况下会触发重绘</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-27" title="5. 什么是GPU加速，如何使用GPU加速，GPU加速的缺点">5. 什么是GPU加速，如何使用GPU加速，GPU加速的缺点</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-28" title="6. 如何减少回流">6. 如何减少回流</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-29" title="浏览器缓存策略">浏览器缓存策略</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-30" title="1. 介绍一下浏览器缓存位置和优先级">1. 介绍一下浏览器缓存位置和优先级</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-31" title="2. 说说不同缓存间的差别">2. 说说不同缓存间的差别</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-32" title="3. 介绍一下浏览器缓存策略">3. 介绍一下浏览器缓存策略</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-33" title="网络相关">网络相关</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-34" title="1. 讲讲网络OSI七层模型，TCP/IP和HTTP分别位于哪一层">1. 讲讲网络OSI七层模型，TCP/IP和HTTP分别位于哪一层</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-35" title="2. 常见HTTP状态码有哪些">2. 常见HTTP状态码有哪些</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-36" title="3. GET请求和POST请求有何区别">3. GET请求和POST请求有何区别</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-37" title="4. HTTP的请求报文由哪几部分组成">4. HTTP的请求报文由哪几部分组成</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-38" title="5. HTTP常见请求/响应头及其含义">5. HTTP常见请求/响应头及其含义</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-39" title="6. HTTP/1.0和HTTP/1.1有什么区别">6. HTTP/1.0和HTTP/1.1有什么区别</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-40" title="7. 介绍一下HTTP/2.0新特性">7. 介绍一下HTTP/2.0新特性</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-41" title="8. 说说HTTP/2.0多路复用基本原理以及解决的问题">8. 说说HTTP/2.0多路复用基本原理以及解决的问题</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-42" title="9. 说说HTTP/3.0">9. 说说HTTP/3.0</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-43" title="10. HTTP和HTTPS有何区别">10. HTTP和HTTPS有何区别</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-44" title="11. HTTPS是如何进行加密的">11. HTTPS是如何进行加密的</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-45" title="前端安全">前端安全</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-46" title="什么是CSRF攻击">什么是CSRF攻击</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-47" title="如何防御CSRF攻击">如何防御CSRF攻击</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-48" title="什么是XSS攻击">什么是XSS攻击</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-49" title="XSS攻击有哪些类型">XSS攻击有哪些类型</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-50" title="如何防御XSS攻击">如何防御XSS攻击</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-51" title="排序算法">排序算法</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-52" title="1. 手写冒泡排序">1. 手写冒泡排序</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-53" title="2. 如何优化一个冒泡排序">2. 如何优化一个冒泡排序</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-54" title="3. 手写快速排序">3. 手写快速排序</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-55" title="4. 如何优化一个快速排序">4. 如何优化一个快速排序</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-56" title="5. 手写归并排序">5. 手写归并排序</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-57" title="6. 手写堆排序">6. 手写堆排序</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-58" title="7. 归并、快排、堆排有何区别">7. 归并、快排、堆排有何区别</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-59" title="设计模式">设计模式</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-60" title="1. 介绍一下单一职责原则和开放封闭原则">1. 介绍一下单一职责原则和开放封闭原则</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-61" title="2. 单例模式">2. 单例模式</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-62" title="3. 工厂模式">3. 工厂模式</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-63" title="4. 观察者模式">4. 观察者模式</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-64" title="5. 装饰器模式">5. 装饰器模式</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-65" title="6. 适配器模式">6. 适配器模式</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-66" title="7. 代理模式">7. 代理模式</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-67" title="HTML相关">HTML相关</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-68" title="1. 说说HTML5在标签、属性、存储、API上的新特性">1. 说说HTML5在标签、属性、存储、API上的新特性</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-69" title="2. doctype的作用是什么？">2. doctype的作用是什么？</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-70" title="3. 几种前端储存以及它们之间的区别">3. 几种前端储存以及它们之间的区别</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-71" title="4. href和src有什么区别">4. href和src有什么区别</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-72" title="5. meta有哪些属性，作用是什么">5. meta有哪些属性，作用是什么</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-73" title="6. viewport有哪些参数，作用是什么">6. viewport有哪些参数，作用是什么</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-74" title="7. http-equive属性的作用和参数">7. http-equive属性的作用和参数</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-75" title="CSS相关">CSS相关</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-76" title="清除浮动的方法">清除浮动的方法</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-77" title="介绍一下flex布局">介绍一下flex布局</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-78" title="常见布局">常见布局</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-79" title="什么是BFC">什么是BFC</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-80" title="如何触发BFC">如何触发BFC</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-81" title="BFC的渲染规则是什么">BFC的渲染规则是什么</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-82" title="BFC的应用场景">BFC的应用场景</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1 active"><a href="https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-83" title="总结">总结</a><!----></li></ul></div></nav></div></div></div><div data-v-b753df20="" data-v-fa2339b8="" class="article-suspended-panel article-suspended-panel" data-v-6fdc8784=""><div data-v-b753df20="" class="like-btn panel-btn like-adjust with-badge" badge="1770"></div><div data-v-b753df20="" class="comment-btn panel-btn comment-adjust with-badge" badge="108"></div><div data-v-b753df20="" class="collect-btn panel-btn"><!----></div><div data-v-b753df20="" class="share-title">分享</div><div data-v-b753df20="" class="weibo-btn share-btn panel-btn"></div><div data-v-b753df20="" class="qq-btn share-btn panel-btn"></div><div data-v-b753df20="" class="wechat-btn share-btn panel-btn"><img data-v-b753df20="" src="https://juejin.im/post/5e8b261ae51d4546c0382ab4" class="wechat-qr-code-img shadow" style="display: none;"></div></div><div data-v-0a49d917="" data-v-fa2339b8="" class="image-viewer-box" data-v-6fdc8784=""><!----></div><!----></div></main></div><!----></div>
+      
+      
+      
+      <script type="text/javascript" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/runtime.cc2b750c14e4e98c0e3a.js"></script><script type="text/javascript" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/0.0b214b1cb6731ce0f8d8.js"></script><script type="text/javascript" src="./2万字 _ 前端基础拾遗90问 - 掘金_files/1.63ca4ab7fc5bd9c1cbc0.js"></script>
+    </body></html>

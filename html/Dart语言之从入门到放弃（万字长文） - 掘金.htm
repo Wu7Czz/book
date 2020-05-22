@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://juejin.im/post/5eb9f75bf265da7ba0582e25 -->
+<html lang="zh-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google-site-verification" content="cCHsgG9ktuCTgWgYfqCJql8AeR4gAne4DTZqztPoirE"><meta name="google-site-verification" content="nPvn9R5NJLsZKTv5VKIbn0OmkRcJ4PC6KdDoTX3n5Mw"><meta name="apple-itunes-app" content="app-id=987739104"><meta name="baidu-site-verification" content="qiK2a1kcFc"><meta name="360-site-verification" content="4c3c7d57d59f0e1a308462fbc7fd7e51"><meta name="sogou_site_verification" content="c49WUDZczQ"><style>body {
+        font-size: 16px;
+        line-height: 2;
+      }
+      a, button, input {
+        margin: 1rem 1.5rem;
+      }
+      img {
+        width: 0;
+        height: 0;
+      }
+      #juejin {
+        overflow-x: hidden;
+      }</style><title data-vue-meta="true">Dart语言之从入门到放弃（万字长文） - 掘金</title><link rel="apple-touch-icon" sizes="180x180" href="https://b-gold-cdn.xitu.io/favicons/v2/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-16x16.png"><link rel="manifest" href="https://b-gold-cdn.xitu.io/favicons/v2/manifest.json"><link rel="mask-icon" href="https://b-gold-cdn.xitu.io/favicons/v2/safari-pinned-tab.svg" color="#5bbad5"><link rel="shortcut icon" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico"><meta name="msapplication-config" content="https://b-gold-cdn.xitu.io/favicons/v2/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="search" title="掘金" href="https://b-gold-cdn.xitu.io/conf/search.xml" type="application/opensearchdescription+xml"><link rel="stylesheet" href="./Dart语言之从入门到放弃（万字长文） - 掘金_files/ionicons.min.css"><link rel="stylesheet" href="./Dart语言之从入门到放弃（万字长文） - 掘金_files/iconfont.css"><link href="./Dart语言之从入门到放弃（万字长文） - 掘金_files/0.f1fc61eda29199ce1f45.css" rel="stylesheet"><script async="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/hm.js"></script><script async="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/analytics.js"></script><script type="text/javascript" async="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/vds.js"></script><script type="text/javascript" async="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect-v.3.2.14.js"></script><script charset="utf-8" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/4.281438b56343cf12fa0b.js"></script><meta data-vmid="keywords" name="keywords" content="Flutter" data-vue-meta="true"><meta data-vmid="description" name="description" content="前言 前一段时间系统学习Flutter时总结了一些Dart的基础知识，东西挺多的，建议收藏慢慢看😂，如果对你有帮助的话别忘了点赞关注啊。先放一个之前一篇文章的链接，看了之后应该可以让你对Dart的异步有更深入的了解：那些你不知道的Dart细节之带你透彻理解异" data-vue-meta="true"></head><body><div id="juejin" data-v-2a21baac=""><div class="global-component-box" data-v-2a21baac=""><!----><div data-v-5ef5fb43="" data-v-2a21baac="" class="alert-list alert-list"></div><div data-v-15608c17="" data-v-2a21baac="" class="suspension-panel suspension-panel"><button data-v-15608c17="" title="回到顶部" class="btn to-top-btn" style=""><i data-v-15608c17="" class="ion-android-arrow-dropup"></i></button><button data-v-15608c17="" title="建议反馈" class="btn meiqia-btn" style=""><i data-v-15608c17="" class="ion-chatbubble-working"></i></button></div><!----><!----><div class="emoji-barrage" data-v-94fd086c="" data-v-2a21baac=""><!----></div><div class="book-new-user-award-popup" style="display:none;" data-v-22fa60e5="" data-v-2a21baac=""><div class="content-box" style="display:;" data-v-22fa60e5=""><div class="close ion-close-round" data-v-22fa60e5=""></div><div class="header" data-v-22fa60e5=""><div class="icon" data-v-22fa60e5=""><img src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/icon.a87e5ae.svg" data-v-22fa60e5=""></div><div class="txt" data-v-22fa60e5="">新人专享好礼</div></div><div class="desc" data-v-22fa60e5="">凡未购买过小册的用户，均可领取三张 5 折新人专享券，购买小册时自动使用专享券，最高可节省 45 元。</div><div class="tickets" data-v-22fa60e5=""><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div><div class="ticket" data-v-22fa60e5=""><div class="ticket__inner" data-v-22fa60e5=""><div class="enjoy" data-v-22fa60e5=""><span class="new-title" data-v-22fa60e5="">小册新人 5 折券</span></div><div class="sale" data-v-22fa60e5="">最高可省 15 元</div></div></div></div><div class="remark" data-v-22fa60e5="">注：专享券的使用期限在领券的七天内。</div><div class="submit-btn" data-v-22fa60e5="">一键领取</div></div><div class="model success" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取成功</div><div class="content-text" data-v-22fa60e5="">购买小册时自动使用专享券</div><div class="btn-success-footer" data-v-22fa60e5=""><div class="btn-ok" data-v-22fa60e5="">知道了</div><div class="btn-ok btn-link" data-v-22fa60e5="">前往小册首页</div></div></div><div class="model fail" style="display:none;" data-v-22fa60e5=""><div class="heading" data-v-22fa60e5="">领取失败</div><div class="content-text" data-v-22fa60e5="">本活动仅适用于小册新用户</div><div class="btn-ok" data-v-22fa60e5="">知道了</div></div></div><!----><!----><div class="bind-phone-number-modal-box" data-v-269c0ad0="" data-v-2a21baac=""><div st:block="bindPhoneNumberModal" class="modal-mask" style="display:none;" data-v-269c0ad0=""></div><form class="bind-phone-number-form" style="display:none;" data-v-269c0ad0=""><i title="关闭" class="close-btn ion-close-round" data-v-269c0ad0=""></i><h1 class="title" data-v-269c0ad0="">提示</h1><h2 class="hint" data-v-269c0ad0="">根据我国<a href="http://www.cac.gov.cn/2017-08/25/c_1121541842.htm" target="_blank" style="color:#007fff">《互联网跟帖评论服务管理规定》</a>，您需要绑定手机号后才可在掘金社区内发布内容。</h2><div class="input-group" data-v-269c0ad0=""><div class="input-box" data-v-269c0ad0=""><input maxlength="64" placeholder="请输入要绑定的手机号码" value="" class="input" data-v-269c0ad0=""></div><!----><!----></div><button st:name="bindBtn" class="btn" data-v-269c0ad0="">绑定手机</button></form></div></div><!----><div data-v-6fdc8784="" data-v-fa2339b8="" data-v-2a21baac="" class="view-container"><div data-v-6fdc8784="" class="main-header-box"><header data-v-0c56945c="" data-v-6fdc8784="" class="main-header main-header"><div data-v-0c56945c="" class="container"><a data-v-0c56945c="" href="https://juejin.im/" class="logo"><img data-v-0c56945c="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/logo.a7995ad.svg" alt="掘金" class="logo-img"><img data-v-0c56945c="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/simplify-logo.3e3c253.svg" alt="掘金" class="mobile"></a><nav data-v-0c56945c="" role="navigation" class="main-nav"><ul data-v-0c56945c="" class="nav-list"><li data-v-0c56945c="" class="main-nav-list"><div data-v-0c56945c="" class="phone-show-menu"><span data-v-0c56945c="">首页</span><div data-v-0c56945c="" class="icon ion-arrow-down-b"></div></div><ul data-v-0c56945c="" class="phone-hide"><li data-v-0c56945c="" class="nav-item link-item route-active"><a data-v-0c56945c="" href="https://juejin.im/">首页</a></li><li data-v-0c56945c="" class="nav-item link-item activities"><a data-v-0c56945c="" href="https://juejin.im/pins">沸点</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/topics">话题</a></li><li data-v-0c56945c="" class="nav-item link-item book"><a data-v-0c56945c="" href="https://juejin.im/books">小册</a></li><li data-v-0c56945c="" class="nav-item link-item"><a data-v-0c56945c="" href="https://juejin.im/events/all">活动</a></li></ul></li><li data-v-0c56945c="" class="nav-item search"><form data-v-0c56945c="" role="search" class="search-form"><input data-v-0c56945c="" type="search" maxlength="32" placeholder="搜索掘金" class="search-input"><img data-v-0c56945c="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/juejin-search-icon.6f8ba1b.svg" alt="搜索" class="search-icon"></form></li><li data-v-0c56945c="" class="nav-item add"><div data-v-0c56945c="" class="add-group"><button data-v-0c56945c="" class="add-btn">写文章</button><div data-v-0c56945c="" class="more"><i data-v-0c56945c="" class="more-icon ion-android-arrow-dropdown"></i></div><ul data-v-0c56945c="" class="more-list"><li data-v-0c56945c="" class="item">发布沸点</li><li data-v-0c56945c="" class="item">分享链接</li><!----></ul></div><!----></li><li data-v-0c56945c="" class="nav-item notification"><a data-v-0c56945c="" class="app-link" href="https://juejin.im/notification" target="_blank"><i data-v-0c56945c="" class="icon ion-android-notifications"></i><!----></a></li><li data-v-0c56945c="" class="nav-item menu"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-0c56945c="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded immediate" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><!----><ul data-v-0c56945c="" class="nav-menu user-dropdown-list" style="display: none;"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-write"></i><span data-v-0c56945c="">写文章</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-draft"></i><span data-v-0c56945c="">草稿</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0" class="link-icon"><i data-v-0c56945c="" class="fengwei fw-person"></i><span data-v-0c56945c="">我的主页</span><!----></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/likes"><img data-v-0c56945c="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="zan"><span data-v-0c56945c="">我赞过的</span></a></li><!----><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/collections"><img data-v-0c56945c="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="collect"><span data-v-0c56945c="">我的收藏集</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/books?type=bought"><i data-v-0c56945c="" class="fengwei fw-bought"></i><span data-v-0c56945c="">已购</span></a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/subscribe"><i data-v-0c56945c="" class="fengwei fw-tag"></i><span data-v-0c56945c="">标签管理</span></a></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/user/settings"><i data-v-0c56945c="" class="fengwei fw-setting"></i><span data-v-0c56945c="">设置</span></a></li><li data-v-0c56945c="" class="nav-menu-item more"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-info"></i><span data-v-0c56945c="">关于</span><i data-v-0c56945c="" class="ion-chevron-right more-icon"></i></a><ul data-v-0c56945c="" class="nav-menu more-dropdown-list"><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/app" target="_blank">下载应用</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://juejin.im/about" target="_blank">关于</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://xitu.io/jobs" target="_blank">加入我们</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://github.com/xitu/gold-miner" rel="nofollow noopener noreferrer" target="_blank">翻译计划</a></li><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c="" href="https://bd.juejin.im/?utm_campaign=bd&amp;utm_source=web&amp;utm_medium=nav" target="_blank">合作伙伴</a></li></div></ul></li></div><div data-v-0c56945c="" class="nav-menu-item-group"><li data-v-0c56945c="" class="nav-menu-item"><a data-v-0c56945c=""><i data-v-0c56945c="" class="fengwei fw-logout"></i><span data-v-0c56945c="">登出</span></a></li></div></ul></li><!----><!----></ul></nav></div></header></div><main data-v-6fdc8784="" class="container main-container"><div data-v-fa2339b8="" data-v-6fdc8784="" class="view column-view"><div data-v-fa2339b8="" data-v-6fdc8784="" class="main-area article-area shadow"><article data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Article" class="article" data-v-6fdc8784=""><meta itemprop="url" content="https://juejin.im/post/5eb9f75bf265da7ba0582e25"><meta itemprop="headline" content="Dart语言之从入门到放弃（万字长文）"><meta itemprop="keywords" content="Flutter"><meta itemprop="datePublished" content="2020-05-12T01:11:58.898Z"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/5/12/172067004b65f087?w=1324&amp;h=614&amp;f=png&amp;s=82741"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="name" content="Zhujiang"><meta itemprop="url" content="https://juejin.im/user/5c07e51de51d451de84324d5"></div><div itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="掘金"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://b-gold-cdn.xitu.io/icon/icon-white-180.png"><meta itemprop="width" content="180"><meta itemprop="height" content="180"></div></div><div data-v-fa2339b8="" class="author-info-block"><a data-v-fa2339b8="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-fa2339b8="" class="author-info-box"><a data-v-263f3a32="" data-v-fa2339b8="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username username ellipsis">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a></a><div data-v-fa2339b8="" class="meta-box"><time data-v-fa2339b8="" datetime="2020-05-12T01:11:58.898Z" title="Tue May 12 2020 09:11:58 GMT+0800 (中国标准时间)" class="time">2020年05月12日</time><span data-v-fa2339b8="" class="views-count">阅读 5984</span><!----></div></div><button data-v-5789daef="" data-v-fa2339b8="" class="follow-button follow">关注</button></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/2020/5/12/172067004b65f087?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" class="lazy thumb article-hero loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/5/12/172067004b65f087?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1&quot;); background-size: cover;"></div><h1 data-v-fa2339b8="" class="article-title">Dart语言之从入门到放弃（万字长文）</h1><div data-v-fa2339b8="" data-id="5eb9f7def265da7be67ae0b9" itemprop="articleBody" class="article-content"><h2 class="heading" data-id="heading-0">前言</h2>
+<p>前一段时间系统学习Flutter时总结了一些Dart的基础知识，东西挺多的，建议收藏慢慢看😂，如果对你有帮助的话别忘了点赞关注啊。先放一个之前一篇文章的链接，看了之后应该可以让你对Dart的异步有更深入的了解：<a target="_blank" href="https://juejin.im/post/5e90213a51882573bc7c1570" rel="">那些你不知道的Dart细节之带你透彻理解异步</a>。这是我前段时间学习Flutter写的Flutter版的玩安卓，感兴趣的可以去看看，很适合Flutter初学者：<a target="_blank" href="https://juejin.im/post/5e901fff51882573bd5f3f88" rel="">历时三天，完成了Flutter版本的玩安卓</a>。
+好了，废话不多说，开始进入正题吧，下面我将会从Dart的变量、内置类型、函数（方法）、流程控制语句、异常处理、类、泛型、库等方面进行描述，准备好了吗？要开车了，请系好安全带🐶，车速较快，请不要中途下车！！！</p>
+<h2 class="heading" data-id="heading-1">变量</h2>
+<h3 class="heading" data-id="heading-2">Hello World</h3>
+<p>学习一门语言一般都要从打印“Hello World”开始，那么就来看一下在Dart中应该怎样打印：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">void</span> main(){
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">"Hello World"</span>);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>和Java类似，Dart执行也需要一个main方法，打印就要比Java稍微简单点了，直接进行Print就可以了。这里需要注意的是：<strong>方法如果没有返回值的情况下可以省略void</strong></p>
+<h3 class="heading" data-id="heading-3">变量的声明</h3>
+<p>真正要进入主题了。。。在Dart中变量的声明有三个关键字：var、dynamic和Object，三个关键字的使用情况各有千秋。下面来分别说一下：</p>
+<h4 class="heading" data-id="heading-4">var</h4>
+<p>首先说一下var关键字，了解过Kotlin的应该对这个关键字很熟悉，在Kotlin中var表示一个可变的变量（val表示不可变的，相当于final，这里不赘述），在Dart中，var如果没有初始值，可以变成任何类型，但如果var有初始值，那么类型将被锁定。这是什么意思呢？看一下下面这段代码你就明白了：</p>
+<pre><code class="hljs dart copyable" lang="dart">main(){
+  <span class="hljs-comment">//print("Hello World");</span>
+  <span class="hljs-keyword">var</span> data;
+  data = <span class="hljs-string">'zhujiang'</span>;
+  data = <span class="hljs-number">123</span>;
+  <span class="hljs-built_in">print</span>(data);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>var在没有初始值的时候是可以随意指定类型的，例如上面的代码，可以赋值为字符串，也可以赋值为int。这里要注意：<strong>Dart中字符串可以使用单引号也可以使用双引号。</strong></p>
+<p>上面代码没有赋初始值，下面赋初始值再看一下：</p>
+<pre><code class="hljs dart copyable" lang="dart">main(){
+  <span class="hljs-comment">//print("Hello World");</span>
+  <span class="hljs-keyword">var</span> data = <span class="hljs-number">1</span>;
+  data = <span class="hljs-string">'zhujiang'</span>;
+  data = <span class="hljs-number">123</span>;
+  <span class="hljs-built_in">print</span>(data);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/5/11/17203e96645202f0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="708" data-height="256" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/17203e96645202f0"><figcaption></figcaption></figure><p></p>
+<p>大家可以看到，如果有初始值，就不可以改变类型了，正好印证了上面我们所说的类型被锁定。</p>
+<h4 class="heading" data-id="heading-5">Object</h4>
+<p>这个关键字大家应该都很熟悉，Java中的所有对象的父类就是Object。在Dart中dynamic指动态类型，会在<strong>编译阶段检查类型</strong>。Object和var不同，即使赋了初始值，也同样可以指定别的类型：</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-built_in">Object</span> data2 = <span class="hljs-number">1234</span>;
+  data2 = <span class="hljs-string">'dongnao'</span>;
+  <span class="hljs-built_in">print</span>(data2);
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面所说的会在编译阶段检查类型指的是如果你调用一个本身没有的方法，可以直接报红，提醒你编写错误（var也是在编译阶段检查类型）。</p>
+<h4 class="heading" data-id="heading-6">dynamic</h4>
+<p>我在学习Dart之前没有在别的语言见过这个关键字，对我而言比较陌生，这个关键字和Object非常相似，唯一的区别就是在<strong>编译阶段不检查类型</strong>。和Object恰恰相反，如果你调用一个本身没有的方法，不会报错，但是当你运行的时候才会抛异常。</p>
+<h3 class="heading" data-id="heading-7">变量的默认值</h3>
+<p>这个本来不想说的，但是发现和之前所学的不太一样，还是说一下吧。</p>
+<blockquote>
+<p>在Dart中，没有初始化的变量自动获取一个默认值为null</p>
+<p>一切皆对象，对象的默认值为null</p>
+</blockquote>
+<p>只要记着上面两句话就可以了，不要被之前的Java所禁锢，比如之前的Boolean值默认会是false，但是在Dart中的bool值默认也是null，记着，<strong>一切皆对象，对象的默认值为null</strong></p>
+<h3 class="heading" data-id="heading-8">变量 final和const</h3>
+<p>final大家很了解，Java中经常使用，const相对就比较陌生了，下面说一下他们的共同点：</p>
+<ul>
+<li>
+<p>声明的类型可省略</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-keyword">final</span> fVariable1 = <span class="hljs-string">'zhujiang'</span>;
+<span class="hljs-comment">//  final String fVariable1 = 'zhujiang';</span>
+  <span class="hljs-keyword">const</span> cVariable1 = <span class="hljs-string">'zhujiang'</span>;
+<span class="hljs-comment">//  const String cVariable1 = 'zhujiang';</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>初始化后不能再赋值</p>
+<pre><code class="hljs dart copyable" lang="dart">fVariable1 = <span class="hljs-string">'demo'</span>;
+cVariable1 = <span class="hljs-string">'demo'</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面初始化之后，这里就不可以赋值了，如果赋值即会报错</p>
+</li>
+<li>
+<p>不能和var同时使用</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">final</span> <span class="hljs-keyword">var</span> fVariable1 = <span class="hljs-string">'zhujiang'</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">var</span> fVariable1 = <span class="hljs-string">'zhujiang'</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p>和var同时使用的话也会报错。</p>
+</li>
+</ul>
+<p><strong>下面再看一下他们的不同点：</strong></p>
+<ul>
+<li>
+<p>类级别常量，使用static const</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> monday = <span class="hljs-number">1</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p>这里大家可以参照一下系统中的类，例如DateTime。</p>
+</li>
+<li>
+<p>const可使用其他const 常量的值来初始化其值</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">const</span> width = <span class="hljs-number">100</span>;
+<span class="hljs-keyword">const</span> height = <span class="hljs-number">100</span>;
+<span class="hljs-keyword">const</span> square = width * height;
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>使用const赋值声明，const可省略</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">const</span> <span class="hljs-built_in">List</span> clist = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-comment">//  const List clist = const [1, 2, 3];//dart 2之前，const赋值必须用const声明</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>可以更改非final、非const变量的值，即使曾经具有const值</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">var</span> varList = <span class="hljs-keyword">const</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">final</span> finalList = <span class="hljs-keyword">const</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">const</span> constList = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+varList = [<span class="hljs-number">1</span>];
+<span class="hljs-comment">//  constList = [1];</span>
+<span class="hljs-comment">//  finalList = [1];</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>const导致的不可变性是可传递的</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">final</span> <span class="hljs-built_in">List</span> ls = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+  ls[<span class="hljs-number">1</span>] = <span class="hljs-number">4</span>;
+  <span class="hljs-built_in">print</span>(ls);
+  <span class="hljs-keyword">const</span> <span class="hljs-built_in">List</span> ls1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-comment">//  ls1[1] = 4;</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>相同的const常量不会在内存中重复创建</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-keyword">final</span> finalList1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+  <span class="hljs-keyword">final</span> finalList2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+  <span class="hljs-built_in">print</span>(identical(finalList1, finalList2)); <span class="hljs-comment">//identical用于检查两个引用是否指向同一个对象</span>
+
+  <span class="hljs-keyword">const</span> constList1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+  <span class="hljs-keyword">const</span> constList2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+  <span class="hljs-built_in">print</span>(identical(constList1, constList2)); 
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面代码的运行结果是false和ture，也印证了上面所说的。</p>
+</li>
+<li>
+<p>const需要是编译时常量</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">final</span> <span class="hljs-built_in">DateTime</span> finalDateTime = <span class="hljs-built_in">DateTime</span>.now();
+  <span class="hljs-comment">//  const DateTime constDateTime = DateTime.now();//DateTime.now() 是运行期计算出来的值</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<h3 class="heading" data-id="heading-9">小总结</h3>
+<p>本小节简单说明了在Dart中变量的一些细节问题，如有补充或者错误可直接在评论区说出来，不要给我面子😂。</p>
+<h2 class="heading" data-id="heading-10">内置类型</h2>
+<h3 class="heading" data-id="heading-11">概述</h3>
+<p>在Dart中，内置类型有以下几种：<strong>Numbers 数值、Strings 字符串、Booleans 布尔值、Lists 列表(数组)、Sets 集合、Maps 集合、Runes 符号字符、Symbols 标识符</strong>。</p>
+<h3 class="heading" data-id="heading-12">num, int, double</h3>
+<p>int和double大家都很熟悉，int还是整数值，double是64-bit双精度浮点数。这里需要着重看一下<strong>num</strong>，<strong>int和double是num的子类</strong>。剩下的就没什么好说的了，其他的使用方法和Java基本一样，只是可以直接定义num类型的数据,剩下的大家直接看下面的代码应该就明白了：</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; <span class="hljs-comment">//整数值</span>
+  <span class="hljs-built_in">double</span> d = <span class="hljs-number">1.0</span>; <span class="hljs-comment">//double  64-bit (双精度) 浮点数</span>
+  <span class="hljs-built_in">int</span> bitLength = i.bitLength;
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'bitLength: <span class="hljs-subst">${bitLength}</span>'</span>); <span class="hljs-comment">//bitLength判断int值需要多少bit位</span>
+  <span class="hljs-built_in">double</span> maxFinite = <span class="hljs-built_in">double</span>.maxFinite;
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'maxFinite: <span class="hljs-subst">${maxFinite}</span>'</span>); <span class="hljs-comment">//maxFinitedouble的最大值</span>
+  <span class="hljs-comment">//int和double都是num的子类</span>
+  <span class="hljs-built_in">num</span> n1 = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">num</span> n2 = <span class="hljs-number">1.0</span>;
+  <span class="hljs-comment">//支持十进制、十六进制</span>
+  <span class="hljs-built_in">int</span> i1 = <span class="hljs-number">0xfff</span>;
+  <span class="hljs-comment">//科学计数法</span>
+  <span class="hljs-built_in">double</span> d1 = <span class="hljs-number">1.2e2</span>; <span class="hljs-comment">//120.0</span>
+  <span class="hljs-comment">//转换</span>
+  <span class="hljs-comment">//String-&gt;int</span>
+  <span class="hljs-built_in">int</span> i2 = <span class="hljs-built_in">int</span>.parse(<span class="hljs-string">'1'</span>);
+  <span class="hljs-built_in">double</span> d2 = <span class="hljs-number">1</span>; <span class="hljs-comment">//当double的值为int值时，int自动转成double</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'d2: <span class="hljs-subst">${d2}</span>'</span>);
+<span class="hljs-comment">//  int i2 = int.tryParse('1.0');//返回null</span>
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-13">String</h3>
+<ul>
+<li>
+<p>Dart 字符串是 UTF-16 编码的字符序列，可以使用单引号或者双引号来创建字符串</p>
+<pre><code class="hljs dart copyable" lang="dart">main(){
+  <span class="hljs-built_in">String</span> a = <span class="hljs-string">'zhujiang'</span>;
+  <span class="hljs-built_in">String</span> b = <span class="hljs-string">"zhujiang"</span>;
+}
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>可以使用三个单引号或者双引号创建多行字符串对象</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">String</span> c = <span class="hljs-string">"dd"</span>
+    <span class="hljs-string">"sssdffg"</span>
+  <span class="hljs-string">"vftgt"</span>;
+  <span class="hljs-built_in">String</span> d = <span class="hljs-string">'''ssss
+  fffffffgg
+  grrrr'''</span>;
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>可以使用 r 前缀创建”原始raw”字符串。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">String</span> e = <span class="hljs-string">'''ssss
+  fff\nffffgg
+  grrrr'''</span>;
+  <span class="hljs-built_in">String</span> f = <span class="hljs-string">r'''ssss
+  fff\nffffgg
+  grrrr'''</span>;
+  <span class="hljs-built_in">print</span>(e);
+  <span class="hljs-built_in">print</span>(f);
+<span class="copy-code-btn">复制代码</span></code></pre><p>这里需要说明一下，如果使用r前缀，即是原始字符串，\n换行会直接打印出来而不会实现换行，下面是执行结果：</p>
+<pre><code class="hljs dart copyable" lang="dart">lib/<span class="hljs-number">2</span>-type.dart: Warning: Interpreting <span class="hljs-keyword">this</span> <span class="hljs-keyword">as</span> package URI, <span class="hljs-string">'package:darttest/2-type.dart'</span>.
+ssss
+  fff
+ffffgg
+  grrrr
+ssss
+  fff\nffffgg
+  grrrr
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>可以在字符串中使用表达式： ${expression},如果表达式是一个标识符，可以省略 {}，如果表达式的结果为一个对象，则 Dart 会调用对象的 toString() 函数来获取一个字符串。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">print</span>(<span class="hljs-string">"object:$c"</span>);
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<p>这里既然已经说到String了，那就再说一下StringBuffer吧，使用方法和Java一样，但是可以省略new关键字，还可以进行链式调用：</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-built_in">StringBuffer</span> stringBuffer = <span class="hljs-built_in">StringBuffer</span>();
+  stringBuffer..write(<span class="hljs-string">"sss"</span>)..write(<span class="hljs-string">"ssss"</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-14">bool</h3>
+<p>这里的bool相当于Java中boolean，这里只需要记着<strong>bool对象未初始化的默认值是null</strong>（上一篇文章中提到过）</p>
+<h3 class="heading" data-id="heading-15">List</h3>
+<ul>
+<li>
+<p>Dart中可以直接打印list包括list的元素，List也是对象（java中直接打印list结果是地址值）。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">List</span>)
+<span class="copy-code-btn">复制代码</span></code></pre><p>这里会直接输出List。</p>
+</li>
+<li>
+<p>Dart中List的下标索引和java一样从0开始</p>
+</li>
+<li>
+<p>和java一样支持泛型。</p>
+</li>
+<li>
+<p>有增删改查，支持倒序，自带排序、洗牌，可使用+将两个List合并</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-comment">//常用方法 增删改查，排序，洗牌，复制子列表</span>
+  <span class="hljs-keyword">var</span> list4 = [];
+  <span class="hljs-comment">//增</span>
+  list4.add(<span class="hljs-number">1</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'add 1 :<span class="hljs-subst">${list4}</span>'</span>);
+  <span class="hljs-comment">//删</span>
+  list4.remove(<span class="hljs-number">5</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'remove 5 :<span class="hljs-subst">${list4}</span>'</span>);
+  list4.removeAt(<span class="hljs-number">2</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'remove at 0 :<span class="hljs-subst">${list4}</span>'</span>);
+  <span class="hljs-comment">//改</span>
+  list4[<span class="hljs-number">4</span>] = <span class="hljs-number">5</span>;
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'update list4[4] to 5 :$list4}'</span>);
+  <span class="hljs-comment">//range</span>
+  list4.fillRange(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">9</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'fillRange update list4[0]-list4[2] to 9 :$list4}'</span>);
+  <span class="hljs-built_in">Iterable</span> getRange = list4.getRange(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'getRange list4[0]-list4[2] :$getRange}'</span>);
+  <span class="hljs-comment">//查</span>
+  <span class="hljs-keyword">var</span> contains = list4.contains(<span class="hljs-number">5</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list4 contains 5 :<span class="hljs-subst">${contains}</span>'</span>);
+  <span class="hljs-keyword">var</span> indexOf = list4.indexOf(<span class="hljs-number">1</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list4 indexOf 1 :<span class="hljs-subst">${indexOf}</span>'</span>);
+  <span class="hljs-built_in">int</span> indexWhere = list4.indexWhere((test) =&gt; test == <span class="hljs-number">5</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list4 indexWhere 5 :<span class="hljs-subst">${indexWhere}</span>'</span>);
+  <span class="hljs-comment">//排序</span>
+  list4.sort();
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list4 sort :<span class="hljs-subst">${list4}</span>'</span>);
+  <span class="hljs-comment">//洗牌</span>
+  list4.shuffle();
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list4 shuffle :<span class="hljs-subst">${list4}</span>'</span>);
+  <span class="hljs-comment">//复制子列表</span>
+  <span class="hljs-keyword">var</span> list5 = list4.sublist(<span class="hljs-number">1</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'sublist(1) list5 :<span class="hljs-subst">${list5}</span>'</span>);
+  <span class="hljs-comment">//操作符</span>
+  <span class="hljs-keyword">var</span> list6 = [<span class="hljs-number">8</span>, <span class="hljs-number">9</span>];
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list6 :<span class="hljs-subst">${list6}</span>'</span>);
+  <span class="hljs-keyword">var</span> list7 = list5 + list6;
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'list5 + list6 :<span class="hljs-subst">${list7}</span>'</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><p>这里的代码比较长，但是很好理解，就是一个集合的增删改查和一些比较常用的方法，大家可以自己手写一下加深理解。</p>
+</li>
+</ul>
+<h3 class="heading" data-id="heading-16">Map</h3>
+<p>map这里就不多说了，和Java类似</p>
+<h3 class="heading" data-id="heading-17">Set</h3>
+<p>Set这里其实也和Java差不多，但是有几个地方需要说明一下：</p>
+<ul>
+<li>set1.difference(set2):返回set1集合里有但set2里没有的元素集合</li>
+<li>set1.intersection(set2)：返回set1和set2的交集</li>
+<li>set1.union(set2)：返回set1和set2的并集</li>
+<li>set1.retainAll()：set1只保留某些元素(要保留的元素要在原set中存在）</li>
+</ul>
+<p>这几个方法非常好用，简单写一下伪代码大家看一下吧：</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-keyword">var</span> difference12 = set1.difference(set2);
+  <span class="hljs-keyword">var</span> difference21 = set2.difference(set1);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'set1 difference set2 :<span class="hljs-subst">${difference12}</span>'</span>); <span class="hljs-comment">//返回set1集合里有但set2里没有的元素集合</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'set2 difference set1 :<span class="hljs-subst">${difference21}</span>'</span>); <span class="hljs-comment">//返回set2集合里有但set1里没有的元素集合</span>
+  <span class="hljs-keyword">var</span> intersection = set1.intersection(set2);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'set1 set2交集 :<span class="hljs-subst">${intersection}</span>'</span>); <span class="hljs-comment">//返回set1和set2的交集</span>
+  <span class="hljs-keyword">var</span> union = set1.union(set2);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'set1 set2并集 :<span class="hljs-subst">${union}</span>'</span>); <span class="hljs-comment">//返回set1和set2的并集</span>
+  set2.retainAll([<span class="hljs-string">'aa'</span>, <span class="hljs-string">'flutter'</span>]); <span class="hljs-comment">//只保留(要保留的元素要在原set中存在）</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'set2只保留aa flutter :<span class="hljs-subst">${set2}</span>'</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-18">Runes</h3>
+<p>表示符文的意思，用于在字符串中表示Unicode字符。使用String.fromCharCodes显示字符图形。如果非4个数值，需要把编码值放到大括号中。</p>
+<pre><code class="hljs dart copyable" lang="dart">  Runes runes = new Runes('\u{1f605} \u6211‘);
+  var str1 = String.fromCharCodes(runes);  
+  print(str1);
+<span class="copy-code-btn">复制代码</span></code></pre><p>直接这样写就可以了，下面看一下打印效果：</p>
+<pre><code class="hljs bash copyable" lang="bash">😅 我
+<span class="copy-code-btn">复制代码</span></code></pre><p>直接可以打印出表情，有表情需求的可以直接使用Runes。</p>
+<h3 class="heading" data-id="heading-19">Symbol</h3>
+<p>Symbol标识符，以前主要是反射使用，但是现在mirrors模块已经被移除，所以没啥大用了，大家只要知道有这么一个内置类型就可以了。</p>
+<h2 class="heading" data-id="heading-20">方法</h2>
+<p>方法这一块很重要，写代码离不开方法啊，继续开车，抓稳了！</p>
+<h3 class="heading" data-id="heading-21">定义</h3>
+<ul>
+<li>
+<p>可在函数内定义</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">void</span> main(){
+  <span class="hljs-keyword">void</span> test(){
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>和Java不同，Dart中的函数可以定义在函数内部（和Java的匿名内部类别搞混了）</p>
+</li>
+<li>
+<p>定义函数时可省略类型（不建议）</p>
+<pre><code class="hljs dart copyable" lang="dart">main(){
+  test(){
+    <span class="hljs-comment">// return null;</span>
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面的函数可以写成下面这样，Dart中函数是Function类型的对象。所有的函数都返回一个值。如果没有指定返回值，则 默认把语句 return null; 作为函数的最后一个语句执行。</p>
+</li>
+<li>
+<p>支持缩写语法 =&gt; （Kotlin是用=来实现）</p>
+<pre><code class="hljs dart copyable" lang="dart">main(){
+  <span class="hljs-built_in">print</span>(test1());
+}
+test()=&gt; <span class="hljs-string">"zhujiang"</span>;
+<span class="hljs-built_in">String</span> test1(){
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"zhujiang"</span>;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面代码中的test()和test1()效果是一样的，“=&gt;”相当于大括号和return</p>
+</li>
+</ul>
+<h3 class="heading" data-id="heading-22">可选参数</h3>
+<p>既然是函数，那么肯定要传参，我在经过Java构造方法的摧残之后，看这个功能的时候泪流满面😭。为什么会这样呢？下面先来看一个咱们的Java类的构造函数：</p>
+<pre><code class="hljs java copyable" lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;
+    <span class="hljs-keyword">private</span> String address;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Test</span><span class="hljs-params">(String name, <span class="hljs-keyword">int</span> age, String address)</span> </span>{
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.age = age;
+        <span class="hljs-keyword">this</span>.address = address;
+    }
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Test</span><span class="hljs-params">(String name, String address)</span> </span>{
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.address = address;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Test</span><span class="hljs-params">(String name, <span class="hljs-keyword">int</span> age)</span> </span>{
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.age = age;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Test</span><span class="hljs-params">(String name)</span> </span>{
+        <span class="hljs-keyword">this</span>.name = name;
+    }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>一个非常简单的构造方法，只是想要传参数形式多一点，竟然需要写这么多重载方法。。。那么下面咱们来看一下拿Dart写的同样功能的代码：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span></span>{
+  <span class="hljs-built_in">String</span> name;
+  <span class="hljs-built_in">int</span> age;
+  <span class="hljs-built_in">String</span> address;
+  Test(<span class="hljs-keyword">this</span>.name, {<span class="hljs-keyword">this</span>.age, <span class="hljs-keyword">this</span>.address});
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>What？竟然可以这样？是的，可以这样。下面来详细说一下函数的可选参数。</p>
+<h4 class="heading" data-id="heading-23">可选命名参数</h4>
+<p>其实上面构造方法我使用的就是可选命名参数，写的时候其实很简单，只需要加上大括号就行。下面是使用方法：</p>
+<pre><code class="hljs dart copyable" lang="dart">main() {
+  <span class="hljs-built_in">print</span>(add(a: <span class="hljs-number">1</span>, b: <span class="hljs-number">3</span>));
+}
+
+<span class="hljs-built_in">int</span> add({<span class="hljs-built_in">int</span> a = <span class="hljs-number">1</span>, <span class="hljs-built_in">int</span> b}) {
+  <span class="hljs-keyword">return</span> a + b;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面的add方法调用的时候可以不填参数，也可以填任何一个参数，也可以将参数都填上。这里要注意：</p>
+<ul>
+<li><strong>如果a不填的话，默认值就是1，如果b不填，默认值就是null。</strong></li>
+<li><strong>传参数的时候一定要记得写a：，不然会报错。</strong></li>
+</ul>
+<h4 class="heading" data-id="heading-24">可选位置参数</h4>
+<p>和上面的可选命名参数不同，上面的函数如果想调用，必须命名再加上冒号才能使用，可选位置参数就不需要了。这里和上面一样，默认值可加可不加：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">int</span> add2(<span class="hljs-built_in">int</span> a,[<span class="hljs-built_in">int</span> b = <span class="hljs-number">2</span>,<span class="hljs-built_in">int</span> c = <span class="hljs-number">3</span>]) {
+  <span class="hljs-keyword">return</span> a + b;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>下面是上面add2()方法的几种调用方式：</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-built_in">print</span>(add2(<span class="hljs-number">1</span>));
+  <span class="hljs-built_in">print</span>(add2(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>));
+  <span class="hljs-built_in">print</span>(add2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>));
+<span class="copy-code-btn">复制代码</span></code></pre><h4 class="heading" data-id="heading-25">注意</h4>
+<p>上面的可选命名参数和可选位置参数，可使用list或map作为默认值，但必须是const。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">int</span> add3({<span class="hljs-built_in">List</span> a = <span class="hljs-keyword">const</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], <span class="hljs-built_in">int</span> b = <span class="hljs-number">2</span>}) {
+  <span class="hljs-keyword">return</span> b;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-26">匿名函数</h3>
+<p>可赋值给变量，通过变量调用。可在其他函数中直接调用或传递给其他函数。匿名函数分为<strong>无参匿名函数和有参匿名函数</strong>：</p>
+<ul>
+<li>
+<p><strong>无参匿名函数</strong></p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">var</span> printFun = () =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">"**无参匿名函数**"</span>);
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p><strong>有参匿名函数</strong></p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">var</span> printFun2 = (name) =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">"**有参匿名函数 $name**"</span>);
+printFun2(<span class="hljs-string">"sss"</span>);
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<p>这里还有一个小的<strong>知识点</strong>：<em><strong>可以通过()调用，不推荐。</strong></em></p>
+<pre><code class="hljs dart copyable" lang="dart">(() =&gt;<span class="hljs-built_in">print</span>(<span class="hljs-string">"***可以通过()调用，不推"</span>))();
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-27">闭包</h3>
+<p>这里感觉没什么好说的，大家直接看代码应该就可以理解：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">Function</span> makeAddFunc(<span class="hljs-built_in">int</span> x) {
+  x++;
+  <span class="hljs-keyword">return</span> (<span class="hljs-built_in">int</span> y) =&gt; x + y;
+}
+<span class="hljs-keyword">var</span> makeAddFun = makeAddFunc(<span class="hljs-number">11</span>);
+<span class="hljs-built_in">print</span>(makeAddFun(<span class="hljs-number">10</span>));
+<span class="copy-code-btn">复制代码</span></code></pre><p>就是创建一个方法，返回的也是一个方法，可以再继续调用。</p>
+<h3 class="heading" data-id="heading-28">函数别名</h3>
+<p>用<strong>typedef</strong>给函数起一个别名，使用比较方便。例如定义一个方法的回调，直接使用别名定义。<strong>没返回值，则只要参数匹配就行了，如果定义了返回值，则返回值不一样会报错。</strong></p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">typedef</span> Fun1(<span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b);
+<span class="hljs-keyword">typedef</span> Fun2&lt;T, K&gt;(T a, K b);
+<span class="hljs-built_in">int</span> add(<span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'a + b'</span>);
+  <span class="hljs-keyword">return</span> a + b;
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo1</span> </span>{
+  Demo1(<span class="hljs-built_in">int</span> f(<span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b), <span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y) {
+    <span class="hljs-keyword">var</span> sum = f(x, y);
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"sum1 = $sum"</span>);
+  }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> </span>{
+  Demo2(Fun1 f, <span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y) {
+    <span class="hljs-keyword">var</span> sum = f(x, y);
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"sum2 = $sum"</span>);
+  }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo3</span> </span>{
+  Demo3(Fun2&lt;<span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>&gt; f, <span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y) {
+    <span class="hljs-keyword">var</span> sum = f(x, y);
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"sum3 = $sum"</span>);
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面代码就是定义函数别名的方法，下面是调用方法：</p>
+<pre><code class="hljs dart copyable" lang="dart">Fun1 fun1 = add(<span class="hljs-number">11</span>, <span class="hljs-number">12</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><h2 class="heading" data-id="heading-29">操作符、流程控制语句、异常</h2>
+<p>这一小节看着东西应该挺多，其实很简单，好多都和Java基本一致。</p>
+<h3 class="heading" data-id="heading-30">操作符</h3>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/5/11/17203ee5d014fb52?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="938" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/17203ee5d014fb52"><figcaption></figcaption></figure><p></p>
+<p>上面这幅图中就是Dart中的操作符，标为黑色的操作符和Java中使用基本一样，这里也就不过多赘述，咱们来仔细看看标红Java中没有的操作符：</p>
+<ul>
+<li>
+<p>后缀操作： <strong>?.</strong></p>
+<p>如果写过Kotlin的话，可以跳过这段了，这里的问号点和Kotlin中基本一致，都是为了判空而出现的，那么下面来看一下使用方式吧：</p>
+<pre><code class="hljs dart copyable" lang="dart">main() {
+  <span class="hljs-built_in">String</span> a;
+  <span class="hljs-built_in">print</span>(a.length != <span class="hljs-keyword">null</span> ? a.length : <span class="hljs-string">''</span>);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面就是咱们平时写的代码，一个三目表达式来进行判空。但是在Dart中可以不这样写，可以直接使用问号点。</p>
+<pre><code class="hljs dart copyable" lang="dart">main() {
+  <span class="hljs-built_in">String</span> a;
+  <span class="hljs-comment">//print(a.length != null ? a.length : &amp;#39;&amp;#39;);</span>
+  <span class="hljs-built_in">print</span>(a?.length);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>是不是很方便？以后判空可以直接使用**"?."**了</p>
+</li>
+<li>
+<p>除（取整）：<strong>~/</strong></p>
+<p>这个操作符其实很简单，只是对数字进行取整，下面是实例代码：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">print</span>(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>);
+<span class="hljs-built_in">print</span>(<span class="hljs-number">1</span>~/<span class="hljs-number">2</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面代码的输出值是0.5和0</p>
+</li>
+<li>
+<p>类型操作：<strong>as</strong></p>
+<p>这个和Kotlin中的as也基本一样，是对数据进行类型转换，很简单，直接看代码：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">num</span> n = <span class="hljs-number">1</span>;
+<span class="hljs-built_in">int</span> n2 = n <span class="hljs-keyword">as</span> <span class="hljs-built_in">int</span>;
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>类型操作： <strong>is</strong></p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">num</span> n1 = <span class="hljs-number">1.0</span>;
+<span class="hljs-keyword">if</span>(n1 <span class="hljs-keyword">is</span> <span class="hljs-built_in">int</span>){
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">"int"</span>);
+}<span class="hljs-keyword">else</span>{
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">"double"</span>);
+}
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>类型操作：<strong>is!</strong></p>
+<p>从名称上就可以知道和上面的is正好相反，就不写代码验证了。</p>
+</li>
+<li>
+<p>判空：<strong>??</strong></p>
+<p>这个上面也写出来了，意思就是判空，下面直接看一下使用方法吧：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-built_in">bool</span> aaa;
+aaa = aaa ?? <span class="hljs-keyword">false</span>;
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>级联：<strong>..</strong></p>
+<p>这个其实就是链式调用，之前的文章中写过，当时的例子是StringBuffer：</p>
+<pre><code class="hljs dart copyable" lang="dart"> <span class="hljs-built_in">StringBuffer</span> stringBuffer = <span class="hljs-built_in">StringBuffer</span>();
+ stringBuffer..write(<span class="hljs-string">"sss"</span>)..write(<span class="hljs-string">"ssss"</span>);
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<p>操作符就说到这里吧，掌握好操作符在写代码的时候会事半功倍的，希望大家都能掌握好。</p>
+<h3 class="heading" data-id="heading-31">流程控制语句</h3>
+<p>这个，怎么说，稍微提一下吧，这个是基础的基础，Dart中的流程控制语句和Java基本一样，直接进行使用就行。</p>
+<p>不是不想写，<strong>if语句、for循环、while循环、brake、continue、switch、case</strong>，没了，这就是Dart的流程控制语句，如出一辙。跳过。</p>
+<h3 class="heading" data-id="heading-32">异常</h3>
+<p>Dart 提供了 Exception 和 Error 类型， 以及一些子类型。还可以定义自己的异常类型。但是，Dart 代码可以抛出任何非 null 对象为异常，不仅仅是实现了 Exception 或者 Error 的对象。</p>
+<p>下面这幅图是Dart中的<strong>Exception</strong> ：</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/5/11/17203ee8d729c547?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="632" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/17203ee8d729c547"><figcaption></figcaption></figure><p></p>
+<p>下面这幅图是Dart中的<strong>Error</strong>：</p>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/5/11/17203eeb4ff57cde?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="650" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/17203eeb4ff57cde"><figcaption></figcaption></figure><p></p>
+<h4 class="heading" data-id="heading-33">抛出异常</h4>
+<ul>
+<li>
+<p>这个和Java中写法一样，所有的 Dart 异常是非检查异常。 方法不一定声明了他们所抛出的异常， 并且你不要求捕获任何异常。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-comment">// 抛出Exception 对象</span>
+<span class="hljs-comment">// throw new FormatException(‘格式异常');</span>
+
+<span class="hljs-comment">// 抛出Error 对象</span>
+<span class="hljs-comment">// throw new OutOfMemoryError();</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>Dart 代码可以抛出任何非 null 对象为异常，不仅仅是实现了 Exception 或者 Error 的对象。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-comment">// 抛出任意非null对象</span>
+<span class="hljs-comment">// throw '这是一个异常';</span>
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<h4 class="heading" data-id="heading-34">捕获异常</h4>
+<ul>
+<li>
+<p>所有的 Dart 异常是非检查异常。 方法不一定声明了他们所抛出的异常， 并且你不要求捕获任何异常。可以使用on 或者 catch 来声明捕获语句，也可以 同时使用。使用 on 来指定异常类型，使用 catch 来 捕获异常对象。</p>
+<pre><code class="hljs dart copyable" lang="dart"> <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> OutOfMemoryError();
+  } on OutOfMemoryError {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'没有内存了'</span>);
+  }
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>catch() 可以带有一个或者两个参数， 第一个参数为抛出的异常对象， 第二个为堆栈信息 (一个 StackTrace 对象)。</p>
+<pre><code class="hljs dart copyable" lang="dart">  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> OutOfMemoryError();
+  } <span class="hljs-keyword">catch</span> (e, s) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Exception details: $e'</span>);
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Stack Trace: $s'</span>);
+  } <span class="hljs-keyword">finally</span> {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'end'</span>);
+  }
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>可以使用rethrow把捕获的异常重新抛出。</p>
+<pre><code class="hljs dart copyable" lang="dart"> <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> OutOfMemoryError();
+  } <span class="hljs-keyword">catch</span> (e, s) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Exception details: $e'</span>);
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Stack Trace: $s'</span>);
+    <span class="hljs-keyword">rethrow</span>；
+  }
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<h2 class="heading" data-id="heading-35">类的点点滴滴</h2>
+<p>前几小节分别讲解了Dart中的变量、内置类型、函数（方法）、操作符、流程控制语句和异常，对Dart的基本语法已经有了很多的了解，那么接来说一下Dart中的类。</p>
+<h3 class="heading" data-id="heading-36">构造函数</h3>
+<p>前几篇文章中在讲函数（方法）的一篇中提到过，这里再说一下吧，首先来看一下Java中构造函数的写法：</p>
+<pre><code class="hljs java copyable" lang="java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-keyword">double</span> x;
+  <span class="hljs-keyword">double</span> y;
+
+  Point(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y) {
+    <span class="hljs-keyword">this</span>.x = x;
+    <span class="hljs-keyword">this</span>.y = y;
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>下面是dart中的建议写法：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-built_in">num</span> x;
+  <span class="hljs-built_in">num</span> y;
+  Point(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-37">命名构造函数</h3>
+<p>使用命名构造函数可以为一个类实现多个构造函数， 或者使用命名构造函数来更清晰的表明你的意图。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{ 
+  <span class="hljs-built_in">num</span> x; 
+  <span class="hljs-built_in">num</span> y; 
+
+  Point(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y); 
+
+  <span class="hljs-comment">//命名构造函数</span>
+  Point.fromJson(<span class="hljs-built_in">Map</span> json) { 
+    x = json[<span class="hljs-string">'x'</span>]; 
+    y = json[<span class="hljs-string">'y'</span>]; 
+  } 
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-38">重定向构造函数</h3>
+<p>一个重定向构造函数是没有代码的，在构造函数声明后，使用 冒号调用其他构造函数。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{ 
+  <span class="hljs-built_in">num</span> x; 
+  <span class="hljs-built_in">num</span> y; 
+
+  Point(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y); 
+
+  <span class="hljs-comment">//重定向构造函数，使用冒号调用其他构造函数</span>
+  Point.alongXAxis(<span class="hljs-built_in">num</span> x) : <span class="hljs-keyword">this</span>(x, <span class="hljs-number">0</span>);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-39">初始化列表</h3>
+<p>在构造函数体执行之前可以初始化实例参数。 使用逗号分隔初始化表达式。初始化列表非常适合用来设置 final 变量的值。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">'dart:math'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-comment">//final变量不能被修改，必须被构造函数初始化</span>
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">num</span> x;
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">num</span> y;
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">num</span> distanceFromOrigin;
+
+  <span class="hljs-comment">//初始化列表</span>
+  Point(x, y)
+      : x = x,
+        y = y,
+        distanceFromOrigin = sqrt(x * x + y * y);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-40">调用超类构造函数</h3>
+<p>首先来建立一个超类（父类），下面的代码都继承自此类：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parent</span> </span>{
+  <span class="hljs-built_in">int</span> x;
+  <span class="hljs-built_in">int</span> y;
+
+  <span class="hljs-comment">//父类命名构造函数不会传递  </span>
+  Parent.fromJson(x, y)
+      : x = x,
+        y = y {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'父类命名构造函数'</span>);
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><ul>
+<li>
+<p>超类命名构造函数不会传递，如果希望使用超类中定义的命名构造函数创建子类，则必须在子类中实现该构造函数。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Parent</span> </span>{
+  <span class="hljs-built_in">int</span> x;
+  <span class="hljs-built_in">int</span> y;
+
+  Child.fromJson(x, y) 
+	 : x = x,
+	   y = y,
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'子类命名构造函数'</span>);
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>如果超类没有默认构造函数， 则你需要手动的调用超类的其他构造函数,调用超类构造函数的参数无法访问 this。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Parent</span> </span>{
+  <span class="hljs-built_in">int</span> x;
+  <span class="hljs-built_in">int</span> y;
+  <span class="hljs-comment">//若超类没有默认构造函数， 需要手动调用超类其他构造函数</span>
+  Child(x, y) : <span class="hljs-keyword">super</span>.fromJson(x, y) {
+    <span class="hljs-comment">//调用父类构造函数的参数无法访问 this</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'子类构造函数'</span>);
+  }
+}
+
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>在构造函数的初始化列表中使用 super()，需要把它放到最后。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Parent</span> </span>{
+  <span class="hljs-built_in">int</span> x;
+  <span class="hljs-built_in">int</span> y;
+ 
+  Child.fromJson(x, y) 
+	 : x = x,
+	   y = y,
+	   <span class="hljs-keyword">super</span>.fromJson(x, y) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'子类命名构造函数'</span>);
+  }
+}
+
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ul>
+<h3 class="heading" data-id="heading-41">常量构造函数</h3>
+<p>定义const构造函数要确保所有实例变量都是final。
+const关键字放在构造函数名称之前。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point2</span> </span>{
+  <span class="hljs-comment">//定义const构造函数要确保所有实例变量都是final</span>
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">num</span> x;
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">num</span> y;
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Point2 origin = <span class="hljs-keyword">const</span> Point2(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+
+  <span class="hljs-comment">//const关键字放在构造函数名称之前，且不能有函数体</span>
+  <span class="hljs-keyword">const</span> Point2(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-42">工厂构造函数(Dart中的单例)</h3>
+<p>工厂构造函数是一种构造函数，与普通构造函数不同，工厂函数不会自动生成实例,而是通过代码来决定返回的实例对象。如果一个构造函数并不总是返回一个新的对象（<strong>单例</strong>），则使用 factory 来定义这个构造函数。工厂构造函数无法访问this。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span> </span>{
+  <span class="hljs-built_in">String</span> name;
+  <span class="hljs-comment">//工厂构造函数无法访问this，所以这里要用static</span>
+  <span class="hljs-keyword">static</span> Singleton _cache; 
+
+  <span class="hljs-comment">//工厂方法构造函数，关键字factory</span>
+  <span class="hljs-keyword">factory</span> Singleton([<span class="hljs-built_in">String</span> name = <span class="hljs-string">'singleton'</span>]) =&gt;
+      Singleton._cache ??= Singleton._newObject(name);
+
+  <span class="hljs-comment">//定义一个命名构造函数用来生产实例</span>
+  Singleton._newObject(<span class="hljs-keyword">this</span>.name);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-43">Setter和Getter</h3>
+<p>在Java中get和set方法可以直接生成，在Dart中无需自己定义。每个实例变量都隐含的具有一个 getter， 如果变量不是 final 的则还有一个 setter。可以通过实行 getter 和 setter 来创建新的属性， 使用 get 和 set 关键字定义 getter 和 setter。可以开始使用实例变量，后来可以把实例变量用函数包裹起来，而调用你代码的地方不需要修改。下面是代码实例：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> </span>{
+  <span class="hljs-built_in">num</span> left;
+  <span class="hljs-built_in">num</span> top;
+  <span class="hljs-built_in">num</span> width;
+  <span class="hljs-built_in">num</span> height;
+
+  Rectangle(<span class="hljs-keyword">this</span>.left, <span class="hljs-keyword">this</span>.top, <span class="hljs-keyword">this</span>.width, <span class="hljs-keyword">this</span>.height);
+
+  <span class="hljs-built_in">num</span> <span class="hljs-keyword">get</span> right =&gt; left + width;
+  <span class="hljs-keyword">set</span> right(<span class="hljs-built_in">num</span> value) =&gt; left = value - width;
+  <span class="hljs-built_in">num</span> <span class="hljs-keyword">get</span> bottom =&gt; top + height;
+  <span class="hljs-keyword">set</span> bottom(<span class="hljs-built_in">num</span> value) =&gt; top = value - height;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-44">抽象类（接口）</h3>
+<ul>
+<li>
+<p>不能被实例化，除非定义一个工厂构造函数。</p>
+<p>这个很好理解，在Java中的抽象类也同样不可实例化。</p>
+</li>
+<li>
+<p>抽象类通常用来定义接口， 以及部分实现。</p>
+<p>在Dart中<strong>没有interface</strong>这个关键字，只有<strong>abstract</strong>，所以可以使用<strong>abstract</strong>来生成接口：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span></span>{
+  <span class="hljs-keyword">void</span> zhujiang();
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Zhu</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Demo</span></span>{
+  <span class="hljs-meta">@override</span>
+  <span class="hljs-keyword">void</span> zhujiang() {}
+}
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>抽象类通常具有抽象方法，抽象方法不需要关键字，以分号结束即可。</p>
+<p>其实上面代码也可以用作这个实例，只需要把implements变成<strong>extends</strong>即可：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Zhu</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Demo</span></span>{
+  <span class="hljs-meta">@override</span>
+  <span class="hljs-keyword">void</span> zhujiang() {}
+}
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>接口方式使用时，需要重写抽象类的成员变量和方法，包括私有的。</p>
+</li>
+<li>
+<p>一个类可以implement一个普通类。Dart任何一个类都是接口。</p>
+</li>
+<li>
+<p>一个类可以implement多个接口。</p>
+</li>
+</ul>
+<p>最后几个说的其实有点绕，说白了就是可以实现多个，这里需要注意的是：<strong>implement只是实现接口，你需要重写接口中的方法，不然是不会执行的</strong>。还有一点是如果想extents多个类的话需要使用<strong>with</strong>关键字。说了这么多不如直接看代码，看代码应该好理解一些：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span></span>{
+  <span class="hljs-keyword">void</span> zhujiang();
+}
+
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span></span>{
+  <span class="hljs-keyword">void</span> zhujiang();
+}
+
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo3</span></span>{
+  <span class="hljs-keyword">void</span> zhujiang();
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Zhu</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Demo</span> <span class="hljs-title">with</span> <span class="hljs-title">Demo2</span>,<span class="hljs-title">Demo3</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Demo3</span>,<span class="hljs-title">Demo2</span></span>{
+  <span class="hljs-meta">@override</span>
+  <span class="hljs-keyword">void</span> zhujiang() {}
+}
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-45">可调用类</h3>
+<p>实现call()方法可以让类像函数一样能够被调用。这个很简单，直接上代码：</p>
+<pre><code class="hljs bash copyable" lang="bash">class ClassFunction {
+  call(String a, String b, String c) =&gt; <span class="hljs-string">'$a $b $c!'</span>;
+}
+
+<span class="hljs-function"><span class="hljs-title">main</span></span>() {
+  var cf = new ClassFunction();
+  var out = cf(<span class="hljs-string">"aaa"</span>,<span class="hljs-string">"flutter"</span>,<span class="hljs-string">"damon"</span>);
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'$out'</span>);
+  <span class="hljs-built_in">print</span>(cf.runtimeType);
+  <span class="hljs-built_in">print</span>(out.runtimeType);
+  <span class="hljs-built_in">print</span>(cf is Function);
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>下面是打印结果：</p>
+<pre><code class="hljs dart copyable" lang="dart">lib/<span class="hljs-number">5.</span>dart: Warning: Interpreting <span class="hljs-keyword">this</span> <span class="hljs-keyword">as</span> package URI, <span class="hljs-string">'package:darttest/5.dart'</span>.
+aaa flutter damon!
+ClassFunction
+<span class="hljs-built_in">String</span>
+<span class="hljs-keyword">false</span>
+<span class="copy-code-btn">复制代码</span></code></pre><h3 class="heading" data-id="heading-46">Mixin</h3>
+<ul>
+<li>子类没有重写超类A方法的前提下，如果2个或多个超类拥有相同签名的A方法，那么子类会以继承的最后一个超类中的A方法为准。</li>
+<li>如果子类自己重写了A方法则以本身的A方法为准。</li>
+</ul>
+<p>在这里先不过多解释Minxin，我的理解就类似于策略模式，抽出不变的为接口，然后多实现。这里先不写了，如果有可能的话等专门写一篇介绍Dart中的Minxin的文章吧。</p>
+<h2 class="heading" data-id="heading-47">Dart泛型</h2>
+<ul>
+<li>Java中的泛型信息是编译时的，泛型信息在运行时是不存在的</li>
+<li>Dart的泛型类型是固化的，在运行时也有可以判断的具体类型</li>
+</ul>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">var</span> names = <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;();
+<span class="hljs-built_in">print</span>(names <span class="hljs-keyword">is</span> <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;);<span class="hljs-comment">//true</span>
+<span class="hljs-built_in">print</span>(names.runtimeType); <span class="hljs-comment">// List&lt;String&gt; </span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>在Java中，可以测试对象是否为List，但无法测试它是否是List。但是在Dart中是预编译的。</p>
+<p>其他的泛型使用方法和Java中的类似，这里就不赘述了。</p>
+<h2 class="heading" data-id="heading-48">Dart中的库</h2>
+<p>这个平时用的非常多，而且非常实用，Dart有你不知道的但又非常好用的语法，继续出发！</p>
+<h3 class="heading" data-id="heading-49">库-使用核心库</h3>
+<p>使用import关键字来载入库：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">"dart:math"</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  <span class="hljs-built_in">print</span>(sqrt(<span class="hljs-number">4</span>));<span class="hljs-comment">//开平方 2.0</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>对于内置的库，URI 使用特殊的 dart: scheme。对于其他的库，你可以使用文件系统路径或者 package: scheme。</p>
+<h3 class="heading" data-id="heading-50">库-载入第三方库</h3>
+<p>在Flutter中想使用第三方库的话需要在<strong>pubspec.yaml</strong>中的<strong>dependencies</strong>中添加依赖：</p>
+<pre><code class="hljs dart copyable" lang="dart">dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^<span class="hljs-number">0.1</span><span class="hljs-number">.0</span>
+  dio: ^<span class="hljs-number">2.1</span><span class="hljs-number">.0</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p>添加完成之后点击右上角的<strong>packages get</strong>进行导入依赖。下面是三方哭调用方法：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">"package:dio/dio.dart"</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  getHttp();
+}
+
+<span class="hljs-keyword">void</span> getHttp() <span class="hljs-keyword">async</span> {
+  <span class="hljs-keyword">try</span> {
+    Response response = <span class="hljs-keyword">await</span> Dio().<span class="hljs-keyword">get</span>(<span class="hljs-string">"https://www.baidu.com"</span>);
+    <span class="hljs-built_in">print</span>(response);
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-built_in">print</span>(e);
+  }
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>这里给大家一个网站，需要寻找第三方库的时候直接在里面搜索即可：<a target="_blank" href="https://pub.dev/" rel="nofollow noopener noreferrer">pub.dev/</a></p>
+<h3 class="heading" data-id="heading-51">库-指定库前缀</h3>
+<p>在Java编码过程经常会出现一个类中调用两个类中相同名字的方法，这时就需要全限定名称来调用了，但是在Dart中是不需要的：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">'MyLib1.dart'</span> <span class="hljs-keyword">as</span> lib1; 
+<span class="hljs-keyword">import</span> <span class="hljs-string">'MyLib2.dart'</span> <span class="hljs-keyword">as</span> lib2; 
+
+<span class="hljs-keyword">void</span> main() {
+  <span class="hljs-keyword">var</span> myLib = lib1.MyLib();
+  <span class="hljs-keyword">var</span> myLib2 = lib2.MyLib();
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>上面代码中MyLib1.dart 和 MyLib2.dart 都有一个名字为 MyLib 的类。</p>
+<h3 class="heading" data-id="heading-52">库-选择性载入</h3>
+<ul>
+<li>show-只载入库的某些部分</li>
+<li>hide-筛选掉库的某些部分</li>
+</ul>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">'Mylib1.dart'</span> <span class="hljs-keyword">as</span> lib1 show Test;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'Mylib2.dart'</span> <span class="hljs-keyword">as</span> lib2 hide Test;
+
+<span class="hljs-keyword">var</span> test = lib1.Test();
+<span class="hljs-keyword">var</span> lib = lib2.MyLib();
+<span class="copy-code-btn">复制代码</span></code></pre><p>如果只使用库的一部分功能，则可以选择需要导入的 内容。</p>
+<h3 class="heading" data-id="heading-53">库-延迟载入</h3>
+<ol>
+<li>使用deferred as导入</li>
+<li>使用标识符调用loadLibrary()加载库</li>
+</ol>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">'MyLib1.dart'</span> deferred <span class="hljs-keyword">as</span> lazyLib;
+
+<span class="hljs-keyword">void</span> main() {
+  lazyLoad();
+}
+lazyLoad() <span class="hljs-keyword">async</span> {
+  <span class="hljs-keyword">await</span> lazyLib.loadLibrary();
+  <span class="hljs-keyword">var</span> t = lazyLib.Test();
+  t.test();
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p>使用 await 关键字暂停代码执行一直到库加载完成。可提高程序启动速度。用在不常使用的功能和载入时间过长的包。</p>
+<h3 class="heading" data-id="heading-54">库-自定义库</h3>
+<ol>
+<li>
+<p>首先将一个文件作为library：</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">library</span> mylib;
+
+<span class="hljs-keyword">part</span> <span class="hljs-string">'util.dart'</span>;
+<span class="hljs-keyword">part</span> <span class="hljs-string">'tool.dart'</span>;
+
+<span class="hljs-keyword">void</span> printMyLib() =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">'mylib'</span>);
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>然后使用part 把一个库分开到多个 Dart 文件中。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">part</span> of mylib;
+<span class="hljs-keyword">void</span> printTool() =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">'tool'</span>);
+<span class="copy-code-btn">复制代码</span></code></pre><pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">part</span> of mylib;
+<span class="hljs-keyword">void</span> printUtil() =&gt; <span class="hljs-built_in">print</span>(<span class="hljs-string">'util'</span>);
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+<li>
+<p>import不会完全共享作用域，而part之间是完全共享的。如果说在A库中import了B库，B库import了C库，A库是没有办法直接使用C库的对象的。而B,C若是A的part，那么三者共享所有对象。并且包含所有导入。</p>
+<pre><code class="hljs dart copyable" lang="dart"><span class="hljs-keyword">import</span> <span class="hljs-string">'mylib/mylib.dart'</span>;
+
+<span class="hljs-keyword">void</span> main() {
+  printMyLib();
+  printUtil();
+  printTool();
+}
+<span class="copy-code-btn">复制代码</span></code></pre></li>
+</ol>
+<h2 class="heading" data-id="heading-55">总结</h2>
+<p>这一篇文章之前写了好久，本来想每个小节分成一篇文章发布的，这样就会有好几篇文章了😂，但又想了想那样不太厚道，直接全写完再发吧。看掘金中都是大佬，各种一线大厂技术、各种阿里腾讯名义的文章。。。比不了比不了，只是一个小破公司的一个一直在努力前进的小码农，写的文章也许不太好，但也都算用心了，希望大家能够喜欢，最后说一句，别忘了点赞关注评论啊😂😂😂，感激不尽。</p>
+</div></article><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-box"><div data-v-fa2339b8="" data-v-6fdc8784="" class="tag-list-title">关注下面的标签，发现更多相似文章</div><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="tagList" class="tag-list"><a data-v-fa2339b8="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" class="item" data-v-6fdc8784=""><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-fa2339b8="" data-src="https://user-gold-cdn.xitu.io/1519790365175e2d3ba2174d5c8f3fdc4687a8bbf5768.jpg?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon" style="background-image: none; background-size: contain;"></div><div data-v-fa2339b8="" class="tag-title">Flutter</div></a></div></div><a data-v-fa2339b8="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" data-v-6fdc8784=""><div data-v-fa2339b8="" class="footer-author-block"><div data-v-081ef9db="" data-v-fa2339b8="" itemscope="itemscope" itemtype="http://schema.org/Person" class="author"><meta itemprop="url" content="https://juejin.im/user/5c07e51de51d451de84324d5"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?w=150&amp;h=150&amp;f=png&amp;s=28524"><meta itemprop="name" content="Zhujiang"><meta itemprop="jobTitle" content="安卓开发"><div itemprop="memberOf" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="天津"></div><div data-v-081ef9db="" class="author-info-block"><a data-v-081ef9db="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="avatar-link"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-081ef9db="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a><div data-v-081ef9db="" class="author-info-box"><div data-v-081ef9db="" class="profile-box"><a data-v-263f3a32="" data-v-081ef9db="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username username ellipsis">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a></a><span data-v-081ef9db="" class="position ellipsis">安卓开发 @ 天津</span></div><div data-v-081ef9db="" class="meta-box"><a data-v-081ef9db="" href="https://juejin.im/user/5c07e51de51d451de84324d5/posts" target="_blank" rel="" class="posts"><span data-v-081ef9db="" class="count post-count">发布了 8 篇专栏 · </span></a><span data-v-081ef9db="" class="count">获得点赞 380 · </span><span data-v-081ef9db="" class="count">获得阅读 32,937</span></div></div><button data-v-5789daef="" data-v-081ef9db="" class="follow-button follow">关注</button></div></div></div></a><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="banner" class="article-banner"><a data-v-fa2339b8="" data-v-6fdc8784="" st:name="link" st:state="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" class="banner-title" href="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" target="_blank">安装掘金浏览器插件</a><div data-v-fa2339b8="" data-v-6fdc8784="" class="banner-content">打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！</div></div><!----><!----><div data-v-0d823780="" data-v-fa2339b8="" class="comment-list-box" id="comment-box" data-v-6fdc8784=""><div data-v-0d823780="" class="title">评论</div><div data-v-155bc796="" data-v-0d823780="" class="comment-form comment-form"><div data-v-155bc796="" class="avatar-box"><div data-v-95ddf8f6="" data-v-39db9419="" data-v-155bc796="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></div><div data-v-155bc796="" class="form-box"><div data-v-155bc796="" class="input-box"><div data-v-cc6aae16="" data-v-155bc796="" class="auth-card"><!----><div data-v-155bc796="" data-v-cc6aae16="" contenteditable="true" spellcheck="false" placeholder="输入评论..." class="rich-input empty"><br data-v-155bc796="" data-v-cc6aae16=""></div></div><!----></div><!----></div><input data-v-155bc796="" type="file" class="hidden"></div><div data-v-1540c949="" data-v-0d823780="" class="comment-list comment-list"><div data-v-0a49d917="" data-v-1540c949="" class="image-viewer-box"><!----></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="57af46988ac247005f05846a" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/57af46988ac247005f05846a" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2017/9/8/1431ea1d08d22498bd5334408ed68658?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="57af46988ac247005f05846a" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/57af46988ac247005f05846a" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">秦子帅<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a></div><div data-v-164d9344="" class="position">Android工程师 @ 保密</div></div><div data-v-164d9344="" class="content">哈喽，你好，我是公众号「秦子帅」运营者，你的这篇文章很有价值，可以授权我在公众号转发让更多人看到吗？            
+我会在文章开头注明出处和作者</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-18T05:27:23.192Z" title="Mon May 18 2020 13:27:23 GMT+0800 (中国标准时间)" class="time">4天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><div data-v-0aa2f002="" class="item"><div data-v-406f083c="" data-v-0aa2f002="" class="sub-comment sub-comment"><div data-v-406f083c="" class="sub-comment-content-row"><div data-v-406f083c="" class="sub-comment-content-box"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box popover"><!----><a data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-406f083c="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-406f083c="" class="user-content-box"><div data-v-406f083c="" class="profie"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a="">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a><span data-v-406f083c="" class="author-badge-text">(作者)</span></a></div><div data-v-406f083c="" class="position">安卓开发 @ 天津</div></div><div data-v-406f083c="" class="content-box"><span data-v-406f083c=""> 回复 </span><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="57af46988ac247005f05846a" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/57af46988ac247005f05846a" target="_blank" rel="" class="username username be-replied" data-v-b628736a="">秦子帅<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-3.e108c68.svg" alt="lv-3"></a></a></div><!----><span data-v-406f083c="">: </span><span data-v-406f083c="" class="content">好的<img class="emoji" draggable="false" alt="👌" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/1f44c.svg"></span></div><!----><!----><div data-v-406f083c="" class="limit-all-box"><!----></div><div data-v-406f083c="" class="sub-comment-stat-box"><time data-v-406f083c="" datetime="2020-05-19T01:22:52.526Z" title="Tue May 19 2020 09:22:52 GMT+0800 (中国标准时间)" class="time">3天前</time><div data-v-406f083c="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-406f083c="" class="sub-comment-action-box"><div data-v-406f083c="" class="like-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-406f083c="" class="comment-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-406f083c="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d0b7448f265da1bd1465e0e" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5d0b7448f265da1bd1465e0e" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2019/6/28/16b9d788379bfd5e?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5d0b7448f265da1bd1465e0e" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5d0b7448f265da1bd1465e0e" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">qinxixixixi<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position">android开发</div></div><div data-v-164d9344="" class="content">6666 这么好的文章 收藏了</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-18T01:47:02.342Z" title="Mon May 18 2020 09:47:02 GMT+0800 (中国标准时间)" class="time">4天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><div data-v-0aa2f002="" class="item"><div data-v-406f083c="" data-v-0aa2f002="" class="sub-comment sub-comment"><div data-v-406f083c="" class="sub-comment-content-row"><div data-v-406f083c="" class="sub-comment-content-box"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box popover"><!----><a data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-406f083c="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-406f083c="" class="user-content-box"><div data-v-406f083c="" class="profie"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a="">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a><span data-v-406f083c="" class="author-badge-text">(作者)</span></a></div><div data-v-406f083c="" class="position">安卓开发 @ 天津</div></div><div data-v-406f083c="" class="content-box"><span data-v-406f083c=""> 回复 </span><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5d0b7448f265da1bd1465e0e" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5d0b7448f265da1bd1465e0e" target="_blank" rel="" class="username username be-replied" data-v-b628736a="">qinxixixixi<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><!----><span data-v-406f083c="">: </span><span data-v-406f083c="" class="content">感谢支持<img class="emoji" draggable="false" alt="😉" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/1f609.svg"></span></div><!----><!----><div data-v-406f083c="" class="limit-all-box"><!----></div><div data-v-406f083c="" class="sub-comment-stat-box"><time data-v-406f083c="" datetime="2020-05-18T02:56:53.312Z" title="Mon May 18 2020 10:56:53 GMT+0800 (中国标准时间)" class="time">4天前</time><div data-v-406f083c="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-406f083c="" class="sub-comment-action-box"><div data-v-406f083c="" class="like-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-406f083c="" class="comment-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-406f083c="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5cc349116fb9a032465859ad" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5cc349116fb9a032465859ad" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/3/15/170dc3883a31f272?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5cc349116fb9a032465859ad" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5cc349116fb9a032465859ad" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">伤心童话<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position">学生 @ 学生</div></div><div data-v-164d9344="" class="content">挺好的，都是些小细节</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-17T18:54:10.880Z" title="Mon May 18 2020 02:54:10 GMT+0800 (中国标准时间)" class="time">4天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><div data-v-0aa2f002="" class="item"><div data-v-406f083c="" data-v-0aa2f002="" class="sub-comment sub-comment"><div data-v-406f083c="" class="sub-comment-content-row"><div data-v-406f083c="" class="sub-comment-content-box"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box popover"><!----><a data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-406f083c="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-406f083c="" class="user-content-box"><div data-v-406f083c="" class="profie"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a="">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a><span data-v-406f083c="" class="author-badge-text">(作者)</span></a></div><div data-v-406f083c="" class="position">安卓开发 @ 天津</div></div><div data-v-406f083c="" class="content-box"><span data-v-406f083c=""> 回复 </span><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5cc349116fb9a032465859ad" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5cc349116fb9a032465859ad" target="_blank" rel="" class="username username be-replied" data-v-b628736a="">伤心童话<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><!----><span data-v-406f083c="">: </span><span data-v-406f083c="" class="content">感谢支持</span></div><!----><!----><div data-v-406f083c="" class="limit-all-box"><!----></div><div data-v-406f083c="" class="sub-comment-stat-box"><time data-v-406f083c="" datetime="2020-05-18T02:56:33.417Z" title="Mon May 18 2020 10:56:33 GMT+0800 (中国标准时间)" class="time">4天前</time><div data-v-406f083c="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-406f083c="" class="sub-comment-action-box"><div data-v-406f083c="" class="like-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-406f083c="" class="comment-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-406f083c="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5e0d67375188253aa111657f" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5e0d67375188253aa111657f" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2020/3/25/1711093332ccfc8d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5e0d67375188253aa111657f" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5e0d67375188253aa111657f" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">安安安<!----></a></div><div data-v-164d9344="" class="position"></div></div><div data-v-164d9344="" class="content">写得面面俱到呀，赞。
+搜索一下：“哭”、“brake”，有惊喜。</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-13T01:12:01.285Z" title="Wed May 13 2020 09:12:01 GMT+0800 (中国标准时间)" class="time">9天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><!----></div></div><!----></div></div><div data-v-1540c949="" class="item"><div data-v-164d9344="" data-v-1540c949="" class="comment comment"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5989d283f265da3e161a901b" class="user-popover-box popover"><!----><a data-v-164d9344="" href="https://juejin.im/user/5989d283f265da3e161a901b" target="_blank" rel="" class="user-link" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-164d9344="" data-src="https://user-gold-cdn.xitu.io/2019/1/10/1683846cfca4549f?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-164d9344="" class="content-box comment-divider-line"><div data-v-164d9344="" class="meta-box"><div data-v-b628736a="" data-v-164d9344="" st:block="userPopover" st:state="5989d283f265da3e161a901b" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-164d9344="" href="https://juejin.im/user/5989d283f265da3e161a901b" target="_blank" rel="" class="username username ellipsis" data-v-b628736a="">陈不2<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><div data-v-164d9344="" class="position">码农 @ 无名</div></div><div data-v-164d9344="" class="content">你好，文字也得很仔细，可以转发吗，谢谢</div><div data-v-164d9344="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-164d9344="" class="reply-stat"><time data-v-164d9344="" datetime="2020-05-12T09:55:07.990Z" title="Tue May 12 2020 17:55:07 GMT+0800 (中国标准时间)" class="time">10天前</time><div data-v-164d9344="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-164d9344="" class="action-box"><div data-v-164d9344="" class="like-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-164d9344="" class="comment-action action"><svg data-v-164d9344="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-164d9344="" fill="none" fill-rule="evenodd"><path data-v-164d9344="" d="M0 0h20v20H0z"></path> <path data-v-164d9344="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-164d9344="" class="action-title">回复</span></div></div></div><!----><div data-v-0aa2f002="" data-v-164d9344="" class="sub-comment-list sub-comment-list"><div data-v-0aa2f002="" class="item"><div data-v-406f083c="" data-v-0aa2f002="" class="sub-comment sub-comment"><div data-v-406f083c="" class="sub-comment-content-row"><div data-v-406f083c="" class="sub-comment-content-box"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box popover"><!----><a data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-406f083c="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-406f083c="" class="user-content-box"><div data-v-406f083c="" class="profie"><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5c07e51de51d451de84324d5" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username" data-v-b628736a="">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a><span data-v-406f083c="" class="author-badge-text">(作者)</span></a></div><div data-v-406f083c="" class="position">安卓开发 @ 天津</div></div><div data-v-406f083c="" class="content-box"><span data-v-406f083c=""> 回复 </span><div data-v-b628736a="" data-v-406f083c="" st:block="userPopover" st:state="5989d283f265da3e161a901b" class="user-popover-box"><!----><a data-v-263f3a32="" data-v-406f083c="" href="https://juejin.im/user/5989d283f265da3e161a901b" target="_blank" rel="" class="username username be-replied" data-v-b628736a="">陈不2<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-1.636691c.svg" alt="lv-1"></a></a></div><!----><span data-v-406f083c="">: </span><span data-v-406f083c="" class="content">可以，转发时须在文章首行放入文章超链接，注明转载。<img class="emoji" draggable="false" alt="😘" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/1f618.svg"></span></div><!----><!----><div data-v-406f083c="" class="limit-all-box"><!----></div><div data-v-406f083c="" class="sub-comment-stat-box"><time data-v-406f083c="" datetime="2020-05-12T12:26:23.384Z" title="Tue May 12 2020 20:26:23 GMT+0800 (中国标准时间)" class="time">10天前</time><div data-v-406f083c="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-406f083c="" class="sub-comment-action-box"><div data-v-406f083c="" class="like-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-406f083c="" class="comment-action action"><svg data-v-406f083c="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-406f083c="" fill="none" fill-rule="evenodd"><path data-v-406f083c="" d="M0 0h20v20H0z"></path> <path data-v-406f083c="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-406f083c="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div></div><!----></div></div><!----><div data-v-fa2339b8="" data-v-6fdc8784="" st:block="recommended" class="main-area recommended-area shadow"><div data-v-fa2339b8="" data-v-6fdc8784="" class="recommended-entry-list-title">相关推荐</div><!----><ul data-v-0dfe6a32="" data-v-fa2339b8="" st:block="entryList" class="entry-list recommended-entry-list" data-v-6fdc8784=""><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7cbaa518825430812f83c|1" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73826f265da771526d658" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e5cb20ce51d4526ef5f9743" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e5cb20ce51d4526ef5f9743" target="_blank" rel="" st:name="user" st:state="5e5cb20ce51d4526ef5f9743" data-v-b628736a="">好未来技术团队</a></div></li><li data-v-ecbf465a="" class="item">3小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73826f265da771526d658" target="_blank" rel="" st:name="title" class="title">DStack--基于flutter的混合开发框架</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec73826f265da771526d658#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec667ea518825431d125e4a|2" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec66555e51d4578447feb21" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="57fc43b67db2a200595ffd94" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/57fc43b67db2a200595ffd94" target="_blank" rel="" st:name="user" st:state="57fc43b67db2a200595ffd94" data-v-b628736a="">CoorChice</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec66555e51d4578447feb21" target="_blank" rel="" st:name="title" class="title">玩儿转下拉刷新，FRefresh</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">28</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec66555e51d4578447feb21#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">8</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/1723701c8b5df1ce?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec6a47af265da76fb0c359a|3" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6a1c1f265da771066c50a" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="57fc43b67db2a200595ffd94" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/57fc43b67db2a200595ffd94" target="_blank" rel="" st:name="user" st:state="57fc43b67db2a200595ffd94" data-v-b628736a="">CoorChice</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6a1c1f265da771066c50a" target="_blank" rel="" st:name="title" class="title">简单易用，FRefresh</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">11</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6a1c1f265da771066c50a#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">3</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/17237efb65d176f1?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec52b48f265da76d85cfbb9|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec52b48f265da76d53bfdf9" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5e55c4eb518825493e5347ab" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5e55c4eb518825493e5347ab" target="_blank" rel="" st:name="user" st:state="5e55c4eb518825493e5347ab" data-v-b628736a="">老孟Flutter</a></div></li><li data-v-ecbf465a="" class="item">2天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec52b48f265da76d53bfdf9" target="_blank" rel="" st:name="title" class="title">Flutter仿掘金点赞效果</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">45</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec52b48f265da76d53bfdf9#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">11</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec6c17b6fb9a047ae451bd0|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6c152e51d4578644e87ad" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="585b6e5961ff4b0063e60589" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/585b6e5961ff4b0063e60589" target="_blank" rel="" st:name="user" st:state="585b6e5961ff4b0063e60589" data-v-b628736a="">艾维码</a></div></li><li data-v-ecbf465a="" class="item">22小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6c152e51d4578644e87ad" target="_blank" rel="" st:name="title" class="title">Flutter路由管理指北</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">3</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6c152e51d4578644e87ad#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><!----><!----><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec7a9db6fb9a047d112635a|4" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec76be7518825430a7b7fce" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5835ab8ac59e0d005772f16e" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5835ab8ac59e0d005772f16e" target="_blank" rel="" st:name="user" st:state="5835ab8ac59e0d005772f16e" data-v-b628736a="">路由新</a></div></li><li data-v-ecbf465a="" class="item">5小时前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec76be7518825430a7b7fce" target="_blank" rel="" st:name="title" class="title">Flutter MVVM重构Flutter Mall</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">1</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec76be7518825430a7b7fce#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec47756f265da76ca58d67d|5" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec45f3fe51d45784635925d" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5b42c0656fb9a04fe727eb37" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5b42c0656fb9a04fe727eb37" target="_blank" rel="" st:name="user" st:state="5b42c0656fb9a04fe727eb37" data-v-b628736a="">张风捷特烈</a></div></li><li data-v-ecbf465a="" class="item">2天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Android" target="_blank" rel="" st:name="tag" st:state="5597838ee4b08a686ce2319d" class="tag">Android</a><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec45f3fe51d45784635925d" target="_blank" rel="" st:name="title" class="title">【-Flutter/Dart 语法补遗-】 sync* 和 async* 、yield 和yield* 、async 和 await</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">25</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec45f3fe51d45784635925d#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">4</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-ecbf465a="" data-src="https://user-gold-cdn.xitu.io/2020/5/20/1722f71cd543dd7f?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec628b751882557525a6656|6" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6289e6fb9a047fe5bf03f" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5d6fb3a65188251a875b1d52" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5d6fb3a65188251a875b1d52" target="_blank" rel="" st:name="user" st:state="5d6fb3a65188251a875b1d52" data-v-b628736a="">i校长</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6289e6fb9a047fe5bf03f" target="_blank" rel="" st:name="title" class="title">Flutter State Management状态管理全面分析</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">7</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec6289e6fb9a047fe5bf03f#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">3</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec686df51882543333d19fd|7" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec686966fb9a047bb6a4407" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="5b542b76e51d4533d2042b62" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/5b542b76e51d4533d2042b62" target="_blank" rel="" st:name="user" st:state="5b542b76e51d4533d2042b62" data-v-b628736a="">QiShare</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec686966fb9a047bb6a4407" target="_blank" rel="" st:name="title" class="title">Flutter 常用 Widget 介绍</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">3</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec686966fb9a047bb6a4407#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">1</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-18d129a6="" data-v-0dfe6a32="" class="entry-box"><div data-v-ecbf465a="" data-v-18d129a6="" st:block="entry" st:state="5ec62f63518825431c08e2ed|8" class="entry"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec62d6ae51d45789a7f00a7" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-ecbf465a="" class="content-box"><div data-v-ecbf465a="" class="info-box"><div data-v-ecbf465a="" class="info-row meta-row"><ul data-v-ecbf465a="" class="meta-list"><!----><!----><li data-v-ecbf465a="" class="item post">专栏</li><li data-v-ecbf465a="" class="item username clickable"><div data-v-b628736a="" data-v-ecbf465a="" st:block="userPopover" st:state="59e89bf26fb9a0451542ff54" class="user-popover-box"><!----><a data-v-ecbf465a="" href="https://juejin.im/user/59e89bf26fb9a0451542ff54" target="_blank" rel="" st:name="user" st:state="59e89bf26fb9a0451542ff54" data-v-b628736a="">TravelingLight_</a></div></li><li data-v-ecbf465a="" class="item">1天前</li><li data-v-ecbf465a="" class="item tag"><a data-v-ecbf465a="" href="https://juejin.im/tag/Flutter" target="_blank" rel="" st:name="tag" st:state="5a96291f6fb9a0535b535438" class="tag">Flutter</a></li><!----></ul></div><div data-v-ecbf465a="" class="info-row title-row"><!----><!----><a data-v-ecbf465a="" href="https://juejin.im/post/5ec62d6ae51d45789a7f00a7" target="_blank" rel="" st:name="title" class="title">Flutter: 以 aar 形式嵌入 android 中的方案和原理</a></div><div data-v-ecbf465a="" class="info-row action-row"><ul data-v-ecbf465a="" class="action-list"><li data-v-ecbf465a="" st:name="likeBtn" class="item like clickable"><a data-v-ecbf465a="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-ecbf465a="" class="count">6</span></a></li><li data-v-ecbf465a="" st:name="commentBtn" class="item comment clickable"><a data-v-ecbf465a="" href="https://juejin.im/post/5ec62d6ae51d45789a7f00a7#comment" target="_blank" rel="" class="title-box"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-ecbf465a="" class="count">2</span></a></li><li data-v-ecbf465a="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-ecbf465a="" class="share-panel"><div data-v-ecbf465a="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-ecbf465a="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-ecbf465a="" class="qr-code-box"><img data-v-ecbf465a="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="qr-code"></div></div></div></li><li data-v-ecbf465a="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-ecbf465a="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-0dfe6a32="" class="item"><!----></li><!----></ul></div><div data-v-7301278b="" data-v-fa2339b8="" st:block="sidebar" class="sidebar sidebar top sticky" data-v-6fdc8784=""><div data-v-16442876="" data-v-76358071="" data-v-7301278b="" class="sidebar-block author-block shadow"><div data-v-16442876="" class="block-title">关于作者</div><div data-v-16442876="" class="block-body"><a data-v-76358071="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="user-item item" data-v-16442876=""><div data-v-95ddf8f6="" data-v-39db9419="" data-v-76358071="" data-src="https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/4/10/17162fb9eda19ca4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><div data-v-76358071="" class="info-box"><a data-v-263f3a32="" data-v-76358071="" href="https://juejin.im/user/5c07e51de51d451de84324d5" target="_blank" rel="" class="username">Zhujiang<a data-v-6d94a6ea="" data-v-263f3a32="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-6d94a6ea="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/lv-2.f597b88.svg" alt="lv-2"></a></a><div data-v-76358071="" title="安卓开发 @ 天津" class="position">安卓开发 @ 天津</div></div></a><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" class="zan"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd" transform="translate(0 .57)"><ellipse data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.57" fill="#E1EFFF" rx="12.5" ry="12.57"></ellipse> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M8.596 11.238V19H7.033C6.463 19 6 18.465 6 17.807v-5.282c0-.685.483-1.287 1.033-1.287h1.563zm4.275-4.156A1.284 1.284 0 0 1 14.156 6c.885.016 1.412.722 1.595 1.07.334.638.343 1.687.114 2.361-.207.61-.687 1.412-.687 1.412h3.596c.38 0 .733.178.969.488.239.317.318.728.21 1.102l-1.628 5.645a1.245 1.245 0 0 1-1.192.922h-7.068v-7.889c1.624-.336 2.623-2.866 2.806-4.029z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">获得点赞<span data-v-76358071="" data-v-16442876="" class="count">380</span></span></div><div data-v-76358071="" data-v-16442876="" class="stat-item item"><svg data-v-76358071="" data-v-16442876="" width="25" height="25" viewBox="0 0 25 25" class="icon stat-view-icon"><g data-v-76358071="" data-v-16442876="" fill="none" fill-rule="evenodd"><circle data-v-76358071="" data-v-16442876="" cx="12.5" cy="12.5" r="12.5" fill="#E1EFFF"></circle> <path data-v-76358071="" data-v-16442876="" fill="#7BB9FF" d="M4 12.5S6.917 7 12.75 7s8.75 5.5 8.75 5.5-2.917 5.5-8.75 5.5S4 12.5 4 12.5zm8.75 2.292c1.208 0 2.188-1.026 2.188-2.292 0-1.266-.98-2.292-2.188-2.292-1.208 0-2.188 1.026-2.188 2.292 0 1.266.98 2.292 2.188 2.292z"></path></g></svg> <span data-v-76358071="" data-v-16442876="" class="content">文章被阅读<span data-v-76358071="" data-v-16442876="" class="count">32,937</span></span></div><!----></div></div><!----><div data-v-16442876="" data-v-f69ccc58="" data-v-518a2f8f="" data-v-7301278b="" class="sidebar-block recommend recommend-index shadow"><div data-v-16442876="" class="block-title">你可能感兴趣的小册</div><div data-v-16442876="" class="block-body"><div data-v-f69ccc58="" data-v-16442876="" class="book-list"><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2018/3/5/161f664af48f2400?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-16442876="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/3/5/161f664af48f2400?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">Web 前端面试指南与高频考题解析</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">4923人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div><div data-v-f69ccc58="" data-v-16442876="" class="book"><div data-v-f69ccc58="" data-v-16442876="" class="poster"><div data-v-95ddf8f6="" data-v-4802f2b2="" data-v-f69ccc58="" data-src="https://user-gold-cdn.xitu.io/2018/4/9/162a9c24e48d274b?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-16442876="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/4/9/162a9c24e48d274b?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-f69ccc58="" data-v-16442876="" class="info"><div data-v-f69ccc58="" data-v-16442876="" class="title">基于 JavaScript 开发灵活的数据应用</div><div data-v-f69ccc58="" data-v-16442876="" class="bought"><span data-v-f69ccc58="" data-v-16442876="" class="num">2036人已购买</span><span data-v-f69ccc58="" data-v-16442876="" class="try-read">试读</span></div></div></div></div></div></div><div data-v-16442876="" data-v-03315f79="" data-v-7301278b="" class="sidebar-block app-download-sidebar-block shadow"><!----><div data-v-16442876="" class="block-body"><a data-v-03315f79="" data-v-16442876="" class="app-link" href="https://juejin.im/app" target="_blank"><img data-v-03315f79="" data-v-16442876="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/post.7cb7332.png" class="qr-img"><div data-v-03315f79="" data-v-16442876="" class="content-box"><div data-v-03315f79="" data-v-16442876="" class="headline">下载掘金客户端</div><div data-v-03315f79="" data-v-16442876="" class="desc">一个帮助开发者成长的社区</div></div><div data-v-03315f79="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></a></div></div><div data-v-16442876="" data-v-3c6504c4="" data-v-7301278b="" class="sidebar-block wechat-sidebar-block pure"><div data-v-06f599f1="" data-v-3c6504c4="" class="wechat-banner" data-v-16442876=""><img data-v-06f599f1="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/flutter.851314d.png" class="wechat-img"></div><div data-v-3c6504c4="" data-v-16442876="" title="关闭" class="close-btn ion-close-round"></div></div><div data-v-16442876="" data-v-2998ad53="" data-v-7301278b="" class="sidebar-block related-entry-sidebar-block shadow" st:block="relatedEntrySidebarBlock"><div data-v-16442876="" class="block-title">相关文章</div><div data-v-16442876="" class="block-body"><div data-v-2998ad53="" data-v-16442876="" class="entry-list"><a data-v-2998ad53="" href="https://juejin.im/post/5ea66d64f265da480836d2b2" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">一行代码解决安卓重复点击</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">102</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">95</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5e9d16a051882573a94a34a2" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">安卓11来了，快！扶我起来</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">40</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">25</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5e95633951882573c2192501" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">暗黑模式？安卓适配一波</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">100</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">37</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5e901fff51882573bd5f3f88" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">历时三天，完成了Flutter版本的玩安卓</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">36</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">9</span></div></div></a><a data-v-2998ad53="" href="https://juejin.im/post/5ec4e269e51d4578a2553e91" target="_blank" rel="" st:name="link" class="item" data-v-16442876=""><div data-v-2998ad53="" class="entry-title">MVVM？瞎搞一波？</div><div data-v-2998ad53="" class="entry-meta-box"><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-2998ad53="" class="count">12</span></div><div data-v-2998ad53="" class="entry-meta"><img data-v-2998ad53="" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-2998ad53="" class="count">6</span></div></div></a></div></div></div><div data-v-7301278b="" class="sticky-block-box"><div data-v-16442876="" data-v-48b1e3e4="" data-v-7301278b="" class="sidebar-block catalog-block pure"><nav data-v-1a96e633="" data-v-48b1e3e4="" class="article-catalog" data-v-16442876="" style=""><div data-v-1a96e633="" class="catalog-title">目录</div><div data-v-1a96e633="" class="catalog-body"><ul data-v-1a96e633="" class="catalog-list" style="margin-top: -1084.1px;"><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-0" title="前言">前言</a><!----></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-1" title="变量">变量</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-2" title="Hello World">Hello World</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-3" title="变量的声明">变量的声明</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-4" title="var">var</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-5" title="Object">Object</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-6" title="dynamic">dynamic</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-7" title="变量的默认值">变量的默认值</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-8" title="变量 final和const">变量 final和const</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-9" title="小总结">小总结</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-10" title="内置类型">内置类型</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-11" title="概述">概述</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-12" title="num, int, double">num, int, double</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-13" title="String">String</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-14" title="bool">bool</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-15" title="List">List</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-16" title="Map">Map</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-17" title="Set">Set</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-18" title="Runes">Runes</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-19" title="Symbol">Symbol</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-20" title="方法">方法</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-21" title="定义">定义</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-22" title="可选参数">可选参数</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-23" title="可选命名参数">可选命名参数</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-24" title="可选位置参数">可选位置参数</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-25" title="注意">注意</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-26" title="匿名函数">匿名函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-27" title="闭包">闭包</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-28" title="函数别名">函数别名</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-29" title="操作符、流程控制语句、异常">操作符、流程控制语句、异常</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-30" title="操作符">操作符</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-31" title="流程控制语句">流程控制语句</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-32" title="异常">异常</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-33" title="抛出异常">抛出异常</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-34" title="捕获异常">捕获异常</a><!----></li></ul></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-35" title="类的点点滴滴">类的点点滴滴</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-36" title="构造函数">构造函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-37" title="命名构造函数">命名构造函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-38" title="重定向构造函数">重定向构造函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-39" title="初始化列表">初始化列表</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-40" title="调用超类构造函数">调用超类构造函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-41" title="常量构造函数">常量构造函数</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-42" title="工厂构造函数(Dart中的单例)">工厂构造函数(Dart中的单例)</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-43" title="Setter和Getter">Setter和Getter</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-44" title="抽象类（接口）">抽象类（接口）</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-45" title="可调用类">可调用类</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-46" title="Mixin">Mixin</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-47" title="Dart泛型">Dart泛型</a><!----></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-48" title="Dart中的库">Dart中的库</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-49" title="库-使用核心库">库-使用核心库</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-50" title="库-载入第三方库">库-载入第三方库</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-51" title="库-指定库前缀">库-指定库前缀</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-52" title="库-选择性载入">库-选择性载入</a><!----></li><li class="item d2 active"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-53" title="库-延迟载入">库-延迟载入</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-54" title="库-自定义库">库-自定义库</a><!----></li></ul></li><li data-v-1a96e633="" class="item d1"><a href="https://juejin.im/post/5eb9f75bf265da7ba0582e25#heading-55" title="总结">总结</a><!----></li></ul></div></nav></div></div></div><div data-v-b753df20="" data-v-fa2339b8="" class="article-suspended-panel article-suspended-panel" data-v-6fdc8784=""><div data-v-b753df20="" class="like-btn panel-btn like-adjust with-badge" badge="76"></div><div data-v-b753df20="" class="comment-btn panel-btn comment-adjust with-badge" badge="9"></div><div data-v-b753df20="" class="collect-btn panel-btn"><!----></div><div data-v-b753df20="" class="share-title">分享</div><div data-v-b753df20="" class="weibo-btn share-btn panel-btn"></div><div data-v-b753df20="" class="qq-btn share-btn panel-btn"></div><div data-v-b753df20="" class="wechat-btn share-btn panel-btn"><img data-v-b753df20="" src="https://juejin.im/post/5eb9f75bf265da7ba0582e25" class="wechat-qr-code-img shadow" style="display: none;"></div></div><div data-v-0a49d917="" data-v-fa2339b8="" class="image-viewer-box" data-v-6fdc8784=""><!----></div><!----></div></main></div><!----></div>
+      
+      
+      
+      <script type="text/javascript" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/runtime.cc2b750c14e4e98c0e3a.js"></script><script type="text/javascript" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/0.0b214b1cb6731ce0f8d8.js"></script><script type="text/javascript" src="./Dart语言之从入门到放弃（万字长文） - 掘金_files/1.63ca4ab7fc5bd9c1cbc0.js"></script>
+    </body></html>

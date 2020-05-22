@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-80 61 677 259" width="677" height="259">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="Arrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="16" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="400">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.11.2 
+    <dc:date>2019-09-07 11:28:15 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_18">
+        <rect x="223.75" y="108.8606" width="372" height="210" fill="white"/>
+        <rect x="223.75" y="108.8606" width="372" height="210" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_16">
+        <text transform="translate(401.902 66)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="0" y="15">UI</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <rect x="-79" y="197.9126" width="254.696" height="120.948" fill="white"/>
+        <rect x="-79" y="197.9126" width="254.696" height="120.948" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-74 249.1626)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="74.34" y="15">ShadowDOM</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <rect x="270" y="153.5" width="279.5" height="28.447998" fill="white"/>
+        <rect x="270" y="153.5" width="279.5" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(275 158.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="96.382" y="15">User Code</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <rect x="270" y="246" width="79.36" height="28.447998" fill="white"/>
+        <rect x="270" y="246" width="79.36" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(275 251)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="13.344" y="15">Vue.js</tspan>
+        </text>
+      </g>
+      <g id="Line_11">
+        <line x1="394.36194" y1="181.948" x2="332.338" y2="239.28002" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_10">
+        <line x1="270" y1="259.945" x2="185.59576" y2="259.35158" marker-end="url(#Arrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_8">
+        <rect x="203.15024" y="243.62265" width="42" height="32" fill="white"/>
+        <text transform="translate(208.15024 248.62265)" fill="black">
+          <tspan font-family="PingFang SC" font-size="16" font-weight="400" fill="black" x="0" y="17">指令</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="370.07" y="246" width="79.36" height="28.447998" fill="white"/>
+        <rect x="370.07" y="246" width="79.36" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(375.07 251)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="16" y="15">DOM</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <rect x="470.14" y="246" width="79.36" height="28.447998" fill="white"/>
+        <rect x="470.14" y="246" width="79.36" height="28.447998" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(475.14 251)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x="16.152" y="15">BOM</tspan>
+        </text>
+      </g>
+      <g id="Line_22">
+        <line x1="409.75" y1="181.948" x2="409.75" y2="236.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_23">
+        <line x1="425.13806" y1="181.948" x2="487.162" y2="239.28002" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
