@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://juejin.im/post/5e8a831cf265da48046988cb -->
+<html lang="zh-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google-site-verification" content="cCHsgG9ktuCTgWgYfqCJql8AeR4gAne4DTZqztPoirE"><meta name="google-site-verification" content="nPvn9R5NJLsZKTv5VKIbn0OmkRcJ4PC6KdDoTX3n5Mw"><meta name="apple-itunes-app" content="app-id=987739104"><meta name="baidu-site-verification" content="qiK2a1kcFc"><meta name="360-site-verification" content="4c3c7d57d59f0e1a308462fbc7fd7e51"><meta name="sogou_site_verification" content="c49WUDZczQ"><style>body {
+        font-size: 16px;
+        line-height: 2;
+      }
+      a, button, input {
+        margin: 1rem 1.5rem;
+      }
+      img {
+        width: 0;
+        height: 0;
+      }
+      #juejin {
+        overflow-x: hidden;
+      }</style><title data-vue-meta="true">类型即正义：TypeScript 从入门到实践（一） - 掘金</title><link rel="apple-touch-icon" sizes="180x180" href="https://b-gold-cdn.xitu.io/favicons/v2/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon-16x16.png"><link rel="manifest" href="https://b-gold-cdn.xitu.io/favicons/v2/manifest.json"><link rel="mask-icon" href="https://b-gold-cdn.xitu.io/favicons/v2/safari-pinned-tab.svg" color="#5bbad5"><link rel="shortcut icon" href="https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico"><meta name="msapplication-config" content="https://b-gold-cdn.xitu.io/favicons/v2/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="search" title="掘金" href="https://b-gold-cdn.xitu.io/conf/search.xml" type="application/opensearchdescription+xml"><link rel="stylesheet" href="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/ionicons.min.css"><link rel="stylesheet" href="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/iconfont.css"><link href="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/0.ca43282eb976179da109.css" rel="stylesheet"><script async="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/hm.js"></script><script async="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/analytics.js"></script><script type="text/javascript" async="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/vds.js"></script><script type="text/javascript" async="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect-v.3.2.14.js"></script><script charset="utf-8" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/4.4811a1c86fde15d0b829.js"></script><meta data-vmid="keywords" name="keywords" content="TypeScript" data-vue-meta="true"><meta data-vmid="description" name="description" content="作者：一只图雀 仓库：Github 、Gitee 图雀社区主站（首发）：图雀社区 博客：掘金、知乎、慕课 公众号：图雀社区 联系我：关注公众号后可以加图雀酱微信哦 原创不易，❤️点赞+评论+收藏 ❤️三连，鼓励作者写出更好的教程。 欢迎阅读 类型即正义，" data-vue-meta="true"></head><body><div id="juejin" data-v-2a21baac=""><div class="global-component-box" data-v-2a21baac=""><!----><div data-v-ba54b7e8="" data-v-2a21baac="" class="alert-list alert-list"></div><div data-v-78376140="" data-v-2a21baac="" class="suspension-panel suspension-panel"><button data-v-78376140="" title="回到顶部" class="btn to-top-btn" style=""><i data-v-78376140="" class="ion-android-arrow-dropup"></i></button><button data-v-78376140="" title="建议反馈" class="btn meiqia-btn" style=""><i data-v-78376140="" class="ion-chatbubble-working"></i></button></div><!----><!----><div class="emoji-barrage" data-v-c9c21dda="" data-v-2a21baac=""><!----></div><div class="book-new-user-award-popup" style="display:none;" data-v-1127fe6e="" data-v-2a21baac=""><div class="content-box" style="display:;" data-v-1127fe6e=""><div class="close ion-close-round" data-v-1127fe6e=""></div><div class="header" data-v-1127fe6e=""><div class="icon" data-v-1127fe6e=""><img src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/icon.a87e5ae.svg" data-v-1127fe6e=""></div><div class="txt" data-v-1127fe6e="">新人专享好礼</div></div><div class="desc" data-v-1127fe6e="">凡未购买过小册的用户，均可领取三张 5 折新人专享券，购买小册时自动使用专享券，最高可节省 45 元。</div><div class="tickets" data-v-1127fe6e=""><div class="ticket" data-v-1127fe6e=""><div class="ticket__inner" data-v-1127fe6e=""><div class="enjoy" data-v-1127fe6e=""><span class="new-title" data-v-1127fe6e="">小册新人 5 折券</span></div><div class="sale" data-v-1127fe6e="">最高可省 15 元</div></div></div><div class="ticket" data-v-1127fe6e=""><div class="ticket__inner" data-v-1127fe6e=""><div class="enjoy" data-v-1127fe6e=""><span class="new-title" data-v-1127fe6e="">小册新人 5 折券</span></div><div class="sale" data-v-1127fe6e="">最高可省 15 元</div></div></div><div class="ticket" data-v-1127fe6e=""><div class="ticket__inner" data-v-1127fe6e=""><div class="enjoy" data-v-1127fe6e=""><span class="new-title" data-v-1127fe6e="">小册新人 5 折券</span></div><div class="sale" data-v-1127fe6e="">最高可省 15 元</div></div></div></div><div class="remark" data-v-1127fe6e="">注：专享券的使用期限在领券的七天内。</div><div class="submit-btn" data-v-1127fe6e="">一键领取</div></div><div class="model success" style="display:none;" data-v-1127fe6e=""><div class="heading" data-v-1127fe6e="">领取成功</div><div class="content-text" data-v-1127fe6e="">购买小册时自动使用专享券</div><div class="btn-success-footer" data-v-1127fe6e=""><div class="btn-ok" data-v-1127fe6e="">知道了</div><div class="btn-ok btn-link" data-v-1127fe6e="">前往小册首页</div></div></div><div class="model fail" style="display:none;" data-v-1127fe6e=""><div class="heading" data-v-1127fe6e="">领取失败</div><div class="content-text" data-v-1127fe6e="">本活动仅适用于小册新用户</div><div class="btn-ok" data-v-1127fe6e="">知道了</div></div></div><!----><!----><div class="bind-phone-number-modal-box" data-v-76bf06d9="" data-v-2a21baac=""><div st:block="bindPhoneNumberModal" class="modal-mask" style="display:none;" data-v-76bf06d9=""></div><form class="bind-phone-number-form" style="display:none;" data-v-76bf06d9=""><i title="关闭" class="close-btn ion-close-round" data-v-76bf06d9=""></i><h1 class="title" data-v-76bf06d9="">提示</h1><h2 class="hint" data-v-76bf06d9="">根据我国<a href="http://www.cac.gov.cn/2017-08/25/c_1121541842.htm" target="_blank" style="color:#007fff">《互联网跟帖评论服务管理规定》</a>，您需要绑定手机号后才可在掘金社区内发布内容。</h2><div class="input-group" data-v-76bf06d9=""><div class="input-box" data-v-76bf06d9=""><input maxlength="64" placeholder="请输入要绑定的手机号码" value="" class="input" data-v-76bf06d9=""></div><!----><!----></div><button st:name="bindBtn" class="btn" data-v-76bf06d9="">绑定手机</button></form></div></div><!----><div data-v-0f848c07="" data-v-50ff96fb="" data-v-2a21baac="" class="view-container"><div data-v-0f848c07="" class="main-header-box"><header data-v-89995ec0="" data-v-0f848c07="" class="main-header main-header"><div data-v-89995ec0="" class="container"><a data-v-89995ec0="" href="https://juejin.im/" class="logo"><img data-v-89995ec0="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/logo.a7995ad.svg" alt="掘金" class="logo-img"><img data-v-89995ec0="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/simplify-logo.3e3c253.svg" alt="掘金" class="mobile"></a><nav data-v-89995ec0="" role="navigation" class="main-nav"><ul data-v-89995ec0="" class="nav-list"><li data-v-89995ec0="" class="main-nav-list"><div data-v-89995ec0="" class="phone-show-menu"><span data-v-89995ec0="">首页</span><div data-v-89995ec0="" class="icon ion-arrow-down-b"></div></div><ul data-v-89995ec0="" class="phone-hide"><li data-v-89995ec0="" class="nav-item link-item route-active"><a data-v-89995ec0="" href="https://juejin.im/">首页</a></li><li data-v-89995ec0="" class="nav-item link-item activities"><a data-v-89995ec0="" href="https://juejin.im/pins">沸点</a></li><li data-v-89995ec0="" class="nav-item link-item"><a data-v-89995ec0="" href="https://juejin.im/topics">话题</a></li><li data-v-89995ec0="" class="nav-item link-item book"><a data-v-89995ec0="" href="https://juejin.im/books">小册</a></li><li data-v-89995ec0="" class="nav-item link-item"><a data-v-89995ec0="" href="https://juejin.im/events/all">活动</a></li></ul></li><li data-v-89995ec0="" class="nav-item search"><form data-v-89995ec0="" role="search" class="search-form"><input data-v-89995ec0="" type="search" maxlength="32" placeholder="搜索掘金" class="search-input"><img data-v-89995ec0="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/juejin-search-icon.6f8ba1b.svg" alt="搜索" class="search-icon"></form></li><li data-v-89995ec0="" class="nav-item add"><div data-v-89995ec0="" class="add-group"><button data-v-89995ec0="" class="add-btn">写文章</button><div data-v-89995ec0="" class="more"><i data-v-89995ec0="" class="more-icon ion-android-arrow-dropdown"></i></div><ul data-v-89995ec0="" class="more-list"><li data-v-89995ec0="" class="item">发布沸点</li><!----></ul></div><!----></li><li data-v-89995ec0="" class="nav-item notification"><a data-v-89995ec0="" class="app-link" href="https://juejin.im/notification" target="_blank"><i data-v-89995ec0="" class="icon ion-android-notifications"></i><!----></a></li><li data-v-89995ec0="" class="nav-item menu"><div data-v-261e638e="" data-v-b49070bc="" data-v-89995ec0="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded immediate" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><!----><ul data-v-89995ec0="" class="nav-menu user-dropdown-list" style="display: none;"><div data-v-89995ec0="" class="nav-menu-item-group"><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0=""><i data-v-89995ec0="" class="fengwei fw-write"></i><span data-v-89995ec0="">写文章</span></a></li><!----><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0=""><i data-v-89995ec0="" class="fengwei fw-draft"></i><span data-v-89995ec0="">草稿</span></a></li></div><div data-v-89995ec0="" class="nav-menu-item-group"><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0" class="link-icon"><i data-v-89995ec0="" class="fengwei fw-person"></i><span data-v-89995ec0="">我的主页</span><!----></a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/likes"><img data-v-89995ec0="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="zan"><span data-v-89995ec0="">我赞过的</span></a></li><!----><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/collections"><img data-v-89995ec0="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="collect"><span data-v-89995ec0="">我的收藏集</span></a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/user/5a5f6102f265da3e3a6dd3b0/books?type=bought"><i data-v-89995ec0="" class="fengwei fw-bought"></i><span data-v-89995ec0="">已购</span></a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/subscribe"><i data-v-89995ec0="" class="fengwei fw-tag"></i><span data-v-89995ec0="">标签管理</span></a></li></div><div data-v-89995ec0="" class="nav-menu-item-group"><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/user/settings"><i data-v-89995ec0="" class="fengwei fw-setting"></i><span data-v-89995ec0="">设置</span></a></li><li data-v-89995ec0="" class="nav-menu-item more"><a data-v-89995ec0=""><i data-v-89995ec0="" class="fengwei fw-info"></i><span data-v-89995ec0="">关于</span><i data-v-89995ec0="" class="ion-chevron-right more-icon"></i></a><ul data-v-89995ec0="" class="nav-menu more-dropdown-list"><div data-v-89995ec0="" class="nav-menu-item-group"><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/app" target="_blank">下载应用</a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://juejin.im/about" target="_blank">关于</a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://xitu.io/jobs" target="_blank">加入我们</a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://github.com/xitu/gold-miner" rel="nofollow noopener noreferrer" target="_blank">翻译计划</a></li><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0="" href="https://bd.juejin.im/?utm_campaign=bd&amp;utm_source=web&amp;utm_medium=nav" target="_blank">合作伙伴</a></li></div></ul></li></div><div data-v-89995ec0="" class="nav-menu-item-group"><li data-v-89995ec0="" class="nav-menu-item"><a data-v-89995ec0=""><i data-v-89995ec0="" class="fengwei fw-logout"></i><span data-v-89995ec0="">登出</span></a></li></div></ul></li><!----><!----></ul></nav></div></header></div><main data-v-0f848c07="" class="container main-container"><div data-v-50ff96fb="" data-v-0f848c07="" class="view column-view"><div data-v-50ff96fb="" data-v-0f848c07="" class="main-area article-area shadow"><article data-v-50ff96fb="" itemscope="itemscope" itemtype="http://schema.org/Article" class="article" data-v-0f848c07=""><meta itemprop="url" content="https://juejin.im/post/5e8a831cf265da48046988cb"><meta itemprop="headline" content="类型即正义：TypeScript 从入门到实践（一）"><meta itemprop="keywords" content="TypeScript"><meta itemprop="datePublished" content="2020-04-06T02:28:03.432Z"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2020/4/6/1714d29b20714ac4?w=800&amp;h=359&amp;f=png&amp;s=294026"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="name" content="图雀社区"><meta itemprop="url" content="https://juejin.im/user/5b33414351882574b9694d28"></div><div itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="掘金"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://b-gold-cdn.xitu.io/icon/icon-white-180.png"><meta itemprop="width" content="180"><meta itemprop="height" content="180"></div></div><div data-v-50ff96fb="" class="author-info-block"><a data-v-50ff96fb="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="avatar-link"><div data-v-261e638e="" data-v-b49070bc="" data-v-50ff96fb="" data-src="https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-50ff96fb="" class="author-info-box"><a data-v-1a54813b="" data-v-50ff96fb="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="username username ellipsis">图雀社区<a data-v-3a430c94="" data-v-1a54813b="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-3a430c94="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a></a><div data-v-50ff96fb="" class="meta-box"><time data-v-50ff96fb="" datetime="2020-04-06T02:28:03.432Z" title="Mon Apr 06 2020 10:28:03 GMT+0800 (中国标准时间)" class="time">2020年04月06日</time><span data-v-50ff96fb="" class="views-count">阅读 2279</span><!----></div></div><button data-v-d05fee10="" data-v-50ff96fb="" class="follow-button follow">关注</button></div><div data-v-261e638e="" data-v-a98f170a="" data-v-50ff96fb="" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714d29b20714ac4?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" class="lazy thumb article-hero loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2020/4/6/1714d29b20714ac4?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1&quot;); background-size: cover;"></div><h1 data-v-50ff96fb="" class="article-title">类型即正义：TypeScript 从入门到实践（一）</h1><div data-v-50ff96fb="" data-id="5e8a93b351882573947235a9" itemprop="articleBody" class="article-content"><blockquote>
+<p>作者：一只图雀<br>
+仓库：<a target="_blank" href="https://github.com/tuture-dev/typescript-tea" rel="nofollow noopener noreferrer">Github</a> 、<a target="_blank" href="https://gitee.com/tuture/typescript-tea" rel="nofollow noopener noreferrer">Gitee</a><br>
+图雀社区主站（首发）：<a target="_blank" href="http://tuture.co/" rel="nofollow noopener noreferrer">图雀社区</a> <br>
+博客：<a target="_blank" href="https://juejin.im/user/5b33414351882574b9694d28" rel="">掘金</a>、<a target="_blank" href="https://www.zhihu.com/people/tuture-dev" rel="nofollow noopener noreferrer">知乎</a>、<a target="_blank" href="https://www.imooc.com/u/8413857/articles" rel="nofollow noopener noreferrer">慕课</a><br>
+公众号：<a target="_blank" href="https://tuture.co/images/social/wechat.png" rel="nofollow noopener noreferrer">图雀社区</a> <br>
+联系我：关注公众号后可以加图雀酱微信哦<br>
+原创不易，❤️点赞+评论+收藏 ❤️三连，鼓励作者写出更好的教程。</p>
+</blockquote>
+<p>欢迎阅读 类型即正义，TypeScript 从入门到实践系列：</p>
+<ul>
+<li><a target="_blank" href="https://juejin.im/post/5e8a82d2518825737b4ae3e0" rel="">《类型即正义：TypeScript 从入门到实践（序章）》</a></li>
+<li><a target="_blank" href="https://juejin.im/post/5e8a831cf265da48046988cb" rel="">《类型即正义：TypeScript 从入门到实践（一）》</a></li>
+<li><a target="_blank" href="https://juejin.im/post/5e8b3153e51d4546f70d0d3c" rel="">《类型即正义：TypeScript 从入门到实践（二）》</a></li>
+</ul>
+<h2 class="heading" data-id="heading-0">源起</h2>
+<p>JavaScript 已经占领了世界上的每一个角落，能访问网页的地方，基本上就有 JavaScript 在运作，然而 JavaScript 因为其动态、弱类型、解释型语言的特性、出错的调用栈隐蔽，使得开发者不仅在调试错误上花费大把时间，在团队协作开发时理解队友编写代码也极其困难。TypeScript 的出现极大的解决了上面的问题，TypeScript -- 一个 JavaScript 的超集，它作为一门编译型语言，提供了对类型系统和最新 ES 语法的支持，使得我们可以在享受使用 ES 最新语法的编写代码的同时，还能在写代码的过程中就规避很多潜在的语法、语义错误；并且其提供的类型系统使得我们可以在团队协作编写代码时可以很容易的了解队友代码的含义：输入和输出，大大提高了团队协作编写大型业务应用的效率。在现代 JavaScript 世界中，已经有很多大型库在使用 TypeScript 重构，包括前端三大框架：React、Vue、Angular，还有知名的组件库 antd，material，在很多公司内部的大型业务应用也在用 TypeScript 开发甚至重写现有的应用，所以如果你想编写大型业务应用或库，或者想写出更利于团队协作的代码，那么 TypeScript 有十足的理由值得你学习！本文是 TypeScript 系列教程的第一篇，主要通过使用 antd 组件库实战演练一个 TypeScript 版本 React TodoList 应用来讲解 TypeScript 的语法，使得你能在学会语法的同时还能完成一个实际可运行的项目。<br></p>
+<blockquote>
+<p>本文所涉及的源代码都放在了 <a target="_blank" href="https://github.com/tuture-dev/typescript-tea" rel="nofollow noopener noreferrer">Github</a>&nbsp; 或者 <a target="_blank" href="https://gitee.com/tuture/typescript-tea" rel="nofollow noopener noreferrer">Gitee</a> 上，如果您觉得我们写得还不错，希望您能给<strong>❤️这篇文章点赞+<a target="_blank" href="https://github.com/tuture-dev/typescript-tea" rel="nofollow noopener noreferrer"><strong>Github</strong></a></strong> 或 <strong><a target="_blank" href="https://gitee.com/tuture/typescript-tea" rel="nofollow noopener noreferrer">Gitee</a>仓库加星❤</strong>️哦~</p>
+</blockquote>
+<blockquote>
+<p>此教程属于 <a target="_blank" href="https://github.com/tuture-dev/react-roadmap" rel="nofollow noopener noreferrer">React 前端工程师学习路线</a>的一部分，欢迎来 Star 一波，鼓励我们继续创作出更好的教程，持续更新中~</p>
+</blockquote>
+<p><a name="1hOIT"></a></p>
+<h2 class="heading" data-id="heading-1">代码准备</h2>
+<p><br>我们接下来要讲解的整个 **类型即正义：TypeScript 从入门到实践&nbsp;**系列是基于一个实战项目的，这个实战项目会贯穿整个系列教程的讲解周期，所以我们要尽可能全且精炼的讲解 TypeScript 语法知识的同时，还我们需要一个恰到好处的实战项目，因为准备项目代码的过程不是系列教程讲解的主线，所以如果你有兴趣学习如何搭建 TypeScript React 的开发环境，那么可以学习一下我们的序言教程：</p>
+<p><strong>类型即正义：TypeScript 从入门到实践（序章）</strong><br>**<br>如果你已经对 TypeScript 如何搭建 React 开发环境，配置 Ant Design 组件库等很熟悉，或者不太感兴趣，那么你也可以直接克隆我们为你准备好的代码：</p>
+<p>如果你偏爱 码云，那么你可以运行如下命令来获取初始代码：</p>
+<pre><code class="hljs bash copyable" lang="bash">git <span class="hljs-built_in">clone</span> -b initial-code https://gitee.com/tuture/typescript-tea.git
+<span class="hljs-built_in">cd</span> typescript-tea &amp;&amp; npm install &amp;&amp; npm start
+<span class="copy-code-btn">复制代码</span></code></pre><p>如果你偏爱 Github，那么你可以运行如下命令来获取初始代码：</p>
+<pre><code class="hljs bash copyable" lang="bash">git <span class="hljs-built_in">clone</span> -b initial-code git@github.com:tuture-dev/typescript-tea.git
+<span class="hljs-built_in">cd</span> typescript-tea &amp;&amp; npm install &amp;&amp; npm start
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>通过上面的命令克隆初始代码之后，然后把项目跑起来，你应该可以看到如下效果：<br>
+<br></p><figure><img alt="image.png" class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714d102302fa668?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="840" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/1714d102302fa668"><figcaption></figcaption></figure><br>
+<br>Boom！！！一个暗黑模式的 TodoList，心动了嘛？不管心不心动，你都可以愉快的开始接下来的 TypeScript 学习了✌️。<br><p></p>
+<p><a name="VBOhd"></a></p>
+<h2 class="heading" data-id="heading-2">TypeScript 初探</h2>
+<p><br>正式 TS 时间☕️，TS 是一门静态编程语言，它是 JavaScript 的超集。首先我们先来解释一下什么是编程语言，然后我们再来引出 TypeScript 是什么。<br></p>
+<p><a name="ea14ce0c"></a></p>
+<h3 class="heading" data-id="heading-3">编程语言是什么？</h3>
+<p><br>那么什么是编程语言了？编程语言是用来定义计算机程序的形式语言。它是一种被标准化的交流技巧，用来向计算机发出指令。<br>
+<br>我们拿 JS 来举例，一门标准的编程语言一般包含如下几个部分：<br></p>
+<ul>
+<li>数据结构：如原始数据类型 string/number/void 等，非原始数据类型 array/object/enum 等</li>
+<li>控制结构：如 if/else 、 switch 、while、for 循环等</li>
+<li>组织结构：如 函数、类</li>
+<li>特性：如 JS 的原型链</li>
+<li>常用的 API：如 isNaN 判断是不是非数字，toFixed 将小数进行四舍五入操作</li>
+<li>运行环境：如 浏览器端的 JavaScript、服务器端的 Node</li>
+</ul>
+<p><br>其中前五种又称为语言内核，也就是我们常常喊的 ECMAScript 2015，或者 ES6；最后一个运行环境在浏览器端结合 BOM/DOM 即成为 JavaScript，在服务器端结合一些文件/网络的操作即成为 Node。<br></p>
+<p><a name="2499ad76"></a></p>
+<h3 class="heading" data-id="heading-4">TypeScript 是什么？</h3>
+<p><br>而 TS，作为 JavaScript 的超集，包含着两类属性：<br></p>
+<ul>
+<li>属于 JavaScript 端的编程语言特性，使得我们可以执行各种 JavaScript 相关的操作：变量声明、编写 if/else 控制流、使用循环处理重复任务、使用函数执行特定的任务块、使用类来组织和复用代码和模拟真实世界的操作等，还有新特性比如：装饰器、Iterator、Generator 这些。这类特性在此篇文章中，我们默认你已经很清楚了，不会做过多的讲解。</li>
+<li>属于 TypeScript 端独有的特性：类型，它也具有一套编程语言的特性，比如标志一个变量是 string 类型，一个函数的参数有三个，它们的类型分别是 string/number/boolean，返回类型为 never等，这是基础类型，我们甚至可以基于类型进行编程，使用类型版本的控制、组织结构来完成高级类型的编写，进而将类型附着在 JavaScript 对应的编程语言特性上，将 JS 静态化，使得我们可以在编译期间就能发现类型上的错误，这一特性是我们本篇文章的重点。</li>
+</ul>
+<p><br>好的，读到这里，相比很多读者已经清楚了，其实 TS 没什么神秘的，主要就是设计了一套类似编程语言的类型语言，然后将这些类型附着在原 JavaScript 的语言之上，给其加上类型限制使得其静态化，进而可以快速的在编写时发现很多潜在的问题，帮助我们编写错误率更低，更适合团队协作的代码，这也是 TypeScript 适合编写大型的业务应用的原因。<br></p>
+<p><a name="522ffb49"></a></p>
+<h3 class="heading" data-id="heading-5">类型语言之数据结构</h3>
+<p><br>其中 TS 数据结构又包含原始类型、非原始类型、特殊类型和高级类型等几类。我们将结合在 TS 类型侧的定义，以及附着在 JS 上进行实战来讲解。<br></p>
+<p><a name="c20eec59"></a></p>
+<h4 class="heading" data-id="heading-6">原始类型</h4>
+<p><a name="ff1a2e4b"></a></p>
+<h5 class="heading" data-id="heading-7">TS 类型侧的定义</h5>
+<p><br>和 JS 中的原始数据类型一样，TS 对应着一致的类型定义，包括下面八种：<br></p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>void</li>
+<li>symbol</li>
+<li>bigint</li>
+</ul>
+<blockquote>
+<p><strong>提示</strong>
+其中前六种是 ES5 中就有的，symbol 从 ES6 开始引入，bigint 是 ES2020 新引进的。</p>
+</blockquote>
+<p><br>上面是 TS 的原始类型，我们之前提到 TS 就是将类型附着在 JS 上，将其类型化，那么我们来看看上面的原始类型如何附着在 JS 上，将其类型化。<br></p>
+<p><a name="9ae60609"></a></p>
+<h5 class="heading" data-id="heading-8">附着在 JS 上的实战</h5>
+<p><br>TS 通过独特的<strong>冒号语法</strong>来将其类型侧定义的类型附着在 JS 上，我们来看几个例子：<br>
+<br>用 JS 语言来写图雀社区的 Slogan，我们一般会这么写：<br></p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">const</span> tutureSlogan = <span class="hljs-string">'图雀社区，汇聚精彩的免费实战教程'</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>我们可以确定，这句 Slogan 是一个 string 类型的，所以我们用对应的 TS 类型附着在其变量定义上如下：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> tutureSlogan: <span class="hljs-built_in">string</span> = <span class="hljs-string">'图雀社区，汇聚精彩的免费实战教程'</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>这样我们就给原 JS 的 <code>tutureSlogan</code> &nbsp;变量加上了类型定义，它是一个 <code>string</code> &nbsp;类型的变量，通过这样的操作，原 JS 变量的类型就被静态化了，在初始化时，就不能再赋值其他的类型给这个 <code>tutureSlogan</code> 变量了，比如我们将 <code>number</code> 类型的字面量赋值给 <code>tutureSlogan</code> ，就会报错：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> tutureSlogan: <span class="hljs-built_in">string</span> = <span class="hljs-number">5201314</span> <span class="hljs-comment">// 报错 Type '5201314' is not assignable to Type 'string'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>这就是 TS 的强大之处，当团队编码时事先约定好数据的类型，那么后续编写并调用这些设置好类型的变量时就会强制起约束作用，就像上面的代码一样，如果给 <code>tutureSlogan</code> 赋值 &nbsp;<code>5201314</code> 就会报错，其实你大可克制一点对吧😌，给 <code>5201314</code> 加个限制，两边带上引号 <code>'5201314'</code> 问题就迎刃而解了，爱也可以是克制🤓。<br></p>
+<blockquote>
+<p><strong>提示</strong>
+有些细心的同学可能对上面的报错信息有点不能理解，对于报错信息的后半段类型 <code>string</code> 可能理解，因为我们给 <code>tutureSlogan</code> 限制了 <code>string</code> 类型，但是对于我们的赋值 <code>5201314</code> ，它原本是一个 JS 的 number 类型的字面量，为什么也成了 <code>Type</code> 了？
+那是因为，TS 引擎在对语句进行编译的时候，会对变量赋值两端做一个类型推理，比如对赋值语句的右侧 <code>5201314</code> ，会将其推理成 <code>5201314</code> 这个类型，它是一个属于 <code>number</code> 类型的一个特殊的 <code>number</code> 类型，可以被分配（<code>assignable</code> )给 <code>number</code> 类型的变量，这里的 <code>assignable</code> 是可分配的意思，就是一个子类型可以被分配给一个父类型，比如数字 1 可以被分配给 number 数字类型，但因为 number 类型和 string 类型是冲突的，所以这里报错了。
+这里读者可能会有感觉了就是，你写的 JS 语句，加上类型定义之后，在 TS 编译器的世界里，一切皆类型了，它会以一种类型的视角去看待原 JS 语句，比如上面的语句，在 TS 编译器眼里，就是 <code>5201314</code> 类型和 <code>string</code> 类型的一个比较过程，如果比较一致，那么好的，我 TS 编译器今天就放你一马，让你逍遥快活。</p>
+</blockquote>
+<p><a name="5db9fd7c"></a></p>
+<h5 class="heading" data-id="heading-9">小结</h5>
+<p><br>我们上面说到了 TS 的原始类型，一共有八个之多，并且通过其中的 <code>string</code> 类型来讲解了如何将 TS 类型附着在原 JS 语法上以静态化 JS 语言，剩下的 7 个原始类型的用法和 <code>string</code> 类型类似，我们将在之后的讲解中逐渐用到其中的类型。<br></p>
+<p><a name="eeda045e"></a></p>
+<h4 class="heading" data-id="heading-10">非原始类型</h4>
+<p><a name="ff1a2e4b-1"></a></p>
+<h5 class="heading" data-id="heading-11">TS 类型侧的定义</h5>
+<p><br>同样的 JS 中的非原始数据类型一样，TS 中也存在非原始类型，表示出了八种原始类型之外的类型，非原始类型也称为是 <code>object</code> 类型。<br>
+<br>实际上 TS 中还有几个常见的非原始类型，例举如下：<br></p>
+<ul>
+<li>array</li>
+<li>tuple</li>
+<li>enum</li>
+</ul>
+<p><br>且因为它们属于 <code>object</code> 类型，所以 <code>object</code> 类型实际上就代表了非原始类型。在上面的三个类型以及其父类型 <code>object</code> 中，<code>array</code> 和 <code>object</code> 其实我们应该有点熟悉，至于 <code>tuple</code> 和 <code>enum</code> 则是 TS 中新增的类型，JS 中正式提案中目前是没有的。讲完了类型侧定义，我们马上来实践一下上面的 <code>array</code> 和 <code>enum</code> 非原始类型。<br></p>
+<p><a name="f2a59884"></a></p>
+<h5 class="heading" data-id="heading-12">array 类型附着实战</h5>
+<p><br>其中 <code>array</code> 类型我们比较熟悉，但这里有个不同就是之前我们的 JS 因为是动态语言，所以一个数组里面可以有各种不同的数据类型项，比如我们看如下 JS 语句：<br></p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">'1'</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'3'</span>];
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，从 TS 的角度去看这个数组变量 <code>arr</code> 所包含的类型，存在字符串类型 <code>'1'</code> 和 <code>'3'</code> ，以及数字类型 <code>2</code> 。但 TS 总的数组类型要求数组中的元素都是同一个类型，不允许动态变化，比如我们为上面的数组变量 <code>arr</code> 声明类型应该如下：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> arr: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span>];
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，我们给变量 <code>arr</code> 声明了 <code>string[]</code> 类型，即一个 <code>string</code> 类型后面跟着一个数组标志，表示是字符串数组类型，当声明了 <code>string[]</code> 类型之后，我们需要把之前的数组 <code>2</code> 改成字符串 <code>'2'</code> 。<br>
+<br>我们注意到 <code>array</code> 类型，它要求数组中每项的类型都一样，一般应用在数组的长度未知的情况，用特定的类型，比如 <code>string</code> 类型来约束数组的每一项。<br>
+<br>然而从 JS 转过来的同学大多数同学可能对这个 <code>array</code> 类型不适应了，我们 JS 的同学经常会遇到编写一个数组，其中的多项的类型不一样，就和我们上面的 JS <code>arr</code> 的项一样，既有 <code>string</code> 类型又有 <code>number</code> 类型，那这该怎么办了？还好！TS 的设计者也为我们考虑到了这一点，那就是我们下面要讲到的 <code>tuple</code> &nbsp;（元组）类型。<br></p>
+<p><a name="d122daca"></a></p>
+<h5 class="heading" data-id="heading-13">tuple 类型附着实战</h5>
+<p><br>大家可能对 <code>tuple</code> （元组）类型很陌生了，其实元组是一种特殊的数组类型，它主要用于这样的场景：“一个数组的项数已知，其中每项的类型也已知”，这句话说起来可能比较绕，我们用上面讲数组的例子来讲元组：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">'1'</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'3'</span>];
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>我们知道上面的数组第一项和第三项的类型为 <code>string</code> 类型，第二项的类型为 <code>number</code> 类型，现在我们要给这个 <code>arr</code> 附着一个类型，使得其静态化。<br>
+<br>这个条件满足我们上面说的元组的适用场景，我们通过给 <code>arr</code> 一个对应的元组类型，让我们可以保持上面的写法不变：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> arr: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">string</span>] = [<span class="hljs-string">'1'</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'3'</span>];
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，元组就是形如 <code>[type1, type2, type3, ...., typen]</code> 这样数组长度已知，且类型已知的情况，其中 <code>type1</code> 到 <code>typen</code> 中所有的类型都可以不一样。<br></p>
+<p><a name="5db9fd7c-1"></a></p>
+<h5 class="heading" data-id="heading-14">小结</h5>
+<p><br>在这一小结中我们讲解了一下什么是非原始类型，然后说明了在 TS 中有四种非原始类型，其中有一种代表非原始类型 <code>object</code> ，然后剩下的三种属于 <code>object</code> 类型。<br>
+<br>接着我们通过实践讲解了 <code>array</code> 和 <code>tuple</code> 类型，对于 <code>enum</code> 类型和 <code>object</code> 类型本身，我们将留在之后的章节来讲，敬请期待✌️。<br></p>
+<p><a name="bfc492a9"></a></p>
+<h4 class="heading" data-id="heading-15">特殊类型</h4>
+<p><br>TS 中还有几个常用的特殊类型，它们是 <code>any</code> 、<code>unknown</code> 和 <code>never</code> ，其中 <code>never</code> 类型一般会伴随着和函数的类型声明一起使用，所以我们将 <code>never</code> 类型的时候会提到函数的类型如何进行声明。<br>
+<br>接下来我们来讲一讲这三个类型的含义和应用。<br></p>
+<p><a name="2cc7bccf"></a></p>
+<h5 class="heading" data-id="heading-16">any 类型定义与实战</h5>
+<p><br><code>any</code> 的字面含义是 “任何”，主要用于在编码的时候不知道一个变量的类型，所以先给它加一个 <code>any</code> 类型定义，表示它可以是任何类型，一般留待后续确认此变量类型之后再将 <code>any</code> 改为具体的类型。<br>
+<br>我们来看一个例子，比如我们有下面一段 TS 变量定义语句：<br></p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">let</span> demand: any;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>因为有时候产品给一个需求，要我们去开发一个新功能，给了设计稿，但是没交接清楚，对于设计稿有一些内容我们想提前做，但是因为不清楚具体的类型，比如这里的 <code>demand</code> ，所以我们这里给 <code>demand</code> 一个 <code>any</code> 类型，然后继续做其他的内容，这样既不会出错，也不会影响其他的开发进度。<br>
+<br>等到产品把具体的上下文交代清楚了，诶！我们清楚了知道这个 <code>demand</code> 的类型了，我们就可以回过头来给其附着一个严格的类型定义，比如我们知道它是 <code>string</code> 类型，那么我们再返回来对其修改如下：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">let</span> demand: <span class="hljs-built_in">string</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>就是这样，<code>any</code> 的应用场景大多是这样的。但是玩 TS 的朋友要小心哦，不要一碰到不确定的就写个 <code>any</code> 类型，然后写了之后还不改，那就把 TS 用成了 AnyScript 了，这就和 JS 一样了😉。所以你看呀，TS 的优秀之处在于，你完全可以在 TS 的环境中写 JS 还能享受 TS 带来的各种静态语言的优势，所以这么受欢迎也是可以理解滴。<br></p>
+<p><a name="ddc0e650"></a></p>
+<h5 class="heading" data-id="heading-17">unknown 类型定义与实战</h5>
+<p><br><code>unknown</code> 类型和 <code>any</code> 都可以表示任何类型，应用场景也和上面类型，但是它更安全。那么具体安全在哪里了？我们通过一个例子来看一看：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">let</span> demandOne: <span class="hljs-built_in">any</span>;
+<span class="hljs-keyword">let</span> demandTwo: unknown;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>我们拿到了开发需求，但是不清楚具体类型又打算继续开发时，上面两种情况都可以使用，但是当我们具体使用这两个变量的时候，<code>any</code> 类型的变量是可以进行任意进行赋值、实例化、函数执行等操作，但是 <code>unknown</code> 只允许赋值，不允许实例化、函数执行等操作，我们来看个例子：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript">demandOne = <span class="hljs-string">'Hello, Tuture'</span>; <span class="hljs-comment">// 可以的</span>
+demandTwo = <span class="hljs-string">'Hello, Ant Design'</span>; <span class="hljs-comment">// 可以的</span>
+
+demandOne.foo.bar() <span class="hljs-comment">// 可以的</span>
+demandTwo.foo.bar() <span class="hljs-comment">// 报错</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，<code>unknown</code> 类型只允许赋值操作，不允许对象取值（Getter) &nbsp; 、函数执行等操作，所以它更安全。<br></p>
+<p><a name="ce25ac57"></a></p>
+<h5 class="heading" data-id="heading-18">never / 函数类型定义与实战</h5>
+<p><br><code>never</code> 的字面意思是 “永不”，在 TS 中代表不存在的值类型，一般用于给函数进行类型声明，函数绝不会有返回值的时候使用，比如函数内抛出错误，我们首先看个例子将讲解一下如何给函数进行类型声明，然后接着我们讲 &nbsp;<code>never</code> 类型如何使用：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">responseError</span>(<span class="hljs-params">message</span>) </span>{
+  <span class="hljs-comment">// ... 具体操作，接收信息，抛出错误</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>对于上面的函数，我们可以使用箭头函数的形式把它抽象成为形如 <code>(args1, args2, ... , argsn) =&gt; returnValue</code> ，我们主要关注点在于函数的输入和输出，所以我们在类型声明的时候把函数的输入参数的类型和输出结果的类型定义好就可以了。<br>
+<br>我们注意到上面我们定义的函数有一个参数： <code>message</code>&nbsp; ，并且函数体内根据 <code>message</code>&nbsp;抛出对应的错误，那么我们来给它进行类型声明如下：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">responseError</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">never</span> </span>{
+  <span class="hljs-comment">// ... 具体操作，接收信息，抛出错误</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到我们同样使用了 TS 的冒号语法来进行函数参数和返回值的类型定义，因为 <code>message</code>&nbsp; 一般是一个字符串 ID，所以我们给它 <code>string</code> 类型，而这个函数绝不会有返回值，只是单纯的抛出错误，所以我们给返回值一个 <code>never</code> 类型。<br></p>
+<p><a name="d8e6b2e7"></a></p>
+<h4 class="heading" data-id="heading-19">动手实践</h4>
+<p><br>基本了解了类型语言的数据结构之后，我们马上来写一点 React 代码来实践我们学到的知识。<br>
+<br>我们之前准备的代码中可以看到，有两个假数据数组 <code>todoListData</code> 和 <code>userList</code> ，我们使用之前学到的知识来给这两个数组进行类型定义，打开 <code>src/App.tsx</code> 对其中的内容作出对应的修改如下：<br></p>
+<pre><code class="hljs tsx copyable" lang="tsx">// ...
+interface Todo {
+  user: string;
+  time: string;
+  content: string;
+  isCompleted: boolean;
+}
+
+interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+const todoListData: Todo[] = [
+  {
+    content: "图雀社区：汇聚精彩的免费实战教程",
+    user: "mRcfps",
+    time: "2020年3月2日 19:34",
+    isCompleted: false
+  },
+  // ...
+];
+
+const userList: User[] = [
+  // ...
+];
+
+// ...
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，上面我们定义了两个 <code>interface</code> &nbsp;Todo 和 User，然后以数组类型的方式对 <code>todoListData</code> 和 <code>userList</code> 进行注解，表示 <code>todoListData</code> 是 <code>Todo[]</code> 类型，<code>userList</code> 是 <code>User</code> 类型。<br>
+<br>这里的 <code>interface</code> 我们还没用提到，我们将马上在后面讲到，可以理解它类似 JS 中的对象，用来组织一组类型，就比如我们这里 &nbsp;<code>todoList</code> 中单个元素实际上是包含四个属性的对象，其中前三个属性为 <code>string</code> 原始类型，最后一个属性为 <code>boolean</code> 类型，所以我们为了给 单个对象元素进行类型注解，我们使用了 <code>interface</code> 。<br></p>
+<p><a name="09750372"></a></p>
+<h2 class="heading" data-id="heading-20">枚举和接口</h2>
+<p><br>在上一节中我们提到了 <code>interface</code> ，当时没有细讲，这一节我们就先来细细说一下 <code>interface</code> 是什么？<br></p>
+<p><a name="Interface"></a></p>
+<h3 class="heading" data-id="heading-21">Interface</h3>
+<p><br>它相当于类型中的 JS 对象，用于对函数、类等进行结构类型检查，所谓的结构类型检查，就是两个类型的结构一样，那么它们的类型就是兼容的，这在计算机科学的世界里也被成为 “鸭子类型”。<br></p>
+<blockquote>
+<p><strong>提示</strong>
+<strong>什么鸭子类型？</strong>
+当看到一只鸟走起来像鸭子、游泳起来像鸭子、叫起来也像鸭子，那么这只鸟就可以被称为鸭子。</p>
+</blockquote>
+<p><br>我们马上来看一个例子了解一个 <code>Interface</code> 是怎么样的，比如我们之前对象 <code>Todo</code> ，一个 Todo 对象如下：<br></p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">const</span> todo = {
+  <span class="hljs-attr">content</span>: <span class="hljs-string">'图雀社区，汇聚精彩的免费技术教程'</span>;
+  user: <span class="hljs-string">'mRcfps'</span>,
+  <span class="hljs-attr">time</span>: <span class="hljs-string">'2020年3月2日 19:34'</span>,
+  <span class="hljs-attr">isCompleted</span>: <span class="hljs-literal">false</span>,
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>现在我们要这个 todo 做一个类型注解，根据之前提到的 “鸭子类型” 的方式，我们可以定义一个 Interface 来为它做注解：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> Todo {
+  content: <span class="hljs-built_in">string</span>;
+  user: <span class="hljs-built_in">string</span>;
+  time: <span class="hljs-built_in">string</span>;
+  isCompleted: <span class="hljs-built_in">boolean</span>;
+}
+
+<span class="hljs-keyword">const</span> todo: Todo = {
+ <span class="hljs-comment">// ...</span>
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到我们的接口 <code>Todo</code> 内容有四个字段，并且标注了这四个字段的类型，比如 <code>content</code> 为 <code>string</code> ，这个接口的样子和 <code>todo</code> 对象是一样的，所以用 Interface &nbsp;<code>Todo</code> &nbsp;来注解 <code>todo</code> 是可行的，用 VSCode 的同学，应该可以看到我们这样写之后，编辑器里面没有抛出异常。<br></p>
+<p><a name="c2a37b74"></a></p>
+<h4 class="heading" data-id="heading-22">可选属性</h4>
+<p><br>上面我们讲到 Interface 是用来注解 对象，函数等，那么我们就有一个场景，一个对象里面的某些参数我们可能没有，比如一个待办事项 Todo，有时候没有设置 <code>time</code> 时间属性，那么修饰这样一个对象我们该怎么办了？幸好 TS 给我们提供了可选属性这样一个方便的属性，使得我们可以方便解决上面的问题，我们来看一下可选属性该怎么写，假如我们上面的那个例子，<code>time</code> 是可选的，那么我们可以写出如下这样：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> Todo {
+  content: <span class="hljs-built_in">string</span>;
+  user: <span class="hljs-built_in">string</span>;
+  time?: <span class="hljs-built_in">string</span>;
+  isCompleted: <span class="hljs-built_in">boolean</span>;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>我们看到，只需要在属性类型修饰冒号左边加一个问号就可以了，这个时候我们就告诉 TS 编译器这个 <code>time</code> 属性是可选的一个类型，所以我们用上面的 Interface Todo 来注解一下没有 <code>time</code> 属性的 <code>todo</code> 对象如下：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> todo: Todo = {
+  content: <span class="hljs-string">'予力内容创作，加速技术传播'</span>,
+  user: <span class="hljs-string">'pftom'</span>,
+  isCompleted: <span class="hljs-literal">false</span>,
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，使用 VSCode 来跟着教程敲的同学应该发现上面的内容没有错误，类型检查通过了。<br></p>
+<p><a name="c17fa77c"></a></p>
+<h4 class="heading" data-id="heading-23">只读属性</h4>
+<p><br>TS 的 Interface 还有一些额外的属性比如只读属性（readonly），表示用相关带有只读属性的接口对某个 JS 元素做类型注解的时候，这个 JS 元素相关的属性被注解为只读属性时，我们之后不可以修改这个属性了，我们来看一个例子：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> Todo {
+  content: <span class="hljs-built_in">string</span>;
+  readonly user: <span class="hljs-built_in">string</span>;
+  time?: <span class="hljs-built_in">string</span>;
+  isCompleted: <span class="hljs-built_in">boolean</span>;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到只读属性的添加就是在属性之前加上 <code>readonly</code> 关键字，就可以将 Interface 中的属性标志为已读的，我们来试验一下这个只读效果：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> todo: Todo = {
+  content: <span class="hljs-string">'予力内容创作，加速技术传播'</span>,
+  user: <span class="hljs-string">'pftom'</span>,
+  isCompleted: <span class="hljs-literal">false</span>,
+}
+
+todo.user = <span class="hljs-string">'mRcfps'</span>
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>当我们进行上面的修改操作之后，编辑器内会报错：<br>
+<br></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2020/4/6/1714d1023226e222?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1220" data-height="458" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/1714d1023226e222"><figcaption></figcaption></figure><br><p></p>
+<p><a name="45ec6610"></a></p>
+<h4 class="heading" data-id="heading-24">多余属性检查</h4>
+<p><br>我在在 JS 中经常会遇到一个对象，一开始我们知道它有是哪个属性，但是它的属性却可以动态增加，比如我们的 <code>todo</code> 可能还存在 <code>priority</code> 优先级这样一个属性，那么我们如何定义一个可以注解动态增加属性对象的 Interface 了?<br>
+<br>所幸 TS 提供一个多余属性检查的写法，使得上面的问题我们也可以解决，我们来看一下一个多余属性教程该怎么定义：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> Todo {
+  isCompleted: <span class="hljs-built_in">boolean</span>;
+  [propName: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>使用类似上面 JS 中的动态属性赋值的方式我们就可为 <code>Todo</code> 接口加上多余属性检查，这里我们将其注解为一定拥有 &nbsp;<code>isCompleted</code> 属性，其他的属性可以动态添加，因为动态添加的属性的值类型我们不清楚，所以我们用 <code>any</code> 来表示值类型，它可以是任意类型。我们马上来试验一下：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">const</span> todo: Todo = {
+  content: <span class="hljs-string">'予力内容创作，加速技术传播'</span>,
+  isCompleted: <span class="hljs-literal">false</span>,
+}
+
+todo.user = <span class="hljs-string">'pftom'</span>;
+todo.time = <span class="hljs-string">'2020-04-04'</span>;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，上面我们我们的 todo 在定义的时候只有两个属性，后面我们额外添加了两个属性，发现编辑器里面也不会报错，这就是多余属性检查的魅力。<br></p>
+<p><a name="Enum"></a></p>
+<h3 class="heading" data-id="heading-25">Enum</h3>
+<p><br>枚举是 TS 中独有的概念，在 JS 中没有，主要用于帮助定义一系列命名常量，常用于给一类变量做类型注解，它们的值是一组值里面的某一个，比如我们应用中参与创建待办事项的用户只有五个人，那么在创建待办事项时，此事项的所属用户是五人中的某一人。<br>
+<br>我们马上来看一个例子，我们的将这五个用户放到枚举里面：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">enum</span> UserId {
+  tuture,
+  mRcfps,
+  crxk,
+  pftom,
+  holy
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>进而我们可以改进一下我们在上节 &nbsp;Interface 里面的 <code>Todo</code> 接口，给它的 <code>user</code> 字段一个更精确的类型注解：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> Todo {
+  content: <span class="hljs-built_in">string</span>;
+  user: UserId;
+  time: <span class="hljs-built_in">string</span>;
+  isCompleted: <span class="hljs-built_in">boolean</span>;
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>通过上面的例子我们可以看到，<code>todo</code> &nbsp;里面的 <code>user</code> 字段应该是五人之一，它有可能是 <code>tuture</code> ，也有可能是 <code>mRcfps</code> ，我们不知道，所以我们写了一个枚举 <code>UserId</code> ，并用它来注解 <code>Todo</code> 的 <code>user</code> 字段。<br></p>
+<p><a name="abd98536"></a></p>
+<h4 class="heading" data-id="heading-26">数字枚举</h4>
+<p><br>上面我们的 UserId 中几个枚举值其实都对应着相应的数字，比如 <code>UserId.tuture</code> 它的值是数字 <code>0</code> ，<code>UserId.mRcfps</code> 它的值是数字 <code>1</code> ，以此类推，后面的几个枚举值分别是数字 <code>2</code> ，<code>3</code> ，<code>4</code> 。<br>
+<br>当然我们也可以手动给其中某个枚举值赋值一个数字，这样这个枚举值后面的值会依次在这个赋值的数字上递增，我们来看个例子：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">enum</span> UserId {
+  tuture,
+  mRcfps = <span class="hljs-number">6</span>,
+  crxk,
+  pftom,
+  holy,
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>上面我们的每个枚举值对应的数字依次是：<code>0</code> ，<code>6</code> ，<code>7</code> ，<code>8</code> ，<code>9</code><br></p>
+<p><a name="bd7a0d8d"></a></p>
+<h4 class="heading" data-id="heading-27">字符串枚举</h4>
+<p><br>枚举的值除了是数字还可以是一系列字符串，比如：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">enum</span> UserId {
+  tuture = <span class="hljs-string">'66666666'</span>,
+  mRcfps = <span class="hljs-string">'23410977'</span>,
+  crxk = <span class="hljs-string">'25455350'</span>,
+  pftom = <span class="hljs-string">'23410976'</span>,
+  holy = <span class="hljs-string">'58352313'</span>,
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，我们给每个枚举值赋值了对于的字符串。<br></p>
+<p><a name="85f6d789"></a></p>
+<h4 class="heading" data-id="heading-28">异构枚举</h4>
+<p><br>当然在一个枚举里面既可以有字符串值也可以有数字：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">enum</span> UserId {
+  tuture = <span class="hljs-string">'66666666'</span>,
+  mRcfps = <span class="hljs-number">6</span>,
+}
+<span class="copy-code-btn">复制代码</span></code></pre><p><a name="d8e6b2e7-1"></a></p>
+<h3 class="heading" data-id="heading-29">动手实践</h3>
+<p><br>了解了 <code>Interface</code> 和 <code>Enum</code> 之后，我们马上运用在我们的项目中来完善我们的待办事项应用。<br>
+<br>随着内容越写越多，我们的 <code>src/App.tsx</code> 越来越复杂，所以我们打算把 <code>TodoInput</code> 组件拆到单独的页面，在 <code>src</code> 目录下新建 <code>TodoInput.tsx</code> ，并在里面编写如下的内容：<br></p>
+<pre><code class="hljs tsx copyable" lang="tsx">import React, { useState } from "react";
+import { Input, Select, DatePicker } from "antd";
+import { Moment } from "moment";
+
+import { userList } from "./utils/data";
+
+const { Option } = Select;
+
+enum UserId {
+  tuture = "666666666",
+  mRcfps = "23410977",
+  crxk = "25455350",
+  pftom = "23410976",
+  holy = "58352313"
+}
+
+export interface TodoValue {
+  content?: string;
+  user?: UserId;
+  date?: string;
+}
+
+interface TodoInputProps {
+  value?: TodoValue;
+  onChange?: (value: TodoValue) =&gt; void;
+}
+
+const TodoInput = ({ value = {}, onChange }: TodoInputProps) =&gt; {
+  const [content, setContent] = useState("");
+  const [user, setUser] = useState(UserId.tuture);
+  const [date, setDate] = useState("");
+
+  const triggerChange = (changedValue: TodoValue) =&gt; {
+    if (onChange) {
+      onChange({ content, user, date, ...value, ...changedValue });
+    }
+  };
+
+  const onContentChange = (e: any) =&gt; {
+    if (!("content" in value)) {
+      setContent(e.target.value);
+    }
+
+    triggerChange({ content: e.target.value });
+  };
+
+  const onUserChange = (selectValue: UserId) =&gt; {
+    if (!("user" in value)) {
+      setUser(selectValue);
+    }
+
+    triggerChange({ user: selectValue });
+  };
+
+  const onDateOk = (date: Moment) =&gt; {
+    if (!("date" in value)) {
+      setDate(date.format("YYYY-MM-DD HH:mm"));
+    }
+
+    triggerChange({ date: date.format("YYYY-MM-DD HH:mm") });
+  };
+
+  return (
+    &lt;div className="todoInput"&gt;
+      &lt;Input
+        type="text"
+        placeholder="输入待办事项内容"
+        value={value.content || content}
+        onChange={onContentChange}
+      /&gt;
+      &lt;Select
+        style={{ width: 80 }}
+        size="small"
+        defaultValue={UserId.tuture}
+        value={user}
+        onChange={onUserChange}
+      &gt;
+        {userList.map(user =&gt; (
+          &lt;Option value={user.id}&gt;{user.name}&lt;/Option&gt;
+        ))}
+      &lt;/Select&gt;
+      &lt;DatePicker
+        showTime
+        size="small"
+        onOk={onDateOk}
+        style={{ marginLeft: "16px", marginRight: "16px" }}
+      /&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default TodoInput;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到上面的内容，主要有如下几个部分的修改：<br></p>
+<ul>
+<li>我们定义了新的 <code>Interface</code> ：<code>TodoInputProps</code> ，它主要用来注解 <code>TodoInput</code> 这个函数式组件的 <code>props</code> 类型，可看到这个接口主要有两个字段，一个是 <code>value</code> ，它是 <code>TodoValue</code> 类型，还有一个 <code>onChange</code> ，它是一个函数类型，表示父组件将会传递一个 <code>onChange</code> 函数，我们将在之后讲解 TS 怎么注解函数，。</li>
+<li>接着我们新增了一个枚举 <code>UserId</code> ，用来概括我们应用的五个用户的 ID，并且人为的为这五个枚举常量赋了对应的值。</li>
+<li>接着我们改进了定义了一个新 <code>TodoValue</code> 接口，它有三个字段，主要用于标志 <code>TodoInputProps</code> 中上层组件中可能传递下来的值，所以三个字段都是可选的</li>
+<li>最后我们定义了三个响应 <code>Input</code> 、<code>Select</code> 、<code>DatePicker</code> 的函数，<code>onContentChange</code> ，<code>onUserChange</code> ，<code>onDateOk</code> ，当上层组件没有传递对应的属性时，使用 <code>setXXX</code> 来更新 React 状态，否则触发 <code>triggerChange</code> ，调用父组件传递下来的 <code>onChange</code> 方法来更新对应的状态</li>
+</ul>
+<blockquote>
+<p><strong>提示</strong>
+上面我们从 <code>./utils/data</code> 导入了 <code>userList</code> ，以及导入了 <code>Moment</code> 用来注解 <code>moment</code> 类型的 date ，我们将在接下来的来马上来创建对于的 <code>./utils/data</code> 文件以及安装对于的 <code>moment</code> 。</p>
+</blockquote>
+<p><br>在 <code>src/TodoInput.tsx</code> 中我们导入了 <code>Moment</code> 用来注解 <code>onDateOk</code> 的函数参数 <code>date</code> ，接下来我们来安装它：<br></p>
+<pre><code class="hljs bash copyable" lang="bash">npm install moment
+<span class="copy-code-btn">复制代码</span></code></pre><pre><code class="hljs json copyable" lang="json">// ...
+    "customize-cra": "^0.9.1",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "moment": "^2.24.0",
+    "react": "^16.13.0",
+    "react-app-rewired": "^2.1.5",
+    "react-dom": "^16.13.0",
+    // ...
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>接着我们来创建对应的 <code>src/utils/data.ts</code> 文件，把之前在 <code>src/App.tsx</code> 里面的假数据统一放在这个文件里面，然后导出：<br></p>
+<pre><code class="hljs typescript copyable" lang="typescript"><span class="hljs-keyword">interface</span> Todo {
+  user: <span class="hljs-built_in">string</span>;
+  time: <span class="hljs-built_in">string</span>;
+  content: <span class="hljs-built_in">string</span>;
+  isCompleted: <span class="hljs-built_in">boolean</span>;
+}
+
+<span class="hljs-keyword">interface</span> User {
+  id: <span class="hljs-built_in">string</span>;
+  name: <span class="hljs-built_in">string</span>;
+  avatar: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> todoListData: Todo[] = [
+  {
+    content: <span class="hljs-string">"图雀社区：汇聚精彩的免费实战教程"</span>,
+    user: <span class="hljs-string">"mRcfps"</span>,
+    time: <span class="hljs-string">"2020年3月2日 19:34"</span>,
+    isCompleted: <span class="hljs-literal">false</span>
+  },
+  {
+    content: <span class="hljs-string">"图雀社区：汇聚精彩的免费实战教程"</span>,
+    user: <span class="hljs-string">"pftom"</span>,
+    time: <span class="hljs-string">"2020年3月2日 19:34"</span>,
+    isCompleted: <span class="hljs-literal">false</span>
+  },
+  {
+    content: <span class="hljs-string">"图雀社区：汇聚精彩的免费实战教程"</span>,
+    user: <span class="hljs-string">"Holy"</span>,
+    time: <span class="hljs-string">"2020年3月2日 19:34"</span>,
+    isCompleted: <span class="hljs-literal">false</span>
+  },
+  {
+    content: <span class="hljs-string">"图雀社区：汇聚精彩的免费实战教程"</span>,
+    user: <span class="hljs-string">"crxk"</span>,
+    time: <span class="hljs-string">"2020年3月2日 19:34"</span>,
+    isCompleted: <span class="hljs-literal">false</span>
+  },
+  {
+    content: <span class="hljs-string">"图雀社区：汇聚精彩的免费实战教程"</span>,
+    user: <span class="hljs-string">"Pony"</span>,
+    time: <span class="hljs-string">"2020年3月2日 19:34"</span>,
+    isCompleted: <span class="hljs-literal">false</span>
+  }
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> userList: User[] = [
+  {
+    id: <span class="hljs-string">"666666666"</span>,
+    name: <span class="hljs-string">"图雀社区"</span>,
+    avatar: <span class="hljs-string">"https://avatars0.githubusercontent.com/u/39240800?s=60&amp;v=4"</span>
+  },
+  {
+    id: <span class="hljs-string">"23410977"</span>,
+    name: <span class="hljs-string">"mRcfps"</span>,
+    avatar: <span class="hljs-string">"https://avatars0.githubusercontent.com/u/23410977?s=96&amp;v=4"</span>
+  },
+  {
+    id: <span class="hljs-string">"25455350"</span>,
+    name: <span class="hljs-string">"crxk"</span>,
+    avatar: <span class="hljs-string">"https://avatars1.githubusercontent.com/u/25455350?s=96&amp;v=4"</span>
+  },
+  {
+    id: <span class="hljs-string">"23410976"</span>,
+    name: <span class="hljs-string">"pftom"</span>,
+    avatar: <span class="hljs-string">"https://avatars0.githubusercontent.com/u/23410977?s=96&amp;v=4"</span>
+  },
+  {
+    id: <span class="hljs-string">"58352313"</span>,
+    name: <span class="hljs-string">"holy"</span>,
+    avatar: <span class="hljs-string">"https://avatars0.githubusercontent.com/u/58352313?s=96&amp;v=4"</span>
+  }
+];
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>拆分了 <code>TodoInput</code> ，并把假数据移动到单独的文件之后，我们需要修改 <code>src/App.tsx</code> 对应的部分如下：<br></p>
+<pre><code class="hljs javascript copyable" lang="javascript"><span class="hljs-keyword">import</span> React, { useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+
+<span class="hljs-comment">// ...中间一样</span>
+
+<span class="hljs-keyword">import</span> TodoInput <span class="hljs-keyword">from</span> <span class="hljs-string">"./TodoInput"</span>;
+
+<span class="hljs-comment">// ... 中间一样</span>
+
+<span class="hljs-keyword">import</span> { todoListData } <span class="hljs-keyword">from</span> <span class="hljs-string">"./utils/data"</span>;
+
+<span class="hljs-keyword">const</span> { Title } = Typography;
+<span class="hljs-keyword">const</span> { TabPane } = Tabs;
+
+<span class="hljs-comment">// 中间一样</span>
+
+<span class="hljs-comment">// ... 删除 TodoInput 部分</span>
+
+<span class="hljs-comment">// ... TodoList 保持原样</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> callback = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {};
+
+  <span class="hljs-keyword">const</span> onFinish = <span class="hljs-function">(<span class="hljs-params">values: any</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Received values from form: "</span>, values);
+  };
+  <span class="hljs-keyword">const</span> ref = useRef(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">{ref}</span>&gt;</span>
+    // ... 中间一样
+          <span class="hljs-tag">&lt;<span class="hljs-name">Form.Item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"todo"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">TodoInput</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">Form.Item</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Form.Item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">htmlType</span>=<span class="hljs-string">"submit"</span>&gt;</span>
+              提交
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">Form.Item</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    // ... 中间一样
+		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+	);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;
+<span class="copy-code-btn">复制代码</span></code></pre><p><br>可以看到，上面的内容主要做出了如下的修改：<br></p>
+<ul>
+<li>我们删除了对应的假数据 <code>userList</code> 和 <code>todoListData</code> 及其 Interface 定义 <code>Todo</code> 和 <code>User</code> ，转而从我们创建的 <code>src/utils/data.ts</code> 里面导入 <code>todoListData</code></li>
+<li>接着我们删除了 <code>TodoInput</code> 组件，转而导入我们之前创建的 &nbsp;<code>TodoInput</code> 组件</li>
+<li>接着我们给 <code>Form</code> 表单部分加上了一个提交按钮，以及扩展了 <code>onFinish</code> 函数</li>
+<li>最后我们删除了一些不再需要的导包</li>
+</ul>
+<p><a name="5db9fd7c-2"></a></p>
+<h3 class="heading" data-id="heading-30">小结</h3>
+<p><br>大功告成，这一节中我们学习了接口（Interface）和枚举（Enum），接口主要是对对象等多属性元素进行类型注解，而枚举是 TS 中独有的一个概念，在 JS 中没有，主要用于帮助定义一系列命名常量，常用于给一类变量做类型注解，它们的值是一组值里面的某一个，最后我们通过改进现有的 Todo 应用来实践了学到的这两个概念。</p>
+<blockquote>
+<p>想要学习更多精彩的实战技术教程？来<a target="_blank" href="https://tuture.co/?utm_source=juejin_zhuanlan" rel="nofollow noopener noreferrer">图雀社区</a>逛逛吧。</p>
+</blockquote>
+<blockquote>
+<p>本文所涉及的源代码都放在了 <a target="_blank" href="https://github.com/tuture-dev/typescript-tea" rel="nofollow noopener noreferrer">Github</a>&nbsp; 或者 <a target="_blank" href="https://gitee.com/tuture/typescript-tea" rel="nofollow noopener noreferrer">Gitee</a> 上，如果您觉得我们写得还不错，希望您能给<strong>❤️这篇文章点赞<a target="_blank" href="https://github.com/tuture-dev/typescript-tea" rel="nofollow noopener noreferrer">Github</a> 或 <a target="_blank" href="https://gitee.com/tuture/typescript-tea" rel="nofollow noopener noreferrer">Gitee</a> 仓库加星❤</strong>️哦~</p>
+</blockquote>
+<p></p><figure><img class="lazyload inited loaded" data-src="https://user-gold-cdn.xitu.io/2019/12/19/16f1ddb37a4d47a8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="900" data-height="500" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/16f1ddb37a4d47a8"><figcaption></figcaption></figure><p></p>
+</div></article><div data-v-50ff96fb="" data-v-0f848c07="" class="tag-list-box"><div data-v-50ff96fb="" data-v-0f848c07="" class="tag-list-title">关注下面的标签，发现更多相似文章</div><div data-v-50ff96fb="" data-v-0f848c07="" st:block="tagList" class="tag-list"><a data-v-50ff96fb="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" class="item" data-v-0f848c07=""><div data-v-261e638e="" data-v-a98f170a="" data-v-50ff96fb="" data-src="https://lc-gold-cdn.xitu.io/d788a559489fa6e30b25.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1" class="lazy thumb tag-icon loaded" style="background-image: url(&quot;https://lc-gold-cdn.xitu.io/d788a559489fa6e30b25.png?imageView2/2/w/42/h/42/q/85/format/webp/interlace/1&quot;); background-size: contain;"></div><div data-v-50ff96fb="" class="tag-title">TypeScript</div></a></div></div><a data-v-50ff96fb="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" data-v-0f848c07=""><div data-v-50ff96fb="" class="footer-author-block"><div data-v-95a5e9b8="" data-v-50ff96fb="" itemscope="itemscope" itemtype="http://schema.org/Person" class="author"><meta itemprop="url" content="https://juejin.im/user/5b33414351882574b9694d28"><meta itemprop="image" content="https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?w=1000&amp;h=1000&amp;f=png&amp;s=170175"><meta itemprop="name" content="图雀社区"><meta itemprop="jobTitle" content="一只图雀 @ 公众号「图雀社区」"><!----><div data-v-95a5e9b8="" class="author-info-block"><a data-v-95a5e9b8="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="avatar-link"><div data-v-261e638e="" data-v-b49070bc="" data-v-95a5e9b8="" data-src="https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a><div data-v-95a5e9b8="" class="author-info-box"><div data-v-95a5e9b8="" class="profile-box"><a data-v-1a54813b="" data-v-95a5e9b8="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="username username ellipsis">图雀社区<a data-v-3a430c94="" data-v-1a54813b="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-3a430c94="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a></a><span data-v-95a5e9b8="" class="position ellipsis">一只图雀 @ 公众号「图雀社区」</span></div><div data-v-95a5e9b8="" class="meta-box"><a data-v-95a5e9b8="" href="https://juejin.im/user/5b33414351882574b9694d28/posts" target="_blank" rel="" class="posts"><span data-v-95a5e9b8="" class="count post-count">发布了 60 篇专栏 · </span></a><span data-v-95a5e9b8="" class="count">获得点赞 3,453 · </span><span data-v-95a5e9b8="" class="count">获得阅读 180,774</span></div></div><button data-v-d05fee10="" data-v-95a5e9b8="" class="follow-button follow">关注</button></div></div></div></a><div data-v-50ff96fb="" data-v-0f848c07="" st:block="banner" class="article-banner"><a data-v-50ff96fb="" data-v-0f848c07="" st:name="link" st:state="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" class="banner-title" href="https://juejin.im/extension/?utm_source=juejin.im&amp;utm_medium=post&amp;utm_campaign=extension_promotion" target="_blank">安装掘金浏览器插件</a><div data-v-50ff96fb="" data-v-0f848c07="" class="banner-content">打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！</div></div><!----><!----><div data-v-43803909="" data-v-50ff96fb="" class="comment-list-box" id="comment-box" data-v-0f848c07=""><div data-v-43803909="" class="title">评论</div><div data-v-bc5a7668="" data-v-43803909="" class="comment-form comment-form"><div data-v-bc5a7668="" class="avatar-box"><div data-v-261e638e="" data-v-b49070bc="" data-v-bc5a7668="" data-src="https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://mirror-gold-cdn.xitu.io/168e08d6d9e8b3febec?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></div><div data-v-bc5a7668="" class="form-box"><div data-v-bc5a7668="" class="input-box"><div data-v-e4402004="" data-v-bc5a7668="" class="auth-card"><!----><div data-v-bc5a7668="" data-v-e4402004="" contenteditable="true" spellcheck="false" placeholder="输入评论..." class="rich-input empty"><br data-v-bc5a7668="" data-v-e4402004=""></div></div><!----></div><!----></div><input data-v-bc5a7668="" type="file" class="hidden"></div><div data-v-7c7d1c40="" data-v-43803909="" class="comment-list comment-list"><div data-v-ddb41540="" data-v-7c7d1c40="" class="image-viewer-box"><!----></div><div data-v-7c7d1c40="" class="item"><div data-v-6aebcf4a="" data-v-7c7d1c40="" class="comment comment"><div data-v-2bc7e294="" data-v-6aebcf4a="" st:block="userPopover" st:state="5808812da0bb9f0061aa7cba" class="user-popover-box popover"><!----><a data-v-6aebcf4a="" href="https://juejin.im/user/5808812da0bb9f0061aa7cba" target="_blank" rel="" class="user-link" data-v-2bc7e294=""><div data-v-261e638e="" data-v-b49070bc="" data-v-6aebcf4a="" data-src="https://user-gold-cdn.xitu.io/2016/11/29/4e78ae22a6a297590edf93f73f10fc04?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2016/11/29/4e78ae22a6a297590edf93f73f10fc04?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div></a></div><div data-v-6aebcf4a="" class="content-box comment-divider-line"><div data-v-6aebcf4a="" class="meta-box"><div data-v-2bc7e294="" data-v-6aebcf4a="" st:block="userPopover" st:state="5808812da0bb9f0061aa7cba" class="user-popover-box"><!----><a data-v-1a54813b="" data-v-6aebcf4a="" href="https://juejin.im/user/5808812da0bb9f0061aa7cba" target="_blank" rel="" class="username username ellipsis" data-v-2bc7e294="">小苏苏的MM<!----></a></div><div data-v-6aebcf4a="" class="position"></div></div><div data-v-6aebcf4a="" class="content">很实用
+</div><div data-v-6aebcf4a="" class="limit-ctl-box"><!----><!----></div><!----><div data-v-6aebcf4a="" class="reply-stat"><time data-v-6aebcf4a="" datetime="2020-04-15T04:21:49.358Z" title="Wed Apr 15 2020 12:21:49 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-6aebcf4a="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-6aebcf4a="" class="action-box"><div data-v-6aebcf4a="" class="like-action action"><svg data-v-6aebcf4a="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-6aebcf4a="" fill="none" fill-rule="evenodd"><path data-v-6aebcf4a="" d="M0 0h20v20H0z"></path> <path data-v-6aebcf4a="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><span data-v-6aebcf4a="" class="action-title">1</span></div><div data-v-6aebcf4a="" class="comment-action action"><svg data-v-6aebcf4a="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-6aebcf4a="" fill="none" fill-rule="evenodd"><path data-v-6aebcf4a="" d="M0 0h20v20H0z"></path> <path data-v-6aebcf4a="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-6aebcf4a="" class="action-title">回复</span></div></div></div><!----><div data-v-18f279d9="" data-v-6aebcf4a="" class="sub-comment-list sub-comment-list"><div data-v-18f279d9="" class="item"><div data-v-0a600e85="" data-v-18f279d9="" class="sub-comment sub-comment"><div data-v-0a600e85="" class="sub-comment-content-row"><div data-v-0a600e85="" class="sub-comment-content-box"><div data-v-2bc7e294="" data-v-0a600e85="" st:block="userPopover" st:state="5b33414351882574b9694d28" class="user-popover-box popover"><!----><a data-v-0a600e85="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="username" data-v-2bc7e294=""><div data-v-261e638e="" data-v-b49070bc="" data-v-0a600e85="" data-src="https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar" style="background-image: none;"></div></a></div><div data-v-0a600e85="" class="user-content-box"><div data-v-0a600e85="" class="profie"><div data-v-2bc7e294="" data-v-0a600e85="" st:block="userPopover" st:state="5b33414351882574b9694d28" class="user-popover-box"><!----><a data-v-1a54813b="" data-v-0a600e85="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="username" data-v-2bc7e294="">图雀社区<a data-v-3a430c94="" data-v-1a54813b="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-3a430c94="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a><span data-v-0a600e85="" class="author-badge-text">(作者)</span></a></div><div data-v-0a600e85="" class="position">一只图雀 @ 公众号「图雀社区」</div></div><div data-v-0a600e85="" class="content-box"><span data-v-0a600e85=""> 回复 </span><div data-v-2bc7e294="" data-v-0a600e85="" st:block="userPopover" st:state="5808812da0bb9f0061aa7cba" class="user-popover-box"><!----><a data-v-1a54813b="" data-v-0a600e85="" href="https://juejin.im/user/5808812da0bb9f0061aa7cba" target="_blank" rel="" class="username username be-replied" data-v-2bc7e294="">小苏苏的MM<!----></a></div><!----><span data-v-0a600e85="">: </span><span data-v-0a600e85="" class="content">谢谢<img class="emoji" draggable="false" alt="😊" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/1f60a.svg">，可以扫描文章底部的二维码关注我们的公众号哦</span></div><!----><!----><div data-v-0a600e85="" class="limit-all-box"><!----></div><div data-v-0a600e85="" class="sub-comment-stat-box"><time data-v-0a600e85="" datetime="2020-04-15T04:33:54.287Z" title="Wed Apr 15 2020 12:33:54 GMT+0800 (中国标准时间)" class="time">1月前</time><div data-v-0a600e85="" class="delete"> &nbsp;·&nbsp;删除</div><div data-v-0a600e85="" class="sub-comment-action-box"><div data-v-0a600e85="" class="like-action action"><svg data-v-0a600e85="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon like-icon"><g data-v-0a600e85="" fill="none" fill-rule="evenodd"><path data-v-0a600e85="" d="M0 0h20v20H0z"></path> <path data-v-0a600e85="" stroke="#8A93A0" stroke-linejoin="round" d="M4.58 8.25V17h-1.4C2.53 17 2 16.382 2 15.624V9.735c0-.79.552-1.485 1.18-1.485h1.4zM11.322 2c1.011.019 1.614.833 1.823 1.235.382.735.392 1.946.13 2.724-.236.704-.785 1.629-.785 1.629h4.11c.434 0 .838.206 1.107.563.273.365.363.84.24 1.272l-1.86 6.513A1.425 1.425 0 0 1 14.724 17H6.645V7.898C8.502 7.51 9.643 4.59 9.852 3.249A1.47 1.47 0 0 1 11.322 2z"></path></g></svg><!----></div><div data-v-0a600e85="" class="comment-action action"><svg data-v-0a600e85="" aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" class="icon comment-icon"><g data-v-0a600e85="" fill="none" fill-rule="evenodd"><path data-v-0a600e85="" d="M0 0h20v20H0z"></path> <path data-v-0a600e85="" stroke="#8A93A0" stroke-linejoin="round" d="M10 17c-4.142 0-7.5-2.91-7.5-6.5S5.858 4 10 4c4.142 0 7.5 2.91 7.5 6.5 0 1.416-.522 2.726-1.41 3.794-.129.156.41 3.206.41 3.206l-3.265-1.134c-.998.369-2.077.634-3.235.634z"></path></g></svg> <span data-v-0a600e85="">回复</span></div></div></div><!----></div></div></div><!----></div></div><!----></div></div><!----></div></div></div><!----></div></div><!----><div data-v-50ff96fb="" data-v-0f848c07="" st:block="recommended" class="main-area recommended-area shadow"><div data-v-50ff96fb="" data-v-0f848c07="" class="recommended-entry-list-title">相关推荐</div><!----><ul data-v-3ce073b0="" data-v-50ff96fb="" st:block="entryList" class="entry-list recommended-entry-list" data-v-0f848c07=""><!----><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ed3d6f251882542ed671bea|1" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ec34a68f265da49b3375f92" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="5cdb722e6fb9a0322415bc76" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/5cdb722e6fb9a0322415bc76" target="_blank" rel="" st:name="user" st:state="5cdb722e6fb9a0322415bc76" data-v-2bc7e294="">浪呀</a></div></li><li data-v-6d34c71c="" class="item">6天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ec34a68f265da49b3375f92" target="_blank" rel="" st:name="title" class="title">2020还不会TypeScript？</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">16</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ec34a68f265da49b3375f92#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">5</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ecdb294f265da76cb3be4dc|2" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ecdb192f265da76d53c08e1" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="58cc0d9b44d9040069fab44f" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/58cc0d9b44d9040069fab44f" target="_blank" rel="" st:name="user" st:state="58cc0d9b44d9040069fab44f" data-v-2bc7e294="">semlinker</a></div></li><li data-v-6d34c71c="" class="item">11天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ecdb192f265da76d53c08e1" target="_blank" rel="" st:name="title" class="title">在 TS 中如何减少重复代码</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">72</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ecdb192f265da76d53c08e1#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">11</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/5/27/1725380544b1f2a4?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ecb342df265da76c4243c84|3" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ec6377ff265da76f30e45d2" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="5b33414351882574b9694d28" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" st:name="user" st:state="5b33414351882574b9694d28" data-v-2bc7e294="">图雀社区</a></div></li><li data-v-6d34c71c="" class="item">13天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ec6377ff265da76f30e45d2" target="_blank" rel="" st:name="title" class="title">（三万字长文）类型即正义：TypeScript 从入门到实践系列，正式完结！</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">94</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ec6377ff265da76f30e45d2#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">4</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/5/21/17236506bb36a70b?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><!----><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ecd1c3e518825430812fef9|4" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ecd1ad3e51d45784c52db73" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="58cc0d9b44d9040069fab44f" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/58cc0d9b44d9040069fab44f" target="_blank" rel="" st:name="user" st:state="58cc0d9b44d9040069fab44f" data-v-2bc7e294="">semlinker</a></div></li><li data-v-6d34c71c="" class="item">12天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/ECMAScript%206" target="_blank" rel="" st:name="tag" st:state="5597a13de4b08a686ce58b7e" class="tag">ECMAScript 6</a><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ecd1ad3e51d45784c52db73" target="_blank" rel="" st:name="title" class="title">你不知道的 WeakMap</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">38</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ecd1ad3e51d45784c52db73#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">12</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/5/26/17251349d6367b00?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5e95066bf265da47f73441a8|5" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5e94595c6fb9a03c341daa75" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="5b13f11d5188257da1245183" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/5b13f11d5188257da1245183" target="_blank" rel="" st:name="user" st:state="5b13f11d5188257da1245183" data-v-2bc7e294="">晨曦时梦见兮</a></div></li><li data-v-6d34c71c="" class="item">1月前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/Vue.js" target="_blank" rel="" st:name="tag" st:state="555e9a98e4b00c57d9955f68" class="tag">Vue.js</a><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5e94595c6fb9a03c341daa75" target="_blank" rel="" st:name="title" class="title">Vue3 跟着尤雨溪学 TypeScript 之 Ref 类型从零实现</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">297</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5e94595c6fb9a03c341daa75#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">62</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><!----><!----><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ed76d13f265da76be12adb9|4" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ed75c54e51d4578a2555751" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="57d6a53967f3560057e95dd0" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/57d6a53967f3560057e95dd0" target="_blank" rel="" st:name="user" st:state="57d6a53967f3560057e95dd0" data-v-2bc7e294="">Championer</a></div></li><li data-v-6d34c71c="" class="item">4天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ed75c54e51d4578a2555751" target="_blank" rel="" st:name="title" class="title">VUE使用typescript搭建项目</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">7</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ed75c54e51d4578a2555751#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">3</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><!----></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ecef50ee51d4578615ad998|5" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ecef4466fb9a047d5645254" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="58cc0d9b44d9040069fab44f" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/58cc0d9b44d9040069fab44f" target="_blank" rel="" st:name="user" st:state="58cc0d9b44d9040069fab44f" data-v-2bc7e294="">semlinker</a></div></li><li data-v-6d34c71c="" class="item">10天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ecef4466fb9a047d5645254" target="_blank" rel="" st:name="title" class="title">一文读懂 TS 中 Object, object, {} 类型之间的区别</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">15</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ecef4466fb9a047d5645254#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">2</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/5/28/172586abd0044463?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ece6ea76fb9a047be3881d4|6" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ece6e63e51d457848685547" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="5e609bf4e51d4527086b4483" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/5e609bf4e51d4527086b4483" target="_blank" rel="" st:name="user" st:state="5e609bf4e51d4527086b4483" data-v-2bc7e294="">偶像练习生</a></div></li><li data-v-6d34c71c="" class="item">11天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ece6e63e51d457848685547" target="_blank" rel="" st:name="title" class="title">TS快速入门手册---车门焊死，谁也别想下车（万字长文 高能预警！！！！！）</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">14</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ece6e63e51d457848685547#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">2</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/5/27/172565fef3b06f3c?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ea40bbce51d4546fd48318f|7" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ea40427518825736f6434ef" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="5800462ed20309006801eabf" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/5800462ed20309006801eabf" target="_blank" rel="" st:name="user" st:state="5800462ed20309006801eabf" data-v-2bc7e294="">黑头发的小强</a></div></li><li data-v-6d34c71c="" class="item">1月前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ea40427518825736f6434ef" target="_blank" rel="" st:name="title" class="title">【万字长文】深入理解 Typescript 高级用法</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">173</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ea40427518825736f6434ef#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><span data-v-6d34c71c="" class="count">43</span></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/4/25/171b0fe42ec18e6a?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-3ce073b0="" data-growing-container="true" data-growing-title="entryList" class="item"><div data-v-392c77a2="" data-v-3ce073b0="" class="entry-box"><div data-v-6d34c71c="" data-v-392c77a2="" st:block="entry" st:state="5ed589ea6fb9a04802146fb8|8" class="entry"><a data-v-6d34c71c="" href="https://juejin.im/post/5ed589a251882542e3022f44" target="_blank" rel="" st:name="link" class="entry-link"><div data-v-6d34c71c="" class="content-box"><div data-v-6d34c71c="" class="info-box"><div data-v-6d34c71c="" class="info-row meta-row"><ul data-v-6d34c71c="" class="meta-list"><!----><!----><li data-v-6d34c71c="" class="item post">专栏</li><li data-v-6d34c71c="" class="item username clickable"><div data-v-2bc7e294="" data-v-6d34c71c="" st:block="userPopover" st:state="586fc337a22b9d0058807d53" class="user-popover-box"><!----><a data-v-6d34c71c="" href="https://juejin.im/user/586fc337a22b9d0058807d53" target="_blank" rel="" st:name="user" st:state="586fc337a22b9d0058807d53" data-v-2bc7e294="">pingan8787</a></div></li><li data-v-6d34c71c="" class="item">5天前</li><li data-v-6d34c71c="" class="item tag"><a data-v-6d34c71c="" href="https://juejin.im/tag/TypeScript" target="_blank" rel="" st:name="tag" st:state="55e7d5a360b2d687f60ae13a" class="tag">TypeScript</a></li><!----></ul></div><div data-v-6d34c71c="" class="info-row title-row"><!----><!----><a data-v-6d34c71c="" href="https://juejin.im/post/5ed589a251882542e3022f44" target="_blank" rel="" st:name="title" class="title">了不起的 tsconfig.json 指南</a></div><div data-v-6d34c71c="" class="info-row action-row"><ul data-v-6d34c71c="" class="action-list"><li data-v-6d34c71c="" st:name="likeBtn" class="item like clickable"><a data-v-6d34c71c="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6d34c71c="" class="count">6</span></a></li><li data-v-6d34c71c="" st:name="commentBtn" class="item comment clickable"><a data-v-6d34c71c="" href="https://juejin.im/post/5ed589a251882542e3022f44#comment" target="_blank" rel="" class="title-box"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.4d5744f.svg" class="icon"><!----></a></li><li data-v-6d34c71c="" st:name="shareBtn" title="分享" class="item share clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/share.1d55e69.svg" class="icon"><div data-v-6d34c71c="" class="share-panel"><div data-v-6d34c71c="" st:name="shareItem" st:state="weibo" class="share-item weibo"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/weibo.8e2f5d6.svg" class="icon">微博</div><div data-v-6d34c71c="" st:name="shareItem" st:state="wechat" class="share-item wechat"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/wechat.844402c.svg" class="icon">微信扫一扫<div data-v-6d34c71c="" class="qr-code-box"><img data-v-6d34c71c="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="qr-code"></div></div></div></li><li data-v-6d34c71c="" title="收藏" st:name="collectBtn" class="item collect clickable hover"><img data-v-6d34c71c="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/collect.02e2979.svg" class="icon"><!----></li><!----></ul></div></div><div data-v-261e638e="" data-v-a98f170a="" data-v-6d34c71c="" data-src="https://user-gold-cdn.xitu.io/2020/6/2/17272225f0f3710f?imageView2/1/w/120/h/120/q/85/format/webp/interlace/1" class="lazy thumb thumb" style="background-image: none; background-size: cover;"></div></div></a></div></div></li><li data-v-3ce073b0="" class="item"><!----></li><!----></ul></div><div data-v-2184ead4="" data-v-50ff96fb="" st:block="sidebar" class="sidebar sidebar top sticky" data-v-0f848c07=""><div data-v-352419ce="" data-v-234391ba="" data-v-2184ead4="" class="sidebar-block author-block shadow"><div data-v-352419ce="" class="block-title">关于作者</div><div data-v-352419ce="" class="block-body"><a data-v-234391ba="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="user-item item" data-v-352419ce=""><div data-v-261e638e="" data-v-b49070bc="" data-v-234391ba="" data-src="https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" class="lazy avatar avatar loaded" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2019/9/22/16d596f04f4f4e3d?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1&quot;);"></div><div data-v-234391ba="" class="info-box"><a data-v-1a54813b="" data-v-234391ba="" href="https://juejin.im/user/5b33414351882574b9694d28" target="_blank" rel="" class="username">图雀社区<a data-v-3a430c94="" data-v-1a54813b="" href="https://juejin.im/book/5c90640c5188252d7941f5bb/section/5c9065385188252da6320022" target="_blank" rel="" class="rank"><img data-v-3a430c94="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/lv-4.2c3fafd.svg" alt="lv-4"></a></a><div data-v-234391ba="" title="一只图雀 @ 公众号「图雀社区」" class="position">一只图雀 @ 公众号「图雀社区」</div></div></a><div data-v-234391ba="" data-v-352419ce="" class="stat-item item"><svg data-v-234391ba="" data-v-352419ce="" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" class="zan"><g data-v-234391ba="" data-v-352419ce="" fill="none" fill-rule="evenodd" transform="translate(0 .57)"><ellipse data-v-234391ba="" data-v-352419ce="" cx="12.5" cy="12.57" fill="#E1EFFF" rx="12.5" ry="12.57"></ellipse> <path data-v-234391ba="" data-v-352419ce="" fill="#7BB9FF" d="M8.596 11.238V19H7.033C6.463 19 6 18.465 6 17.807v-5.282c0-.685.483-1.287 1.033-1.287h1.563zm4.275-4.156A1.284 1.284 0 0 1 14.156 6c.885.016 1.412.722 1.595 1.07.334.638.343 1.687.114 2.361-.207.61-.687 1.412-.687 1.412h3.596c.38 0 .733.178.969.488.239.317.318.728.21 1.102l-1.628 5.645a1.245 1.245 0 0 1-1.192.922h-7.068v-7.889c1.624-.336 2.623-2.866 2.806-4.029z"></path></g></svg> <span data-v-234391ba="" data-v-352419ce="" class="content">获得点赞<span data-v-234391ba="" data-v-352419ce="" class="count">3,453</span></span></div><div data-v-234391ba="" data-v-352419ce="" class="stat-item item"><svg data-v-234391ba="" data-v-352419ce="" width="25" height="25" viewBox="0 0 25 25" class="icon stat-view-icon"><g data-v-234391ba="" data-v-352419ce="" fill="none" fill-rule="evenodd"><circle data-v-234391ba="" data-v-352419ce="" cx="12.5" cy="12.5" r="12.5" fill="#E1EFFF"></circle> <path data-v-234391ba="" data-v-352419ce="" fill="#7BB9FF" d="M4 12.5S6.917 7 12.75 7s8.75 5.5 8.75 5.5-2.917 5.5-8.75 5.5S4 12.5 4 12.5zm8.75 2.292c1.208 0 2.188-1.026 2.188-2.292 0-1.266-.98-2.292-2.188-2.292-1.208 0-2.188 1.026-2.188 2.292 0 1.266.98 2.292 2.188 2.292z"></path></g></svg> <span data-v-234391ba="" data-v-352419ce="" class="content">文章被阅读<span data-v-234391ba="" data-v-352419ce="" class="count">180,774</span></span></div><!----></div></div><!----><div data-v-352419ce="" data-v-a07f71c6="" data-v-bf6401d0="" data-v-2184ead4="" class="sidebar-block recommend recommend-index shadow"><div data-v-352419ce="" class="block-title">你可能感兴趣的小册</div><div data-v-352419ce="" class="block-body"><div data-v-a07f71c6="" data-v-352419ce="" class="book-list"><div data-v-a07f71c6="" data-v-352419ce="" class="book"><div data-v-a07f71c6="" data-v-352419ce="" class="poster"><div data-v-261e638e="" data-v-a98f170a="" data-v-a07f71c6="" data-src="https://user-gold-cdn.xitu.io/2018/7/30/164ea7de07b7f79e?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-352419ce="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/7/30/164ea7de07b7f79e?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-a07f71c6="" data-v-352419ce="" class="info"><div data-v-a07f71c6="" data-v-352419ce="" class="title">Redis 深度历险：核心原理与应用实践</div><div data-v-a07f71c6="" data-v-352419ce="" class="bought"><span data-v-a07f71c6="" data-v-352419ce="" class="num">22273人已购买</span><span data-v-a07f71c6="" data-v-352419ce="" class="try-read">试读</span></div></div></div><div data-v-a07f71c6="" data-v-352419ce="" class="book"><div data-v-a07f71c6="" data-v-352419ce="" class="poster"><div data-v-261e638e="" data-v-a98f170a="" data-v-a07f71c6="" data-src="https://user-gold-cdn.xitu.io/2018/6/26/1643b682a5be1090?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1" class="lazy thumb poster-img loaded" data-v-352419ce="" style="background-image: url(&quot;https://user-gold-cdn.xitu.io/2018/6/26/1643b682a5be1090?imageView2/1/w/200/h/280/q/95/format/webp/interlace/1&quot;); background-size: cover;"></div></div><div data-v-a07f71c6="" data-v-352419ce="" class="info"><div data-v-a07f71c6="" data-v-352419ce="" class="title">基于 Go 语言构建企业级的 RESTful API 服务</div><div data-v-a07f71c6="" data-v-352419ce="" class="bought"><span data-v-a07f71c6="" data-v-352419ce="" class="num">3346人已购买</span><span data-v-a07f71c6="" data-v-352419ce="" class="try-read">试读</span></div></div></div></div></div></div><div data-v-352419ce="" data-v-9f811e7c="" data-v-2184ead4="" class="sidebar-block app-download-sidebar-block shadow"><!----><div data-v-352419ce="" class="block-body"><a data-v-9f811e7c="" data-v-352419ce="" class="app-link" href="https://juejin.im/app" target="_blank"><img data-v-9f811e7c="" data-v-352419ce="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/post.7cb7332.png" class="qr-img"><div data-v-9f811e7c="" data-v-352419ce="" class="content-box"><div data-v-9f811e7c="" data-v-352419ce="" class="headline">下载掘金客户端</div><div data-v-9f811e7c="" data-v-352419ce="" class="desc">一个帮助开发者成长的社区</div></div><div data-v-9f811e7c="" data-v-352419ce="" title="关闭" class="close-btn ion-close-round"></div></a></div></div><div data-v-352419ce="" data-v-524c33b2="" data-v-2184ead4="" class="sidebar-block wechat-sidebar-block pure"><div data-v-473bc7fa="" data-v-524c33b2="" class="wechat-banner" data-v-352419ce=""><img data-v-473bc7fa="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/frontend.1dae74a.png" class="wechat-img"></div><div data-v-524c33b2="" data-v-352419ce="" title="关闭" class="close-btn ion-close-round"></div></div><div data-v-352419ce="" data-v-6930df48="" data-v-2184ead4="" class="sidebar-block related-entry-sidebar-block shadow" st:block="relatedEntrySidebarBlock"><div data-v-352419ce="" class="block-title">相关文章</div><div data-v-352419ce="" class="block-body"><div data-v-6930df48="" data-v-352419ce="" class="entry-list"><a data-v-6930df48="" href="https://juejin.im/post/5e7577816fb9a07c83350011" target="_blank" rel="" st:name="link" class="item" data-v-352419ce=""><div data-v-6930df48="" class="entry-title">（4.2万字🔥🔥🔥重启2020）“从零到部署”Vue全栈电商应用系列教程---正式完结</div><div data-v-6930df48="" class="entry-meta-box"><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6930df48="" class="count">439</span></div><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-6930df48="" class="count">24</span></div></div></a><a data-v-6930df48="" href="https://juejin.im/post/5dfd851c6fb9a0163e248463" target="_blank" rel="" st:name="link" class="item" data-v-352419ce=""><div data-v-6930df48="" class="entry-title">从零到部署：用 Vue 和 Express 实现迷你全栈电商应用（一）</div><div data-v-6930df48="" class="entry-meta-box"><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6930df48="" class="count">170</span></div><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-6930df48="" class="count">20</span></div></div></a><a data-v-6930df48="" href="https://juejin.im/post/5e670c19e51d45270764ee14" target="_blank" rel="" st:name="link" class="item" data-v-352419ce=""><div data-v-6930df48="" class="entry-title">（4.5w字🔥建议收藏）“可能是” 2020最值得看的小程序系列实战教程</div><div data-v-6930df48="" class="entry-meta-box"><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6930df48="" class="count">286</span></div><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-6930df48="" class="count">60</span></div></div></a><a data-v-6930df48="" href="https://juejin.im/post/5df2f559e51d45584c553060" target="_blank" rel="" st:name="link" class="item" data-v-352419ce=""><div data-v-6930df48="" class="entry-title">一杯茶的时间，上手 React 框架开发</div><div data-v-6930df48="" class="entry-meta-box"><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6930df48="" class="count">206</span></div><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-6930df48="" class="count">24</span></div></div></a><a data-v-6930df48="" href="https://juejin.im/post/5dff8da76fb9a01634475731" target="_blank" rel="" st:name="link" class="item" data-v-352419ce=""><div data-v-6930df48="" class="entry-title">从零到部署：用 Vue 和 Express 实现迷你全栈电商应用（二）</div><div data-v-6930df48="" class="entry-meta-box"><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/zan.e9d7698.svg" class="icon"><span data-v-6930df48="" class="count">78</span></div><div data-v-6930df48="" class="entry-meta"><img data-v-6930df48="" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/comment.a7c8341.svg" class="icon"><span data-v-6930df48="" class="count">51</span></div></div></a></div></div></div><div data-v-2184ead4="" class="sticky-block-box"><div data-v-352419ce="" data-v-2afe7226="" data-v-2184ead4="" class="sidebar-block catalog-block pure"><nav data-v-5094e7bc="" data-v-2afe7226="" class="article-catalog" data-v-352419ce="" style=""><div data-v-5094e7bc="" class="catalog-title">目录</div><div data-v-5094e7bc="" class="catalog-body"><ul data-v-5094e7bc="" class="catalog-list" style="margin-top: 0px;"><li data-v-5094e7bc="" class="item d1"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-0" title="源起">源起</a><!----></li><li data-v-5094e7bc="" class="item d1"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-1" title="代码准备">代码准备</a><!----></li><li data-v-5094e7bc="" class="item d1"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-2" title="TypeScript 初探">TypeScript 初探</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-3" title="编程语言是什么？">编程语言是什么？</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-4" title="TypeScript 是什么？">TypeScript 是什么？</a><!----></li><li class="item d2"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-5" title="类型语言之数据结构">类型语言之数据结构</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-6" title="原始类型">原始类型</a><ul class="sub-list"><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-7" title="TS 类型侧的定义">TS 类型侧的定义</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-8" title="附着在 JS 上的实战">附着在 JS 上的实战</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-9" title="小结">小结</a><!----></li></ul></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-10" title="非原始类型">非原始类型</a><ul class="sub-list"><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-11" title="TS 类型侧的定义">TS 类型侧的定义</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-12" title="array 类型附着实战">array 类型附着实战</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-13" title="tuple 类型附着实战">tuple 类型附着实战</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-14" title="小结">小结</a><!----></li></ul></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-15" title="特殊类型">特殊类型</a><ul class="sub-list"><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-16" title="any 类型定义与实战">any 类型定义与实战</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-17" title="unknown 类型定义与实战">unknown 类型定义与实战</a><!----></li><li class="item d4" style="display: none;"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-18" title="never / 函数类型定义与实战">never / 函数类型定义与实战</a><!----></li></ul></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-19" title="动手实践">动手实践</a><!----></li></ul></li></ul></li><li data-v-5094e7bc="" class="item d1"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-20" title="枚举和接口">枚举和接口</a><ul class="sub-list"><li class="item d2"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-21" title="Interface">Interface</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-22" title="可选属性">可选属性</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-23" title="只读属性">只读属性</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-24" title="多余属性检查">多余属性检查</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-25" title="Enum">Enum</a><ul class="sub-list"><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-26" title="数字枚举">数字枚举</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-27" title="字符串枚举">字符串枚举</a><!----></li><li class="item d3"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-28" title="异构枚举">异构枚举</a><!----></li></ul></li><li class="item d2"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-29" title="动手实践">动手实践</a><!----></li><li class="item d2 active"><a href="https://juejin.im/post/5e8a831cf265da48046988cb#heading-30" title="小结">小结</a><!----></li></ul></li></ul></div></nav></div></div></div><div data-v-77aa2e39="" data-v-50ff96fb="" class="article-suspended-panel article-suspended-panel" data-v-0f848c07=""><div data-v-77aa2e39="" class="like-btn panel-btn like-adjust with-badge" badge="35"></div><div data-v-77aa2e39="" class="comment-btn panel-btn comment-adjust with-badge" badge="2"></div><div data-v-77aa2e39="" class="collect-btn panel-btn"><!----></div><div data-v-77aa2e39="" class="share-title">分享</div><div data-v-77aa2e39="" class="weibo-btn share-btn panel-btn"></div><div data-v-77aa2e39="" class="qq-btn share-btn panel-btn"></div><div data-v-77aa2e39="" class="wechat-btn share-btn panel-btn"><img data-v-77aa2e39="" src="https://juejin.im/post/5e8a831cf265da48046988cb" class="wechat-qr-code-img shadow" style="display: none;"></div></div><div data-v-ddb41540="" data-v-50ff96fb="" class="image-viewer-box" data-v-0f848c07=""><!----></div><!----></div></main></div><!----></div>
+      
+      
+      
+      <script type="text/javascript" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/runtime.cdc821c8220e297137a0.js"></script><script type="text/javascript" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/0.76f0edba643f9ca4fdec.js"></script><script type="text/javascript" src="./类型即正义：TypeScript 从入门到实践（一） - 掘金_files/1.33e55539d1cddee86add.js"></script>
+    </body></html>
